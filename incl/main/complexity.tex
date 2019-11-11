@@ -3,28 +3,82 @@ Dette afsnit er skrevet med udgangspunkt i … , medmindre andet er angivet. \\ 
 For at man kan tale om, at en algoritme har løst et problem tilfredsstillende, er der to faktorer, der skal være opfyldt; den skal altid producere den rigtige løsning, og den skal være effektiv. 
 Effektiviteten af en algoritme kan måles i den tid, det tager en computer at løse et problem ud fra algoritmen givet en bestemt mængde input, kaldet tidskompleksitet, samt den mængde hukommelse, algoritmen kræver på computeren, kaldet pladskompleksitet. 
 Begge forhold bør tages stilling til, når algoritmer implementeres.
-Det er vigtigt at vide, hvor lang tid det vil tage algoritmen at løse et problem, men også sørge for, at den krævede mængde hukommelse er tilgængelig på computeren, for at algoritmen kan implementeres. 
-\\ En algoritmes tidskompleksitet er udtrykt ved antallet af operationer algoritmen udfører ved en bestemt mængde input, og ikke den faktiske computertid, da forskellige computer kræver forskellige tidsrum til at udføre operationerne i algoritmen. 
+Det er vigtigt at vide, hvor lang tid det vil tage algoritmen at løse et problem, men også sørge for, at den krævede mængde hukommelse er tilgængelig på computeren, for at algoritmen kan implementeres. \\ 
+En algoritmes tidskompleksitet er udtrykt ved antallet af operationer algoritmen udfører ved en bestemt mængde input, og ikke den faktiske computertid, da forskellige computer kræver forskellige tidsrum til at udføre operationerne i algoritmen. 
 Antal operationer, algoritmen anvender, kan estimeres som en funktion af $n$, hvor $n$ er størrelsen på inputtet. 
 For at vurdere, hvorvidt algoritmer er effektive til at løse problemer i takt med inputtet stiger, kan store-$O$ notationen benyttes.
 
 \section{Store-$O$ notation}
 Funktioners vækst kan beskrives ved store-$O$ notation. \\
 \begin{defn}
-	Lad $f$ og $g$ være funktioner fra mængden af heltal $\mathbb{Z}$ eller mængden af reelle tal $\mathbb{R}$ over i $\mathbb{R}$. Det hedder sig at $f(x)$ er $O(g(x))$ hvis der findes konstander $C$ og $k$ kaldet vidner, således 
+	Lad $f$ og $g$ være funktioner fra mængden af heltal $\mathbb{Z}$ eller mængden af reelle tal $\mathbb{R}$ over i $\mathbb{R}$. 
+	Det hedder sig at $f(x)$ er $O(g(x))$ hvis der findes konstanter $C$ og $k$ kaldet vidner, således 
 \begin{align*}
 \mid f(x) \mid \leq C \mid g(x) \mid
 \end{align*}
 så længe $x>k$.
 \end{defn}
 
-\begin{exmp}
-Vis at $x^4+9x^3+4x+7$ er $O(x^4)$. \\
+\begin{exmp}\label{exmp_bigO}
+Vis at $f(x)=x^4+9x^3+4x+7$ er $O(x^4)$. \\
 For at vise ovenstående skal der findes konstanterne $C$ og $k$, som opfylder $\mid f(x) \mid \leq C \mid g(x) \mid$ når $x>k$. $f(x)$ kan estimeres når $x>1$, hvoraf det følger $9x^3\leq 9x^4$ og $4x\leq 4x^4$ og $7\leq 7x^4$. Det følger derfor at 
 \begin{align*}
 x^4+9x^3+4x+7 &\leq x^4+9x^4+4x^4+7x^4 \\
 &\leq 21x^4
 \end{align*}
-I eksemplet er vidnerne $C$ og $k$ bestemt til $C=21$ og $k=1$.
+I eksemplet er vidnerne $C$ og $k$ bestemt til $C=21$ og $k=1$, og $f(x)$ er derfor $O(x^4)$. 
+\end{exmp} 
+Ofte kan polynomier bruges til at estimere funktioners vækst, som set i eksempel \ref{exmp_bigO}. 
+I det følgende vil det blive vist, at polynomier af grad $n$ er $O(x^n)$. \\
+\begin{defn}
+Lad $f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots +a_1x+a_0$, hvor $a_0, a_1, \cdots, a_{n-1}, a_n$ er reelle tal. 
+Så er $f(x)$ $O(x^n)$.
+\end{defn}
+
+\begin{proof}
+Ved brug af trekantsuligheden og betingelsen $x>1$, gælder
+	\begin{align*}
+		\mid f(x) \mid &= \mid a_nx^n+a_{n-1}x^{n-1}+ \cdots +a_1x+a_0 \mid \\
+		&\leq \mid a_n \mid x^n + \mid a_{n-1} \mid x^{n-1}+ \cdots +\mid a_1 \mid x+\mid a_0 \mid \\
+		&= \mid a_n \mid x^n + \mid a_{n-1} \mid x^nx^{-1}+ \cdots + \mid a_1 \mid x^n x^{-n+1}+\mid a_0 \mid x^nx^{-n} \\
+		&= x^n \left( \mid a_n \mid + \frac{\mid a_{n-1} \mid}{x}+ \cdots +\frac{\mid a_1 \mid}{x^{n-1}}+\frac{\mid a_0 \mid}{x^n} \right) \\
+		&\leq x^n( \mid a_n \mid + \mid a_{n-1} \mid + \cdots + \mid a_1 \mid + \mid a_0 \mid )
+	\end{align*}
+\end{proof}
+Det er blevet bevist, at med vidnerne $C= \mid a_n \mid + \mid a_{n-1} \mid + \cdots + \mid a_1 \mid + \mid a_0 \mid$ og $k=1$, så er $f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots +a_1x+a_0$ $O(x^n)$. \\
+
+\section{Store-$\Omega$ notation}
+Store-$O$ notation bruges i stort omfang til at beskrive væksten af funktioner og giver en øvre grænse af denne. 
+For at beskrive en nedre grænse bruges store-$\Omega$ notation. \\
+\begin{defn}
+	Lad $f$ og $g$ være funktioner fra mængden af heltal $\mathbb{Z}$ eller mængden af reelle tal $\mathbb{R}$ over i $\mathbb{R}$. 
+	Det hedder sig at $f(x)$ er $\Omega(g(x))$ hvis der findes konstanter $C$ og $k$ kaldet vidner, således 
+	\begin{align*}
+		\mid f(x) \mid \geq C \mid g(x) \mid
+	\end{align*}
+så længe $x>k$.
+\end{defn}
+
+\begin{exmp}\label{exmp_theta}
+Vis at $f(x)=x^4+9x^3+4x+7$ fra eksempel \ref{exmp_bigO} også er $\Omega(x^4)$. \\
+Det ses, at $f(x)=x^4+9x^3+4x+7 \geq x^4 $ når $x>1$, og derfor er $f(x)$ $\Omega(x^4)$ med vidnerne $C=1$ og $k=1$.
 \end{exmp}
 
+\section{Store-$\Theta$ notation}
+Store-$\Theta$ notation bruges når der ønskes både en øvre og en nedre grænse for væksten af en funktion $f(x)$. \\
+\begin{defn}\label{eq_theta}
+	Lad $f$ og $g$ være funktioner fra mængden af heltal $\mathbb{Z}$ eller mængden af reelle tal $\mathbb{R}$ over i $\mathbb{R}$. 
+	$f(x)$ siges at være $\Theta (g(x))$, hvis $f(x)$ både er $O(g(x))$ og $\Theta g(x))$. 
+	Er $f(x)$ $\Theta (g(x))$ siges $f(x)$ at have samme orden som $g(x)$. 
+\end{defn}
+Ud fra definition \ref{eq_theta} følger det, at $f(x)$ er $\Theta (g(x))$ hvis og kun hvis der findes konstanterne $C_1$, $C_2$ og $k$, således
+\begin{align*}
+	C_1 \mid g(x) \mid \leq \mid f(x) \mid \leq C_2 \mid g(x) \mid
+\end{align*}
+når $x>k$. \\
+\begin{exmp}
+	Vis at $f(x)=x^4+9x^3+4x+7$ fra eksempel \ref{exmp_bigO} og \ref{exmp_theta} også er $\Theta(x^4)$. \\
+	Da $f(x)$ både er $O(x^4)$ og $\Omega (x^4)$, så er $f(x)$ også $\Theta (x^4)$.
+\end{exmp}
+
+\section{Kompleksitet af algoritmer}
