@@ -45,37 +45,3 @@ En retningsbestemt kant $(u,v)$ forbinder et knudepar, så at kanten starter i $
 
 \noindent Denne definition (\ref{def_retn_graf}) tillader ydermere muligheden for, at et knudepar kan forbindes af indtil flere retningsbestemte kanter. Findes dette i grafen, kaldes den en \textit{retningsbestemt multigraf}. I det tilfælde, at alle knudepar kun forbindes af netop én retningsbestemt kant er grafen en \textit{simpel retningsbestemt graf}.
 
-\begin{figure}
-	\centering
-		\begin{tikzpicture}[
-			> = stealth, %pil-type
-			shorten > = 1pt, %afstand fra pil til knude
-			auto,
-			node distance = 3 cm, %afstand mellem knuder
-			semithick %linje stil
-		]
-		
-		\tikzstyle{every state}=[
-			draw = black,
-			thick,
-			fill = white,
-			minimum size = 4mm
-		]
-	
-		\node[state] (1) {$1$);
-		\node[state] (2) [above = 1] ($2$);
-		\node[state] (3) [right of = 2] {$3$);
-		\node[state] (4) [below = 3] {$4$);
-		\node[state] (5) [right of = 4] {$5$);
-		\node[state] (6) [above = 5] {$6$);
-		
-		\path[->] (1) edge node {} (2);
-		\path[->] (2) edge node {} (3);
-		\path[->] (3) edge node {} (4);
-		\path[->] (4) edge node {} (5);
-		\path[->] (5) edge node {} (6);
-		
-		\draw[red, dashed] (1,2)--(1,-2)
-	\end{tikzpicture}
-\end{figure}
-
