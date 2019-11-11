@@ -100,3 +100,7 @@
 \def\tableautorefname{Tabel}
 \def\algorithmautorefname{Algoritme}
 \def\lstinputlistingautorefname{Kildekode}
+
+% Indstillinger for farvede bokse ---------------------------------------------
+\tcbset{colback={gray!20}, arc=0mm, colframe=white,boxrule=0pt,toprule=8pt,bottomrule=0pt}
+\newtcolorbox{theorembox}[2][]{coltitle=black,title={#2},fonttitle=\bfseries,#1, detach title,before upper={\tcbtitle\quad}}
