@@ -1,4 +1,6 @@
 \chapter{Algoritmer}
+Dette kapitel tager udgangspunkt i \citep{dmat}, medmindre andet er angivet.\\ 
+\\
 Mange matematiske problemer kan ikke løses ved hjælp af en simpel beregning, men kræver i stedet en række af skridt der endeligt giver en løsning til problemet. 
 En beskrivelse af den nødvendige sekvens af skridt, kaldes en algoritme. 
 
@@ -99,14 +101,19 @@ Dette beviste Alan Turring i 1936.
 Grunden til at denne procedure ville være relevandt at finde, er at det er svært at vurdere om en algoritme kører i uendelige løkker, eller om den bare er flere år om at blive færdig.
 
 \begin{proof}
-Gå ud fra, at der er en løsning på halting problemet. Denne løsning kaldes $H(P, I)$. Denne procedure tager to input; et program og et input til programmet. Dette program kan så returnere to outputs som enten kan være "ja", hvis programmet stopper, eller "nej" hvis programmet kører for evigt. Et program i sig selv kan også være et input til et program, derfor kan input til H godt være P og P, så programmet P er input til sig selv.
+Gå ud fra, at der er en løsning på halting problemet. Denne løsning kaldes $H(P, I)$. Denne procedure tager to input; et program og et input til programmet. Dette program kan så returnere to outputs som enten kan være "ja", hvis programmet stopper, eller "nej" hvis programmet kører for evigt. 
+Et program i sig selv kan også være et input til et program, derfor kan input til H godt være P og P, så programmet P er input til sig selv.
 H vil derfor bestemme om P vil stoppe når den får sig selv som input.
-For at vise at proceduren H ikke eksisterer ændrer vi nu paramertrene for H, så den i stedet for at give "ja" som output, fortsæter med at køre i loop for evigt og i stedet for "nej" som output bare stopper.
-Denne nye procedure kaldes K(P).
-Da et program kan tage sig selv som input, kan K også tage sig selv som input. 
-Så sættes K som både program og input til H og dermed fåes H(K, K).
-Dette vil give 2 mulige output. 
-Enten vil K køre uendeligt og derfor vil K(K) stoppe, hvilket vil få H til at give "ja", dette kan ikke lade sig gøre, da K så ikke er uendelig.
-Den anden mulighed er at K vil stoppe og K(K) vil så køre uendeligt, hvilket får H til at returnere "nej", hvilket igen vil være at modsige sig selv. 
-H kan derfor ikke køre med alle programmer som input og den eksisterer derfor ikke.
+
+For at vise et der ikke findes en procedure som løser The Halting Problem introduceres en ny procedure. 
+Denne nye procedure kaldes $K(P)$, som tager udskriften fra $H(P,P)$.
+Hvis udskrften fra $H(P,P)$ er 'ja' så vil $K(P)$ retunere 'nej', og det samme gælder omvendt.  
+Da et program kan tage sig selv som input, kan K også K som input, det medfører $H(K,K)$. 
+Dette vil give 2 mulige outputs:
+\begin{itemize}
+	\item K vil køre uendeligt, hvilket får K(K) til at stoppe og så vil $H(K,K)$ returnere "ja"
+	\item  K vil stoppe, hvilket får K(K) til at køre uendeligt og så vil $H(K,K)$ returnere "nej"
+\end{itemize}
+Begge disse muligheder modsiger sig selv, da K ikke både kan være endelig og uendelig. Derfor kan et program H ikke eksistere, da det ikke kan svare rigtigt på om alle programmer kan køre uendeligt. 
+
 \end{proof}
