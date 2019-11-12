@@ -1,27 +1,30 @@
 \chapter{Kompleksitet}
-Dette afsnit er skrevet med udgangspunkt i … , medmindre andet er angivet. \\ \\
-For at man kan tale om, at en algoritme har løst et problem tilfredsstillende, er der to faktorer, der skal være opfyldt; den skal altid producere den rigtige løsning, og den skal være effektiv. 
+\section{Funktioners vækst}
+Dette kapitel er skrevet med udgangspunkt i … , medmindre andet er angivet. \\ \\
+For at der kan konkluderes, at en algoritme har løst et problem tilfredsstillende, er der to faktorer, der skal være opfyldt; den skal altid producere den rigtige løsning, og den skal være effektiv. 
 Effektiviteten af en algoritme kan måles i den tid, det tager en computer at løse et problem ud fra algoritmen givet en bestemt mængde input, kaldet tidskompleksitet, samt den mængde hukommelse, algoritmen kræver på computeren, kaldet pladskompleksitet. 
 Begge forhold bør tages stilling til, når algoritmer implementeres.
 Det er vigtigt at vide, hvor lang tid det vil tage algoritmen at løse et problem, men også sørge for, at den krævede mængde hukommelse er tilgængelig på computeren, for at algoritmen kan implementeres. \\ 
-En algoritmes tidskompleksitet er udtrykt ved antallet af operationer algoritmen udfører ved en bestemt mængde input, og ikke den faktiske computertid, da forskellige computer kræver forskellige tidsrum til at udføre operationerne i algoritmen. 
-Antal operationer, algoritmen anvender, kan estimeres som en funktion af $n$, hvor $n$ er størrelsen på inputtet. 
+En algoritmes tidskompleksitet er udtrykt ved antallet af operationer, algoritmen udfører ved en bestemt mængde input og ikke den faktiske computertid, da forskellige computer kræver forskellige tidsrum til at udføre operationerne i algoritmen. 
+Antal operationer, algoritmen anvender, kan estimeres som en funktion af størrelsen på inputtet. 
 For at vurdere, hvorvidt algoritmer er effektive til at løse problemer i takt med inputtet stiger, kan store-$O$ notationen benyttes.
 
-\section{Store-$O$ notation}
-Funktioners vækst kan beskrives ved store-$O$ notation. \\
+\subsection{Store-$O$ notation} \label{eq_o}
+Funktioners vækst kan beskrives ved store-$O$ notation.Ved brug af store-$O$ notation kan væksten af $f(x)$ sammenlignes med væksten af en funktion $g(x)$, hvor $f(x)$ vil vokse langsommere end $g(x)$ for $x$-værdier af en hvis størrelse. \\
 \begin{defn}
 	Lad $f$ og $g$ være funktioner fra mængden af heltal $\mathbb{Z}$ eller mængden af reelle tal $\mathbb{R}$ over i $\mathbb{R}$. 
-	Det hedder sig at $f(x)$ er $O(g(x))$ hvis der findes konstanter $C$ og $k$ kaldet vidner, således 
+	Det hedder sig, at $f(x)$ er $O(g(x))$, hvis der findes konstanter $C$ og $k$ kaldet vidner, således 
 \begin{align*}
-\mid f(x) \mid \leq C \mid g(x) \mid
+|f(x)| \leq C |g(x)|
 \end{align*}
 så længe $x>k$.
 \end{defn}
 
+For at vise, at $f(x)$ er $O(g(x))$, er det tilstrækkeligt at finde ét par vidner $C$ og $k$, så uligheden i \eqref{eq_o} er opfyldt. Så længe der er ét par vidner, findes der uendeligt mange vidner. Er $C$ og $k$ vidner, så er $C'$ og $k'$ også vidner, hvis $C'>C$ og $k'>k$, fordi så er $|f(x)| \leq C |g(x)| \leq C' |g(x)| $, så længe $x>k'>k$.  
+
 \begin{exmp}\label{exmp_bigO}
 Vis at $f(x)=x^4+9x^3+4x+7$ er $O(x^4)$. \\
-For at vise ovenstående skal der findes konstanterne $C$ og $k$, som opfylder $\mid f(x) \mid \leq C \mid g(x) \mid$ når $x>k$. $f(x)$ kan estimeres når $x>1$, hvoraf det følger $9x^3\leq 9x^4$ og $4x\leq 4x^4$ og $7\leq 7x^4$. Det følger derfor at 
+For at vise ovenstående skal der findes konstanterne $C$ og $k$, som opfylder $|f(x)| \leq C |g(x)|$ når $x>k$. Funktionen $f(x)$ kan estimeres når $x>1$, hvoraf det følger $9x^3\leq 9x^4$ og $4x\leq 4x^4$ og $7\leq 7x^4$. Det følger derfor at 
 \begin{align*}
 x^4+9x^3+4x+7 &\leq x^4+9x^4+4x^4+7x^4 \\
 &\leq 21x^4
@@ -30,31 +33,31 @@ I eksemplet er vidnerne $C$ og $k$ bestemt til $C=21$ og $k=1$, og $f(x)$ er der
 \end{exmp} 
 Ofte kan polynomier bruges til at estimere funktioners vækst, som set i eksempel \ref{exmp_bigO}. 
 I det følgende vil det blive vist, at polynomier af grad $n$ er $O(x^n)$. \\
-\begin{defn}
+\begin{thm}
 Lad $f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots +a_1x+a_0$, hvor $a_0, a_1, \cdots, a_{n-1}, a_n$ er reelle tal. 
 Så er $f(x)$ $O(x^n)$.
-\end{defn}
+\end{thm}
 
 \begin{proof}
-Ved brug af trekantsuligheden og betingelsen $x>1$, gælder
+Ved brug af trekantsuligheden $|x| + |y| \geq |x + y|$ og betingelsen $x>1$, gælder
 	\begin{align*}
-		\mid f(x) \mid &= \mid a_nx^n+a_{n-1}x^{n-1}+ \cdots +a_1x+a_0 \mid \\
-		&\leq \mid a_n \mid x^n + \mid a_{n-1} \mid x^{n-1}+ \cdots +\mid a_1 \mid x+\mid a_0 \mid \\
-		&= \mid a_n \mid x^n + \mid a_{n-1} \mid x^nx^{-1}+ \cdots + \mid a_1 \mid x^n x^{-n+1}+\mid a_0 \mid x^nx^{-n} \\
-		&= x^n \left( \mid a_n \mid + \frac{\mid a_{n-1} \mid}{x}+ \cdots +\frac{\mid a_1 \mid}{x^{n-1}}+\frac{\mid a_0 \mid}{x^n} \right) \\
-		&\leq x^n( \mid a_n \mid + \mid a_{n-1} \mid + \cdots + \mid a_1 \mid + \mid a_0 \mid )
+		|f(x)| &= |a_nx^n+a_{n-1}x^{n-1}+ \cdots +a_1x+a_0| \\
+		&\leq |a_n|x^n + |a_{n-1}| x^{n-1}+ \cdots + |a_1| x +|a_0| \\
+		&= |a_n| x^n + |a_{n-1}| x^nx^{-1}+ \cdots + |a_1| x^n x^{-n+1}+|a_0| x^nx^{-n} \\
+		&= x^n \left(|a_n| + \frac{|a_{n-1}|}{x}+ \cdots +\frac{|a_1|}{x^{n-1}}+\frac{|a_0|}{x^n} \right) \\
+		&\leq x^n(|a_n| + |a_{n-1}| + \cdots + |a_1| + |a_0| )
 	\end{align*}
 \end{proof}
-Det er blevet bevist, at med vidnerne $C= \mid a_n \mid + \mid a_{n-1} \mid + \cdots + \mid a_1 \mid + \mid a_0 \mid$ og $k=1$, så er $f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots +a_1x+a_0$ $O(x^n)$. \\
+Det er blevet bevist, at med vidnerne $C= |a_n| + |a_{n-1}| + \cdots + |a_1| + |a_0|$ og $k=1$, så er $f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots +a_1x+a_0$ $O(x^n)$. \\
 
-\section{Store-$\Omega$ notation}
+\subsection{Store-$\Omega$ notation}
 Store-$O$ notation bruges i stort omfang til at beskrive væksten af funktioner og giver en øvre grænse af denne. 
-For at beskrive en nedre grænse bruges store-$\Omega$ notation. \\
+For at beskrive en nedre grænse bruges store-$\Omega$ notation. Ved brug af store-$\Omega$ notation kan væksten af $f(x)$ sammenlignes med væksten af en funktion $g(x)$, hvor $f(x)$ vil vokse hurtigere end $g(x)$ for $x$-værdier af en hvis størrelse. \\
 \begin{defn}
 	Lad $f$ og $g$ være funktioner fra mængden af heltal $\mathbb{Z}$ eller mængden af reelle tal $\mathbb{R}$ over i $\mathbb{R}$. 
-	Det hedder sig at $f(x)$ er $\Omega(g(x))$ hvis der findes konstanter $C$ og $k$ kaldet vidner, således 
+	Det hedder sig, at $f(x)$ er $\Omega(g(x))$, hvis der findes konstanter $C$ og $k$ kaldet vidner, således 
 	\begin{align*}
-		\mid f(x) \mid \geq C \mid g(x) \mid
+		|f(x)| \geq C |g(x)|
 	\end{align*}
 så længe $x>k$.
 \end{defn}
@@ -64,16 +67,16 @@ Vis at $f(x)=x^4+9x^3+4x+7$ fra eksempel \ref{exmp_bigO} også er $\Omega(x^4)$.
 Det ses, at $f(x)=x^4+9x^3+4x+7 \geq x^4 $ når $x>1$, og derfor er $f(x)$ $\Omega(x^4)$ med vidnerne $C=1$ og $k=1$.
 \end{exmp}
 
-\section{Store-$\Theta$ notation}
-Store-$\Theta$ notation bruges når der ønskes både en øvre og en nedre grænse for væksten af en funktion $f(x)$. \\
+\subsection{Store-$\Theta$ notation}
+Store-$\Theta$ notation bruges, når der ønskes både en øvre og en nedre grænse for væksten af en funktion $f(x)$. \\
 \begin{defn}\label{eq_theta}
 	Lad $f$ og $g$ være funktioner fra mængden af heltal $\mathbb{Z}$ eller mængden af reelle tal $\mathbb{R}$ over i $\mathbb{R}$. 
 	$f(x)$ siges at være $\Theta (g(x))$, hvis $f(x)$ både er $O(g(x))$ og $\Theta g(x))$. 
 	Er $f(x)$ $\Theta (g(x))$ siges $f(x)$ at have samme orden som $g(x)$. 
 \end{defn}
-Ud fra definition \ref{eq_theta} følger det, at $f(x)$ er $\Theta (g(x))$ hvis og kun hvis der findes konstanterne $C_1$, $C_2$ og $k$, således
+Ud fra definition \ref{eq_theta} følger det, at $f(x)$ er $\Theta (g(x))$, hvis og kun hvis der findes konstanterne $C_1$, $C_2$ og $k$, således
 \begin{align*}
-	C_1 \mid g(x) \mid \leq \mid f(x) \mid \leq C_2 \mid g(x) \mid
+	C_1 |g(x)| \leq |f(x)| \leq C_2 |g(x)|
 \end{align*}
 når $x>k$. \\
 \begin{exmp}
@@ -82,3 +85,25 @@ når $x>k$. \\
 \end{exmp}
 
 \section{Kompleksitet af algoritmer}
+Funktioners vækst kan beskrives ved Store-$\Theta$ notation, hvor væksten af $f(n)$ estimeres af en funktion $g(n)$ med samme orden som $f(n)$. 
+Hvis funktionen $f(n)$ beskriver antal operationer, en algoritme benytter for at udregne et resultat ved $n$ input, så angiver Store-theta notation kompleksiteten af algoritmen, hvor $\Theta(g(n))$ er kompleksiteten. 
+Der er forskellige typer kompleksitet, hvor “worst case”-kompleksiteten er algoritmens kompleksitet set i forhold til det maksimale antal operationer en algoritme skal bruge for at udføre en opgave.
+I tabel \ref{tab_complex} er angivet typiske funktioner, der beskriver  ordenen af funktionen for antal operationer i en algoritme samt terminologien for kompleksiteten.\\
+
+\input{fig/tab/tabel_kompleksitet}
+
+I forbindelse med kompleksitet af algoritmer er funktionerne, der beskriver antal operationer, typisk af orden som simple funktioner som $1$, $\log n$, $n$, $n \log n$, $n^b$, $b^n$ og $n!$ set i tabel \ref{tab_complex}. 
+En algoritme siges at have lineær kompleksitet, hvis $f(n)$ er $\Theta(g(x))$. 
+En algoritme kan desuden have lineær “worst case”-kompleksitet, hvis $f(n)$ beskriver det maksimale antal operationer, algoritmen kan bruge. 
+En algoritme siges at have polynomiel “worst case”-kompleksitet, hvis $f(n)$ er $\Theta(n^b)$, hvor at $n^b$ er det maksimale antal operationer i algoritmen.
+
+\begin{exmp}
+Forklar tidskompleksiteten af algoritme … fra forrige afsnit, der finder det maksimale element i en begrænset mængde heltal.\\ 
+Antallet af sammenligninger bruges som måleenhed for tidskompleksiteten af en algoritme, i det sammenligninger er den mest basale operation, der bruges.
+Det maksimale element af en mængde med $n$ elementer skrevet i vilkårlig rækkefølge, er midlertidigt det første udtryk i listen, $max=a_1$. 
+Ved en sammenligning $i \leq n$ fastslås det, at listen fortsætter endnu, hvorefter det midlertidige maksimum og det andet udtryk i listen sammenlignes. 
+Hvis $max<a_i$ opdateres det midlertidige maksimum, således $max=a_2$.
+Denne procedure bidrager med to sammenligninger for hvert udtryk i listen og endnu en for at gå ud af løkken, når $i=n+1$. 
+I alt laves der $2(n-1)+1=2n-1$ sammenligninger, når denne algoritme kører. 
+Derfor vil algoritmen til at finde det maksimale element i en mængde af $n$ elementer have lineær tidskompleksitet set i forhold til antallet af sammenligninger, der laves, fordi $f(n)=2n-1$ er $\Theta (n)$.  
+\end{exmp}
