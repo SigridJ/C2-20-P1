@@ -38,7 +38,7 @@ Induktionsbeviser kan blandt andet bruges til at bevise sætninger om summmer p�
 	\textit{Induktionsskridt:} Antag at $P(k)$ er sand, for et vilkårligt $k \in \N$, Altså at $1 + 3 + 5 + \dotsb + (2k-1) = k^2$.
 	Det skal nu vises at det følger at $P(k + 1)$ da også må være sand, altså at $1 + 3 + 5 + \dotsb + (2k+1) = \left( k + 1 \right) ^2$.
 	\begin{align}
-		&&&1 + 3 + 5 + \dotsb + (2k-1) 
+		&&1 + 3 + 5 + \dotsb + (2k-1) 
 		&= k^2 \nonumber \\
 		&\Rightarrow \quad
 		&1 + 3 + 5 + \dotsb + (2k-1) + (2k+1) 
@@ -67,4 +67,25 @@ Dette bevis vil meget bedre kunne illustrere sammenhængen, end det tideligere i
 
 \section{Velordensprincippet}
 Induktionsbeviset bygger på en fundemental egentskab ved de naturlige tal kaldet velordensprincippet.
-Det er et aktiom for de naturlige tal, der beskriver at alle.
+Det er et aktiom for de naturlige tal, og er beskrevet som følgende.
+\begin{theorembox}{Velordensprincippet}
+	Enhver delmængde af $\N$, der ikke er tom, har et mindste element.
+\end{theorembox}
+\noindent Som resultat af velordensprincippet følger det også at alle delmængder af de naturlige tal har en rækkefølge fra det mindste element, til det største, og at "det næste element i rækken" er veldifineret, da det netop det element der er det mindste i mængden foruden alle de foregående elementer.
+
+Velordensprincippet gør det muligt at bevise induktionsbeviset er gyldig.
+\begin{proof}
+	Antag $P(1)$ er sand, og at $P(k) \to P(k + 1)$ er sand for alle $k \in \N$.
+	Det skal nu vises at $P(n)$ da også må være sand for alle $n \in \N$.
+
+	Antag for modstrid at $P(n)$ er falsk for mindst ét $n$.
+	Lad mængden $S$ være mængden af alle $n$ hvor $P(n)$ er falsk.
+	$S \subseteq \N$ må da ikke være tomt, og på grund af velordensprincippet have et mindste element $s$.
+	Lad mængden $T \subseteq \N$ bestå af alle tal mindre end $s$. $s \neq 1$ da $P(1)$ er sand, hvilket betyder at $T$ ikke er tomt.
+	Siden $s$ er det mindste element i $S$, må $P(t)$ være sand for alle $t \in T$, og $s - 1$ må da være et element i $T$.
+	Da er $P(s-1)$ sand, og siden $P(k) \to P(k+1)$ er sand, må $P(s)$ da også være sand.
+	At $P(s)$ både er sand og falsk er en modstrid.
+
+	Da må det gælde at $(P(1) \land \forall k ( P(k) \to P(k + 1))) \to \forall n P(n)$, hvilket betyder at induktionsbeviset er gyldigt.
+\end{proof}
+
