@@ -5,13 +5,13 @@ For at der kan konkluderes, at en algoritme har løst et problem tilfredsstillen
 Effektiviteten af en algoritme kan måles i den tid, det tager en computer at løse et problem ud fra algoritmen givet en bestemt mængde input, kaldet tidskompleksitet, samt den mængde hukommelse, algoritmen kræver på computeren, kaldet pladskompleksitet. 
 Begge forhold bør tages stilling til, når algoritmer implementeres.
 Det er vigtigt at vide, hvor lang tid det vil tage algoritmen at løse et problem, men også sørge for, at den krævede mængde hukommelse er tilgængelig på computeren, for at algoritmen kan implementeres. \\ 
-En algoritmes tidskompleksitet er udtrykt ved antallet af operationer, algoritmen udfører ved en bestemt mængde input og ikke den faktiske computertid, da forskellige computer kræver forskellige tidsrum til at udføre operationerne i algoritmen. 
+En algoritmes tidskompleksitet er udtrykt ved antallet af operationer, algoritmen udfører ved en bestemt mængde input og ikke den faktiske computertid, da forskellige computere kræver forskellige tidsrum til at udføre operationerne i algoritmen. 
 Antal operationer, algoritmen anvender, kan estimeres som en funktion af størrelsen på inputtet. 
 For at vurdere, hvorvidt algoritmer er effektive til at løse problemer i takt med inputtet stiger, kan store-$O$ notationen benyttes.
 
-\subsection{Store-$O$ notation} \label{eq_o}
+\subsection{Store-$O$ notation}
 Funktioners vækst kan beskrives ved store-$O$ notation.Ved brug af store-$O$ notation kan væksten af $f(x)$ sammenlignes med væksten af en funktion $g(x)$, hvor $f(x)$ vil vokse langsommere end $g(x)$ for $x$-værdier af en hvis størrelse. \\
-\begin{defn}
+\begin{defn}\label{eq_o}
 	Lad $f$ og $g$ være funktioner fra mængden af heltal $\mathbb{Z}$ eller mængden af reelle tal $\mathbb{R}$ over i $\mathbb{R}$. 
 	Det hedder sig, at $f(x)$ er $O(g(x))$, hvis der findes konstanter $C$ og $k$ kaldet vidner, således 
 \begin{align*}
@@ -26,7 +26,8 @@ For at vise, at $f(x)$ er $O(g(x))$, er det tilstrækkeligt at finde ét par vid
 Vis at $f(x)=x^4+9x^3+4x+7$ er $O(x^4)$. \\
 For at vise ovenstående skal der findes konstanterne $C$ og $k$, som opfylder $|f(x)| \leq C |g(x)|$ når $x>k$. Funktionen $f(x)$ kan estimeres når $x>1$, hvoraf det følger $9x^3\leq 9x^4$ og $4x\leq 4x^4$ og $7\leq 7x^4$. Det følger derfor at 
 \begin{align*}
-x^4+9x^3+4x+7 &\leq x^4+9x^4+4x^4+7x^4 \\
+f(x) &\leq x^4+9x^3+4x+7 \\
+&\leq x^4+9x^4+4x^4+7x^4 \\
 &\leq 21x^4
 \end{align*}
 I eksemplet er vidnerne $C$ og $k$ bestemt til $C=21$ og $k=1$, og $f(x)$ er derfor $O(x^4)$. 
@@ -85,15 +86,15 @@ når $x>k$. \\
 \end{exmp}
 
 \section{Kompleksitet af algoritmer}
-Funktioners vækst kan beskrives ved Store-$\Theta$ notation, hvor væksten af $f(n)$ estimeres af en funktion $g(n)$ med samme orden som $f(n)$. 
-Hvis funktionen $f(n)$ beskriver antal operationer, en algoritme benytter for at udregne et resultat ved $n$ input, så angiver Store-theta notation kompleksiteten af algoritmen, hvor $\Theta(g(n))$ er kompleksiteten. 
+Funktioners vækst kan beskrives ved store-$\Theta$ notation, hvor væksten af $f(n)$ estimeres af en funktion $g(n)$ med samme orden som $f(n)$. 
+Hvis funktionen $f(n)$ beskriver antal operationer, en algoritme benytter for at udregne et resultat ved $n$ input, så angiver store-$/Theta$ notation kompleksiteten af algoritmen, hvor $\Theta(g(n))$ er kompleksiteten. 
 Der er forskellige typer kompleksitet, hvor “worst case”-kompleksiteten er algoritmens kompleksitet set i forhold til det maksimale antal operationer en algoritme skal bruge for at udføre en opgave.
 I tabel \ref{tab_complex} er angivet typiske funktioner, der beskriver  ordenen af funktionen for antal operationer i en algoritme samt terminologien for kompleksiteten.\\
 
 \input{fig/tab/tabel_kompleksitet}
 
 I forbindelse med kompleksitet af algoritmer er funktionerne, der beskriver antal operationer, typisk af orden som simple funktioner som $1$, $\log n$, $n$, $n \log n$, $n^b$, $b^n$ og $n!$ set i tabel \ref{tab_complex}. 
-En algoritme siges at have lineær kompleksitet, hvis $f(n)$ er $\Theta(g(x))$. 
+En algoritme siges at have lineær kompleksitet, hvis $f(n)$ er $\Theta(g(n))$. 
 En algoritme kan desuden have lineær “worst case”-kompleksitet, hvis $f(n)$ beskriver det maksimale antal operationer, algoritmen kan bruge. 
 En algoritme siges at have polynomiel “worst case”-kompleksitet, hvis $f(n)$ er $\Theta(n^b)$, hvor at $n^b$ er det maksimale antal operationer i algoritmen.
 
@@ -101,7 +102,7 @@ En algoritme siges at have polynomiel “worst case”-kompleksitet, hvis $f(n)$
 Forklar tidskompleksiteten af algoritme … fra forrige afsnit, der finder det maksimale element i en begrænset mængde heltal.\\ 
 Antallet af sammenligninger bruges som måleenhed for tidskompleksiteten af en algoritme, i det sammenligninger er den mest basale operation, der bruges.
 Det maksimale element af en mængde med $n$ elementer skrevet i vilkårlig rækkefølge, er midlertidigt det første udtryk i listen, $max=a_1$. 
-Ved en sammenligning $i \leq n$ fastslås det, at listen fortsætter endnu, hvorefter det midlertidige maksimum og det andet udtryk i listen sammenlignes. 
+Ved en sammenligning $i \leq n$ fastslås det, hvorvidt listen fortsætter endnu. Hvis listen fortsætter, sammenlignes det midlertidige maksimum med det næste udtryk i listen sammenlignes. 
 Hvis $max<a_i$ opdateres det midlertidige maksimum, således $max=a_2$.
 Denne procedure bidrager med to sammenligninger for hvert udtryk i listen og endnu en for at gå ud af løkken, når $i=n+1$. 
 I alt laves der $2(n-1)+1=2n-1$ sammenligninger, når denne algoritme kører. 
