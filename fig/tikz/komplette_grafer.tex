@@ -1,0 +1,49 @@
+% Radius of regular polygons
+\newdimen\R
+\R=1cm
+
+\begin{tikzpicture}
+  \foreach \x in {1,2,3,4,5}{
+    \node[yshift=-1.5\R, xshift=\x*2.5\R-2.5\R] {$K_\x $};
+  }
+  \begin{scope}[every node/.style={circle,fill=blue!25}]
+    \node (0:0);
+
+    \foreach \x in {1,2}{
+      \node[xshift=2.5\R] (\x) at (\x*180-180:\R);
+    }
+    \path (1) edge (2);
+
+    \foreach \x in {1,2,3}{
+      \node[xshift=5\R] (\x) at (\x*120-120:\R);
+    }
+    \path (1) edge (2);
+    \path (2) edge (3);
+    \path (3) edge (1);
+  
+    \foreach \x in {1,2,3,4}{
+      \node[xshift=7.5\R] (\x) at (\x*90-90:\R);
+    }
+    \foreach \x in {1,2,3}{
+      \path (4) edge (\x);
+    }
+    \foreach \x in {1,2}{
+      \path (3) edge (\x);
+    }
+    \path (1) edge (2);
+  
+    \foreach \x in {1,2,3,4,5}{
+      \node[xshift=10\R] (\x) at (\x*72-72:\R);
+    }
+    \foreach \x in {1,2,3,4}{
+      \path (5) edge (\x);
+    }
+    \foreach \x in {1,2,3}{
+      \path (4) edge (\x);
+    }
+    \foreach \x in {1,2}{
+      \path (3) edge (\x);
+    }
+    \path (1) edge (2);
+  \end{scope}
+\end{tikzpicture}
