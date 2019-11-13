@@ -1,13 +1,15 @@
 \chapter{Induktionsbeviser}
 
-Induktionsbeviser er en type beviser som typisk er nyttig til at vise diskrete sammenhænge.
+Dette kapitel tager udgangspunkt i \citep{dmat}, medmindre andet er angivet.
+
+Induktionsbeviser er en type af beviser som typisk er nyttige til at vise diskrete sammenhænge.
 Det kan eksempelvis være sætninger om naturlige tal, algoritmer eller grafer.
 
 \begin{theorembox}{Princippet om matematisk induktion}
 	De to følgende skridt skal gennemføres for at bevise at $P(n)$ er sand for alle $n \in \N$, hvor $P$ er en propositionel funktion.
 
 	\textbf{Basisskridtet:} \quad 
-	Vis $P(1)$ er sand.
+	Vis at $P(1)$ er sand.
 	
 	\textbf{Induktionsskridtet:} \quad 
 	Vis at hvis $P(k)$ er sand, så følger det at $P(k + 1)$ er sand, for et vilkårligt $k \in \N$.
@@ -15,17 +17,17 @@ Det kan eksempelvis være sætninger om naturlige tal, algoritmer eller grafer.
 \end{theorembox}
 
 I induktionsskridtet antages det at $P(k)$ er sand for et vilkårligt $k$.
-Denne antagelse kaldet induktionshypotesen.
-Det kan her umildbart ligne et "cirkelbevis", fordi der antages hvad det er målet i sidste ende at vise.
-Der er dog forskel på at antage en sætning for at vise denne, og at antage en sætning for at vise en anden følger heraf.
+Denne antagelse kaldes induktionshypotesen.
+Det kan her umildbart ligne et "cirkelbevis", fordi der antages, hvad det i sidste ende er målet at vise.
+Der er dog forskel på at antage en sætning for at vise denne, og at antage en sætning for at vise at en anden følger heraf.
 Induktionsteknikken kan skrives med formel logik som
 \begin{align*}
 	(P(1) \land \forall k ( P(k) \to P(k + 1))) \to \forall n P(n),
 \end{align*}
 hvor $n, k \in \N$. En intuitiv måde at betragte induktionsteknikken er ved at tænkte på en række af dominobrikker.
-Hvis den første brik væltes, og det er sikkert at hvis en vilkårlig af brikkerne vælter, så vælter den næste også, så er må det være sandt at hele rækken vælter.
+Hvis den første brik væltes, og det er sikkert at hvis en vilkårlig af brikkerne vælter, så vælter den næste også, så er må det være sandt, at hele rækken vælter.
 Induktionsskridtet kan altså betragtes som "dominoeffekten".
-Desuden kan er det også nemt at forestille sig at hvis rækken af dominoer var uendilig lang, så vil en vilkårlig brik i rækken blive væltet hvis den første væltes. 
+Desuden er det også nemt at forestille sig, at hvis rækken af dominoer var uendilig lang, så vil en vilkårlig brik i rækken blive væltet hvis den første væltes. 
 
 Induktionsbeviser kan blandt andet bruges til at bevise sætninger om summmer på de naturlige tal.
 \begin{exmp}
@@ -73,20 +75,20 @@ Det er et aksiom for de naturlige tal, og er beskrevet som følgende.
 \end{theorembox}
 \noindent Som resultat af velordensprincippet følger det også at alle delmængder af de naturlige tal har en rækkefølge fra det mindste element, til det største, og at "det næste element i rækken" er veldifineret, da det netop det element der er det mindste i mængden foruden alle de foregående elementer.
 
-Velordensprincippet gør det muligt at bevise induktionsbeviset er gyldig.
+Velordensprincippet gør det muligt at bevise at induktionsbeviset er gyldig.
 \begin{proof}
-	Antag $P(1)$ er sand, og at $P(k) \to P(k + 1)$ er sand for alle $k \in \N$.
+	Antag at $P(1)$ er sand, og at $P(k) \to P(k + 1)$ er sand for alle $k \in \N$.
 	Det skal nu vises at $P(n)$ da også må være sand for alle $n \in \N$.
 
 	Antag for modstrid at $P(n)$ er falsk for mindst ét $n$.
 	Lad mængden $S$ være mængden af alle $n$ hvor $P(n)$ er falsk.
 	$S \subseteq \N$ må da ikke være tomt, og på grund af velordensprincippet have et mindste element $s$.
 	Lad mængden $T \subseteq \N$ bestå af alle tal mindre end $s$. $s \neq 1$ da $P(1)$ er sand, hvilket betyder at $T$ ikke er tomt.
-	Siden $s$ er det mindste element i $S$, må $P(t)$ være sand for alle $t \in T$, og $s - 1$ må da være et element i $T$.
-	Da er $P(s-1)$ sand, og siden $P(k) \to P(k+1)$ er sand, må $P(s)$ da også være sand.
+	Eftersom $s$ er det mindste element i $S$, må $P(t)$ være sand for alle $t \in T$, og $s - 1$ må da være et element i $T$.
+	Så er $P(s-1)$ sand, og da $P(k) \to P(k+1)$ er sand, må $P(s)$ da også være sand.
 	At $P(s)$ både er sand og falsk er en modstrid.
 
-	Da må det gælde at $(P(1) \land \forall k ( P(k) \to P(k + 1))) \to \forall n P(n)$, hvilket betyder at induktionsbeviset er gyldigt.
+	Det må derfor gælde at $(P(1) \land \forall k ( P(k) \to P(k + 1))) \to \forall n P(n)$, hvilket betyder at induktionsbeviset er gyldigt.
 \end{proof}
 Udover at bevise sætninger om summer på naturlige tal, kan induktionsbeviser også bruges til at bevise sætninger om grafer.
 Gennem projektet vil der blive brugt induktionsbeviser til netop dette.

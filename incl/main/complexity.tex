@@ -1,16 +1,18 @@
 \chapter{Kompleksitet}
 \section{Funktioners vækst}
-Dette kapitel er skrevet med udgangspunkt i … , medmindre andet er angivet. \\ \\
-For at der kan konkluderes, at en algoritme har løst et problem tilfredsstillende, er der to faktorer, der skal være opfyldt; den skal altid producere den rigtige løsning, og den skal være effektiv. 
+Dette kapitel er skrevet med udgangspunkt i \citep{dmat} , medmindre andet er angivet. \\
+
+For at det kan konkluderes, at en algoritme har løst et problem tilfredsstillende, er der to faktorer, der skal være opfyldt; den skal altid producere den rigtige løsning, og den skal være effektiv. 
 Effektiviteten af en algoritme kan måles i den tid, det tager en computer at løse et problem ud fra algoritmen givet en bestemt mængde input, kaldet tidskompleksitet, samt den mængde hukommelse, algoritmen kræver på computeren, kaldet pladskompleksitet. 
-Begge forhold bør tages stilling til, når algoritmer implementeres.
-Det er vigtigt at vide, hvor lang tid det vil tage algoritmen at løse et problem, men også sørge for, at den krævede mængde hukommelse er tilgængelig på computeren, for at algoritmen kan implementeres. \\ 
+Der bør tages stilling til begge forhold, når algoritmer implementeres.
+Det er vigtigt at vide, hvor lang tid det vil tage algoritmen at løse et problem, men også at sørge for, at den krævede mængde hukommelse er tilgængelig på computeren, for at algoritmen kan implementeres. \\ 
 En algoritmes tidskompleksitet er udtrykt ved antallet af operationer, algoritmen udfører ved en bestemt mængde input og ikke den faktiske computertid, da forskellige computere kræver forskellige tidsrum til at udføre operationerne i algoritmen. 
 Antal operationer, algoritmen anvender, kan estimeres som en funktion af størrelsen på inputtet. 
-For at vurdere, hvorvidt algoritmer er effektive til at løse problemer i takt med inputtet stiger, kan store-$O$ notationen benyttes.
+Til at vurdere, hvorvidt algoritmer er effektive til at løse problemer i takt med at inputtet stiger, kan store-$O$ notationen benyttes.
 
 \subsection{Store-$O$ notation}
-Funktioners vækst kan beskrives ved store-$O$ notation.Ved brug af store-$O$ notation kan væksten af $f(x)$ sammenlignes med væksten af en funktion $g(x)$, hvor $f(x)$ vil vokse langsommere end $g(x)$ for $x$-værdier af en hvis størrelse. \\
+Funktioners vækst kan beskrives ved store-$O$ notation.
+Ved brug af store-$O$ notation kan væksten af $f(x)$ sammenlignes med væksten af en funktion $g(x)$, hvor $f(x)$ vil vokse langsommere end $g(x)$ for $x$-værdier af en hvis størrelse. \\
 \begin{defn}\label{eq_o}
 	Lad $f$ og $g$ være funktioner fra mængden af heltal $\mathbb{Z}$ eller mængden af reelle tal $\mathbb{R}$ over i $\mathbb{R}$. 
 	Det hedder sig, at $f(x)$ er $O(g(x))$, hvis der findes konstanter $C$ og $k$ kaldet vidner, således 
@@ -87,19 +89,19 @@ når $x>k$. \\
 
 \section{Kompleksitet af algoritmer}
 Funktioners vækst kan beskrives ved store-$\Theta$ notation, hvor væksten af $f(n)$ estimeres af en funktion $g(n)$ med samme orden som $f(n)$. 
-Hvis funktionen $f(n)$ beskriver antal operationer, en algoritme benytter for at udregne et resultat ved $n$ input, så angiver store-$/Theta$ notation kompleksiteten af algoritmen, hvor $\Theta(g(n))$ er kompleksiteten. 
+Hvis funktionen $f(n)$ beskriver antal operationer, en algoritme benytter for at udregne et resultat ved $n$ input, så angiver store-$\Theta$ notation kompleksiteten af algoritmen, hvor $\Theta(g(n))$ er kompleksiteten. 
 Der er forskellige typer kompleksitet, hvor “worst case”-kompleksiteten er algoritmens kompleksitet set i forhold til det maksimale antal operationer en algoritme skal bruge for at udføre en opgave.
-I tabel \ref{tab_complex} er angivet typiske funktioner, der beskriver  ordenen af funktionen for antal operationer i en algoritme samt terminologien for kompleksiteten.\\
+I tabel \ref{tab_complex} er typiske funktioner angivet, som beskriver ordenen af funktionen for antal operationer i en algoritme samt terminologien for kompleksiteten.\\
 
 \input{fig/tab/tabel_kompleksitet}
 
-I forbindelse med kompleksitet af algoritmer er funktionerne, der beskriver antal operationer, typisk af orden som simple funktioner som $1$, $\log n$, $n$, $n \log n$, $n^b$, $b^n$ og $n!$ set i tabel \ref{tab_complex}. 
+I forbindelse med kompleksitet af algoritmer er funktionerne, der beskriver antal operationer, typisk af ordenen som simple funktioner som $1$, $\log n$, $n$, $n \log n$, $n^b$, $b^n$ og $n!$ set i tabel \ref{tab_complex}. 
 En algoritme siges at have lineær kompleksitet, hvis $f(n)$ er $\Theta(g(n))$. 
 En algoritme kan desuden have lineær “worst case”-kompleksitet, hvis $f(n)$ beskriver det maksimale antal operationer, algoritmen kan bruge. 
 En algoritme siges at have polynomiel “worst case”-kompleksitet, hvis $f(n)$ er $\Theta(n^b)$, hvor at $n^b$ er det maksimale antal operationer i algoritmen.
 
 \begin{exmp}
-Forklar tidskompleksiteten af algoritme … fra forrige afsnit, der finder det maksimale element i en begrænset mængde heltal.\\ 
+Forklar tidskompleksiteten af algoritme \ref{find_maks} fra forrige kapitel, der finder det maksimale element i en begrænset mængde heltal.\\ 
 Antallet af sammenligninger bruges som måleenhed for tidskompleksiteten af en algoritme, i det sammenligninger er den mest basale operation, der bruges.
 Det maksimale element af en mængde med $n$ elementer skrevet i vilkårlig rækkefølge, er midlertidigt det første udtryk i listen, $max=a_1$. 
 Ved en sammenligning $i \leq n$ fastslås det, hvorvidt listen fortsætter endnu. Hvis listen fortsætter, sammenlignes det midlertidige maksimum med det næste udtryk i listen sammenlignes. 
