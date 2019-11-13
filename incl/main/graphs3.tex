@@ -1,2 +1,41 @@
-\section{Grafer 3}
-Bla
+\section{Komplette grafer}
+En komplet graf er en graf hvor et hvert unikt par af knuder i grafen er forbundet.
+En komplet graf navngives $K_n$ hvor $n$ er antallet af knuderf i grafen.
+I figur \ref{fig:komplette_grafer} ses de første 5 komplette grafer.
+En graf hvor mindst ét par af knuder ikke er forbundet, kaldes en ikke-komplet graf.
+
+\begin{figure}[h]
+	\centering
+	\input{fig/tikz/komplette_grafer}
+	\caption{De første $5$ komplette grafer} \label{fig:komplette_grafer}
+\end{figure}
+
+Antallet af kanter i en komplet graf $K_n$ afhænger kun af $n$.
+
+\begin{thm}
+	For en komplet graf $K_n = (V_n, E_n)$ med $n$ knuder er $|E_n|$ antallet af kanter. Da er
+	\begin{align*}
+		|E_n| = \frac{n (n - 1)}{2}
+	\end{align*}
+\end{thm}
+\begin{proof}
+	For at gennemføre et induktionsbevis skal basisskridtet og induktionsskridtet gennemføres.
+	Lad propositionen $P(n)$ være at $|E_n|= \frac{n (n - 1)}{2}$, hvor $n$ er antal knuder i en komplet graf $K_n$ og $m$ være antal kanter.
+
+	\textit{Basisskridt:} $K_1$ består af en enkelt knude, og da der ikke er et par af knuder i grafen, må der da ikke eksistere nogen kanter.
+	$\frac{ 1 \cdot 0}{2} = 0$, hvilket betyder at $P(1)$ er sand. Da er basisskidtet gennemført.
+
+	\textit{Induktionsskridt:} Det skal nu vises at der for et vilkårligt $k$ gælder at $P(k) \to P(k + 1)$, altså at $|E_k| = \frac{k (k - 1)}{2}$ medfører at $|E_{k+1}| = \frac{k (k + 1)}{2}$.
+
+	Antag at $|E_k| = \frac{k (k - 1)}{2}$ for $K_k$.
+	Den næste komplette graf $K_{k+1}$ må være den graf hvor der er én til knude. Denne nye knude $v$ skal være forbundet til alle knuder i $K_k$ for at være en komplet graf. $\deg (v)$ må da være lig $k$. Da må
+	\begin{align*}
+		|E_{k+1}| 
+		= |E_k| + k
+		= \frac{k (k - 1)}{2} + k
+		= \frac{k^2 - k}{2} + \frac{2k}{2}
+		= \frac{k^2 + k}{2} 
+		= \frac{k (k + 1)}{2}
+	\end{align*}
+	Dette er netop $P(k + 1)$, hvilket betyder at induktionsskridtet er gennemført.
+\end{proof}

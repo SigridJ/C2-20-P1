@@ -74,9 +74,8 @@ Idet summen af graderne for knuderne af ulige grad i grafen er lige, må der væ
 
 \subsection{Repræsentation af grafer}
 
-Der er mange brugbare måder at repræsentere grafer på, og man ønsker i hvert tilfælde at vælge den pæneste repræsentation. \\
-En måde at repræsentere grafer på uden flere kanter mellem samme knuder, er at skrive alle kanterne i grafen i en liste. En anden måde er at lave en nabo-liste, som specificerer de knuder, som er naboer til hver knude i grafen. \\
-Hvis der er mange kanter i en graf, kan begge førnævnte lister være uhåndterlige. For at simplificere dette kan grafer repræsenteres ved matricer. To matricer, der almindeligvis bruges, er nabo-matricer, der er baseret på nabo-knuder, og incidens-matricer, baseret på incidensen af knuder og kanter. \\
+Der er flere brugbare måder at repræsentere grafer på, og man ønsker i hvert tilfælde at vælge den pæneste repræsentation. \\
+En overskuelig måde at repræsentere en graf på er ved matricer. To matricer, der almindeligvis bruges, er nabo-matricer, der er baseret på nabo-knuder, og incidens-matricer, baseret på incidensen af knuder og kanter. \\
 Antag at $G=(V,E)$ er en simpel graf hvor $|V|=n$, hvor knuderne i $G$ står skrevet i vilkårlig rækkefølge som $v_1$, $v_2$, \dots , $v_n$. Nabo-matricen $A$ (eller $A_G$) af G er en $n \times n$ nul-et matrix, med 1 som den $(i,j)$’te indgang når $v_i$ og $v_j$ er naboer, og 0 er den $(i,j)$’te indgang, når de ikke er naboer. Hvis nabo-matricen er $A=[a_{ij}]$ så er
 
 \begin{align*}
@@ -107,6 +106,15 @@ Nabo-matricer kan også bruges til at repræsentere ikke-orienterede grafer med 
   \end{blockarray}
 \end{equation*}
 
+En anden almindelig måde at repræsentere grafer på er ved incidens-matricer. Lad $G=(V,E)$ være en ikke-orienteret graf. Antag at $v_1$, $v_2$, \dots , $v_n$ er knuder og $e_1$, $e_2$, \dots , $e_n$ er kanter i G. Incidens-matricen, i forhold til ordningen af $V$ og $E$, er en $n x m$ matrix $M=[m_{ij}]$, hvor 
+\begin{align*}
+m_{ij}= \left\{\begin{array}{cc}
+1 & hvis \  {e_j} \  er \  nabo \ til \ v_i \\
+0 & ellers \\
+\end{array}\right.
+\end{align*}
+
+Incidens-matricer kan også bruges til at repræsentere flere kanter og loops. Flere kanter ved én knude er repræsenteret i incidens-matricen ved kolonner med identiske indgange, i det disse kanter er incidente med det samme par af knuder. Loops er repræsenteret ved en kolonne med præcis én indgang lig 1, der svarer til den knude, der er incident med loopet. 
 
  \begin{equation*}
   \mathbf{M}=
