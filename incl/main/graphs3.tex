@@ -31,11 +31,11 @@ Antallet af kanter i en komplet graf $K_n$ afhænger kun af $n$.
 	Den næste komplette graf $K_{k+1}$ må være den graf hvor der er én til knude. Denne nye knude $v$ skal være forbundet til alle knuder i $K_k$ for at være en komplet graf. $\deg (v)$ må da være lig $k$. Da må
 	\begin{align*}
 		|E_{k+1}| 
-		&= |E_k| + k \\
-		&= \frac{k (k - 1)}{2} + k \\
-		&= \frac{k^2 - k}{2} + \frac{2k}{2} \\
-		&= \frac{k^2 + k}{2} \\
-		&= \frac{k (k + 1)}{2}
+		= |E_k| + k
+		= \frac{k (k - 1)}{2} + k
+		= \frac{k^2 - k}{2} + \frac{2k}{2}
+		= \frac{k^2 + k}{2} 
+		= \frac{k (k + 1)}{2}
 	\end{align*}
 	Dette er netop $P(k + 1)$, hvilket betyder at induktionsskridtet er gennemført.
 \end{proof}
