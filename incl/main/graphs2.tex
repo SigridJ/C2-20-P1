@@ -77,16 +77,35 @@ Idet summen af graderne for knuderne af ulige grad i grafen er lige, må der væ
 Der er mange brugbare måder at repræsentere grafer på, og man ønsker i hvert tilfælde at vælge den pæneste repræsentation. \\
 En måde at repræsentere grafer på uden flere kanter mellem samme knuder, er at skrive alle kanterne i grafen i en liste. En anden måde er at lave en nabo-liste, som specificerer de knuder, som er naboer til hver knude i grafen. \\
 Hvis der er mange kanter i en graf, kan begge førnævnte lister være uhåndterlige. For at simplificere dette kan grafer repræsenteres ved matricer. To matricer, der almindeligvis bruges, er nabo-matricer, der er baseret på nabo-knuder, og incidens-matricer, baseret på incidensen af knuder og kanter. \\
-Antag at $G=(V,E)$ er en simpel graf hvor $|V|=n$, hvor knuderne i $G$ står skrevet i vilkårlig rækkefølge som $v_1$, $v_2$, \dots , $v_n$. Nabo-matricen $A$ (eller $A_G$) af G er en $n \times n$ nul-et matrix, med 1 som den $(i,j)$’te indgang når $v_i$ og $v_j$ er naboer, og 0 er den $(i,j)$’te indgang, når de ikke er naboer. Hvis nabo-matricen er $A=[a_{ij}]$ så er \\
+Antag at $G=(V,E)$ er en simpel graf hvor $|V|=n$, hvor knuderne i $G$ står skrevet i vilkårlig rækkefølge som $v_1$, $v_2$, \dots , $v_n$. Nabo-matricen $A$ (eller $A_G$) af G er en $n \times n$ nul-et matrix, med 1 som den $(i,j)$’te indgang når $v_i$ og $v_j$ er naboer, og 0 er den $(i,j)$’te indgang, når de ikke er naboer. Hvis nabo-matricen er $A=[a_{ij}]$ så er
+
 \begin{align*}
 a_{ij}= \left\{\begin{array}{cc}
 1 & hvis \  \lbrace v_i, v_j \rbrace \  er \  en \  kant \  i \  G \\
 0 & ellers \\
-\end{array}\right
+\end{array}\right.
+.
 \end{align*}
-\\
+
 En nabo-matrix af en graf er baseret på den valgte ordning af knuderne, hvorfor der kan være $n!$ forskellige nabo-matricer for en graf med $n$ knuder, i det der er $n!$ forskellige måder at ordne de $n$ knuder. Nabo-matricen for en simpel graf er symmetrisk, $a_{ij}=a_{ji}$, da begge indgange er 1, når de er naboer, og 0 ellers. Da en simpel graf ikke består af loops, er hver indgang $a_{ii},i=1,2,3, \dots ,n$ $0$. \\
 Nabo-matricer kan også bruges til at repræsentere ikke-orienterede grafer med loops og flere kanter til samme knuder. Et loop ved en knude $v_i$ er repræsenteret ved 1 ved position $(i,i)$ i nabo-matricen. Når flere kanter forbinder det samme par af knuder $v_i$ og $v_j$, eller der er flere loops ved samme knude til stede, er nabo-matricen ikke længere en nul-et matrix, i det den $(i,j)$’te indgang af matricen er lig antallet af kanter forbundet til ${v_i,v_j}$. Alle ikke-orienterede grafer, herunder multi- og pseudografer, har symmetriske nabo-matricer. 
+
+ \begin{equation*}
+  \mathbf{S}=
+  \begin{blockarray}{*{6}{c} l}
+    \begin{block}{*{6}{>{$\footnotesize}c<{$}} l}
+      A & B & C & D & E & F \\
+    \end{block}
+    \begin{block}{[*{6}{c}]>{$\footnotesize}l<{$}}
+      0 & 1 & 0 & 0 & 0 & 0 \bigstrut[t]& A \\
+      1 & 0 & 1 & 1 & 0 & 0 \bigstrut[t]&B \\
+      0 & 1 & 0 & 1 & 1 & 0 \bigstrut[t]&C \\
+      0 & 1 & 0 & 1 & 1 & 0 \bigstrut[t]& D \\
+      0 & 0 & 1 & 1 & 0 & 1 \bigstrut[t]& E \\
+      0 & 0 & 0 & 1 & 1 & 0 \bigstrut[t]& F \\
+    \end{block}
+  \end{blockarray}
+\end{equation*}
 
 
 
