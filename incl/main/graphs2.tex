@@ -126,6 +126,38 @@ Nabo-matricer kan også bruges til at repræsentere ikke-orienterede grafer med 
 \end{equation*}
 
 
+\usetikzlibrary{arrows, positioning}
+\begin{figure}[!h]
+  \centering
+  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+    \tikzstyle{state}=[shape=circle,thick,draw,minimum size=1.5cm]
+
+    \node[state] (A1) {$B$};
+    \node[state,above of=A1] (B1) {$D$};
+    \node[state,above of=B1] (C1) {$F$};
+
+    \node[state,right of=A1] (A2) {$A$};
+    \node[state,above of=A2] (B2) {$C$};
+    \node[state,above of=B2] (C2) {$E$};
+
+
+
+    \path[-,draw,thick]
+    (A1) edge node {$e_1$} (A2)
+    (A1) edge node {$e_3$} (B1)
+    (A1) edge node {$e_2$} (B2)
+    (B1) edge node {$e_4$} (B2)
+    (B1) edge node {$e_7$} (C1)
+    (C1) edge node {$e_8$} (C2)
+    (C2) edge node {$e_5$} (B2)
+    (C2) edge node {$e_6$} (B1)
+
+    ;
+
+  \end{tikzpicture}
+  \caption{Model}
+  \label{fig:f1}
+\end{figure}
 
 
 

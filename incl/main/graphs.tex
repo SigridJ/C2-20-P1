@@ -113,7 +113,7 @@ En retningsbestemt kant $(u,v)$ forbinder et knudepar, så at kanten starter i $
   \node[main node] (b) [below left of=a] {B};
   \node[main node] (c) [below right of=a] {C};
 
-    \path [->] (a) edge node {} (b);
+    \path [->] (a) edge node {2} (b);
     \path      (a) edge node {} (c);
     \path      (b) edge [bend left=35] node {} (a);
     	\path      (b) edge [bend right=35] node {} (a);
