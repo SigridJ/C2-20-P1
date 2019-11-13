@@ -9,18 +9,19 @@ En beskrivelse af den nødvendige sekvens af skridt, kaldes en algoritme.
 En algoritme er et endeligt sæt af præcise instruktioner, som beskriver udførelsen af en beregning eller løsning af et problem.
 \end{defn}
 
-I denne rapport vil vi bruge pseudokode til at beskrive hvordan man kan opstille en algoritme i computersprog. 
+I denne rapport vil der blive brugt pseudokode til at beskrive hvordan man kan opstille en algoritme i computersprog. 
 En pseudokode kan ikke skrives direkte ind i et programmeringsprogram, men kan let oversættes til et ønsket programmeringssprog og kan let læses og forståes. 
 I dette kapitel vil 3 algoritmer blive beskrevet, for at give en ide om, hvad en algoritme kan bruges til. 
 
 \section{Eksempler på algoritmer}
 \subsection{Søgealgoritme}
-Skal man finde den største værdi i en liste, kan dette gøres nemt ved hjælp af en algoritme. Selvom det kan virke meget simpelt at læse en liste igennem og finde det største tal, kan det godt blive problematisk og tidskrævende hvis der er tale om en længere liste. 
+Skal den største værdi i en liste findes, kan dette gøres nemt ved hjælp af en algoritme. 
+Selvom det kan virke meget simpelt at læse en liste igennem og finde det største tal, kan det godt blive problematisk og tidskrævende hvis der er tale om en længere liste. 
 Derfor er en algoritme smart, da den hurtigt kan gennemgå lange lister.
-En sådan algoritme kan udføres, ved et sætte det første element lig med en variabel $maks$, dernæst sammenlignes denne værdi med det næste element, som overtager $maks$ hvis det er større end den nuværende værdi $maks$. 
+En sådan algoritme kan udføres, ved at sætte det første element lig med en variabel $maks$, dernæst sammenlignes denne værdi med det næste element, som overtager $maks$ hvis det er større end den nuværende værdi $maks$. 
 Er det næste element mindre end det nuværende $maks$ sker der ikke noget og man går videre til det næste element på listen. 
 Dette gentages indtil man har gennemgået hele listen, hvorefter maks returneres.
-Herunder ses et eksempel på hvordan en søgealgortime kan skrives med pseudokode:
+Herunder ses et eksempel på hvordan en sådan søgealgortime kan skrives med pseudokode:
 
 
 \begin{algorithm}
@@ -41,17 +42,17 @@ $maks:=a_i$ \\
 Et andet problem der kan løses ved hjælp af algoritmer, er sorteringen af elementerne i en liste. 
 Til dette findes der flere forskellige algoritmer, men her vil kun "Bubblesort$"$ blive beskrevet. 
 I bubblesort algoritmen undersøger man ét element i listen af gangen. 
-Man sammenligner så dette element med det efterfølgende element, således, at den bytter plads med det næste element hvis dette er af en lavere værdi. 
-Hvis elementet bytter plads med det næste element fortsætter man med at sammenligne med det efterfølgende element. 
-Hvis ikke de to bytter plads, sammenligner man det næste element med det der kommer efter det. 
-Når så hele listen er gennemgået gør man det igen, men denne gang sammenligner man ikke med det sidste element i listen, da dette allerede vil være det største element. 
-Dette gentager man n-1 gange, da man i det sidste skridt får de 2 første elementer på plads. 
+Dette element sammenlignes med det efterfølgende element, således, at det bytter plads med det næste element hvis dette er af en lavere værdi. 
+Hvis elementet bytter plads med det næste element fortsættes med at sammenligne med det efterfølgende element. 
+Hvis ikke de to bytter plads, sammenlignes det næste element med det der kommer efter det. 
+Når så hele listen er gennemgået gøres igen, men denne gang sammenlignes der ikke med det sidste element i listen, da dette allerede vil være det største element. 
+Dette gentages n-1 gange, da det sidste skridt får de 2 første elementer på plads. 
 Med Pseudokode kan algoritmen skrives sådan:
 
 \begin{algorithm}
 \caption{Bubblesort}
 \label{bubblesort}
-\textbf{procedure} $Bubblesort(a_1, a_2, ..., a_n   : $ reelle tal og hvor $n \geq 2$ \\
+\textbf{procedure} $Bubblesort(a_1, a_2, ..., a_n   : $ reelle tal og hvor $n \geq 2)$ \\
 \textbf{for} $i:=1$ \textbf{til} $n-1$ \\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 \textbf{for} $j:=1$ \textbf{til} $n-1$ \\
@@ -63,11 +64,11 @@ $\lbrace a_1, a_2, ..., a_n $ står nu i voksende rækkefølge $\rbrace $
 
 \subsection{The Greedy Algorithm}
 Den sidste algoritme der vil blive beskrevet i dette kapitel er "The Greedy Algorithm", som bruges til at optimere. 
-Denne algoritme kan eventuelt bruges til finde fordelingen af mønter hvis man har et bestemt beløb der skal opfyldes. 
-Ønsker man at finde det optimale antal mønter til at dække et bestemt beløb, sættes møntværdierne ind i en liste sorteret fra største til mindste mønt. 
+Denne algoritme kan eventuelt bruges til finde fordelingen af mønter hvis et bestemt beløb skal opfyldes. 
+Ønskes det at finde det optimale antal mønter til at dække et bestemt beløb, sættes møntværdierne ind i en liste sorteret fra største til mindste mønt. 
 Så sammenlignes den første mønt med det samlede beløb. 
 Er mønten mindre end det samlede beløb tilføjes 1 til den variabel der beskriver det samlede antal mønter. 
-Værdien af mønten trækkes fra beløbet, så det resterende beløb er tilbage. 
+Værdien af mønten trækkes fra beløbet, så kun det resterende beløb er tilbage. 
 Er mønten større fortsættes til næste mønt.  
 Det første skridt gentages indtil mønten er større end det resterende beløb, da det er muligt at have flere af den samme mønt. 
 Når det resterende beløb er 0 behøves der ikke flere mønter og antallet af mønter returneres.
@@ -76,7 +77,7 @@ Når det resterende beløb er 0 behøves der ikke flere mønter og antallet af m
 \caption{algoritme for antal mønter}
 \label{greedy_algorithm}
 \textbf{procedure} $mønter(m_1, m_2, ..., m_r: $ værdier af de mønter man regner med, \\ 
-hvor $m_1>m_2>...>m_r;$ $n$: det ønskede hele, positive beløb) \\
+hvor $m_1>m_2>...>m_r;$  $n$: det ønskede hele, positive beløb) \\
 \textbf{for} $i:=1$ \textbf{til} $r$ \\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 $d_i:=0$ $\lbrace d_i$ tæller antallet af brugte mønter $\rbrace$ \\
@@ -111,11 +112,11 @@ Gå ud fra, at der er en løsning på halting problemet. Denne løsning kaldes $
 Et program i sig selv kan også være et input til et program, derfor kan input til H godt være P og P, så programmet P er input til sig selv.
 H vil derfor bestemme om P vil stoppe når den får sig selv som input.
 
-For at vise et der ikke findes en procedure som løser The Halting Problem introduceres et program. 
-Dette program kaldes $K(P)$, og tager udskriften fra $H(P,P)$.
+For at vise et der ikke findes en procedure som løser "The Halting Problem" introduceres et program. 
+Dette program kaldes $K(P)$, og tager udskriften fra $H(P,P)$ som input.
 Hvis udskrften fra $H(P,P)$ er 'ja' så vil $K(P)$ retunere 'nej', det samme gælder omvendt.  
-Da et program kan tage sig selv som input, kan $K$ også have $K$ som input, det medfører $H(K,K)$. 
-Dette vil give 2 mulige outputs:
+Da et program kan tage sig selv som input, kan $K$ også have $K$ som input, det kan sættes ind i $H$ og  medfører $H(K,K)$. 
+$H(K, K)$ vil give 2 mulige outputs:
 \begin{itemize}
 	\item $K$ vil køre uendeligt, hvilket får $K(K)$ til at stoppe og så vil $H(K,K)$ returnere "ja"
 	\item  $K$ vil stoppe, hvilket får $K(K)$ til at køre uendeligt og så vil $H(K,K)$ returnere "nej"
