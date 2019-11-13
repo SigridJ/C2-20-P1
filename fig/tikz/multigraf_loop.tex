@@ -1,0 +1,19 @@
+\tikzset{every loop/.style={}}
+
+\begin{tikzpicture}[shorten >=1pt,auto,node distance=2cm,
+                thick,main node/.style={circle,fill=blue!25}]
+
+  \node[main node] (a) {};
+  \node[main node] (b) [below left of=a] {};
+  \node[main node] (c) [below right of=a] {};
+
+  \path
+    (a) edge node {} (b)
+        edge node {} (c)
+    (b) edge [bend left=35] node {} (a)
+        edge [bend right=27] node {} (c)
+    (c) edge [loop right] node {} (c)
+        edge node [above] {} (b);
+\end{tikzpicture}
+
+
