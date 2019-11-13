@@ -78,11 +78,12 @@ En retningsbestemt kant $(u,v)$ forbinder et knudepar, så at kanten starter i $
 	\end{tikzpicture}
 \caption{Et eksempel på en retningsbestemt graf, hvor man kan se pilene definere retningen}
 \end{figure}
+
 \noindent Et simpelt retningsbestemt system er dog ikke nok i et computernetværk, som kræver at der kan forekomme flere interaktioner mellem forskellige computere. Til dette skal man bruge orienterede multigrafer.
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=2cm,
+\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=2.5cm,
                 thick,main node/.style={circle,fill=blue!25}]
 
   \node[main node] (a) {A};
@@ -106,14 +107,14 @@ En retningsbestemt kant $(u,v)$ forbinder et knudepar, så at kanten starter i $
 
 \begin{figure}[!h]
 \centering
-\begin{tikzpicture}[shorten >=1pt,auto,node distance=3cm,
+\begin{tikzpicture}[shorten >=1pt,auto,node distance=2.5cm,
                 thick,main node/.style={circle,fill=blue!25}]
 
   \node[main node] (a) {A};
   \node[main node] (b) [below left of=a] {B};
   \node[main node] (c) [below right of=a] {C};
 
-    \path [->] (a) edge node {2} (b);
+    \path [->] (a) edge node {} (b);
     \path      (a) edge node {} (c);
     \path      (b) edge [bend left=35] node {} (a);
     	\path      (b) edge [bend right=35] node {} (a);

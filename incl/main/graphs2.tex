@@ -1,7 +1,8 @@
+\usetikzlibrary{arrows, positioning}
 \section{Grafer 2}
 \subsection{Grafterminologi}
 
-Der findes begreber til at beskrive kanter og knuder i ikke-orienterede grafer, som bl.a. beskriver hvordan knuder og kanter er orienterede i forhold til hinanden samt hvor mange knuder eller kanter, der er forbunde til en given knude.
+Der findes begreber til at beskrive kanter og knuder i ikke-orienterede grafer, som bl.a. beskriver hvordan knuder og kanter er orienterede i forhold til hinanden samt hvor mange knuder eller kanter, der er forbundet til en given knude.
 
 \begin{defn}
 To knuder $u$ og $v$ siges at være naboer i en ikke-orienteret graf $G$, hvis $u$ og $v$ er endepunkter i en kant $e$. Desuden siges kanten $e$ at forbinde $u$ og $v$, og $e$ er incident med både $u$ og $v$.
@@ -106,15 +107,15 @@ Nabo-matricer kan også bruges til at repræsentere ikke-orienterede grafer med 
   \end{blockarray}
 \end{equation*}
 
-En anden almindelig måde at repræsentere grafer på er ved incidens-matricer. Lad $G=(V,E)$ være en ikke-orienteret graf. Antag at $v_1$, $v_2$, \dots , $v_n$ er knuder og $e_1$, $e_2$, \dots , $e_n$ er kanter i G. Incidens-matricen, i forhold til ordningen af $V$ og $E$, er en $n x m$ matrix $M=[m_{ij}]$, hvor 
+\noindent En anden almindelig måde at repræsentere grafer på er ved incidens-matricer. Lad $G=(V,E)$ være en ikke-orienteret graf. Antag at $v_1$, $v_2$, \dots , $v_n$ er knuder og $e_1$, $e_2$, \dots , $e_n$ er kanter i G. Incidens-matricen, i forhold til ordningen af $V$ og $E$, er en $n x m$ matrix $M=[m_{ij}]$, hvor 
 \begin{align*}
 m_{ij}= \left\{\begin{array}{cc}
-1 & hvis \  {e_j} \  er \  nabo \ til \ v_i \\
-0 & ellers \\
+1 & \textrm{hvis} \  {e_j} \  \textrm{er} \  \textrm{nabo} \ \textrm{til} \ v_i \\
+0 & \textrm{ellers} \\
 \end{array}\right.
 \end{align*}
 
-Incidens-matricer kan også bruges til at repræsentere flere kanter og loops. Flere kanter ved én knude er repræsenteret i incidens-matricen ved kolonner med identiske indgange, i det disse kanter er incidente med det samme par af knuder. Loops er repræsenteret ved en kolonne med præcis én indgang lig 1, der svarer til den knude, der er incident med loopet. 
+\noindent Incidensmatricer kan også bruges til at repræsentere flere kanter og løkker. Flere kanter ved én knude er repræsenteret i incidens-matricen ved kolonner med identiske indgange, idet disse kanter er incidente med det samme knudepar. Løkker er repræsenteret ved en kolonne med præcis én indgang lig 1, der svarer til den knude, der er incident med løkken. 
 
  \begin{equation*}
   \mathbf{M}=
@@ -134,34 +135,29 @@ Incidens-matricer kan også bruges til at repræsentere flere kanter og loops. F
 \end{equation*}
 
 
-\usetikzlibrary{arrows, positioning}
 \begin{figure}[!h]
   \centering
-  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
-    \tikzstyle{state}=[shape=circle,thick,draw,minimum size=1.5cm]
+  \begin{tikzpicture}
+  [shorten >=1pt,node distance=3.1cm,on grid,auto]
+    \tikzstyle{state}=[shape=circle,fill=blue!25,thick,minimum size=0.7cm]
 
-    \node[state] (A1) {$B$};
-    \node[state,above of=A1] (B1) {$D$};
-    \node[state,above of=B1] (C1) {$F$};
-
-    \node[state,right of=A1] (A2) {$A$};
-    \node[state,above of=A2] (B2) {$C$};
-    \node[state,above of=B2] (C2) {$E$};
-
-
+    \node[state] (A) {$A$};
+    \node[state,above of=A] (B) {$B$};
+    \node[state,right of=A] (C) {$C$};
+    \node[state,right of=B] (D) {$D$};
+    \node[state,right of=C] (E) {$E$};
+    \node[state,right of=D] (F) {$F$};
 
     \path[-,draw,thick]
-    (A1) edge node {$e_1$} (A2)
-    (A1) edge node {$e_3$} (B1)
-    (A1) edge node {$e_2$} (B2)
-    (B1) edge node {$e_4$} (B2)
-    (B1) edge node {$e_7$} (C1)
-    (C1) edge node {$e_8$} (C2)
-    (C2) edge node {$e_5$} (B2)
-    (C2) edge node {$e_6$} (B1)
-
+    (A) edge node {$e_1$} (B)
+    (B) edge node {$e_2$} (C)
+    (B) edge node {$e_3$} (D)
+    (C) edge node {$e_4$} (D)
+    (C) edge node {$e_5$} (E)
+    (D) edge node {$e_6$} (E)
+    (D) edge node {$e_7$} (F)
+    (E) edge node {$e_8$} (F)
     ;
-
   \end{tikzpicture}
   \caption{Model}
   \label{fig:f1}
