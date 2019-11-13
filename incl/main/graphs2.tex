@@ -8,7 +8,7 @@ To knuder $u$ og $v$ siges at være naboer i en ikke-orienteret graf $G$, hvis $
 \end{defn}
 
 \begin{defn}
-En mængde af alle naboer til en knude $v$ i en graf $G=(V,E)$ betegnes $N(v)$ og kaldes et nabolag af $v$. Hvis $A$ er en delmængde af $V$, betegner $N(A)$ mængden af alle knuder i $G$, som er nabo til mindst en knude i $A$.
+En mængde af alle naboer til en knude $v$ i en graf $G=(V,E)$ betegnes $N(v)$ og kaldes et nabolag af $v$. Hvis $A$ er en delmængde af $V$, betegner $N(A)$ mængden af alle knuder i $G$, som er nabo til mindst én knude i $A$.
 \end{defn}
 
 \begin{defn}
@@ -19,7 +19,7 @@ En knude med grad 0 betegnes som værende \textit{isoleret} og har ingen inciden
 
 \begin{exmp}
 Bestem graden af knuderne og nabolagene for knuderne i grafen i figur \ref{eksempel_nabo} og identificer isolerede knuder eller vedhæng.\\
-Graden af en knude i grafen i figur \ref{eksempel_nabo} bestemmes ved at identificere antal knuder, som er naboer til knuden. Derfor er $deg(A)=1$, $deg(B)=3$, $deg(C)=3$, $deg(D)=4$, $deg(E)=3$ og $deg(F)=2$. 
+Graden af en knude i grafen i figur \ref{eksempel_nabo} bestemmes ved at identificere antal incidente kanter til knuden. Derfor er $deg(A)=1$, $deg(B)=3$, $deg(C)=3$, $deg(D)=4$, $deg(E)=3$ og $deg(F)=2$. 
 Nabolagene for de enkelte knuder er mængden af naboknuder. 
 Derfor er $N(A)=\lbrace B \rbrace$, $N(B)=\lbrace A, C, D \rbrace$, $N(C)=\lbrace B, D, E \rbrace$, $N(D)=\lbrace B, C, E, F \rbrace$, $N(E)=\lbrace C, D, F \rbrace$ og $N(F)=\lbrace D, E \rbrace$. 
 I grafen er A et vedhæng, og der forefindes ingen isolerede knuder.
@@ -45,13 +45,13 @@ For at beskrive summen af graderne for alle knuder i en graf anvendes \textit{Th
 
 \begin{thm}\label{handshake}
 \textbf{The Handshaking Theorem}. Lad $G=(V,E)$ være en ikke-orienteret graf med $m$ kanter. Så er summen af knudernes grader \\
-\begin{align}
+\begin{align*}
 2m=\sum_{v \in V}deg(v)
-\end{align}
+\end{align*}
 \end{thm}
 
 \begin{proof}
-I en ikke-orienteret graf med $m$ kanter, bidrager hver kant i en graf bridrager med to grader - én grad til hvert endepunkt. Det samlede antal grader for alle knuder i en graf stiger således med to pr. kant og summen af $deg(v)$ er $2m$. 
+I en ikke-orienteret graf med $m$ kanter, bidrager hver kant i en graf med to grader - én grad til hvert endepunkt. Det samlede antal grader for alle knuder i en graf stiger således med to pr. kant og summen af $deg(v)$ er $2m$. 
 \end{proof}
 
 Som følge af \ref{handshake} er summen af knudernes grader et lige tal. Derfor har en ikke-orienteret graf et lige antal knuder, hvor graden er et ulige tal.
@@ -62,9 +62,9 @@ En ikke-orienteret graf har et lige antal knuder af ulige grad.
 
 \begin{proof}
 Lad $V_1$ og $V_2$ være henholdsvis mængden af knuder af lige grad og mængden af knuder af ulige grad i en ikke-orienteret graf $G=(V,E)$ med $m$ kanter. Så er \\
-\begin{align}
+\begin{align*}
 2m=\sum_{v \in V}deg(v)=\sum_{v \in V_1}deg(v)+ \sum_{v \in V_2}deg(v)
-\end{align}
+\end{align*}
 Da $deg(v)$ er lige for $v \in V_1$ er summen $\sum_{v \in V_1}deg(v)$ også lige. Summen af de to led på højresiden i ligningen er lige, fordi de tilsammen er lig $2m$, hvorfor $\sum_{v \in V_2}deg(v)$ også er lige. Summen $\sum_{v \in V_2}deg(v)$ består af en række ulige tal, og for at summen bliver lige, skal der således være et lige antal ulige led i summen.
 Idet summen af graderne for knuderne af ulige grad i grafen er lige, må der være et lige antal af sådanne knuder.
 \end{proof}
