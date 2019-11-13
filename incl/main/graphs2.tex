@@ -91,7 +91,7 @@ En nabo-matrix af en graf er baseret på den valgte ordning af knuderne, hvorfor
 Nabo-matricer kan også bruges til at repræsentere ikke-orienterede grafer med loops og flere kanter til samme knuder. Et loop ved en knude $v_i$ er repræsenteret ved 1 ved position $(i,i)$ i nabo-matricen. Når flere kanter forbinder det samme par af knuder $v_i$ og $v_j$, eller der er flere loops ved samme knude til stede, er nabo-matricen ikke længere en nul-et matrix, i det den $(i,j)$’te indgang af matricen er lig antallet af kanter forbundet til ${v_i,v_j}$. Alle ikke-orienterede grafer, herunder multi- og pseudografer, har symmetriske nabo-matricer. 
 
  \begin{equation*}
-  \mathbf{S}=
+  \mathbf{A}=
   \begin{blockarray}{*{6}{c} l}
     \begin{block}{*{6}{>{$\footnotesize}c<{$}} l}
       A & B & C & D & E & F \\
@@ -107,6 +107,23 @@ Nabo-matricer kan også bruges til at repræsentere ikke-orienterede grafer med 
   \end{blockarray}
 \end{equation*}
 
+
+ \begin{equation*}
+  \mathbf{M}=
+  \begin{blockarray}{*{8}{c} l}
+    \begin{block}{*{8}{>{$\footnotesize}c<{$}} l}
+      1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+    \end{block}
+    \begin{block}{[*{8}{c}]>{$\footnotesize}l<{$}}
+      1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \bigstrut[t]& A \\
+      1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \bigstrut[t]&B \\
+      0 & 1 & 0 & 1 & 1 & 0 & 0 & 0 \bigstrut[t]&C \\
+     0 & 0 & 1 & 1 & 0 & 1 & 1 & 0 \bigstrut[t]& D \\
+      0 & 0 & 0 & 0 & 1 & 1 & 0 & 1 \bigstrut[t]& E \\
+     0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 \bigstrut[t]& F \\
+    \end{block}
+  \end{blockarray}
+\end{equation*}
 
 
 
