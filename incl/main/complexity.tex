@@ -96,7 +96,7 @@ I tabel \ref{tab_complex} er typiske funktioner angivet, som beskriver ordenen a
 \input{fig/tab/tabel_kompleksitet}
 
 I forbindelse med kompleksitet af algoritmer er funktionerne, der beskriver antal operationer, typisk af ordenen som simple funktioner som $1$, $\log n$, $n$, $n \log n$, $n^b$, $b^n$ og $n!$ set i tabel \ref{tab_complex}. 
-En algoritme siges at have lineær kompleksitet, hvis $f(n)$ er $\Theta(g(n))$. 
+En algoritme siges at have lineær kompleksitet, hvis $f(n)$ er $\Theta(n)$. 
 En algoritme kan desuden have lineær “worst case”-kompleksitet, hvis $f(n)$ beskriver det maksimale antal operationer, algoritmen kan bruge. 
 En algoritme siges at have polynomiel “worst case”-kompleksitet, hvis $f(n)$ er $\Theta(n^b)$, hvor at $n^b$ er det maksimale antal operationer i algoritmen.
 
@@ -104,7 +104,7 @@ En algoritme siges at have polynomiel “worst case”-kompleksitet, hvis $f(n)$
 Forklar tidskompleksiteten af algoritme \ref{find_maks} fra forrige kapitel, der finder det maksimale element i en begrænset mængde heltal.\\ 
 Antallet af sammenligninger bruges som måleenhed for tidskompleksiteten af en algoritme, i det sammenligninger er den mest basale operation, der bruges.
 Det maksimale element af en mængde med $n$ elementer skrevet i vilkårlig rækkefølge, er midlertidigt det første udtryk i listen, $max=a_1$. 
-Ved en sammenligning $i \leq n$ fastslås det, hvorvidt listen fortsætter endnu. Hvis listen fortsætter, sammenlignes det midlertidige maksimum med det næste udtryk i listen sammenlignes. 
+Ved en sammenligning $i \leq n$ fastslås det, hvorvidt listen fortsætter endnu. Hvis listen fortsætter, sammenlignes det midlertidige maksimum med det næste udtryk i listen. 
 Hvis $max<a_i$ opdateres det midlertidige maksimum, således $max=a_2$.
 Denne procedure bidrager med to sammenligninger for hvert udtryk i listen og endnu en for at gå ud af løkken, når $i=n+1$. 
 I alt laves der $2(n-1)+1=2n-1$ sammenligninger, når denne algoritme kører. 

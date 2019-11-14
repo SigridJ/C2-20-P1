@@ -66,7 +66,7 @@ Lad $V_1$ og $V_2$ være henholdsvis mængden af knuder af lige grad og mængden
 \begin{align*}
 2m=\sum_{v \in V}deg(v)=\sum_{v \in V_1}deg(v)+ \sum_{v \in V_2}deg(v)
 \end{align*}
-Da $deg(v)$ er lige for $v \in V_1$ er summen $\sum_{v \in V_1}deg(v)$ også lige. Summen af de to led på højresiden i ligningen er lige, fordi de tilsammen er lig $2m$, hvorfor $\sum_{v \in V_2}deg(v)$ også er lige. Summen $\sum_{v \in V_2}deg(v)$ består af en række ulige tal, og for at summen bliver lige, skal der således være et lige antal ulige led i summen.
+Da $deg(v)$ er lige for $v \in V_1$, er summen $\sum_{v \in V_1}deg(v)$ også lige. Summen af de to led på højresiden i ligningen er lige, fordi de tilsammen er lig $2m$, hvorfor $\sum_{v \in V_2}deg(v)$ også er lige. Summen $\sum_{v \in V_2}deg(v)$ består af en række ulige tal, og for at summen bliver lige, skal der således være et lige antal ulige led i summen.
 Idet summen af graderne for knuderne af ulige grad i grafen er lige, må der være et lige antal af sådanne knuder.
 \end{proof}
 
@@ -76,18 +76,18 @@ Idet summen af graderne for knuderne af ulige grad i grafen er lige, må der væ
 \subsection{Repræsentation af grafer}
 
 Der er flere brugbare måder at repræsentere grafer på, og man ønsker i hvert tilfælde at vælge den pæneste repræsentation. \\
-En overskuelig måde at repræsentere en graf på er ved matricer. To matricer, der almindeligvis bruges, er nabo-matricer, der er baseret på nabo-knuder, og incidens-matricer, baseret på incidensen af knuder og kanter. \\
-Antag at $G=(V,E)$ er en simpel graf hvor $|V|=n$, hvor knuderne i $G$ står skrevet i vilkårlig rækkefølge som $v_1$, $v_2$, \dots , $v_n$. Nabo-matricen $A$ (eller $A_G$) af G er en $n \times n$ nul-et matrix, med 1 som den $(i,j)$’te indgang når $v_i$ og $v_j$ er naboer, og 0 er den $(i,j)$’te indgang, når de ikke er naboer. Hvis nabo-matricen er $A=[a_{ij}]$ så er
+En overskuelig måde at repræsentere en graf på er ved matricer. To matricer, der almindeligvis bruges, er nabo-matricer, der er baseret på nabo-knuder, og incidens-matricer baseret på incidensen af knuder og kanter. \\
+Antag at $G=(V,E)$ er en simpel graf med $n$ knuder, hvor knuderne i $G$ står skrevet i vilkårlig rækkefølge som $v_1$, $v_2$, \dots , $v_n$. Nabo-matricen $A$  af G er en $n \times n$ nul-et matrix, med 1 som den $(i,j)$’te indgang når $v_i$ og $v_j$ er naboer, og 0 er den $(i,j)$’te indgang, når de ikke er naboer. Hvis nabo-matricen er $A=[a_{ij}]$ så er
 
 \begin{align*}
 a_{ij}= \left\{\begin{array}{cc}
-1 & hvis \  \lbrace v_i, v_j \rbrace \  er \  en \  kant \  i \  G \\
-0 & ellers \\
+1 & \textrm{hvis} \  \lbrace v_i, v_j \rbrace \  \textrm{er} \  \textrm{en} \  \textrm{kant} \  \textrm{i} \  G \\
+0 & \text{ellers} \\
 \end{array}\right.
 .
 \end{align*}
 
-En nabo-matrix af en graf er baseret på den valgte ordning af knuderne, hvorfor der kan være $n!$ forskellige nabo-matricer for en graf med $n$ knuder, i det der er $n!$ forskellige måder at ordne de $n$ knuder. Nabo-matricen for en simpel graf er symmetrisk, $a_{ij}=a_{ji}$, da begge indgange er 1, når de er naboer, og 0 ellers. Da en simpel graf ikke består af loops, er hver indgang $a_{ii},i=1,2,3, \dots ,n$ $0$. \\
+En nabo-matrix af en graf er baseret på den valgte ordning af knuderne, hvorfor der kan være $n!$ forskellige nabo-matricer for en graf med $n$ knuder, idet der er $n!$ forskellige måder at ordne de $n$ knuder. Nabo-matricen for en simpel graf er symmetrisk dvs. $a_{ij}=a_{ji}$, da begge indgange er 1, når de relaterede knuder er naboer, og 0 hvis de ikke er. Da en simpel graf ikke består af loops, er hver indgang $a_{ii},i=1,2,3, \dots ,n$ $0$. \\
 Nabo-matricer kan også bruges til at repræsentere ikke-orienterede grafer med loops og flere kanter til samme knuder. Et loop ved en knude $v_i$ er repræsenteret ved 1 ved position $(i,i)$ i nabo-matricen. Når flere kanter forbinder det samme par af knuder $v_i$ og $v_j$, eller der er flere loops ved samme knude til stede, er nabo-matricen ikke længere en nul-et matrix, i det den $(i,j)$’te indgang af matricen er lig antallet af kanter forbundet til ${v_i,v_j}$. Alle ikke-orienterede grafer, herunder multi- og pseudografer, har symmetriske nabo-matricer. 
 
  \begin{equation*}
@@ -100,14 +100,14 @@ Nabo-matricer kan også bruges til at repræsentere ikke-orienterede grafer med 
       0 & 1 & 0 & 0 & 0 & 0 \bigstrut[t]& A \\
       1 & 0 & 1 & 1 & 0 & 0 \bigstrut[t]&B \\
       0 & 1 & 0 & 1 & 1 & 0 \bigstrut[t]&C \\
-      0 & 1 & 0 & 1 & 1 & 0 \bigstrut[t]& D \\
+      0 & 1 & 1 & 0 & 1 & 1 \bigstrut[t]& D \\
       0 & 0 & 1 & 1 & 0 & 1 \bigstrut[t]& E \\
       0 & 0 & 0 & 1 & 1 & 0 \bigstrut[t]& F \\
     \end{block}
   \end{blockarray}
 \end{equation*}
 
-\noindent En anden almindelig måde at repræsentere grafer på er ved incidens-matricer. Lad $G=(V,E)$ være en ikke-orienteret graf. Antag at $v_1$, $v_2$, \dots , $v_n$ er knuder og $e_1$, $e_2$, \dots , $e_n$ er kanter i G. Incidens-matricen, i forhold til ordningen af $V$ og $E$, er en $n x m$ matrix $M=[m_{ij}]$, hvor 
+\noindent En anden almindelig måde at repræsentere grafer på er ved incidens-matricer. Lad $G=(V,E)$ være en ikke-orienteret graf med knuderne $v_1$, $v_2$, \dots , $v_n$ og kanterne $e_1$, $e_2$, \dots , $e_n$. Incidens-matricen, i forhold til ordningen af $V$ og $E$, er en $n x m$ matrix $M=[m_{ij}]$, hvor 
 \begin{align*}
 m_{ij}= \left\{\begin{array}{cc}
 1 & \textrm{hvis} \  {e_j} \  \textrm{er} \  \textrm{nabo} \ \textrm{til} \ v_i \\
