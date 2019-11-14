@@ -112,7 +112,7 @@ H vil derfor bestemme, om P vil stoppe, når det får sig selv som input.
 
 For at vise, at der ikke findes en procedure, som løser "The Halting Problem" introduceres et program. 
 Programmet kaldes $K(P)$ og tager udskriften fra $H(P,P)$ som input.
-Hvis udskrften fra $H(P,P)$ er 'ja' så vil $K(P)$ retunere 'nej', og det samme gælder omvendt.  
+Hvis udskrften fra $H(P,P)$ er 'ja' så vil $K(P)$ køre uendeligt, og det samme gælder omvendt, hvis 'nej' returneres vil K stoppe.  
 Da et program kan tage sig selv som input, kan $K$ også have $K$ som input, hvilket kan sættes ind i $H$ og  medføre $H(K,K)$. 
 $H(K, K)$ vil give to mulige outputs:
 \begin{itemize}
