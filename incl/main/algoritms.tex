@@ -17,8 +17,10 @@ I dette kapitel vil tre algoritmer blive beskrevet, for at give en ide om, hvad 
 \subsection{Søgealgoritme}
 Skal den største værdi i en liste findes, kan dette gøres nemt ved hjælp af en algoritme. 
 Selvom det kan virke meget simpelt at læse en liste igennem og finde det største tal, kan det blive problematisk og tidskrævende, hvis der er tale om en længere liste. 
-Derfor er en algoritme smart, da den hurtigt kan gennemgå lange lister.
-En sådan algoritme kan udføres ved at sætte det første element lig med en variabel $maks$. Dernæst sammenlignes denne værdi med det næste element, som overtager $maks$, hvis det er større end den nuværende værdi af $maks$. 
+Derfor kan en algoritme være smart, da nogle algoritmer hurtigt kan gennemgå lange lister. 
+Desuden kan en algoritme løses af en computer, hvilket også gør det nemmere. 
+En sådan algoritme kan udføres ved at sætte det første element lig med en variabel $maks$. 
+Dernæst sammenlignes denne værdi med det næste element, som  $maks$ overtager, hvis det er større end den nuværende værdi af $maks$. 
 Er det næste element mindre end det nuværende $maks$, sker der ikke noget, og der fortsættes til det næste element på listen. 
 Dette gentages indtil hele listen er gennemgået, hvorefter maks returneres.
 Herunder ses et eksempel på hvordan en sådan søgealgortime kan skrives med pseudokode:
@@ -55,16 +57,18 @@ Med Pseudokode kan algoritmen skrives sådan:
 \textbf{procedure} $Bubblesort(a_1, a_2, ..., a_n   : $ reelle tal og hvor $n \geq 2)$ \\
 \textbf{for} $i:=1$ \textbf{til} $n-1$ \\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
-\textbf{for} $j:=1$ \textbf{til} $n-1$ \\
+\textbf{for} $j:=1$ \textbf{til} $n-i$ \\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 \textbf{hvis} $a_j>a_{j+1}$ \textbf{så} byt $a_j$ og $a_{j+1}$ \\
 $\lbrace a_1, a_2, ..., a_n $ står nu i voksende rækkefølge $\rbrace $
 \end{algorithm}
 
-\subsection{The Greedy Algorithm}
-Den sidste algoritme, der vil blive beskrevet i kapitlet er "The Greedy Algorithm", som bruges til at optimere. 
-Algoritmen kan eventuelt bruges til finde fordelingen af mønter, hvis et bestemt beløb skal opfyldes. 
+\subsection{Grådige algoritmer}
+De sidste algoritmer, der vil blive beskrevet i kapitlet er grådige algoritmer, som bruges til at optimere. 
+Grådige algoritmer kan se ud på mange måder, alt efter hvad det er som skal optimeres. 
+Ideen med en grådig algoritme er, at den er designet til i hvert trin, at tage den bedste beslutning. 
+Algoritmen kan eventuelt bruges til finde fordelingen af mønter, hvis et bestemt beløb skal opnåes. 
 Ønskes det at finde det mindste antal mønter til at dække et bestemt beløb, sættes møntværdierne ind i en liste sorteret fra største til mindste mønt. 
 Den første mønt sammenlignes med det samlede beløb. 
 Er mønten mindre end det samlede beløb, tilføjes 1 til den variabel, der beskriver det samlede antal mønter. 
@@ -76,7 +80,7 @@ Når det resterende beløb er 0, behøves der ikke flere mønter og antallet af 
 \begin{algorithm}
 \caption{algoritme for antal mønter}
 \label{greedy_algorithm}
-\textbf{procedure} $mønter(m_1, m_2, ..., m_r: $ værdier af de mønter man regner med, \\ 
+\textbf{procedure} $mønter(m_1, m_2, ..., m_r: $ hele, positive værdier af de mønter man regner med, \\ 
 hvor $m_1>m_2>...>m_r;$  $n$: det ønskede hele, positive beløb) \\
 \textbf{for} $i:=1$ \textbf{til} $r$ \\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
@@ -92,33 +96,46 @@ $n:=n-m_i$ \\
 $\lbrace d_i$ er det antal af mønter der skal bruges for at opfylde beløbet $n\rbrace$
 \end{algorithm}
 
-For det møntsystem, der er i Danmark, fungerer algoritmen meget godt. 
+For det møntsystem, der er i Danmark, fungerer algoritmen. 
 Forestiller man sig et andet møntsystem, der eksempelvis indeholder mønter af værdierne 20, 15 og 5, vil algoritmen ikke finde det optimale antal. 
 Køres møntsystemet igennem algoritmen, hvor det ønskede beløb er 30, vil algoritmen returnere, at der skal bruges tre mønter. 
 Den vil nemlig starte med at tilføje en mønt af værdien 20 og derefter to af værdien 5.
 Det optimale antal møter i dette tilfælde er dog to, idet to mønter af værdien 15 ville have opfyldt beløbet. 
-For at algoritmen skal være effektiv, skal det gælde, at hver mønt maksimalt har den halve værdi af den mønt, der kommer inden. 
 
-
-\section{The Halting Problem}
-The Halting Problem går ud på, at man vil finde en procedure som kan bestemme, om en algoritme vil fortsætte uendeligt, eller om den stopper på et tidspunkt. 
-Udfordringen består i, at denne løsning ikke findes, hvilket blev bevist af Alan Turring i 1936.
-Grunden til at denne procedure ville være relevandt at finde er, at det er svært at vurdere, om en algoritme kører i uendelige løkker, eller om man blot skal vente lidt længere, før den er færdig.
+\begin{thm}
+\label{19_kr}
+Hvis $n$ er et positivt heltal, så vil det optimale antal af mønter for at opfylde $n$, hvor man bruger 20-kroner, 10-kroner, 5-kroner, 2-kroner og 1-kroner, være en 10-krone, en 5-krone, to 2-kroner og en 1-krone, hvor der ikke samtidigt kan være både to 2-kroner og en 1-krone.
+Beløbet i 10-kroner, 5-kroner, 2-kroner og 1-kroner kan ikke overstige 19 kroner.  
+\end{thm}
 
 \begin{proof}
-Gå ud fra, at der er en løsning på Teh Halting Problem. Løsning kaldes $H(P, I)$. Proceduren tager to input; et program og et input til programmet. Programmet kan returnere to outputs, som enten kan være "ja", hvis programmet stopper, eller "nej", hvis programmet kører for evigt. 
-Et program i sig selv kan også være et input til et program, og derfor kan input til H godt være P og P, så programmet P er input til sig selv.
-H vil derfor bestemme, om P vil stoppe, når det får sig selv som input.
+\label{19_kr_bevis}
+Dette bevis er et modstidsbevis. 
+Hvis antallet af en mønt er større end angivet, kan de erstattes af færrer mønter som opfylder den samme værdi. 
+Hvis der eksempelvis er 2 10-kroner kan de erstattes af en 20-krone. 
+Hvis der er 2 5-kroner kan de erstattes af 1 10-krone. 
+Er der 3 2-kroner kan de erstattes af 1 5-krone og 1 1-krone. 
+På samme måde hvis der er 2 1-kroner kan de erstattes af 1 2-krone. 
+Fordi der maksimae antal mønter er en 10-krone, en 5-krone, to 2-kroner og en en 1-krone, men der ikke kan være to 2-kroner og en 1-krone på samme tid, bliver det maksimale beløb der kan opfyldes med mønterne 19 kroner. 
+\end{proof}
 
-For at vise, at der ikke findes en procedure, som løser "The Halting Problem" introduceres et program. 
-Programmet kaldes $K(P)$ og tager udskriften fra $H(P,P)$ som input.
-Hvis udskrften fra $H(P,P)$ er 'ja' så vil $K(P)$ køre uendeligt, og det samme gælder omvendt, hvis 'nej' returneres vil K stoppe.  
-Da et program kan tage sig selv som input, kan $K$ også have $K$ som input, hvilket kan sættes ind i $H$ og  medføre $H(K,K)$. 
-$H(K, K)$ vil give to mulige outputs:
-\begin{itemize}
-	\item $K$ vil køre uendeligt, hvilket får $K(K)$ til at stoppe, og så vil $H(K,K)$ returnere "ja"
-	\item  $K$ vil stoppe, hvilket får $K(K)$ til at køre uendeligt, og så vil $H(K,K)$ returnere "nej"
-\end{itemize}
-Begge disse muligheder modsiger sig selv, da K ikke både kan være endelig og uendelig. Derfor kan et program H ikke eksistere, da det ikke kan svare rigtigt på, om alle programmer kan køre uendeligt. 
+\begin{thm}
+\label{gradig_satning}
+Den gådige algoritme for danske mønter finder det optimale antal mønter til at opfylde et beløb.
+\end{thm}
+
+\begin{proof}
+\label{gradig_bevis}
+Dette bevis er et modstridsbevis. 
+Gå ud fra, at der er et beløb $n$, som kan opfyldes ved hjælp af 1-kroner, 2-kroner, 5-kroner, 10-kroner og 20-kroner, ved at bruge færre mønter end den grådige algoritme. 
+Det bemærkes, at $t'$, det optimale antal af 20-kroner der bruges for at opfylde $n$, må være det samme som $t$, antallet af 20-kroner den grådige algoritme vil bruge. 
+Dette vides, fordi det ses ud fra sætning \ref{19_kr}, da der med mønter under 20-kroner maks vil kunne findes 19 kroner. 
+Det betyder, at $t'$ og $t$ bliver nødt til at være det samme, da $t'$ ellers vil bruge mere end det optimale antal mønter. 
+Der er altså det samme antal 20-kroner i begge tilfælde, det samme gælder for de resterende mønter. 
+Den grådige algoritme vil bruge flest mulige 10-kroner, hvilket vil være det samme antal som det optimale, da det optimale antal er 1. 
+Det samme gælder for 5-kroner, 2-kroner og 1-kroner. 
+Det kan dermed konkluderes, at den grådige algoritme vil finde det optimale antal mønter.
 
 \end{proof}
+
+%\input{incl/main/halting_problem}

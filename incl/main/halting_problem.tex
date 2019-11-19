@@ -1,0 +1,22 @@
+\section{The Halting Problem}
+The Halting Problem går ud på, at man vil finde en procedure som kan bestemme, om en algoritme vil fortsætte uendeligt, eller om den stopper på et tidspunkt. 
+Udfordringen består i, at denne løsning ikke findes, hvilket blev bevist af Alan Turring i 1936.
+Grunden til at denne procedure ville være relevandt at finde er, at det er svært at vurdere, om en algoritme kører i uendelige løkker, eller om man blot skal vente lidt længere, før den er færdig.
+
+\begin{proof}
+Gå ud fra, at der er en løsning på Teh Halting Problem. Løsning kaldes $H(P, I)$. Proceduren tager to input; et program og et input til programmet. Programmet kan returnere to outputs, som enten kan være "ja", hvis programmet stopper, eller "nej", hvis programmet kører for evigt. 
+Et program i sig selv kan også være et input til et program, og derfor kan input til H godt være P og P, så programmet P er input til sig selv.
+H vil derfor bestemme, om P vil stoppe, når det får sig selv som input.
+
+For at vise, at der ikke findes en procedure, som løser "The Halting Problem" introduceres et program. 
+Programmet kaldes $K(P)$ og tager udskriften fra $H(P,P)$ som input.
+Hvis udskrften fra $H(P,P)$ er 'ja' så vil $K(P)$ køre uendeligt, og det samme gælder omvendt, hvis 'nej' returneres vil K stoppe.  
+Da et program kan tage sig selv som input, kan $K$ også have $K$ som input, hvilket kan sættes ind i $H$ og  medføre $H(K,K)$. 
+$H(K, K)$ vil give to mulige outputs:
+\begin{itemize}
+	\item $K$ vil køre uendeligt, hvilket får $K(K)$ til at stoppe, og så vil $H(K,K)$ returnere "ja"
+	\item  $K$ vil stoppe, hvilket får $K(K)$ til at køre uendeligt, og så vil $H(K,K)$ returnere "nej"
+\end{itemize}
+Begge disse muligheder modsiger sig selv, da K ikke både kan være endelig og uendelig. Derfor kan et program H ikke eksistere, da det ikke kan svare rigtigt på, om alle programmer kan køre uendeligt. 
+
+\end{proof}
