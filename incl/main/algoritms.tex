@@ -95,12 +95,7 @@ $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 $n:=n-m_i$ \\
 $\lbrace d_i$ er det antal af mønter der skal bruges for at opfylde beløbet $n\rbrace$
 \end{algorithm}
-
-For det møntsystem, der er i Danmark, fungerer algoritmen. 
-Forestiller man sig et andet møntsystem, der eksempelvis indeholder mønter af værdierne 20, 15 og 5, vil algoritmen ikke finde det optimale antal. 
-Køres møntsystemet igennem algoritmen, hvor det ønskede beløb er 30, vil algoritmen returnere, at der skal bruges tre mønter. 
-Den vil nemlig starte med at tilføje en mønt af værdien 20 og derefter to af værdien 5.
-Det optimale antal møter i dette tilfælde er dog to, idet to mønter af værdien 15 ville have opfyldt beløbet. 
+ 
 
 \begin{thm}
 \label{19_kr}
@@ -138,4 +133,9 @@ Det kan dermed konkluderes, at den grådige algoritme vil finde det optimale ant
 
 \end{proof}
 
+\noindent For det møntsystem, der er i Danmark, fungerer Algoritme \ref{greedy_algorithm} godt. 
+Forestiller man sig et andet møntsystem, der eksempelvis indeholder mønter af værdierne 20, 15 og 5, vil algoritmen ikke finde det optimale antal. 
+Køres møntsystemet igennem Algoritme\ref{greedy_algorithm}, hvor det ønskede beløb er 30, vil algoritmen returnere, at der skal bruges tre mønter. 
+Den vil nemlig starte med at tilføje en mønt af værdien 20 og derefter to af værdien 5.
+Det optimale antal møter i dette tilfælde er dog to, idet to mønter af værdien 15 ville have opfyldt beløbet.
 %\input{incl/main/halting_problem}
