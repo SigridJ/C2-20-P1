@@ -51,7 +51,6 @@ En kant siges at forbinde dens endepunkter. Denne konstruktion er en \it{simpel 
 \end{figure}
 
 
-<<<<<<< HEAD
 \noindent Det kan imidlertid være nødvendigt at give kanterne retning, for at indikere, hvilken retning forbindelsen mellem to punkter har. I grafer over eksempelvis trafikale netværk, kan det være nødvendigt at indikere, i hvilken retning, trafikken kører eller at angive ensrettede strækninger. Til disse formål vil en simpel graf være utilstrækkelig idet kanterne deri netop ingen bestemt retning har. Derfor anledes Definition \ref{def_retn_graf} 
 af en \textit{orienteret graf}:
 
@@ -62,7 +61,7 @@ En orienteret kant kan opfattes som et ordnet punktpar $(u,v), u,v \in  V$.
 \end{defn} 
 
 \noindent Definition \ref{def_retn_graf} tillader ydermere muligheden for, at et knudepar kan forbindes af indtil flere orienterede kanter. Findes dette i grafen, kaldes den en \textit{oritenteret multigraf}, og denne må også indeholde løkker. I det tilfælde, at alle knudepar kun forbindes af netop én ortienteret kant, og der ingen løkker er, er grafen en \textit{simpel orienteret graf}.
-=======
+
 \noindent Det kan imidlertid være nødendigt at give kanterne retning for at indikere, hvilken retning forbindelsen mellem to punkter har. I grafer over eksempelvis trafikale netværk, kan det være nødvendigt at indikere i hvilken retning, trafikken kører, eller at angive ensrettede strækninger. Til disse formål vil en simpel graf være utilstrækkelig, idet kanterne deri netop ingen bestemt retning har. Derfor anledes definition \ref{def_retn_graf} 
 af en \textit{retningsbestemt graf}:
 
@@ -73,7 +72,7 @@ En retningsbestemt kant $(u,v)$ forbinder et knudepar, så at kanten starter i $
 \end{defn} 
 
 \noindent Denne definition (\ref{def_retn_graf}) tillader ydermere muligheden for, at et knudepar kan forbindes af indtil flere retningsbestemte kanter. Findes dette i grafen, kaldes den en \textit{retningsbestemt multigraf}, og denne må også indeholde løkker. I det tilfælde at alle knudepar kun forbindes af netop én retningsbestemt kant, er grafen en \textit{simpel retningsbestemt graf}.
->>>>>>> master
+
 
 \begin{figure}[h]
 \centering
@@ -91,11 +90,10 @@ En retningsbestemt kant $(u,v)$ forbinder et knudepar, så at kanten starter i $
 \caption{Et eksempel på en retningsbestemt graf, hvor man kan se pilene definere retningen.}
 \end{figure}
 
-<<<<<<< HEAD
 \noindent Eksempelvis er der i et netværk af computere, som er forbundet til hinanden, brug for at kommunikation kan ske både frem og tilbage mellem enhederne. Derfor er et simpelt orienteret system ikke nok da det netop kræves at der kan forekomme flere interaktioner mellem forskellige computere. Til dette skal man bruge orienterede multigrafer.
 =======
 \noindent Et simpelt retningsbestemt system er dog ikke nok i et computernetværk, som kræver, at der kan forekomme flere interaktioner mellem forskellige computere. Til dette skal man bruge orienterede multigrafer.
->>>>>>> master
+
 
 \begin{figure}[h]
 \centering
@@ -119,11 +117,11 @@ En retningsbestemt kant $(u,v)$ forbinder et knudepar, så at kanten starter i $
 \caption{Her kan man se et eksempel på en orienteret multigraf, hvor der både er adskillige kanter mellem knuderne A og B, samt er der en løkke tilstede i knudepunktet C }
 \end{figure}
 
-<<<<<<< HEAD
+
 \noindent Nogle gange er det nødvendigt at konstruere og arbejde med computernetværker som både kan arbejde begge veje, samt ensrettet. Til dette bruger man kombineret grafer, som både indholder orienteret og ikke-orienteret kanter. Disse grafer kaldes \textit{kombinerede grafer}.
 =======
 \noindent Nogle gange er det nødvendigt at konstruere og arbejde med computernetværker, som både kan arbejde begge veje samt ensrettet. Til dette bruger man kombinerede grafer, som både indholder orienterede og ikke-orienterede kanter. Disse grafer kaldes kombinerede grafer.
->>>>>>> master
+
 
 \begin{figure}[!h]
 \centering
