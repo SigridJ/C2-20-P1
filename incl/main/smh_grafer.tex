@@ -1,0 +1,139 @@
+\chapter{Veje og Kredse}
+
+
+
+\section{Veje}
+Veje i en graf viser hvilke ruter der er rundt i en graf. Dette er relevant for at finde ruter til en GPS, et computernetværk eller andet hvor der er behov for at bestemme en rute gennem flere steder. 
+En vej i en graf defineres i Definition \ref{def_vej}.
+
+\begin{defn}
+\label{def_vej}
+Lad $n \in  \mathbb{Z}^{+}$ og lad $G$ være en ikke-orienteret graf. 
+En \textit{vej} af \textit{længde} $n$ fra $u$ til $v$ i $G$ er en sekvens af $n$ kanter $e_1, ..., e_n$ i $G$, for hvilke der eksisterer en sekvens $x_0=u,x_1,...,x_{n-1},x_n=v$ af punkter så $e_i$ har endepunkterne $x_{i-1}$ og $x_1$ for $i=1,...,n$.
+\end{defn}
+
+\noindent Når der er tale om en vej gennem en simpel graf, noteres denne som sekvensen af de punkter den går igennem $x_0, x_1,...,x_n$. 
+I et særligt tilfælde, kan en vej kaldes en kreds efter definition \ref{def_kredse}.
+En vej eller kreds er \textit{simpel} hvis den ikke indeholder den samme kant mere end én gang. 
+
+\begin{exmp}
+\label{ex_vej}
+På den simple graf i Figur \ref{graf_vej} ses en simpel vej $A,B,E,F$ af længden 3, fordi vejen går gennem de tre kanter $\lbrace A,B \rbrace$, $\lbrace B,E \rbrace$ og $\lbrace E,F \rbrace$. 
+Denne vej er simpel, fordi den ikke går gennem den samme kant mere end en gang. 
+Derimod er $A,B,D,E$ ikke en vej, fordi $\lbrace B,D \rbrace$ ikke er en kant. 
+Vejen $A,B,C,E,B,A$ er også en vej, men den er ikke simpel, fordi den går gennem kanten $\lbrace A,B \rbrace$ to gange. 
+\end{exmp}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
+  \node (n6) at (3,2) {D};
+  \node (n4) at (3,6) {A};
+  \node (n5) at (6,2) {E};
+  \node (n1) at (6,6) {B};
+  \node (n2) at (9,2) {F};
+  \node (n3) at (9,6) {C};
+  \foreach \from/\to in {n6/n4,n4/n5,n5/n1,n2/n5,n2/n3,n3/n1,n1/n4,n6/n5,n5/n3}
+    \draw (\from) -- (\to);
+\end{tikzpicture}
+\caption{graf} 
+\label{graf_vej}
+\end{figure}
+
+\section{Kredse}
+En kreds er en vej der starter og slutter det samme sted.
+Dette defineres i Definition \ref{def_kredse}
+
+\begin{defn}
+\label{def_kredse}
+En vej er en \textit{kreds} hvis den begynder og ender i samme punkt, $u=v$ og $n>0$.
+Vejen eller kredsen siges at gå gennem punkterne $x_1,x_2,...,x_{n-1}$ eller passere gennem kanterne $e_1, e_2,...e_n$.
+\end{defn}
+
+\begin{exmp}
+I Figur \ref{graf_kreds} ses en kreds, $A,B,C,E,D,A$, som har længden 5, fordi den går gennem 5 kanter. Det er en kreds fordi den begynder og ender i punktet $A$.
+I Figur \ref{graf_ikke_kreds} ses en vej $C,C,A,D,E,C,F$.
+Denne vej er ikke en kreds, fordi den ikke starter og slutter i samme punkt. 
+\end{exmp}
+
+\begin{figure}[!htb]
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     	\begin{tikzpicture}
+[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
+  \node (n6) at (3,2) {D};
+  \node (n4) at (3,6) {A};
+  \node (n5) at (6,2) {E};
+  \node (n1) at (6,6) {B};
+  \node (n2) at (9,2) {F};
+  \node (n3) at (9,6) {C};
+  \draw (n6) edge [red, thick] (n4);
+  \draw (n6) edge [red, thick] (n5);
+  \draw (n5) edge [red, thick] (n3);
+  \draw (n3) edge [red, thick] (n1);
+  \draw (n1) edge [red, thick] (n4);
+  \foreach \from/\to in {n5/n1,n2/n5,n2/n3,n4/n5}
+    \draw (\from) -- (\to);
+\end{tikzpicture}
+     \caption{Kreds}
+     \label{graf_kreds}
+   \end{minipage}\hfill
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \begin{tikzpicture}
+[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
+  \node (n6) at (3,2) {D};
+  \node (n4) at (3,6) {A};
+  \node (n5) at (6,2) {E};
+  \node (n1) at (6,6) {B};
+  \node (n2) at (9,2) {F};
+  \node (n3) at (9,6) {C};
+  \draw (n6) edge [red, thick] (n4);
+  \draw (n6) edge [red, thick] (n5);
+  \draw (n5) edge [red, thick] (n3);
+  \draw (n3) edge [red, thick] (n1);
+  \draw (n1) edge [red, thick] (n4);
+  \draw (n3) edge [red, thick] (n2);
+  \foreach \from/\to in {n5/n1,n2/n5,n4/n5}
+    \draw (\from) -- (\to);
+\end{tikzpicture}
+     \caption{Vej}
+     \label{graf_ikke_kreds}
+   \end{minipage}
+\end{figure}
+
+\section{Sammenhængende grafer}
+For en graf kan det være relevant at afgøre, om der er en forbindelse mellem alle punkter i grafen, således, at det er miuligt at komme fra et hvilket som helst punkt til et andet.
+Dette bestemmes ud fra om en graf er sammenhængende eller ej.
+I dette kapitel vil der kun blive fokuseret på ikke-orienterede grafer.
+En sammenhængende graf defineres i Definition \ref{def_iosmh}.
+
+\begin{defn}
+\label{def_iosmh}
+En ikke-orienteret graf siges at være \textit{sammenhængende}, hvis der er en vej mellem hvert punktpar i grafen. 
+En ikke-orienteret graf, der ikke er sammenhængende, kaldes \textit{ikke-sammenhængende}.
+Det siges, at en graf opdeles, når punkter, kanter eller begge fjernes for at lave en subgraf. 
+\end{defn}
+
+\noindent På den måde ses det, at der i en sammenhængende graf findes en vej mellem alle punkter i grafen. 
+Det er derfor muligt at komme fra et hvilket som helst punkt i grafen til et andet
+
+\begin{thm}
+Der er en simpel vej mellem ethvert punktpar i en sammenhængende ikke-orienteret graf.
+\end{thm}
+
+\begin{proof}
+$u$ og $v$ er to punkter i den sammenhængende graf $G=(V,E)$.
+Per Definition \ref{def_iosmh} er der en simpel vej mellem $u$ og $v$.
+Lad den korteste vej mellem $u$ og $v$ være $x_0,x_1,...,x_n$, hvor $x_0=u$ og $x_n=v$.
+Denne vej af kortest længde er simpel, fordi den ikke går gennem den samme kant flere gange. 
+For at bevise dette, antages det, at den ikke er simpel. 
+Så er $x_i=x_j$ for $0 \leq i < j$.
+Det betyder, at der er en kortere vej fra $u$ til $v$, med punktsekvens $x_0,x_1,...,x_{1-i},x_j,...,x_n$, som opnåes ved at fjerne kanterne i sekvensen $x_i,...,x_{j-1}$.
+\end{proof}
+
+\subsection{sammenhængsgrad}
+Kommer senere
+
+\input{incl/main/euler_hamilton}
