@@ -19,7 +19,7 @@ Antag nu, at der er netop én simpel vej mellem hvert knudepar i en ikke-oriente
 \end{proof}
 
 \begin{exmp}
-For at illustrere en graf, som er et træ, og en graf, som ikke et træ, iagttages hhv. Figur \ref{eksempel_tree} og Figur \ref{eksempel_notree}. Grafen i Figur \ref{eksempel_tree} er et træ, da det er en ikke-orienteret sammenhængen graf uden simple kredse.
+For at illustrere en graf, som er et træ, og en graf, som ikke et træ, iagttages hhv. Figur \ref{eksempel_tree} og Figur \ref{eksempel_notree}. Grafen i Figur \ref{eksempel_tree} er et træ, da det er en ikke-orienteret sammenhængende graf uden simple kredse.
 \end{exmp}
 
 \begin{figure}[h]
@@ -58,14 +58,14 @@ For at illustrere en graf, som er et træ, og en graf, som ikke et træ, iagttag
 \label{eksempel_notree}
 \end{figure}
 
-\noindent Mange anvendelser af træer, kræver at en bestemt knude i en graf fungerer som udgangspunkt. En knude kan indentificeres som en rod og dermed rodfæste grafen.
+\noindent Mange anvendelser af træer, kræver at en bestemt knude i en graf fungerer som udgangspunkt. En knude kan indentificeres som en rod, og dermed rodfæste grafen.
 
 \begin{defn}
 Et rodfæstet træ er et træ med en knude, der er dedikeret som roden. De resterende knuder er orienteret væk fra roden.
 \end{defn}
 
 \noindent Der findes terminologi, der beskriver knudernes forhold til hinanden i en rodfæstet graf. 
-Hvis $T$ er et rodfæstet, så er en knude $v$, som ikke er roden, $\textit{forælder}$ til en knude $u$, hvis der eksiterer en orienteret kant mellem $v$ og $u$ i retningen væk fra roden.
+Hvis $T$ er et rodfæstet træ, så er en knude $v$, som ikke er roden, $\textit{forælder}$ til en knude $u$, hvis der eksiterer en orienteret kant mellem $v$ og $u$ i retningen væk fra roden.
 Samtidigt er $u$ $\textit{barn}$ af $v$, og knuder med samme forælder kaldes $\textit{søskende}$. 
 $\textit{Forfædrene}$ til $v$ er knuderne på vejen fra roden til $v$, og $\textit{efterkommerne}$ til $v$ er knuderne, der har $v$ som forfader. 
 Knuder, der har børn kaldes $\textit{indre knuder}$, og knuder, der ikke har børn kaldes $\textit{blade}$.
@@ -73,7 +73,7 @@ Hvis $w$ er en knude i et træ, så er et undertræ med $w$ som rod, træet, det
 
 \begin{exmp}
 Betragt træet i Figur \ref{eksempel_rootedtree}. 
-For at eksemplificre terminologien, så er roden af træet $a$, og $a$ er forælder til $b$ og $c$, hvilket vil sige, at $b$ og $c$ er børn til $a$, og $b$ og $c$ er hinandens søskende. 
+For at eksemplificere terminologien, så er roden af træet $a$, og $a$ er forælder til $b$ og $c$, hvilket vil sige, at $b$ og $c$ er børn til $a$, og $b$ og $c$ er hinandens søskende. 
 Knuden $b$ er efterkommer af $a$, og den er forfader til $\lbrace d, e, f \rbrace$. 
 I grafen er $a$, $b$ og $c$ grafens indre knuder, og mængden af blade er $\lbrace d, e, f, g, h, i \rbrace$. 
 Et eksempel på en undertræ af træet i Figur \ref{eksempel_rootedtree} er træet i Figur \ref{eksempel_rootedsubtree}.
