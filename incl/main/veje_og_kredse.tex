@@ -1,6 +1,3 @@
-\chapter{Veje og kredse}
-Der kan være forskellige typer af veje eller kredse i en graf. Der er tale om en Eulekreds hvis der findes en rute som besøger hvert kant en gang, samt starter og slutter i samme punkt. Der er tale om en Hamiltonkreds hvis der i en graf findes en kreds som besøger hver knude én gang. 
-
 \section{Eulerkredse}
 
 \begin{defn}\label{euler_def}
@@ -23,19 +20,19 @@ Til sidst ender kredes tilbage i $a$, og bidrager igen med 1 til $deg(a)$.
 Derfor må $deg(a)$ være lige og graden af hver knude må også være lige.  
 \end{proof} 
 
-Det er muligt at lave en algoritme som kan finde en Eulerkreds i en multigraf, hvor hver knude er af lige grad.
+\noindent Det er muligt at lave en algoritme som kan finde en Eulerkreds i en multigraf, hvor hver knude er af lige grad.
 
 En sådanne algoritme vil første tage udgangspunkt i en tilfældig delkreds i graf G. 
 Hvorefter der indeførers en variabel H, som som en lig med G, foruden kanterne i den tilfældige kreds dannet i G. 
 Så længe der stadig er kanter i H, til en løkke køre. 
 Under denne løkke dannes en ny delkreds i H, en af knuderne skal også være endepunkt for en kant i en tidligere delkreds.
 Dernæst fjerens kanterne i delkredsen fra H, sammen med enventuelt isolerede knuder. 
-Til sidst sammensættes delkredsene til en kreds og denne kreds retuneres.   
+Til sidst sammensættes delkredsene til en kreds og denne kreds retuneres.
+Dette kan ses i Algoritme \ref{algoritme_euler}.  
 
 \begin{algorithm}
 \caption{Eulerkredse}
 \label{algoritme_euler}
-
 \textbf{procedure} Euler(G: sammenhængende mulitgraf med knuder af lige grad)\\
 $kreds:=$ en kreds i G begynder i en vilkårlig knude, med kanter der danner en kreds, som retunerer til startknuden.\\
 $H:= G$ med kanterne fra $kreds$ fjernet\\
@@ -49,4 +46,5 @@ $kreds:=$ $kreds$ med $delkreds$ indsat ved den passende knude \\
 \textbf{retuner} $kreds$ ($kreds$ er en Eulerkreds)
 \end{algorithm}
 
+Hvis der ikke findes en Eulerkreds i en graf, kan der godt eksistere en Eulervej. 
 
