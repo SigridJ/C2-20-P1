@@ -1,0 +1,52 @@
+\chapter{Veje og kredse}
+Der kan være forskellige typer af veje eller kredse i en graf. Der er tale om en Eulekreds hvis der findes en rute som besøger hvert kant en gang, samt starter og slutter i samme punkt. Der er tale om en Hamiltonkreds hvis der i en graf findes en kreds som besøger hver knude én gang. 
+
+\section{Eulerkredse}
+
+\begin{defn}\label{euler_def}
+En Eulerkreds er en simpel kreds i grafen G som indeholder hver kant i G.
+En Eulervej er en simpel vej i grafen G, som indeholder hver kant i G.  
+\end{defn}
+
+\noindent Det er ikke muligt at finde en Eulerkreds i alle grafer. 
+Der findes en simpel måde at bestemme om der findes en Eulerkreds i en multigraf. 
+
+\begin{thm}\label{Euler_multigraf}
+En sammenhængende multigraf med mindst 2 knuder, har en Eulerkreds hvis og kun hvis, hver knude har en lige grad.
+\end{thm}
+
+\begin{proof} 
+En kreds begynder en en knude $a$ og fortsætter langs en kant som en incident med $a$ til en nu knude $b$. 
+Denne kant kaldes ${a,b}$, kanten bidrager med 1 til $deg(a)$. 
+Hver gang kredsen passere gennem en knude, tilføjes 2 til graden af denne knude. 
+Til sidst ender kredes tilbage i $a$, og bidrager igen med 1 til $deg(a)$. 
+Derfor må $deg(a)$ være lige og graden af hver knude må også være lige.  
+\end{proof} 
+
+Det er muligt at lave en algoritme som kan finde en Eulerkreds i en multigraf, hvor hver knude er af lige grad.
+
+En sådanne algoritme vil første tage udgangspunkt i en tilfældig delkreds i graf G. 
+Hvorefter der indeførers en variabel H, som som en lig med G, foruden kanterne i den tilfældige kreds dannet i G. 
+Så længe der stadig er kanter i H, til en løkke køre. 
+Under denne løkke dannes en ny delkreds i H, en af knuderne skal også være endepunkt for en kant i en tidligere delkreds.
+Dernæst fjerens kanterne i delkredsen fra H, sammen med enventuelt isolerede knuder. 
+Til sidst sammensættes delkredsene til en kreds og denne kreds retuneres.   
+
+\begin{algorithm}
+\caption{Eulerkredse}
+\label{algoritme_euler}
+
+\textbf{procedure} Euler(G: sammenhængende mulitgraf med knuder af lige grad)\\
+$kreds:=$ en kreds i G begynder i en vilkårlig knude, med kanter der danner en kreds, som retunerer til startknuden.\\
+$H:= G$ med kanterne fra $kreds$ fjernet\\
+\textbf{når} $H$ har kanter\\
+$\-$ $\-$ $\-$ $\-$ $\-$ $\-$
+$delkreds:=$ en kreds i $H$ der begynder i en knude i $H$ som også er et endepunkt af en kant i $kreds$ \\ 
+$\-$ $\-$ $\-$ $\-$ $\-$ $\-$
+$H:=$ $H$ uden kanterne af delkredsen samt alle isolerede knuder fjernet \\
+$\-$ $\-$ $\-$ $\-$ $\-$ $\-$
+$kreds:=$ $kreds$ med $delkreds$ indsat ved den passende knude \\ 
+\textbf{retuner} $kreds$ ($kreds$ er en Eulerkreds)
+\end{algorithm}
+
+
