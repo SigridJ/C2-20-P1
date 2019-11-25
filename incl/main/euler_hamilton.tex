@@ -17,10 +17,9 @@ Eksempler på en Eulerkreds og en Eulervejkan ses her:
 
 \input{fig/tikz/euler_vej}
 
-\noindent Et eksempel på en Eulervej i Figur \ref{euler_vej} kan være: $A,B,E,D,A,E,F,C$
+\noindent Et eksempel på en Eulervej i Figur \ref{euler_vej} kan være: $A,B,E,D,A,E,F,C$\\
 
-\noindent Der eksiserer ikke en Eulerkreds i alle grafer. \\
-
+\noindent Der eksiserer ikke en Eulerkreds i alle grafer.
 For at der kan eksisere en Eulerkreds i en sammenhægende multigraf skal Sætning \ref{Eulerkreds_multigraf} gælde. 
 
 \begin{thm}\label{Eulerkreds_multigraf}
@@ -30,17 +29,19 @@ En sammenhængende multigraf med mindst to knuder, har en Eulerkreds hvis og kun
 \begin{proof} 
 En kreds begynder i en knude $a$ og fortsætter langs en kant, som er incident med $a$, til en ny knude $b$. 
 Denne kant kaldes $\lbrace a,b \rbrace$, kanten bidrager med 1 til $deg(a)$. 
-Hver gang kredsen passere gennem en knude, tilføjes 2 til graden af denne knude. 
-Til sidst ender kredsen tilbage i $a$, og bidrager igen med 1 til $deg(a)$. 
+Hver gang kredsen passerer gennem en knude, tilføjes 2 til graden af denne knude. 
+Til sidst ender kredsen tilbage i $a$, og bidrager igen med 1 til $deg(a)$.
+Hele graden af hvert ounkt opnåes, da alle kanter skal passeres.  
 Derfor må $deg(a)$ være lige og graden af hver knude må også være lige.  
-\end{proof} 
 
-\noindent Det er muligt at lave en algoritme som kan finde en Eulerkreds i en multigraf.
-En sådan algoritme vil første tage udgangspunkt i en tilfældig underkreds i graf G, hvorefter der indeføres en variabel H, som er lig med G, foruden kanterne i den tilfældige underkreds. 
-Så længe H indeholder kanter, vil en løkke køre. 
-Under denne løkke dannes en ny delkreds i H, hvor en af knuderne også skal være endepunkt for en kant i en tidligere underkreds.
-Dernæst fjerns kanterne i underkredsen fra H sammen med enventuelt isolerede knuder. 
-Til sidst sammensættes underkredsene til en samlet kreds, som retuneres.
+For at finde en Eulerkreds i en sammenhægende multigraf  G, som opfylder at graden af hver knude er lige, tages først udgangspunkt i en tilfældig underkreds i grafen. 
+Hvorefter en variabel H indførers, som er lig med G, undtagen kanterne i den tilfældige underkreds.
+Så dannes en ny underkreds i H, som starter i et endepunkt i den tidligere underkreds.
+Kanteren i den nye underkreds fjernes fra H. 
+Samtidig sættes de to underkredse sættes sammen til én kreds.
+Denne procedure forsættes indtil der ikke er flere kanter i H.
+\end{proof} 
+ 
 Proceduren kan ses i Algoritme \ref{algoritme_euler}.
 Der findes også andre algoritmer, som kan finde Eulerkredse i en graf, men disse bliver ikke nævnt i dette projekt.\\
   
@@ -49,21 +50,20 @@ Der findes også andre algoritmer, som kan finde Eulerkredse i en graf, men diss
 \caption{Eulerkredse}
 \label{algoritme_euler}
 \textbf{procedure} Euler(G: sammenhængende mulitgraf med knuder af lige grad)\\
-$kreds:=$ en kreds i G begynder i en vilkårlig knude med kanter, der danner en kreds.\\
+$kreds:=$ en kreds i G der begynder i en vilkårlig knude med kanter, der danner en kreds.\\
 $H:= G$ med kanterne fra $kreds$ fjernet\\
 \textbf{når} $H$ har kanter\\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
-$underkreds:=$ en kreds i $H$, der begynder i en knude i $H$, som også er et endepunkt af en kant i $kreds$ \\ 
+$underkreds:=$ en kreds i $H$, der begynder i en knude $v$ i $H$, som også er et endepunkt af en kant i $kreds$ \\ 
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 $H:=$ $H$ uden kanterne af $underkreds$ samt alle isolerede knuder fjernet \\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
-$kreds:=$ $kreds$ med $underkreds$ indsat ved den passende knude \\ 
+$kreds:=$ $kreds$ med $underkreds$ indsat \\ 
 \textbf{retuner} $kreds$ ($kreds$ er en Eulerkreds)
 \end{algorithm}
 
-$\-$ $\-$ $\-$ $\-$ $\-$ $\-$ \\
 \noindent Hvis der ikke findes en Eulerkreds i en graf, kan der godt eksistere en Eulervej. 
-For at der kan findes en Eulervej skal Sætning \ref{Eulervej_multigraf} gælde. 
+Sætning \ref{Eulervej_multigraf} fortæller hvornår der findes en Eulervej. 
 
 \begin{thm} \label{Eulervej_multigraf}
 En sammenhængende multigraf graf G har en Eulervej, men ikke en Eulerkreds, hvis og kun hvis den har præcist to knuder af ulige grad.  
@@ -78,6 +78,10 @@ Ligesom for $a$, kan vejen krydse $b$.
 Hver gang dette måtte ske tilføjes 2 til graden af $b$. 
 Resultatet bliver, at $a$ og $b$ altid vil være af ulige grad. 
 Alle andre knuder på vejen vil være af lige grad, fordi at 2 tilføjes til graden af en knude, hver gang en knude passeres.  
+
+Hvis en kant $\lbrace a,b \rbrace$ tilføjes til G, vil alle knuder i grafen være af lige grad. 
+Så gælder Sætning \ref{Eulerkreds_multigraf}, og der vil være en Eulerkreds i G. 
+Fjernes kanten $\lbrace a,b \rbrace$ igen vil der være en Eulervej. 
 \end{proof}
 
 \section{Hamiltonkredse}
