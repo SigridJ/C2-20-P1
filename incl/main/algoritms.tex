@@ -67,7 +67,9 @@ $\lbrace a_1, a_2, ..., a_n $ står nu i voksende rækkefølge $\rbrace $
 \subsection{Grådige algoritmer}
 De sidste algoritmer, der vil blive beskrevet i kapitlet er grådige algoritmer, som bruges til at optimere. 
 Grådige algoritmer kan se ud på mange måder, alt efter hvad det er som skal optimeres. 
-Ideen med en grådig algoritme er, at den er designet til i hvert trin, at tage den bedste beslutning. 
+Ideen med en grådig algoritme er, at den er designet til i hvert trin, at tage den beslutning, der umiddelbart viker bedst.
+Dette giver dog ikke nødvendigvis det bedst mulige resultat.  
+
 Algoritmen kan eventuelt bruges til finde fordelingen af mønter, hvis et bestemt beløb skal opnåes. 
 Ønskes det at finde det mindste antal mønter til at dække et bestemt beløb, sættes møntværdierne ind i en liste sorteret fra største til mindste mønt. 
 Den første mønt sammenlignes med det samlede beløb. 
@@ -78,58 +80,61 @@ Det første skridt gentages indtil mønten er større end det resterende beløb,
 Når det resterende beløb er 0, behøves der ikke flere mønter og antallet af mønter returneres.
 
 \begin{algorithm}
-\caption{algoritme for antal mønter}
+\caption{Algoritme for antal mønter}
 \label{greedy_algorithm}
 \textbf{procedure} $mønter(m_1, m_2, ..., m_r: $ hele, positive værdier af de mønter man regner med, \\ 
 hvor $m_1>m_2>...>m_r;$  $n$: det ønskede hele, positive beløb) \\
+$d:=0$ $\lbrace d$ tæller antallet af brugte mønter $\rbrace$ \\
 \textbf{for} $i:=1$ \textbf{til} $r$ \\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
-$d_i:=0$ $\lbrace d_i$ tæller antallet af brugte mønter $\rbrace$ \\
-$\-$ $\-$ $\-$ $\-$ $\-$ $\-$
-\textbf{når} $n \geq m_i$ \\
+\textbf{så længe} $n \geq m_i$ \\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
-$d_i:=d_i+1$ $\lbrace$ tilføjer en mønt $\rbrace$ \\
+$d:=d+1$ $\lbrace$ tilføjer en mønt $\rbrace$ \\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 $n:=n-m_i$ \\
-$\lbrace d_i$ er det antal af mønter der skal bruges for at opfylde beløbet $n\rbrace$
+$\lbrace d$ er det antal af mønter der skal bruges for at opfylde beløbet $n\rbrace$
 \end{algorithm}
  
 
 \begin{thm}
 \label{19_kr}
-Hvis $n$ er et positivt heltal, så vil det optimale antal af mønter for at opfylde $n$, hvor man bruger 20-kroner, 10-kroner, 5-kroner, 2-kroner og 1-kroner, være en 10-krone, en 5-krone, to 2-kroner og en 1-krone, hvor der ikke samtidigt kan være både to 2-kroner og en 1-krone.
-Beløbet i 10-kroner, 5-kroner, 2-kroner og 1-kroner kan ikke overstige 19 kroner.  
+Hvis $n$ er et positivt heltal, så vil det minimale antal af mønter, der til sammen giver $n$, hvor man bruger 20-, 10-, 5-, 2- og 1-kroner, maksimalt indeholde en 10'er, en 5'er, to 2'ere og en 1'er, hvor der ikke samtidigt kan være både to 2'ere og en 1'er.
+Beløbet i 10-, 5-, 2- og 1-kroner kan ikke overstige 19 kroner.  
 \end{thm}
 
 \begin{proof}
 \label{19_kr_bevis}
-Dette bevis er et modstidsbevis. 
-Hvis antallet af en mønt er større end angivet, kan de erstattes af færrer mønter som opfylder den samme værdi. 
-Hvis der eksempelvis er 2 10-kroner kan de erstattes af en 20-krone. 
-Hvis der er 2 5-kroner kan de erstattes af 1 10-krone. 
-Er der 3 2-kroner kan de erstattes af 1 5-krone og 1 1-krone. 
-På samme måde hvis der er 2 1-kroner kan de erstattes af 1 2-krone. 
-Fordi der maksimae antal mønter er en 10-krone, en 5-krone, to 2-kroner og en en 1-krone, men der ikke kan være to 2-kroner og en 1-krone på samme tid, bliver det maksimale beløb der kan opfyldes med mønterne 19 kroner. 
+Det antages for modstrid, at Sætning \ref{19_kr} ikke gælder.
+Hvis antallet af en mønt er større end angivet, kan de erstattes af færre mønter som opfylder den samme værdi. 
+Hvis der eksempelvis er to 10'ere kan de erstattes af en 20'er. 
+Hvis der er to 5'ere kan de erstattes af en 10'er. 
+Er der tre 2'ere kan de erstattes af en 5'er og en 1'er. 
+På samme måde hvis der er to 1'ere kan de erstattes af en 2'er.
+Desuden, må der ikke være to 2'ere og en 1'er samtidig, da disse 3 mønter kan erstattes af en 5'er. 
+Dette er i modstrid med antagelsen om, at Sætning \ref{19_kr} ikke gælder, derfor må denne være sand. 
+
+Fordi det maksimale antal mønter er en 10'er, en 5'er, to 2'ere og en 1'er, men der ikke kan være to 2'ere og en 1'er på samme tid, bliver det maksimale beløb der kan opfyldes med mønterne 19 kroner. 
 \end{proof}
 
 \begin{thm}
 \label{gradig_satning}
-Den gådige algoritme for danske mønter finder det optimale antal mønter til at opfylde et beløb.
+Den gådige algoritme for danske mønter finder det optimale antal mønter til at give ethvert beløb.
 \end{thm}
 
 \begin{proof}
 \label{gradig_bevis}
-Dette bevis er et modstridsbevis. 
-Gå ud fra, at der er et beløb $n$, som kan opfyldes ved hjælp af 1-kroner, 2-kroner, 5-kroner, 10-kroner og 20-kroner, ved at bruge færre mønter end den grådige algoritme. 
-Det bemærkes, at $t'$, det optimale antal af 20-kroner der bruges for at opfylde $n$, må være det samme som $t$, antallet af 20-kroner den grådige algoritme vil bruge. 
-Dette vides, fordi det ses ud fra sætning \ref{19_kr}, da der med mønter under 20-kroner maks vil kunne findes 19 kroner. 
+Det antages for modstrid, at der findes et beløb $n$, som kan opfyldes ved hjælp af 1-, 2-, 5-, 10- og 20-kroner, som bruger færre mønter end den grådige algoritme. 
+Det bemærkes, at $t'$, det optimale antal af 20'ere der bruges for at opfylde $n$, må være det samme som $t$, antallet af 20'ere den grådige algoritme vil bruge. 
+Dette vides, fordi det ses ud fra sætning \ref{19_kr}, at der med mønter under 20'ere maks vil kunne findes 19 kroner. 
 Det betyder, at $t'$ og $t$ bliver nødt til at være det samme, da $t'$ ellers vil bruge mere end det optimale antal mønter. 
-Der er altså det samme antal 20-kroner i begge tilfælde, det samme gælder for de resterende mønter. 
+Der er altså det samme antal 20'ere i begge tilfælde, det samme gælder for de resterende mønter. 
 Den grådige algoritme vil bruge flest mulige 10-kroner, hvilket vil være det samme antal som det optimale, da det optimale antal er 1. 
+På samme måde vil antallet af 10'ere være det samme, fordi summen af 5'ere, 2'ere og 1'ere maks kan give 9.
 Det samme gælder for 5-kroner, 2-kroner og 1-kroner. 
-Det kan dermed konkluderes, at den grådige algoritme vil finde det optimale antal mønter.
+Dette er i modstrid med antagelsen om, at der findes en løsning der bruger færre mønter end den grådige algoritme.
+Det kan derfor konkluderes, at den grådige algoritme vil finde det optimale antal mønter.
 
 \end{proof}
 

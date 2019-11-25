@@ -1,7 +1,6 @@
 \chapter{Veje og Kredse}
 
 
-
 \section{Veje}
 Veje i en graf viser, hvilke ruter der er rundt i en graf. Dette er relevant for at finde ruter til en GPS, et computernetværk eller andet, hvor der er behov for at bestemme en rute gennem flere steder. 
 En vej i en graf defineres i Definition \ref{def_vej}.
@@ -9,10 +8,10 @@ En vej i en graf defineres i Definition \ref{def_vej}.
 \begin{defn}
 \label{def_vej}
 Lad $n \in  \mathbb{Z}^{+}$ og lad $G$ være en ikke-orienteret graf. 
-En \textit{vej} af \textit{længde} $n$ fra $u$ til $v$ i $G$ er en sekvens af $n$ kanter $e_1, ..., e_n$ i $G$, for hvilke der eksisterer en sekvens $x_0=u,x_1,...,x_{n-1},x_n=v$ af punkter, så $e_i$ har endepunkterne $x_{i-1}$ og $x_1$ for $i=1,...,n$.
+En \textit{vej} af \textit{længde} $n$ fra $u$ til $v$ i $G$ er en sekvens af $n$ kanter $e_1, ..., e_n$ i $G$, for hvilke der eksisterer en sekvens $x_0=u,x_1,...,x_{n-1},x_n=v$ af punkter, så $e_i$ har endepunkterne $x_{i-1}$ og $x_i$ for $i=1,...,n$.
 \end{defn}
 
-\noindent Når der er tale om en vej gennem en simpel graf, noteres denne som sekvensen af de knuder, den går igennem $x_0, x_1,...,x_n$. 
+\noindent Når der er tale om en vej gennem en simpel graf, antages denne som sekvensen af de knuder, den går igennem $x_0, x_1,...,x_n$. 
 En vej eller kreds er \textit{simpel} hvis den ikke indeholder den samme kant mere end én gang. 
 
 \begin{exmp}
@@ -46,8 +45,8 @@ En kreds er en vej, der starter og slutter det samme sted, hvilket defineres i D
 
 \begin{defn}
 \label{def_kredse}
-En vej er en \textit{kreds}, hvis den begynder og ender i samme punkt, $u=v$ og $n>0$.
-Vejen eller kredsen siges at gå gennem punkterne $x_1,x_2,...,x_{n-1}$ eller passere gennem kanterne $e_1, e_2,...e_n$.
+En vej kaldes en \textit{kreds}, hvis den begynder og ender i samme punkt, $u=v$ og $n>0$.
+Kredsen siges at gå gennem punkterne $x_1,x_2,...,x_{n-1}$ eller passere gennem kanterne $e_1, e_2,...e_n$.
 \end{defn}
 
 \begin{exmp}
@@ -103,33 +102,33 @@ Denne vej er ikke en kreds, fordi den ikke starter og slutter i samme punkt.
 \end{figure}
 
 \section{Sammenhængende grafer}
-For en graf kan det være relevant at afgøre, om der er en forbindelse mellem alle punkter i grafen, således, at det er miuligt at komme fra et hvilket som helst punkt til et andet. Dette bestemmes ud fra, om en graf er sammenhængende eller ej.
-I dette kapitel vil der kun blive fokuseret på ikke-orienterede grafer.
+For en graf kan det være relevant at afgøre, om der er en forbindelse mellem alle punkter i grafen, således, at det er muligt at komme fra et hvilket som helst punkt til et andet. Dette kaldes om en graf er sammenhængende eller ej.
+(I dette kapitel vil der kun blive fokuseret på ikke-orienterede grafer.)
 En sammenhængende graf defineres i Definition \ref{def_iosmh}.
 
 \begin{defn}
 \label{def_iosmh}
-En ikke-orienteret graf siges at være \textit{sammenhængende}, hvis der er en vej mellem hvert punktpar i grafen. 
-En ikke-orienteret graf, der ikke er sammenhængende, kaldes \textit{ikke-sammenhængende}.
-Det siges, at en graf opdeles, når punkter, kanter eller begge fjernes for at lave en undergraf. 
+En graf siges at være \textit{sammenhængende}, hvis der er en vej mellem hvert punktpar i grafen. 
+En graf, der ikke er sammenhængende, kaldes \textit{ikke-sammenhængende}.
+Det siges, at en graf opdeles, når punkter, kanter eller begge fjernes for at lave en delgraf. 
 \end{defn}
 
-\noindent På den måde ses det, at der i en sammenhængende graf findes en vej mellem alle punkter i grafen. 
-Det er derfor muligt at komme fra et hvilket som helst punkt i grafen til et andet.
 
 \begin{thm}
-Der er en simpel vej mellem ethvert punktpar i en sammenhængende ikke-orienteret graf.
+Der er en simpel vej mellem ethvert knudepar i en sammenhængende graf.
 \label{smh_satning}
 \end{thm}
 
 \begin{proof}
 Knuderne $u$ og $v$ er to knuder i den sammenhængende graf $G=(V,E)$.
-Per Definition \ref{def_iosmh} er der en simpel vej mellem $u$ og $v$.
-Lad den korteste vej mellem $u$ og $v$ være $x_0,x_1,...,x_n$, hvor $x_0=u$ og $x_n=v$.
+Per Definition \ref{def_iosmh} er der en vej mellem $u$ og $v$.
+Lad en korteste vej mellem $u$ og $v$ være $x_0,x_1,...,x_n$, hvor $x_0=u$ og $x_n=v$.
 Denne vej af kortest længde er simpel, fordi den ikke går gennem den samme kant flere gange. 
-For at bevise det, antages det, at den ikke er simpel. 
-Så er $x_i=x_j$ for $0 \leq i < j$.
-Det betyder, at der er en kortere vej fra $u$ til $v$, med punktsekvens $x_0,x_1,...,x_{1-i},x_j,...,x_n$, som opnåes ved at fjerne kanterne i sekvensen $x_i,...,x_{j-1}$.
+For modstrid antages det, at den ikke er simpel. 
+Så er $x_i=x_j$ for $0 \leq i < j$, fordi vejen først går gennem $i$ og senere $j$.
+Det betyder, at der er en kortere vej fra $u$ til $v$, med punktsekvens $x_0,x_1,...,x_{i-1},x_j,...,x_n$, som opnåes ved at fjerne kanterne i sekvensen $x_i,...,x_{j-1}$.
+Dette er i modstrid med antagelsen om, at en korteste vej ikke er simpel.
+Det må derfor gælde, at en korteste vej mellem ethvert knudepar er simpel. 
 \end{proof}
 
 \subsection{sammenhængsgrad}
