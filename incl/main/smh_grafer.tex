@@ -8,7 +8,7 @@ En vej i en graf defineres i Definition \ref{def_vej}.
 \begin{defn}
 \label{def_vej}
 Lad $n \in  \mathbb{Z}^{+}$ og lad $G$ være en ikke-orienteret graf. 
-En \textit{vej} af \textit{længde} $n$ fra $u$ til $v$ i $G$ er en sekvens af $n$ kanter $e_1, ..., e_n$ i $G$, for hvilke der eksisterer en sekvens $x_0=u,x_1,...,x_{n-1},x_n=v$ af punkter, så $e_i$ har endepunkterne $x_{i-1}$ og $x_i$ for $i=1,...,n$.
+En \textit{vej} af \textit{længde} $n$ fra $x_0$ til $x_n$ i $G$ er en sekvens af $n$ kanter $e_1, ..., e_n$ i $G$, for hvilke der eksisterer en sekvens $x_0,x_1,...,x_{n-1},x_n$ af punkter, så $e_i$ har endepunkterne $x_{i-1}$ og $x_i$ for $i=1,...,n$.
 \end{defn}
 
 \noindent Når der er tale om en vej gennem en simpel graf, antages denne som sekvensen af de knuder, den går igennem $x_0, x_1,...,x_n$. 
@@ -123,10 +123,10 @@ Per Definition \ref{def_iosmh} er der en vej mellem $u$ og $v$.
 Lad en korteste vej mellem $u$ og $v$ være $x_0,x_1,...,x_n$, hvor $x_0=u$ og $x_n=v$.
 Denne vej af kortest længde er simpel, fordi den ikke går gennem den samme kant flere gange. 
 For modstrid antages det, at den ikke er simpel. 
-Så er $x_i=x_j$ for $0 \leq i < j$, fordi vejen først går gennem $i$ og senere $j$.
+Så er $x_i=x_j$ for $0 \leq i < j$, fordi vejen går gennem kanten $x_i,x_{i+1}$ to gange, specielt besøges $x_i$ to gange.
 Det betyder, at der er en kortere vej fra $u$ til $v$, med punktsekvens $x_0,x_1,...,x_{i-1},x_j,...,x_n$, som opnåes ved at fjerne kanterne i sekvensen $x_i,...,x_{j-1}$.
-Dette er i modstrid med antagelsen om, at en korteste vej ikke er simpel.
-Det må derfor gælde, at en korteste vej mellem ethvert knudepar er simpel. 
+Dette er i modstrid med antagelsen om, at en kortest mulig vej ikke er simpel.
+Det må derfor gælde, at en kortest mulig vej mellem ethvert knudepar er simpel. 
 \end{proof}
 
 \subsection{sammenhængsgrad}
