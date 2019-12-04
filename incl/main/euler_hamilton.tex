@@ -134,7 +134,29 @@ $$\textrm{deg}(v_1)+\textrm{deg}(v_n)\geq n.$$
 Heraf følger det, at der må være en knude $v_i$ forbundet med $v_1$, som opfylder, at $v_{i-1}$ er forbundet til $v_n$. 
 Dermed opstår der modstrid, idet kredsen
 $$v_1, v_2,...,v_{i-1},v_n,...,v_i,v_1$$
-er en Hamiltonkreds i $G$.   
+er en Hamiltonkreds i $G$. 
+  
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
+  \node (n1) at (0,4) {$v_1$};
+  \node (n2) at (1.5,3) {$v_2$};
+  \node (n3) at (3,2) {};
+  \node (n4) at (4.5,1) {};
+  \node (n5) at (6,0) {$v_{i-1}$};
+  \node (n6) at (8,0) {$v_1$};
+  \node (n7) at (9.5,1) {};
+  \node (n8) at (11.5,2) {};
+  \node (n9) at (13.5,3) {$v_{n-1}$};
+  \node (n10) at (15,4) {$v_n$};
+  \foreach \from/\to in {n1/n2,n2/n3,n3/n4,n4/n5,n5/n6,n6/n7,n7/n8,n8/n9,n9/n10,n1/n6,n10/n5}
+    \draw (\from) -- (\to);
+\end{tikzpicture}
+\caption{Ore} 
+\label{ore_bevis}
+\end{figure}
+
 \end{proof}
 
 En anden sætning der kan bruge til måske at bestemme om der eksiserer en Hamiltonkreds er Diracs Sætning 
