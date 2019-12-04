@@ -1,0 +1,15 @@
+\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=2.5cm,thick,main node/.style={circle,fill=blue!25}] 
+  \node[main node] (a) {A};                   
+  \node[main node] (b) [below left of=a] {B}; 
+  \node[main node] (c) [below right of=a] {C};
+
+  \path                                       
+    (a) edge node {} (b)                      
+        edge node {} (c)                      
+    (b) edge [bend left=35] node {} (a)       
+          edge [bend right=35] node {} (a)    
+        edge [bend right=27] node {} (c)      
+    (c) edge [loop right] node {} (c)         
+        edge node [above] {} (b);             
+    (a) edge [bend right=30] node {} (b)      
+\end{tikzpicture}
