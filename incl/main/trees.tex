@@ -156,7 +156,7 @@ Betragt grafgen i Figur \ref{eksempel_udspaendende}. Grafen er simpel og sammenh
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
-[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
+[scale=.7,auto=left,every node/.style={circle,fill=blue!25}]
   \node (n6) at (3,2) {A};
   \node (n4) at (3,6) {B};
   \node (n5) at (6,2) {C};
@@ -228,3 +228,65 @@ En række problemer involverer at finde den eksempelvis korteste, billigste elle
 \begin{defn}
 Et minimum udspændende træ i en sammenhængende vægtet graf er et udspændende træ, som har den mindst mulige sum af kanternes vægt.
 \end{defn}
+
+\noindent Der findes forskellige algoritmer til at finde minimum udspændende træer i algortimer, hvor et eksempel er Prims algoritme. 
+Prims algortime er en grådig algortime, der tager udgangspunkt i en kant med mindst mulig vægt. 
+Ud fra kanten vælges en ny incident kant med mindst mulig vægt, så der ikke dannes en kreds ved tilføjelse af den nye kant. 
+Dvs. at der ved hvert step vælges kanten med den mindste vægt. 
+Sammenlagt vil algoritmen finde den optimale løsning og dermed finde et minimum udspændende træ.
+ Algoritmen kan beskrives med Pseuokode i det følgende.
+ 
+\begin{algorithm}
+\caption{Prims algoritme}
+\label{find_mintrae}
+\textbf{procedure} Prim($G$: En vægtet, sammenhængende, ikke-orienteret graf med $n$ knuder)
+
+$T:=$ En kant med mindst mulig vægt\\
+\textbf{for} $i:=1$ \textbf{til} $n-2$\\
+$\-$ $\-$ $\-$ $\-$ $\-$ $\-$
+$e:=$ En kant med mindst vægt incident til en knude i $T$, som ikke danner en simpel kreds, når den tilføjes $T$.\\
+$\-$ $\-$ $\-$ $\-$ $\-$ $\-$
+$T:=T$ hvor $e$ er tilføjet.\\
+\textbf{retunér} $T$ $\lbrace T$ er et minimum udspændende træ.$\rbrace$
+\end{algorithm}
+
+\noindent Der kan i Prims algoritme opstå at algorimten kan vælge mellem flere kanter med samme vægt, og der vil derfor kræves en form for rangering af kanterne. 
+
+\begin{figure}[!h]
+  \centering
+  \begin{tikzpicture}
+  [shorten >=1pt,node distance=3.1cm,on grid,auto]
+    \tikzstyle{state}=[shape=circle,fill=blue!25,thick,minimum size=0.7cm]
+
+    \node[state] (A) {$A$};
+    \node[state,above of=A] (B) {$B$};
+    \node[state,right of=A] (C) {$C$};
+    \node[state,right of=B] (D) {$D$};
+    \node[state,right of=C] (E) {$E$};
+    \node[state,right of=D] (F) {$F$};
+    \node[state,above of=B] (G) {$G$};
+    \node[state,right of=G] (H) {$H$};
+    \node[state,right of=H] (I) {$I$};
+
+    \path[-,draw,thick]
+    (A) edge node {$6$} (B)
+    (B) edge node {$2$} (G)
+    (C) edge node {$3$} (D)
+    (C) edge node {$2$} (E)
+    (D) edge node {$1$} (F)
+    (E) edge node {$4$} (F)  
+    (A) edge node {$4$} (C)
+    (G) edge node {$5$} (H)
+    (H) edge node {$4$} (I)
+    (B) edge node {$7$} (D)  
+    (H) edge node {$5$} (D)
+    (I) edge node {$3$} (F)
+    (H) edge node {$6$} (F)
+    (H) edge node {$3$} (B)
+    (B) edge node {$8$} (C)
+    (C) edge node {$4$} (F)
+    ;
+  \end{tikzpicture}
+  \caption{dfsd}
+  \label{eks_prim}
+\end{figure}
