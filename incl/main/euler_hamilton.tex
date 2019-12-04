@@ -114,8 +114,19 @@ Et eksempel på en Hamiltionvej kan være: $A,D,B,C,F,E$
 \end{exmp}
 
 Der kendes ikke en simpel måde til at bestemme om der findes en Hamiltionkreds i en graf, ligesom der gør for en Eulerkreds. 
-Der findes dog flere sætningerne der kan give en ide om eksistensen af en hamiltonkreds.
-Den første sætning er Diraks sætning.
+Der findes dog flere sætningerne der kan give en ide om eksistensen af en hamiltonkreds. Med udgangspunkt i \cit{wilson_graph} bevises følgende to sætninger.
+
+\begin{thm} \label{ores_thm}
+\textbf{Ores' Sætning:} 
+Hvis G er en simpel graf med $n$ knuder, og $n\geq3$, så\\ $deg(u)+deg(v)\geq n$ for hvert par af ikke tilstødende knuder $u$ og $v$ i G. 
+Så har G en Hamiltionkreds. 
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
+
+En anden sætning der kan bruge til måske at bestemme om der eksiserer en Hamiltonkreds er Diracs Sætning 
 
 \begin{thm} \label{diracs_thm}
 \textbf{Diracs Sætning:} 
@@ -123,23 +134,22 @@ Hvis G er en simpel graf med $n$ knuder, og $n\geq3$, så graden af hver knude i
 Så har G en Hamiltionkreds.  
 \end{thm}
 
-
-
-En anden sætning, der minder meget om Diraks, er Ores' sætning.
-
-\begin{thm} \label{diracs_thm}
-\textbf{Ores Sætning:} 
-Hvis G er en simpel graf med $n$ knuder, og $n\geq3$, så\\ $deg(u)+deg(v)\geq n$ for hvert par af ikke tilstødende knuder $u$ og $v$ i G. 
-Så har G en Hamiltionkreds. 
-\end{thm}
+\begin{proof}
+Lad $G=(V,E)$ være en graf med 3 eller flere knuder. Udvælg fra grafen, $G$, to ikke-forbundne knuder så at $u,v \in G$. Det følger da direkte af Ores Sætning, at
+\begin{align*}
+\textrm{deg}(u) + \textrm{deg}(v) \geq \frac{n}{2} + \frac{n}{2} = n,
+\end{align*}
+hvorfor grafen må have en Hamiltonkreds.
+\end{proof}
 
 Derudover gælder det også, at der ikke kan eksistere en hamiltonkreds i en graf med en knude, der har graden 1. 
 Disse to sætninger fortæller, hvornår der helt sikkert eksisterer en hamiltonkreds, men en hamiltonkreds kan godt eksistere uden at opfylde sætningerne. 
 
 \begin{exmp}
 I Figur \ref{pentagon} ses en graf der indeholder en hamiltonlkreds.
-Grafen overholder ikke Diracs Sætning, fordi $n=5$, mens graden af hver kant i grafen er $2$, hvilket er mindre end $n/2$.
-Grafen overholder heller ikke Ores' Sætning, da summen af to knuders grader aldrig kan give et resultat større end $4$, hvilket er mindre end $n$.
+Grafen overholder ikke Ores' Sætning, da summen af to knuders grader aldrig kan give et resultat større end $4$, hvilket er mindre end $n$.
+Grafen overholder heller ikke Diracs Sætning, fordi $n=5$, mens graden af hver kant i grafen er $2$, hvilket er mindre end $n/2$.
+
 
 \begin{figure}
 \centering
