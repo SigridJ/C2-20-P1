@@ -29,11 +29,11 @@ En sammenhængende multigraf med mindst to knuder, har en Eulerkreds hvis og kun
 \begin{proof} 
 Først bevises sammenhængen den ene vej. 
 En kreds begynder i en knude $a$ og fortsætter langs en kant, som er incident med $a$, til en ny knude $b$. 
-Denne kant kaldes $\lbrace a,b \rbrace$, kanten bidrager med 1 til $deg(a)$. 
+Denne kant kaldes $\lbrace a,b \rbrace$, kanten bidrager med 1 til $\deg(a)$. 
 Hver gang kredsen passerer gennem en knude, tilføjes 2 til graden af denne knude. 
-Til sidst ender kredsen tilbage i $a$, og bidrager igen med 1 til $deg(a)$.
+Til sidst ender kredsen tilbage i $a$, og bidrager igen med 1 til $\deg(a)$.
 Hele graden af hver knude opnåes, da alle kanter skal passeres.  
-Derfor må $deg(a)$ være lige og graden af hver knude må også være lige.  
+Derfor må $\deg(a)$ være lige og graden af hver knude må også være lige.  
 
 Nu bevises sammenhængen den anden vej. 
 For at finde en Eulerkreds i en sammenhægende multigraf  G, som opfylder at graden af hver knude er lige, tages først udgangspunkt i en tilfældig underkreds i grafen.
@@ -80,9 +80,9 @@ En sammenhængende multigraf graf G har en Eulervej, men ikke en Eulerkreds, hvi
 \begin{proof}
 Først bevises sammenhængen den ene vej. 
 Antag at en sammenhængende multigraf G har en Eulervej fra $a$ til $b$, men ikke en Eulerkreds. 
-Den første kant som passeres på vejen bidrager med 1 til $deg(a)$. 
-Hver gang vejen passerer knuden $a$ vil 2 tilføjes til $deg(a)$. 
-Den sidste kant på vejen bidrager 1 til graden af endepunktet for vejen, $deg(b)$. 
+Den første kant som passeres på vejen bidrager med 1 til $\deg(a)$. 
+Hver gang vejen passerer knuden $a$ vil 2 tilføjes til $\deg(a)$. 
+Den sidste kant på vejen bidrager 1 til graden af endepunktet for vejen, $\deg(b)$. 
 Ligesom for $a$, kan vejen krydse $b$. 
 Hver gang dette måtte ske tilføjes 2 til graden af $b$. 
 Resultatet bliver, at $a$ og $b$ altid vil være af ulige grad. 
@@ -118,7 +118,7 @@ Der findes dog flere sætningerne der kan give en ide om eksistensen af en hamil
 
 \begin{thm} \label{ores_thm}
 \textbf{Ores' Sætning:} 
-Hvis G er en simpel graf med $n$ knuder, og $n\geq3$, så\\ $\textrm{deg}(u)+\textrm{deg}(v)\geq n$ for hvert par af ikke tilstødende knuder $u$ og $v$ i G. 
+Hvis G er en simpel graf med $n$ knuder, og $n\geq3$, så\\ $\deg(u)+\deg(v)\geq n$ for hvert par af ikke tilstødende knuder $u$ og $v$ i G. 
 Så har G en Hamiltionkreds. 
 \end{thm}
 
@@ -141,8 +141,7 @@ En anden sætning der kan bruge til måske at bestemme om der eksiserer en Hamil
 
 \begin{thm} \label{diracs_thm}
 \textbf{Diracs Sætning:} 
-Hvis G er en simpel graf med $n$ knuder, og $n\geq3$, så graden af hver knude i G er mindst $n/2$. 
-Så har G en Hamiltionkreds.  
+Hvis G er en simpel graf med $n$ knuder, og $n\geq3$, så graden af hver knude i G er mindst $\frac{n}{2}$, har G en Hamiltionkreds.  
 \end{thm}
 
 \begin{proof}
