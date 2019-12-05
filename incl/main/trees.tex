@@ -8,7 +8,7 @@ Et træ er en sammenhængende ikke-orienteret graf, der ikke indeholder en simpe
 \label{def_tree}
 \end{defn}
 
-\noindent Træer er en type af simple grafer. Da de ikke indeholder en simpel kreds, kan der ikke være flere kanter mellem to knuder, og der kan ikke være løkker. Alternativt og ekvivalent til Definition \ref{def_tree} kan et træ defineres som følger.
+\noindent Træer er en type af simple grafer. Da de ikke indeholder en simpel kreds, kan der ikke være flere kanter mellem to knuder, og der kan ikke være løkker. Alternativt og ækvivalent til Definition \ref{def_tree} kan et træ defineres som følger.
 
 \begin{thm}
 En ikke-orienteret graf er et træ hvis og kun hvis, der eksistrerer netop én simpel vej mellem hvert par af knuder. 
@@ -19,11 +19,11 @@ Antag at en ikke-orienteret graf $T$ er et træ, og lad $u$ og $v$ være to knud
 Da $T$ er sammenhængende må det betyde, at der er en simpel vej mellem $u$ og $v$ jf. Sætning \ref{smh_satning}. 
 Den simple vej mellem $u$ og $v$ må være den eneste vej mellem $u$ og $v$, for hvis der eksisterer flere veje mellem $u$ og $v$, eksisterer en simpel kreds. 
 Hvis der mellem $u$ og $v$ er to forskellige simple veje $P_{u,v}$ og $P_{v,u}$, må der være mindst ét punkt, der er forskelligt mellem de to veje. 
-En simpel kreds opstår fra og med knuden, hvor $P_{u,v}$ og $P_{v,u}$ første gang adskiller sig fra hinanden. 
-Den simple kreds slutter, når $P_{u,v}$ og $P_{v,u}$ igen har en knude til fælles.
- Eksistensen af en simpel kreds modstrider antagelsen om, at $T$ er et træ, og derfor må der være netop én simpel vej mellem hvert knudepar i $T$.
+En simpel kreds opstår fra og med knuden $x$, hvor $P_{u,v}$ og $P_{v,u}$ første gang adskiller sig fra hinanden. 
+Den simple kreds slutter, når $P_{u,v}$ og $P_{v,u}$ igen har en knude $y$ til fælles og består derfor at knuderne mellem $x$ og $y$.
+Eksistensen af en simpel kreds modstrider antagelsen om, at $T$ er et træ, og derfor må der være netop én simpel vej mellem hvert knudepar i $T$.
 
-Antag nu, at der er netop én simpel vej mellem hvert knudepar i en ikke-orienteret graf $T$. Det betyder, at $T$ er sammenhængende. Desuden må det gælde, at $T$ ingen simple kredse har, da det vil stride i mod antagelsen om, at der er netop én simpel vej mellem hvert knudepar i en $T$. Der kan ikke eksistere en simpel kreds, der kun er én simpel vej mellem to knuder $u$ og $v$, og derfor kan der ikke findes punkter, hvor to eller flere veje mellem $u$ og $v$ er forskellige fra hianden, hvor der kan dannes en kreds. Grafen $T$ opfylder dermed kravene for at være et træ jf. Definition \ref{def_tree}.
+Antag nu, at der er netop én simpel vej mellem hvert knudepar i en ikke-orienteret graf $T$. Det betyder, at $T$ er sammenhængende. Desuden må det gælde, at $T$ ingen simple kredse har, da det vil stride i mod antagelsen om, at der er netop én simpel vej mellem hvert knudepar i en $T$. Der kan ikke eksistere en simpel kreds, der kun er én simpel vej mellem to knuder $u$ og $v$, og derfor kan der ikke findes punkter, hvor to eller flere veje mellem $u$ og $v$ er forskellige fra hinanden, hvor der kan dannes en kreds. Grafen $T$ opfylder dermed kravene for at være et træ jf. Definition \ref{def_tree}.
 \end{proof}
 
 \begin{exmp}
@@ -221,20 +221,20 @@ Betragt grafgen i Figur \ref{eksempel_udspaendende}. Grafen er simpel og sammenh
 
 \end{figure}
 
-\section{Minimum udspændende træer}
+\section{Minimalt udspændende træer}
 
-En række problemer involverer at finde den eksempelvis korteste, billigste eller på anden vis mest favorable forbindelse, der inkluderer alle knuder i en vægtet graf. Problemet kan løses ved at bestemme et minimum udspændende træ. I et minimum udspændende træ er summen af kanternes vægt er mindst muligt, og træet indeholder alle knuder i grafen.
+En række problemer involverer at finde den eksempelvis korteste, billigste eller på anden vis mest favorable forbindelse, der inkluderer alle knuder i en vægtet graf. Problemet kan løses ved at bestemme et minimalt udspændende træ. I et minimalt udspændende træ er summen af kanternes vægt er mindst muligt, og træet indeholder alle knuder i grafen.
 
 \begin{defn}
 Et minimum udspændende træ i en sammenhængende vægtet graf er et udspændende træ, som har den mindst mulige sum af kanternes vægt.
 \end{defn}
 
-\noindent Der findes forskellige algoritmer til at finde minimum udspændende træer i algortimer, hvor et eksempel er Prims algoritme. 
+\noindent Der findes forskellige algoritmer til at finde minimalt udspændende træer i algortimer, hvor et eksempel er Prims algoritme. 
 Prims algortime er en grådig algortime, der tager udgangspunkt i en kant med mindst mulig vægt. 
 Ud fra kanten vælges en ny incident kant med mindst mulig vægt, så der ikke dannes en kreds ved tilføjelse af den nye kant. 
 Dvs. at der ved hvert step vælges kanten med den mindste vægt. 
-Sammenlagt vil algoritmen finde den optimale løsning og dermed finde et minimum udspændende træ.
- Algoritmen kan beskrives med Pseuokode i det følgende.
+Sammenlagt vil algoritmen finde den optimale løsning og dermed finde et minimalt udspændende træ.
+Algoritmen kan beskrives med Pseuokode i det følgende.
  
 \begin{algorithm}
 \caption{Prims algoritme}
@@ -247,10 +247,27 @@ $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 $e:=$ En kant med mindst vægt incident til en knude i $T$, som ikke danner en simpel kreds, når den tilføjes $T$.\\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 $T:=T$ hvor $e$ er tilføjet.\\
-\textbf{retunér} $T$ $\lbrace T$ er et minimum udspændende træ.$\rbrace$
+\textbf{retunér} $T$ $\lbrace T$ er et minimalt udspændende træ.$\rbrace$
 \end{algorithm}
 
-\noindent Der kan i Prims algoritme opstå at algorimten kan vælge mellem flere kanter med samme vægt, og der vil derfor kræves en form for rangering af kanterne. 
+\noindent Der kan i Prims algoritme opstå at algorimten kan vælge mellem flere kanter med samme vægt, og der vil derfor kræves en form for rangering af kanterne.
+
+\begin{exmp}
+For at give et eksempel på princippet i Prims algortime laves et eksempel på at finde et minimalt udspændende træ i grafen i Figur \ref{eks_prim}. 
+Prims algortime vil i første skridt vælge en kant med mindst mulig vægt. 
+I grafen vil det være $\lbrace E,F \rbrace$ med vægt $1$. 
+Næste skridt vil være at vælge en kant incident med $E$ eller $F$ med mindst mulig vægt. 
+Der kan vælges $\lbrace C,F \rbrace$ eller $\lbrace E,H \rbrace$ alt efter hviken rangering af kanter med samme vægt, der vælges. 
+Der vælges kanten $\lbrace C,F \rbrace$. 
+Næste skridt vil være at vælge en kant incident med $E$, $F$ eller $C$ med mindst mulig vægt, uden at der dannes en simpel kreds med de allerede valgte kanter. 
+Der vælges $\lbrace E,H \rbrace$. Dernæst vælges $\lbrace H,I \rbrace$. 
+Der kan nu vælges enten $\lbrace B,C \rbrace$  eller $\lbrace G,H \rbrace$ med vægt 4. 
+Der vælges $\lbrace G,H \rbrace$ efterfulgt af $\lbrace B,C \rbrace$. 
+Der vælges nu $\lbrace B,D \rbrace$ efterfulgt af $\lbrace A,D \rbrace$.
+
+Det er nu ikke muligt at vælge flere kanter uden at danne en simpel kreds, og der er dermed dannet et minimalt udspændende træ med kanterne $\lbrace E,F \rbrace$, $\lbrace C,F \rbrace$, $\lbrace E,H \rbrace$, $\lbrace H,I \rbrace$, $\lbrace G,H \rbrace$, $\lbrace B,C \rbrace$, $\lbrace B,D \rbrace$, $\lbrace A,D \rbrace$. 
+Alt efter rangering af kanter med samme vægt kan rækkefølgen, algortimen vælger kanter, variere, men der opnås det samme minimale udspændende træ.
+\end{exmp} 
 
 \begin{figure}[!h]
   \centering
@@ -258,35 +275,58 @@ $T:=T$ hvor $e$ er tilføjet.\\
   [shorten >=1pt,node distance=3.1cm,on grid,auto]
     \tikzstyle{state}=[shape=circle,fill=blue!25,thick,minimum size=0.7cm]
 
-    \node[state] (A) {$A$};
-    \node[state,above of=A] (B) {$B$};
-    \node[state,right of=A] (C) {$C$};
-    \node[state,right of=B] (D) {$D$};
-    \node[state,right of=C] (E) {$E$};
-    \node[state,right of=D] (F) {$F$};
-    \node[state,above of=B] (G) {$G$};
+    \node[state] (G) {$G$};
+    \node[state,above of=G] (D) {$D$};
     \node[state,right of=G] (H) {$H$};
+    \node[state,right of=D] (E) {$E$};
     \node[state,right of=H] (I) {$I$};
+    \node[state,right of=E] (F) {$F$};
+    \node[state,above of=D] (A) {$A$};
+    \node[state,right of=A] (B) {$B$};
+    \node[state,right of=B] (C) {$C$};
 
     \path[-,draw,thick]
-    (A) edge node {$6$} (B)
-    (B) edge node {$2$} (G)
-    (C) edge node {$3$} (D)
-    (C) edge node {$2$} (E)
-    (D) edge node {$1$} (F)
-    (E) edge node {$4$} (F)  
-    (A) edge node {$4$} (C)
-    (G) edge node {$5$} (H)
-    (H) edge node {$4$} (I)
-    (B) edge node {$7$} (D)  
-    (H) edge node {$5$} (D)
-    (I) edge node {$3$} (F)
-    (H) edge node {$6$} (F)
-    (H) edge node {$3$} (B)
-    (B) edge node {$8$} (C)
-    (C) edge node {$4$} (F)
+    (G) edge node {$6$} (D);
+    \path[-,draw,thick,red]
+    (D) edge node {$2$} (A)
+    (E) edge node {$3$} (H)
+    (H) edge node {$2$} (I)
+    (E) edge node {$1$} (F);
+    \path[-,draw,thick]
+    (I) edge node {$4$} (F);
+    \path[-,draw,thick,red]  
+    (G) edge node {$4$} (H);
+    \path[-,draw,thick]
+    (A) edge node {$5$} (B);
+    \path[-,draw,thick,red]
+    (B) edge node {$4$} (C);
+    \path[-,draw,thick]
+    (D) edge node {$7$} (E)  
+    (B) edge node {$5$} (E);
+    \path[-,draw,thick,red]
+    (C) edge node {$3$} (F);
+    \path[-,draw,thick]
+    (B) edge node {$6$} (F);
+    \path[-,draw,thick,red]
+    (D) edge node {$3$} (B);
+    \path[-,draw,thick]
+    (D) edge node {$8$} (H)
+    (H) edge node {$4$} (F)
     ;
   \end{tikzpicture}
-  \caption{dfsd}
+  \caption{Eksempel på et minimalt udspændende træ.}
   \label{eks_prim}
 \end{figure}
+
+\begin{thm}
+Prims algortime bestemmer det minimalt udspændende træ. 
+\label{set_prim}
+\end{thm}
+
+\begin{proof}
+Lad $G$ være en sammenhængende vægtet graf. Lad $S$ være træet bestående af $e_1$, $e_2$, $\ldots$, $e_{n-1}$ valgt af Prims algoritme. Lad $T$ være et minimalt udspændende træ i $G$ bestående af kanterne $e_1$, $e_2$, $\ldots$, $e_k$, hvor $k$ er det maksimale antal kanter, så $T$ stadig er et minimalt udspændende træ. I følge Sætning \ref{set_prim} skal $S=T$. 
+
+Det antages for modstrid, at $S \neq T$, således at, $k<n-1$. Det betyder, at der er i $T$ er færre kanter end i $S$, og $T$ består derfor af $e_1$, $e_2$, $\ldots$, $e_k$ men ikke $e_{k+1}$. Lad $S_k$ være træet valgt af Prim algortime bestående af $e_1$, $e_2$, $\ldots$, $e_k$, hvor $k>n-1$. Antag nu, at der dannes en graf bestående af $T$, hvor $e_{k+1}$ tilføjes. Da der tilføjes en kant til et udspændende træ, dannes der en kreds, som må indeholde $e_{k+1}$, da $e_{k+1}$ ikke er en del af $T$. Kredsen må indeholde en kant $e \neq e_{k+1}$, som ikke er en del af $S_k$. Kanten $e_{k+1}$ kan ikke 
+
+ 
+\end{proof}
