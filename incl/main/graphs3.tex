@@ -20,15 +20,16 @@ Antallet af kanter i en komplet graf $K_n$ afhænger kun af $n$.
 \end{thm}
 \begin{proof}
 	For at gennemføre et induktionsbevis skal basisskridtet og induktionsskridtet gennemføres.
-	Lad propositionen $P(n)$ være, at $|E_n|= \frac{n (n - 1)}{2}$, hvor $n$ er antal knuder i en komplet graf $K_n$ og $|E_m|$ er antal kanter. 
+	Lad det åbne udsagn $P(n)$ være, at $|E_n|= \frac{n (n - 1)}{2}$, hvor $n$ er antal knuder i en komplet graf $K_n$ og $|E_n|$ er antal kanter. 
 
 	\textit{Basisskridt:} $K_1$ består af en enkelt knude, og da der ikke er et par af knuder i grafen, må der da ikke eksistere nogen kanter.
-	$\frac{1 \cdot (1-1)}{2}=\frac{ 1 \cdot 0}{2} = 0$, hvilket betyder at $P(1)$ er sand. Da er basisskridtet gennemført.
+	Samtidig er $\frac{1 \cdot (1-1)}{2}=\frac{ 1 \cdot 0}{2} = 0$, hvilket betyder at $P(1)$ er sand. Da er basisskridtet gennemført.
 
-	\textit{Induktionsskridt:} Det skal nu vises at der for et vilkårligt $k$ gælder at $P(k) \to P(k + 1)$, altså at $|E_k| = \frac{k (k - 1)}{2}$ medfører at $|E_{k+1}| = \frac{k (k + 1)}{2}$.
+	\textit{Induktionsskridt:} Det skal nu vises, at der for et vilkårligt $k$ gælder at $P(k) \Rightarrow P(k + 1)$, altså at $|E_k| = \frac{k (k - 1)}{2}$ medfører at $|E_{k+1}| = \frac{k (k + 1)}{2}$.
 
 	Antag at $|E_k| = \frac{k (k - 1)}{2}$ for $K_k$.
-	Den næste komplette graf $K_{k+1}$ må være den graf hvor der er én til knude. Denne nye knude $v$ skal være forbundet til alle knuder i $K_k$ for at være en komplet graf. Derfor må $\deg (v)$ være lig $k$. Da må
+	Den næste komplette graf $K_{k+1}$ må være den graf, hvor der er én ydeligere knude.
+	Denne nye knude, $v$, skal være forbundet til alle knuder i $K_k$ for at være en komplet graf. Derfor må $\deg (v)$ være lig $k$. Da må
 	\begin{align*}
 		|E_{k+1}| 
 		= |E_k| + k
@@ -37,5 +38,5 @@ Antallet af kanter i en komplet graf $K_n$ afhænger kun af $n$.
 		= \frac{k^2 + k}{2} 
 		= \frac{k (k + 1)}{2}
 	\end{align*}
-	Dette er netop $P(k + 1)$, hvilket betyder at induktionsskridtet er gennemført.
+	Dette er netop $P(k + 1)$, hvilket betyder, at induktionsskridtet er gennemført.
 \end{proof}

@@ -1,6 +1,6 @@
 \chapter{Algoritmer}
-Dette kapitel tager udgangspunkt i \citep{dmat}, medmindre andet er angivet.\\ 
-\\
+Dette kapitel tager udgangspunkt i \citep{dmat}, medmindre andet er angivet.
+
 Mange matematiske problemer kan ikke løses ved hjælp af en simpel beregning, men kræver i stedet en række af skridt, der giver en løsning til problemet. 
 En beskrivelse af den nødvendige sekvens af skridt kaldes en algoritme. 
 
@@ -9,47 +9,49 @@ En beskrivelse af den nødvendige sekvens af skridt kaldes en algoritme.
 En algoritme er et endeligt sæt af præcise instruktioner, som beskriver udførelsen af en beregning eller løsning af et problem.
 \end{defn}
 
-I denne rapport vil der blive brugt pseudokode til at beskrive, hvordan man kan opstille en algoritme i computersprog. 
-En pseudokode kan ikke skrives direkte ind i et programmeringsprogram men kan let oversættes til et ønsket programmeringssprog og kan let læses og forståes. 
-I dette kapitel vil tre algoritmer blive beskrevet, for at give en ide om, hvad en algoritme kan bruges til. 
+I denne rapport vil der blive brugt pseudokode til at beskrive, hvordan en algoritme kan opstilles i computersprog. 
+En pseudokode kan let oversættes til et ønsket programmeringssprog og kan let læses og forstås. 
+I dette kapitel vil tre algoritmer blive beskrevet for at give en ide om, hvad en algoritme kan bruges til. 
 
 \section{Eksempler på algoritmer}
 \subsection{Søgealgoritme}
-Skal den største værdi i en liste findes, kan dette gøres nemt ved hjælp af en algoritme. 
+Skal den største værdi i en liste findes, kan det gøres med en algoritme. 
 Selvom det kan virke meget simpelt at læse en liste igennem og finde det største tal, kan det blive problematisk og tidskrævende, hvis der er tale om en længere liste. 
 Derfor kan en algoritme være smart, da nogle algoritmer hurtigt kan gennemgå lange lister. 
 Desuden kan en algoritme løses af en computer, hvilket også gør det nemmere. 
+
 En sådan algoritme kan udføres ved at sætte det første element lig med en variabel $maks$. 
 Dernæst sammenlignes denne værdi med det næste element, som  $maks$ overtager, hvis det er større end den nuværende værdi af $maks$. 
-Er det næste element mindre end det nuværende $maks$, sker der ikke noget, og der fortsættes til det næste element på listen. 
-Dette gentages indtil hele listen er gennemgået, hvorefter maks returneres.
+Er det næste element mindre end det nuværende $maks$, sker der ikke noget, og der fortsættes til det næste element i listen. 
+Dette gentages indtil hele listen er gennemgået, hvorefter $maks$ returneres.
+
 Herunder ses et eksempel på hvordan en sådan søgealgortime kan skrives med pseudokode:
 
 
 \begin{algorithm}
 \caption{Find maksimalt element i en liste}
 \label{find_maks}
-\textbf{procedure} $ maks(a_1, a_2, ... a_n) $
+\textbf{procedure} $ maks(a_1, a_2, ..., a_n) $
 
 $ maks:=a_1 $ \\
 \textbf{for} $i :=2$ \textbf{til} $n$ \\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 \textbf{hvis} $maks<a_i$ \textbf{så}
 $maks:=a_i$ \\
-\textbf{returner} $maks \lbrace maks$ er det største element $\rbrace$
+\textbf{returnér} $maks \, \lbrace maks$ er det største element $\rbrace$
 \end{algorithm}
 
 \subsection{Bubblesort}
-
 Et andet problem, der kan løses ved hjælp af algoritmer, er sorteringen af elementerne i en liste. 
 Til dette findes der flere forskellige algoritmer, men her vil kun "Bubblesort$"$ blive beskrevet. 
-I Bubblesort algoritmen undersøges ét element i listen af gangen. 
+
+I Bubblesort algoritmen undersøges ét element i listen ad gangen. 
 Elementet sammenlignes med det efterfølgende element således, at det bytter plads med det næste element, hvis dette er af en lavere værdi. 
-Hvis elementet bytter plads med det næste element fortsættes sammenligningen med det efterfølgende element. 
-Hvis ikke de to bytter plads, sammenlignes det næste element med det, der kommer efter det. 
+Derefter fortsætter denne sammenligning på det næste element.
 Når hele listen er gennemgået gentages proceduren, men denne gang sammenlignes der ikke med det sidste element i listen, da det allerede vil være det største element. 
 Dette gentages $n-1$ gange, da det sidste skridt får de to første elementer på plads. 
-Med Pseudokode kan algoritmen skrives sådan:
+
+Med pseudokode kan algoritmen skrives sådan:
 
 \begin{algorithm}
 \caption{Bubblesort}
@@ -65,19 +67,19 @@ $\lbrace a_1, a_2, ..., a_n $ står nu i voksende rækkefølge $\rbrace $
 \end{algorithm}
 
 \subsection{Grådige algoritmer}
-De sidste algoritmer, der vil blive beskrevet i kapitlet er grådige algoritmer, som bruges til at optimere. 
-Grådige algoritmer kan se ud på mange måder, alt efter hvad det er som skal optimeres. 
-Ideen med en grådig algoritme er, at den er designet til i hvert trin, at tage den beslutning, der umiddelbart viker bedst.
+De sidste algoritmer, der vil blive beskrevet i kapitlet er grådige algoritmer, som bruges til optimering. 
+Grådige algoritmer kan se ud på mange måder, alt efter hvad det er, som skal optimeres. 
+Ideen med en grådig algoritme er, at den er designet til i hvert trin at tage den beslutning, der umiddelbart virker bedst.
 Dette giver dog ikke nødvendigvis det bedst mulige resultat.  
 
-Algoritmen kan eventuelt bruges til finde fordelingen af mønter, hvis et bestemt beløb skal opnåes. 
+Algoritmen kan eventuelt bruges til finde fordelingen af mønter, hvis et bestemt beløb skal opnås. 
 Ønskes det at finde det mindste antal mønter til at dække et bestemt beløb, sættes møntværdierne ind i en liste sorteret fra største til mindste mønt. 
 Den første mønt sammenlignes med det samlede beløb. 
 Er mønten mindre end det samlede beløb, tilføjes 1 til den variabel, der beskriver det samlede antal mønter. 
 Værdien af mønten trækkes fra beløbet, så kun det resterende beløb er tilbage. 
 Er mønten større fortsættes til næste mønt.  
 Det første skridt gentages indtil mønten er større end det resterende beløb, da det er muligt at have flere af den samme mønt. 
-Når det resterende beløb er 0, behøves der ikke flere mønter og antallet af mønter returneres.
+Når det resterende beløb er 0, behøves der ikke flere mønter, og antallet af mønter returneres.
 
 \begin{algorithm}
 \caption{Algoritme for antal mønter}
@@ -94,53 +96,52 @@ $d:=d+1$ $\lbrace$ tilføjer en mønt $\rbrace$ \\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 $n:=n-m_i$ \\
-$\lbrace d$ er det antal af mønter der skal bruges for at opfylde beløbet $n\rbrace$
+	\textbf{returnér} $d$ \, $\lbrace d$ er det antal af mønter der skal bruges for at opfylde beløbet $n\rbrace$
 \end{algorithm}
- 
 
-\begin{thm}
+\begin{tcolorbox}
+\begin{lem}
 \label{19_kr}
-Hvis $n$ er et positivt heltal, så vil det minimale antal af mønter, der til sammen giver $n$, hvor man bruger 20-, 10-, 5-, 2- og 1-kroner, maksimalt indeholde en 10'er, en 5'er, to 2'ere og en 1'er, hvor der ikke samtidigt kan være både to 2'ere og en 1'er.
+Hvis $n$ er et positivt heltal, så vil det minimale antal af mønter, der til sammen giver $n$, hvor der bruges 20-, 10-, 5-, 2- og 1-kroner, maksimalt indeholde en 10'er, en 5'er, to 2'ere og en 1'er, hvor der ikke samtidigt kan være både to 2'ere og en 1'er.
 Beløbet i 10-, 5-, 2- og 1-kroner kan ikke overstige 19 kroner.  
-\end{thm}
+\end{lem}
+\end{tcolorbox}
 
 \begin{proof}
 \label{19_kr_bevis}
-Det antages for modstrid, at Sætning \ref{19_kr} ikke gælder.
-Hvis antallet af en mønt er større end angivet, kan de erstattes af færre mønter som opfylder den samme værdi. 
-Hvis der eksempelvis er to 10'ere kan de erstattes af en 20'er. 
-Hvis der er to 5'ere kan de erstattes af en 10'er. 
-Er der tre 2'ere kan de erstattes af en 5'er og en 1'er. 
-På samme måde hvis der er to 1'ere kan de erstattes af en 2'er.
-Desuden, må der ikke være to 2'ere og en 1'er samtidig, da disse 3 mønter kan erstattes af en 5'er. 
-Dette er i modstrid med antagelsen om, at Sætning \ref{19_kr} ikke gælder, derfor må denne være sand. 
+Det antages for modstrid, at Lemma \ref{19_kr} ikke gælder.
+Hvis antallet af en mønt er større end angivet, kan de erstattes af færre mønter, som opfylder den samme værdi. 
+Hvis der eksempelvis er to 10'ere, kan de erstattes af en 20'er. 
+Hvis der er to 5'ere, kan de erstattes af en 10'er. 
+Er der tre 2'ere, kan de erstattes af en 5'er og en 1'er. 
+Hvis der på samme måde er to 1'ere, kan de erstattes af en 2'er.
+Desuden må der ikke være to 2'ere og en 1'er samtidig, da disse 3 mønter kan erstattes af en 5'er. 
+Dette er i modstrid med antagelsen om, at Lemma \ref{19_kr} ikke gælder, derfor må denne være sand. 
 
 Fordi det maksimale antal mønter er en 10'er, en 5'er, to 2'ere og en 1'er, men der ikke kan være to 2'ere og en 1'er på samme tid, bliver det maksimale beløb der kan opfyldes med mønterne 19 kroner. 
 \end{proof}
 
 \begin{thm}
 \label{gradig_satning}
-Den gådige algoritme for danske mønter finder det optimale antal mønter til at give ethvert beløb.
+Den gådige algoritme for danske mønter finder det optimale antal mønter for ethvert givent beløb.
 \end{thm}
 
 \begin{proof}
 \label{gradig_bevis}
 Det antages for modstrid, at der findes et beløb $n$, som kan opfyldes ved hjælp af 1-, 2-, 5-, 10- og 20-kroner, som bruger færre mønter end den grådige algoritme. 
-Det bemærkes, at $t'$, det optimale antal af 20'ere der bruges for at opfylde $n$, må være det samme som $t$, antallet af 20'ere den grådige algoritme vil bruge. 
-Dette vides, fordi det ses ud fra sætning \ref{19_kr}, at der med mønter under 20'ere maks vil kunne findes 19 kroner. 
+Det bemærkes, at det optimale antal af 20'ere, der bruges for at opfylde $n$, $t'$, må være det samme som antallet af 20'ere den grådige algoritme vil bruge, $t$. 
+Dette følger af Lemma \ref{19_kr}, fordi der med mønter under 20'ere maksimalt vil kunne findes 19 kroner, hvis det stadig skal være optimalt. 
 Det betyder, at $t'$ og $t$ bliver nødt til at være det samme, da $t'$ ellers vil bruge mere end det optimale antal mønter. 
-Der er altså det samme antal 20'ere i begge tilfælde, det samme gælder for de resterende mønter. 
-Den grådige algoritme vil bruge flest mulige 10-kroner, hvilket vil være det samme antal som det optimale, da det optimale antal er 1. 
-På samme måde vil antallet af 10'ere være det samme, fordi summen af 5'ere, 2'ere og 1'ere maks kan give 9.
-Det samme gælder for 5-kroner, 2-kroner og 1-kroner. 
-Dette er i modstrid med antagelsen om, at der findes en løsning der bruger færre mønter end den grådige algoritme.
-Det kan derfor konkluderes, at den grådige algoritme vil finde det optimale antal mønter.
+Der er altså det samme antal 20'ere i begge tilfælde, hvilket også gælder for de resterende mønter. 
+Den grådige algoritme vil bruge flest mulige 10'ere, hvilket vil være det samme antal som det optimale, da det optimale antal er 1. 
+På samme måde vil antallet af 10'ere være det samme, fordi summen af 5'ere, 2'ere og 1'ere maksimalt kan give 9.
+Det samme gælder for 5-, 2- og 1-kroner.
 
+Dette er i modstrid med antagelsen om, at der findes en løsning, der bruger færre mønter end den grådige algoritme.
 \end{proof}
 
-\noindent For det møntsystem, der er i Danmark, fungerer Algoritme \ref{greedy_algorithm} godt. 
-Forestiller man sig et andet møntsystem, der eksempelvis indeholder mønter af værdierne 20, 15 og 5, vil algoritmen ikke finde det optimale antal. 
-Køres møntsystemet igennem Algoritme\ref{greedy_algorithm}, hvor det ønskede beløb er 30, vil algoritmen returnere, at der skal bruges tre mønter. 
-Den vil nemlig starte med at tilføje en mønt af værdien 20 og derefter to af værdien 5.
-Det optimale antal møter i dette tilfælde er dog to, idet to mønter af værdien 15 ville have opfyldt beløbet.
-%\input{incl/main/halting_problem}
+Algoritme \ref{greedy_algorithm} fungerer godt med det danske møntsystem. 
+Betragtes et andet møntsystem, der eksempelvis indeholder mønter af værdierne 20, 15 og 5, vil algoritmen ikke altid finde det optimale antal. 
+Køres Algoritme \ref{greedy_algorithm} med møntsystemet, hvor det ønskede beløb er 30, vil algoritmen returnere, at der skal bruges tre mønter. 
+Den vil starte med at tilføje en mønt af værdien 20 og derefter to af værdien 5.
+Det optimale antal mønter i dette tilfælde er dog to, idet to mønter af værdien 15 vil have opfyldt beløbet.

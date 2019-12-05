@@ -1,4 +1,4 @@
-\section{Eulerkredse}
+\section{Eulerkredse og -veje}
 
 En bestemt type af kredse gennemgår alle kanter i en graf og kaldes Eulerkredse. 
 
@@ -8,45 +8,44 @@ En bestemt type af kredse gennemgår alle kanter i en graf og kaldes Eulerkredse
 \end{defn}
 
 \begin{exmp}
-	Eksempler på en Eulerkreds og en Eulervej kan ses her: 
+	Et eksemepel på en Eulerkreds og en Eulervej kan ses i Figur \ref{?} og \ref{?}: 
 \end{exmp}
 
 \input{fig/tikz/euler_kreds}
 
-Et eksempel på en Eulerkreds i Figur \ref{euler_kreds} kan være: $A,B,E,C,F,E,D,A$
-
 \input{fig/tikz/euler_vej}
 
-Et eksempel på en Eulervej i Figur \ref{euler_vej} kan være: $A,B,E,D,A,E,F,C$.
+Et eksempel på en Eulerkreds i Figur \ref{euler_kreds} kan være: $A,B,E,C,F,E,D,A$, og
+et eksempel på en Eulervej i Figur \ref{euler_vej} kan være: $A,B,E,D,A,E,F,C$.
 
 Der eksiserer ikke en Eulerkreds i alle grafer.
-For at der kan eksisere en Eulerkreds i en sammenhægende multigraf skal Sætning \ref{Eulerkreds_multigraf} gælde. 
 
 \begin{thm}\label{Eulerkreds_multigraf}
 	En sammenhængende multigraf med mindst to knuder, har en Eulerkreds hvis og kun hvis, hver knude er af lige grad.
 \end{thm}
 
 \begin{proof} 
-	Først bevises sammenhængen den ene vej. 
+	Først bevises det at hvis en graf har en Eulerkreds, så er graden af alle knuderne i grafen lige. 
+
 	En kreds begynder i en knude $a$ og fortsætter langs en kant, som er incident med $a$, til en ny knude $b$. 
-	Denne kant kaldes $\lbrace a,b \rbrace$, kanten bidrager med 1 til $\deg(a)$. 
+	Denne kant kaldes $\lbrace a,b \rbrace$, og kanten bidrager med 1 til $\deg(a)$. 
 	Hver gang kredsen passerer gennem en knude, tilføjes 2 til graden af denne knude. 
 	Til sidst ender kredsen tilbage i $a$, og bidrager igen med 1 til $\deg(a)$.
 	Hele graden af hver knude opnåes, da alle kanter skal passeres.  
 	Derfor må $\deg(a)$ være lige og graden af hver knude må også være lige.  
 	
-	Nu bevises sammenhængen den anden vej. 
-	For at finde en Eulerkreds i en sammenhægende multigraf  G, som opfylder at graden af hver knude er lige, tages først udgangspunkt i en tilfældig underkreds i grafen.
-	Denne underkeds starter i en knude $a$, hvorfra en simpel vej dannes ved at bevæge sig rundt i grafen. 
-	Dette forsætter indtil man når en knude hvor man ikke kan komme videre, fordi alle incidente kanter allerede er en del af den den simple vej, som nu er blevet til en kreds. 
-	Hvorefter et H indførers, som er lig med G, undtagen kanterne i den tilfældige underkreds.
+	Nu bevises at hvis alle knuder er af lige grad, vil der eksistere en Eulerkreds i grafen.
+
+	For at finde en Eulerkreds i en sammenhægende multigraf  $G$, som opfylder at graden af hver knude er lige, tages først udgangspunkt i en tilfældig underkreds i $G$.
+	Denne underkreds starter i en knude $a$, hvorfra en simpel vej dannes ved at bevæge sig rundt i grafen. 
+	Dette forsættes indtil en knude nås, hvorfra det ikke er muligt at komme videre, fordi alle incidente kanter allerede er en del af den simple vej, som nu er blevet til en kreds. 
+	Herefter indførers $H$, som er lig med $G$, frataget kanterne i den tilfældige underkreds.
 	Alle knuder i grafen vil stadig være af lige grad.
-	Fordi de fjernede kanter danner en kreds, må de dermed fjerner et lige tal fra graden af en knuder, eller en knude vil blive isoleret.
-	Så dannes en ny underkreds i H, som starter i et endepunkt i den tidligere underkreds.
+	Så dannes en ny underkreds i $H$, som starter i et endepunkt i den tidligere underkreds.
 	Fordi grafen er sammenhængende vides det at den nye underkreds kan forbindes med en tidligere underkreds. 
-	Kanter i den nye underkreds fjernes fra H. 
-	Samtidig sættes de to underkredse sættes sammen til én kreds.
-	Denne procedure forsættes indtil der ikke er flere kanter i H.
+	Kanter i den nye underkreds fjernes fra $H$. 
+	Samtidig sættes de to underkredse sammen til én kreds.
+	Denne procedure forsættes, indtil der ikke er flere kanter i $H$.
 	Da må der være dannet en Eulerkreds. 
 \end{proof} 
  
@@ -59,7 +58,7 @@ Der findes også andre algoritmer, som kan finde Eulerkredse i en graf, men diss
 	\textbf{procedure} Euler(G: sammenhængende multigraf med knuder af lige grad)\\
 	$kreds:=$ en kreds i G der begynder i en vilkårlig knude med kanter, der danner en kreds.\\
 	$H:= G$ med kanterne fra $kreds$ fjernet\\
-	\textbf{når} $H$ har kanter\\
+	\textbf{så længe} $H$ har kanter\\
 	$\-$ $\-$ $\-$ $\-$ $\-$ $\-$
 	$underkreds:=$ en kreds i $H$, der begynder i en knude $v$ i $H$, som også er et endepunkt af en kant i $kreds$ \\ 
 	$\-$ $\-$ $\-$ $\-$ $\-$ $\-$
@@ -70,114 +69,107 @@ Der findes også andre algoritmer, som kan finde Eulerkredse i en graf, men diss
 \end{algorithm}
 
 Hvis der ikke findes en Eulerkreds i en graf, kan der godt eksistere en Eulervej. 
-Sætning \ref{Eulervej_multigraf} fortæller hvornår der findes en Eulervej. 
 
 \begin{thm} \label{Eulervej_multigraf}
-	En sammenhængende multigraf graf G har en Eulervej, men ikke en Eulerkreds, hvis og kun hvis den har præcist to knuder af ulige grad.  
+	En sammenhængende multigraf graf $G$ har en Eulervej, men ikke en Eulerkreds, hvis og kun hvis den har præcist to knuder af ulige grad.  
 \end{thm} 
 
 \begin{proof}
-	Først bevises sammenhængen den ene vej. 
-	Antag at en sammenhængende multigraf G har en Eulervej fra $a$ til $b$, men ikke en Eulerkreds. 
+	Først bevises det at hvis der eksistere en Eulervej i en graf, vil netop to knuder være af ulige grad. 
+
+	Antag at en sammenhængende multigraf, $G$, har en Eulervej fra $a$ til $b$, men ikke en Eulerkreds. 
 	Den første kant som passeres på vejen bidrager med 1 til $\deg(a)$. 
 	Hver gang vejen passerer knuden $a$ vil 2 tilføjes til $\deg(a)$. 
-	Den sidste kant på vejen bidrager 1 til graden af endepunktet for vejen, $\deg(b)$. 
+	Den sidste kant på vejen bidrager 1 til graden af endeknuden for vejen, $\deg(b)$. 
 	Ligesom for $a$, kan vejen krydse $b$. 
 	Hver gang dette måtte ske tilføjes 2 til graden af $b$. 
 	Resultatet bliver, at $a$ og $b$ altid vil være af ulige grad. 
-	Alle andre knuder på vejen vil være af lige grad, fordi at 2 tilføjes til graden af en knude, hver gang en knude passeres.  
+	Alle andre knuder på vejen vil være af lige grad, fordi 2 tilføjes til graden af en knude, hver gang en knude passeres.  
 	
-	Nu bevises sammenhængen den anden vej.
+	Nu bevises det at vis der indgår netop to knuder af ulige graf i grafen, vil der eksistere en Eulerkreds.
+
 	Antag at $a$ og $b$ er de eneste knuder af ulige grad. 
-	Hvis en kant $\lbrace a,b \rbrace$ tilføjes til G, vil alle knuder i grafen være af lige grad. 
-	Så gælder Sætning \ref{Eulerkreds_multigraf}, og der vil være en Eulerkreds i G. 
+	Hvis en kant $\lbrace a,b \rbrace$ tilføjes til $G$, vil alle knuder i grafen være af lige grad. 
+	Så gælder Sætning \ref{Eulerkreds_multigraf}, og der vil være en Eulerkreds i $G$. 
 	Fjernes kanten $\lbrace a,b \rbrace$ igen vil der være en Eulervej. 
 \end{proof}
 
-\section{Hamiltonkredse}
+\section{Hamiltonkredse og -veje}
 En anden type kreds er en Hamiltonkreds. 
-En Hamiltonkreds er en kreds som går gennem hver knude i grafen én gang. På samme måde kan der også eksistere en hamilton vej, som er en vej der går gennem hver kant i en graf én gang. 
+En Hamiltonkreds er en kreds som går gennem hver knude i grafen én gang. På samme måde kan der også eksistere en Hamiltonvej, som er en vej der går gennem hver knude i en graf én gang. 
 
 \begin{defn} \label{hamiltion_defn}
-	En Hamilton vej er en simpel vej i en graf G, som går gennem hver knude én gang.
-	En simpel kreds i en graf G, som går gennem hver knude én gang kaldes en Hamiltionkreds.
+	En Hamiltonvej er en simpel vej i en graf $G$, som går gennem hver knude én gang.
+	En simpel kreds i en graf $G$, som går gennem hver knude én gang kaldes en Hamiltonkreds.
 \end{defn}
 
 \begin{exmp}
-	Eksempler på en Hamiltionkreds og en Hamiltionvej kan ses her:
+	Eksempler på en Hamiltonkreds og en Hamiltonvej kan ses i Figur \ref{?} og \ref{?}.
 	
 	\input{fig/tikz/hamiltion_vej_kreds}
 	
-	Et eksempel på en Hamiltionkreds i grafen kan være: $A,B,F,C,E,D,A$
-	Et eksempel på en Hamiltionvej kan være: $A,D,B,C,F,E$
+	Et eksempel på en Hamiltonkreds i grafen er: $A,B,F,C,E,D,A$, og
+	et eksempel på en Hamiltonvej er: $A,D,B,C,F,E$.
 \end{exmp}
 
-Der kendes ikke en simpel måde til at bestemme om der findes en Hamiltionkreds i en graf, ligesom der gør for en Eulerkreds. 
-Der findes dog flere sætningerne der kan give en ide om eksistensen af en hamiltonkreds. Med udgangspunkt i \cite{wilson_graph} bevises følgende to sætninger.
+Der kendes ikke en simpel måde til at bestemme om der findes en Hamiltonkreds i en graf, ligesom der gør for en Eulerkreds. 
+Der findes dog flere sætningerne der kan give en ide om eksistensen af en Hamiltonkreds. Med udgangspunkt i \cite{wilson_graph} bevises følgende to sætninger.
 
 \begin{thm} \label{ores_thm}
-	\textbf{Ores' Sætning:} 
-	Hvis G er en simpel graf med $n$ knuder, og $n\geq3$, så\\ $\deg(u)+\deg(v)\geq n$ for hvert par af ikke tilstødende knuder $u$ og $v$ i G. 
-	Så har G en Hamiltionkreds. 
+	\textbf{Ores Sætning:} 
+	Lad $G$ være er en simpel graf med $n$ knuder, og $n\geq3$, hvor er $\deg(u)+\deg(v)\geq n$ for hvert par af knuder, $u$ og $v$, der ikke er naboer i $G$. 
+	Da har $G$ en Hamiltonkreds. 
 \end{thm}
 
 \begin{proof}
 	Lad $G=(V,E)$ være en graf med $n$ knuder, som opfylder sætningens betingelser. For modstrid antages det, at denne graf \textit{ikke} indeholder en Hamiltonkreds.
 
 	Til denne graf kan der tilføjes kanter uden at overtræde sætningens betingelser. Antag nu, at grafen $G$ mangler netop én kant, for at indeholde en Hamiltonkreds. 
-	Derfor må $G$ indeholde Hamiltonvejen 
+	Da må $G$ indeholde Hamiltonvejen 
 	$$v_1, v_2,...,v_n,$$
 	som går gennem alle grafens knuder. 
-	Men idet $G$ ikke indeholder en Hamiltonkreds, må $v_1$ og $v_n$ \textit{ikke} være forbundet af en kant.
+	Men idet $G$ ikke indeholder en Hamiltonkreds, må $v_1$ og $v_n$ da \textit{ikke} være naboer.
 	Derfor opfylder de, at
-
 	\begin{align} \label{eq:sum_deg}
 		\textrm{deg}(v_1)+\textrm{deg}(v_n)\geq n.
 	\end{align}
-	
-	Der må være en knude $v_i$ forbundet med $v_1$, som opfylder, at $v_{i-1}$ er forbundet til $v_n$, idet følgende to mængder kan opstilles:
 
+	Der må være en knude $v_i$ der er nabo til $v_1$, som opfylder, at $v_{i-1}$ er nabo til $v_n$.
+	Da kan de følgende to mængder opstilles:
 	\begin{align*}
 		A &= \lbrace i: 2 \leq i \leq n-1, \; v_1 \; \textrm{er nabo til} \; v_i \rbrace \\
-		B &= \lbrace i: 3 \leq i \leq n, \; v_n \; \textrm{er nabo til} \; v_{i-1} \rbrace.
+		B &= \lbrace i: 3 \leq i \leq n, \; v_n \; \textrm{er nabo til} \; v_{i-1} \rbrace,
 	\end{align*}
+	hvor $A$ er mængden af indekser på knuder, $v_1$ er nabo til, og $B$ er mængden af indekser plus 1, på knuder, $v_n$ er nabo til. 
 
 	Om disse gælder, at
-
 	\begin{align*}
 		|A| &= \deg(v_1) \\
 		|B| &= \deg(v_n),
 	\end{align*}
-	
-	hvorfor $A,B \subseteq \lbrace 2,...,n \rbrace$, som indeholder mindst $n-1$ elementer.
-	Det følger af \eqref{eq:sum_deg}, at summen af deres grader er størrer end $n$.
-	Dueslagsprincippet giver så, at der må findes et $v_i$ og et $v_{i-1}$ som er forbundet til henholdsvis $v_1$ og $v_n$.
-	En Hamiltonkreds kan nu dannes af følgen
+	hvorfor $A,B \subseteq \lbrace 2,...,n \rbrace$, som indeholder $n-1$ elementer.
+	Fra Ligning \eqref{eq:sum_deg} må $\deg(v_1) + \deg(v_n) \geq n$.
+	Skuffeprincippet giver så, at $A$ og $B$ deler mindst ét element, og der må da findes et $v_i$ og et $v_{i-1}$ som er forbundet til henholdsvis $v_1$ og $v_n$.
 
-	\begin{align*}
-		v_1, v_2,...v_{i-1},v_n,...,v_i,v_1,
-	\end{align*}
-
-	som skitseres i Figur \ref{ore_bevis}. Dette er i modstrid med vores antagelse om, at der ikke fandtes en Hamiltonkreds i en graf med de givne betingelser.
-	
-	\begin{figure}[h]
+	\begin{figure}[h!]
 		\centering
 		\input{fig/tikz/ore_bevis}
-		\caption{Ore} \label{ore_bevis}
+		\caption{En illustration der viser Hamiltonkredsen i $G$.} \label{ore_bevis}
 	\end{figure}
 	
-	Dette er i modstrid med vores antagelse om, at der ikke findes en Hamiltonkreds i en graf med de givne betingelser.
+	En Hamiltonkreds kan nu dannes af følgen $v_1, v_2,...v_{i-1},v_n,...,v_i,v_1$,
+	som skitseres i Figur \ref{ore_bevis}. Dette er i modstrid med vores antagelse om, at der ikke eksisterer en Hamiltonkreds i en graf med de givne betingelser.	
 \end{proof}
 
-En anden sætning der kan bruge til måske at bestemme om der eksiserer en Hamiltonkreds er Diracs Sætning 
+En anden sætning der kan bruges til at undersøge om der eksiserer en Hamiltonkreds i en graf er Diracs Sætning 
 
 \begin{thm} \label{diracs_thm}
 	\textbf{Diracs Sætning:} 
-	Hvis G er en simpel graf med $n$ knuder, og $n\geq3$, så graden af hver knude i G er mindst $\frac{n}{2}$, har G en Hamiltionkreds.  
+	Lad $G$ være en simpel graf med $n$ knuder, og $n\geq3$, så graden af hver knude i $G$ er mindst $\frac{n}{2}$, har $G$ en Hamiltonkreds.  
 \end{thm}
 
 \begin{proof}
-	Lad $G=(V,E)$ være en graf med 3 eller flere knuder. Udvælg fra grafen, $G$, to ikke-forbundne knuder så at $u,v \in G$. Det følger da direkte af Ores Sætning, at
+	Lad $G=(V,E)$ være en graf med 3 eller flere knuder. Udvælg fra grafen, $G$, to knuder, $u$ og $v$, der ikke er naboer. Det følger da direkte af Ores Sætning, at
 	\begin{align*}
 	\textrm{deg}(u) + \textrm{deg}(v) \geq \frac{n}{2} + \frac{n}{2} = n,
 	\end{align*}
@@ -185,12 +177,12 @@ En anden sætning der kan bruge til måske at bestemme om der eksiserer en Hamil
 \end{proof}
 
 Derudover gælder det også, at der ikke kan eksistere en hamiltonkreds i en graf med en knude, der har graden 1. 
-Disse to sætninger fortæller, hvornår der helt sikkert eksisterer en hamiltonkreds, men en hamiltonkreds kan godt eksistere uden at opfylde sætningerne. 
+Disse to sætninger beskriver, hvornår der med sikkerhed eksisterer en Hamiltonkreds, men en Hamiltonkreds kan godt eksistere uden at opfylde sætningerne. 
 
 \begin{exmp}
 	I Figur \ref{pentagon} ses en graf der indeholder en hamiltonlkreds.
-	Grafen overholder ikke Ores' Sætning, da summen af to knuders grader aldrig kan give et resultat større end $4$, hvilket er mindre end $n$.
-	Grafen overholder heller ikke Diracs Sætning, fordi $n=5$, mens graden af hver kant i grafen er $2$, hvilket er mindre end $n/2$.
+	Grafen overholder ikke betingelserne i Ores' Sætning, da summen af to knuders grader aldrig kan give et resultat større end $4$, hvilket er mindre end $n$.
+	Grafen overholder heller ikke betingelserne i Diracs Sætning, fordi $n=5$, mens graden af hver kant i grafen er $2$, hvilket er mindre end $n/2$.
 	
 	\begin{figure}[h]
 	\centering
@@ -212,5 +204,3 @@ Disse to sætninger fortæller, hvornår der helt sikkert eksisterer en hamilton
 	\label{pentagon}
 	\end{figure}
 \end{exmp}
-
-Det gælder i øvrigt, at jo flere kanter en graf har, jo større er sandsynligheden for at der eksisterer en hamiltonkreds. 

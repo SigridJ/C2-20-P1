@@ -6,10 +6,10 @@ En vej i en graf defineres i Definition \ref{def_vej}.
 
 \begin{defn} \label{def_vej}
 	Lad $n \in  \mathbb{Z}^{+}$ og lad $G$ være en ikke-orienteret graf. 
-	En \textit{vej} af \textit{længde} $n$ fra $x_0$ til $x_n$ i $G$ er en sekvens af $n$ kanter $e_1, ..., e_n$ i $G$, for hvilke der eksisterer en sekvens $x_0,x_1,...,x_{n-1},x_n$ af punkter, så $e_i$ har endepunkterne $x_{i-1}$ og $x_i$ for $i=1,...,n$.
+	En \textit{vej} af \textit{længde} $n$ fra $v_0$ til $v_n$ i $G$ er en sekvens af $n$ kanter $e_1, ..., e_n$ i $G$, for hvilke der eksisterer en sekvens $v_0,v_1,...,v_{n-1},v_n$ af knuder, så $e_i$ har endeknuderne $v_{i-1}$ og $v_i$ for $i=1,...,n$.
 \end{defn}
 
-Når der er tale om en vej gennem en simpel graf, antages denne som sekvensen af de knuder, den går igennem $x_0, x_1,...,x_n$. 
+Når der er tale om en vej gennem en simpel graf, antages denne som sekvensen af de knuder, den går igennem $v_0, v_1,...,v_n$. 
 En vej eller kreds er \textit{simpel} hvis den ikke indeholder den samme kant mere end én gang. 
 
 \begin{exmp} \label{ex_vej}
@@ -22,44 +22,43 @@ En vej eller kreds er \textit{simpel} hvis den ikke indeholder den samme kant me
 \begin{figure}[h]
 	\centering
 	\input{fig/tikz/graf_vej}
-	\caption{graf} \label{graf_vej}
+	\caption{Et eksempel på en simpel graf, hvor der indgår simple veje.} \label{graf_vej}
 \end{figure}
 
 \section{Kredse}
-I et særligt tilfælde, kan en vej kaldes en kreds.
+I et særligt tilfælde kan en vej kaldes en kreds.
 En kreds er en vej, der starter og slutter det samme sted, hvilket defineres i Definition \ref{def_kredse}
 
 \begin{defn}
 \label{def_kredse}
 En vej kaldes en \textit{kreds}, hvis den begynder og ender i samme knude, $u=v$ og $n>0$.
-Kredsen siges at gå gennem knuderne $x_1,x_2,...,x_{n-1}$ eller passere gennem kanterne $e_1, e_2,...e_n$.
+Kredsen siges at gå gennem knuderne $v_1,v_2,...,v_{n-1}$ eller passere gennem kanterne $e_1, e_2,..., e_n$.
 \end{defn}
 
 \begin{exmp}
-I Figur \ref{graf_kreds} ses en kreds, $A,B,C,E,D,A$, som har længden 5, fordi den går gennem 5 kanter. Det er en kreds, fordi den begynder og ender i punktet $A$.
+I Figur \ref{graf_kreds} ses en kreds, $A,B,C,E,D,A$, som har længden 5, fordi den går gennem 5 kanter. Det er en kreds, fordi den begynder og ender i knuden $A$.
 I Figur \ref{graf_ikke_kreds} ses en vej $C,B,A,D,E,C,F$.
-Denne vej er ikke en kreds, fordi den ikke starter og slutter i samme punkt. 
+Denne vej er ikke en kreds, fordi den ikke starter og slutter i samme knude. 
 \end{exmp}
 
 \begin{figure}[!htb]
    \begin{minipage}{0.48\textwidth}
      \centering
 		 \input{fig/tikz/graf_kreds}
-     \caption{Kreds}
+     \caption{Et eksempel på en kreds i en simpel graf.}
      \label{graf_kreds}
    \end{minipage}\hfill
    \begin{minipage}{0.48\textwidth}
      \centering
 		 \input{fig/tikz/graf_ikke_kreds}
-     \caption{Vej}
+     \caption{Et eksempel på en vej i en simpel graf.}
      \label{graf_ikke_kreds}
    \end{minipage}
 \end{figure}
 
 \section{Sammenhængende grafer}
-For en graf kan det være relevant at afgøre, om der er en forbindelse mellem alle punkter i grafen, således, at det er muligt at komme fra et hvilket som helst punkt til et andet. Dette kaldes om en graf er sammenhængende eller ej.
-(I dette kapitel vil der kun blive fokuseret på ikke-orienterede grafer.)
-En sammenhængende graf defineres i Definition \ref{def_iosmh}.
+For en graf kan det være relevant at afgøre, om der er en vej mellem alle knuder i grafen, således, at det er muligt at komme fra en hvilken som helst knude til en anden.
+I dette kapitel vil der kun blive fokuseret på ikke-orienterede grafer.
 
 \begin{defn}
 \label{def_iosmh}
@@ -75,14 +74,13 @@ Der er en simpel vej mellem ethvert knudepar i en sammenhængende graf.
 \begin{proof}
 Knuderne $u$ og $v$ er to knuder i den sammenhængende graf $G=(V,E)$.
 Per Definition \ref{def_iosmh} er der en vej mellem $u$ og $v$.
-Lad en korteste vej mellem $u$ og $v$ være $x_0,x_1,...,x_n$, hvor $x_0=u$ og $x_n=v$.
-Denne vej af kortest længde er simpel, fordi den ikke går gennem den samme kant flere gange. 
-For modstrid antages det, at den ikke er simpel. 
-Så er $x_i=x_j$ for $0 \leq i < j$, fordi vejen går gennem kanten $x_i,x_{i+1}$ to gange, specielt besøges $x_i$ to gange.
-Det betyder, at der er en kortere vej fra $u$ til $v$, med punktsekvens $x_0,x_1,...,x_{i-1},x_j,...,x_n$, som opnåes ved at fjerne kanterne i sekvensen $x_i,...,x_{j-1}$.
-Dette er i modstrid med antagelsen om, at en kortest mulig vej ikke er simpel.
-Det må derfor gælde, at en kortest mulig vej mellem ethvert knudepar er simpel. 
-\end{proof}
+Lad en kortest mulig vej mellem $u$ og $v$ være $v_0,v_1,...,v_n$, hvor $v_0=u$ og $v_n=v$.
 
+For modstrid antages det, at denne vej ikke er simpel. 
+Så er $v_i=v_j$ for $0 \leq i < j$, fordi vejen går gennem kanten $v_i,v_{i+1}$ to gange, specielt besøges $v_i$ to gange.
+Det betyder, at der er en kortere vej fra $u$ til $v$, med knudesekvens $v_0,v_1,...,v_{i-1},v_j,...,v_n$, som opnåes ved at fjerne kanterne i sekvensen $v_i,...,v_{j-1}$.
+Dette er i modstrid med antagelsen om, at en kortest mulig vej ikke er simpel.
+Det må derfor gælde, at der er en simpel vej mellem alle knudepar i en sammenhængende graf. 
+\end{proof}
 
 \input{incl/main/euler_hamilton}

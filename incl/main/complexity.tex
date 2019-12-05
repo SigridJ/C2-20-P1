@@ -1,48 +1,58 @@
 \chapter{Kompleksitet}
 \section{Funktioners vækst}
-Dette kapitel er skrevet med udgangspunkt i \citep{dmat} , medmindre andet er angivet. 
+Dette kapitel er skrevet med udgangspunkt i \citep{dmat}, medmindre andet er angivet. 
 
-For at det kan konkluderes, at en algoritme har løst et problem tilfredsstillende, er der to faktorer, der skal være opfyldt; den skal altid producere den rigtige løsning, og den skal være effektiv. 
-Effektiviteten af en algoritme kan måles i den tid, det tager en computer at løse et problem ud fra algoritmen givet en bestemt mængde input, kaldet tidskompleksitet, samt den mængde hukommelse, algoritmen kræver på computeren, kaldet pladskompleksitet. 
+For at det kan konkluderes, at en algoritme har løst et problem tilfredsstillende, er der to faktorer, der skal være opfyldt. Den skal altid returnere den rigtige løsning, og den skal være effektiv. 
+Effektiviteten af en algortime kan måles på flere måder.
+Tidskompleksiteten af en algoritme betegner, hvor lang tid en computer tager om at køre algoritmen.
+Pladskompleksiteten betegner på samme måde den mænge hukommelse, algoritmen bruger.
+Både tidskompleksiteten og pladskompleksiteten er en måde at beskrive det antal recurser en algoritme bruger, hvilket også blot kaldes algoritmens kompleksitet.
 Der bør tages stilling til begge forhold, når algoritmer implementeres.
-Det er vigtigt at vide, hvor lang tid det vil tage algoritmen at løse et problem, men også at sørge for, at den krævede mængde hukommelse er tilgængelig på computeren, for at algoritmen kan implementeres.
 
-En algoritmes tidskompleksitet er udtrykt ved antallet af operationer, algoritmen udfører ved en bestemt mængde input og ikke den faktiske computertid, da forskellige computere kræver forskellige tidsrum til at udføre operationerne i algoritmen. 
+Tiden den samme algoritme bruger på én computer er ikke nødvendigvis den samme på en andencomputer, da tiden også afhænger af en given computers computerkræft.
+Derfor er en algoritmes tidskompleksitet udtrykt ved antallet af operationer der bliver udførert, i stedet for den faktiske computertid.
 Antal operationer, algoritmen anvender, kan estimeres som en funktion af størrelsen på inputtet. 
 Til at vurdere, hvorvidt algoritmer er effektive til at løse problemer i takt med at inputtet stiger, kan store-$O$ notationen benyttes.
 
 \subsection{Store-$O$ notation}
 Funktioners vækst kan beskrives ved store-$O$ notation.
-Ved brug af store-$O$ notation kan væksten af $f(x)$ sammenlignes med væksten af en funktion $g(x)$, hvor $f(x)$ vil vokse langsommere end $g(x)$ for $x$-værdier af en hvis størrelse. \\
+Ved brug af store-$O$ notation kan væksten af $f(x)$ sammenlignes med væksten af en funktion $g(x)$, for at undersøge om $f(x)$ vokser langsommere end $g(x)$ for $x$-værdier af en hvis størrelse.
+
 \begin{defn}\label{eq_o}
-	Lad $f$ og $g$ være funktioner fra $\mathbb{Z}$ eller $\mathbb{R}$ over i $\mathbb{R}$. 
-	Det siges, at $f(x)$ er $O(g(x))$, hvis der findes konstanter $C$ og $k$ kaldet vidner, således 
-\begin{align}
-|f(x)| \leq C |g(x)|
-\end{align}
-så længe $x>k$.
+	Lad $f$ og $g$ være funktioner fra $\Z \to \R$ eller $\R \to \R$.
+	Det siges, at $f(x)$ er $O(g(x))$, hvis der findes konstanter $C$ og $k$, kaldet vidner, således 
+	\begin{align*}
+		|f(x)| \leq C |g(x)|
+	\end{align*}
+	så længe $x>k$.
 \end{defn}
-\noindent For at vise, at $f(x)$ er $O(g(x))$, er det tilstrækkeligt at finde ét par vidner $C$ og $k$, så uligheden i \eqref{eq_o} er opfyldt. Så længe der er ét par vidner, findes der uendeligt mange vidner. Er $C$ og $k$ vidner, så er $C'$ og $k'$ også vidner, hvis $C'>C$ og $k'>k$, fordi så er $|f(x)| \leq C |g(x)| \leq C' |g(x)| $, så længe $x>k'>k$.  
+
+For at vise, at $f(x)$ er $O(g(x))$, er det tilstrækkeligt at finde ét par vidner $C$ og $k$, så ulighederne i Definition \eqref{eq_o} er opfyldt. Så længe der er ét par vidner, findes der uendeligt mange vidner. Er $C$ og $k$ vidner, så er $C'$ og $k'$ også vidner, hvis $C'>C$ og $k'>k$, da det så må gælde at $|f(x)| \leq C |g(x)| \leq C' |g(x)| $, så længe $x>k'>k$.
 
 \begin{exmp}\label{exmp_bigO}
-Funktionen $f(x)=x^4+9x^3+4x+7$ er $O(x^4)$. Det kan vises ved at finde et par af konstanterne $C$ og $k$, som opfylder $|f(x)| \leq C |g(x)|$ når $x>k$. Funktionen $f(x)$ kan estimeres når $x>1$, hvoraf det følger $9x^3\leq 9x^4$ og $4x\leq 4x^4$ og $7\leq 7x^4$. Det følger derfor at 
-\begin{align*}
-f(x) &\leq x^4+9x^3+4x+7 \\
-&\leq x^4+9x^4+4x^4+7x^4 \\
-&\leq 21x^4
-\end{align*}
-I eksemplet er vidnerne $C$ og $k$ bestemt til $C=21$ og $k=1$, og $f(x)$ er derfor $O(x^4)$. 
-\end{exmp} 
-\noindent Ofte kan potensfunktioner bruges til at estimere funktioners vækst, som set i Eksempel \ref{exmp_bigO}. 
-I det følgende vil det blive vist, at polynomier af grad $n$ er $O(x^n)$. \\
+	Funktionen $f(x)=x^4+9x^3+4x+7$ er $O(x^4)$.
+	Det kan vises ved at finde et par vidner $C$ og $k$, som opfylder $|f(x)| \leq C |g(x)|$ når $x>k$.
+	Funktionen $f(x)$ kan estimeres når $x>1$, hvoraf det følger at $9x^3\leq 9x^4$ og $4x\leq 4x^4$ samt $7\leq 7x^4$.
+	Det følger derfor, at 
+	\begin{align*}
+		f(x) &\leq x^4+9x^3+4x+7 \\
+		&\leq x^4+9x^4+4x^4+7x^4 \\
+		&\leq 21x^4.
+	\end{align*}
+	I eksemplet er vidnerne $C$ og $k$ fundet som $C=21$ og $k=1$, og $f(x)$ er derfor $O(x^4)$. 
+\end{exmp}
+
+Ofte kan potensfunktioner bruges til at estimere funktioners vækst, som set i Eksempel \ref{exmp_bigO}. 
+I det følgende vil det blive vist, at polynomier af grad $n$ er $O(x^n)$.
+
 \begin{thm}
 Lad $f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots +a_1x+a_0$, hvor $a_0, a_1, \dotsc, a_{n-1}, a_n$ er reelle tal. 
-Så er $f(x)$ $O(x^n)$.
+Da er $f(x)$ $O(x^n)$.
 \label{thm_poly}
 \end{thm}
 
 \begin{proof}
-Antag, at $x>1$ og ved brug af trekantsuligheden $|x| + |y| \geq |x + y|$, gælder
+Antag, at $x>1$ og ved brug af trekantsuligheden, $|x| + |y| \geq |x + y|$, må det gælde at
 	\begin{align*}
 		|f(x)| &= |a_nx^n+a_{n-1}x^{n-1}+ \cdots +a_1x+a_0| \\
 		&\leq |a_n|x^n + |a_{n-1}| x^{n-1}+ \cdots + |a_1| x +|a_0| \\
@@ -55,32 +65,38 @@ Det er blevet bevist, at med vidnerne $C= |a_n| + |a_{n-1}| + \cdots + |a_1| + |
 
 \subsection{Store-$\Omega$ notation}
 Store-$O$ notation bruges i stort omfang til at beskrive væksten af funktioner og giver en øvre grænse af denne. 
-For at beskrive en nedre grænse bruges store-$\Omega$ notation. Ved brug af store-$\Omega$ notation kan væksten af $f(x)$ sammenlignes med væksten af en funktion $g(x)$, hvor $f(x)$ vil vokse hurtigere end $g(x)$ for $x$-værdier af en hvis størrelse. \\
+For at beskrive en nedre grænse bruges store-$\Omega$ notation.
+Ved brug af store-$\Omega$ notation kan væksten af $f(x)$ sammenlignes med væksten af en funktion $g(x)$, hvor der undersøges om $f(x)$ vokser hurtigere end $g(x)$ for $x$-værdier af en hvis størrelse.
+
 \begin{defn}
-	Lad $f$ og $g$ være funktioner fra $\mathbb{Z}$ eller $\mathbb{R}$ over i $\mathbb{R}$. 
-	Det siges, at $f(x)$ er $\Omega(g(x))$, hvis der findes konstanter $C$ og $k$ kaldet vidner, således 
-	\begin{align}
+	Lad $f$ og $g$ være funktioner fra $\Z \to \R$ eller $\R \to \R$. 
+	Det siges, at $f(x)$ er $\Omega(g(x))$, hvis der findes konstanter $C$ og $k$, kaldet vidner, således 
+	\begin{align*}
 		|f(x)| \geq C |g(x)|
-	\end{align}
+	\end{align*}
 så længe $x>k$.
 \end{defn}
 
 \begin{exmp}\label{exmp_theta}
-Funktionen $f(x)=x^4+9x^3+4x+7$ fra Eksempel \ref{exmp_bigO} også er $\Omega(x^4)$. 
+Funktionen $f(x)=x^4+9x^3+4x+7$ fra Eksempel \ref{exmp_bigO} som også er $\Omega(x^4)$. 
 Det ses nemlig, at $f(x)=x^4+9x^3+4x+7 \geq x^4 $ når $x>1$, og derfor er $f(x)$ $\Omega(x^4)$ med vidnerne $C=1$ og $k=1$.
 \end{exmp}
 
 \subsection{Store-$\Theta$ notation}
 Store-$\Theta$ notation bruges, når der ønskes både en øvre og en nedre grænse for væksten af en funktion $f(x)$. \\
+
 \begin{defn}\label{eq_theta}
-	Lad $f$ og $g$ være funktioner fra $\mathbb{Z}$ eller $\mathbb{R}$ over i $\mathbb{R}$. 
+	Lad $f$ og $g$ være funktioner fra $\Z \to \R$ eller $\R \to \R$. 
 Funktionen $f(x)$ siges at være $\Theta (g(x))$, hvis $f(x)$ både er $O(g(x))$ og $\Omega g(x))$. 
 	Er $f(x)$ $\Theta (g(x))$ siges $f(x)$ at have samme orden som $g(x)$. 
 \end{defn}
+
 Ud fra Definition \ref{eq_theta} følger det, at $f(x)$ er $\Theta (g(x))$, hvis og kun hvis der findes konstanterne $C_1$, $C_2$ og $k$, således
-\begin{align}
+
+\begin{align*}
 	C_1 |g(x)| \leq |f(x)| \leq C_2 |g(x)|
-\end{align}
+\end{align*}
+
 når $x>k$. \\
 \begin{exmp}
 Betragt igen funktionen $f(x)=x^4+9x^3+4x+7$ fra Eksempel \ref{exmp_bigO} og \ref{exmp_theta} også er $\Theta(x^4)$.
@@ -89,20 +105,23 @@ Da $f(x)$ både er $O(x^4)$ og $\Omega (x^4)$, så er $f(x)$ også $\Theta (x^4)
 
 \section{Kompleksitet af algoritmer}
 Funktioners vækst kan beskrives ved store-$\Theta$ notation, hvor væksten af $f(n)$ estimeres af en funktion $g(n)$ med samme orden som $f(n)$. 
-Hvis funktionen $f(n)$ beskriver antal operationer, en algoritme benytter for at udregne et resultat ved $n$ input, så angiver store-$\Theta$ notation kompleksiteten af algoritmen, hvor $\Theta(g(n))$ er kompleksiteten. 
+Hvis funktionen $f(n)$ beskriver antal operationer, en algoritme benytter for at udregne et resultat ved $n$ input, så angiver store-$\Theta$ notation tidskompleksiteten af algoritmen, hvor $\Theta(g(n))$ er ordenen. 
 Der er forskellige typer kompleksitet, hvor “worst case”-kompleksiteten er algoritmens orden af det maksimale antal operationer en algoritme skal bruge for at udføre en opgave. 
-Der findes også gennemsnitlig kompleksitet, der anvender det gennemsnitlige antal operationer for at løse et problem for alle mulige inputs. Gennemsnitligt kompleksitet er kompliceret end “worst case”-kompleksitet, og i projektet omtales kun “worst case”-kompleksitet.
-I tabel \ref{tab_complex} er typiske funktioner angivet, som beskriver ordenen af funktionenm der beskriver antal operationer i en algoritme samt terminologien for kompleksiteten.\\
+Der findes også gennemsnitlig kompleksitet, der anvender det gennemsnitlige antal operationer for at løse et problem for alle mulige inputs.
+Gennemsnitligt kompleksitet er mere kompliceret end “worst case”-kompleksitet, og derfor omtales kun “worst case”-kompleksitet i projektet.
+
+I Tabel \ref{tab_complex} er algortimers typiske ordener og deres tilhørende kompleksitet angivet. 
 
 \input{fig/tab/tabel_kompleksitet}
 
-\noindent I forbindelse med kompleksitet af algoritmer er funktionerne, der beskriver antal operationer, typisk af ordenen som simple funktioner som $1$, $\log n$, $n$, $n \log n$, $n^b$, $b^n$ og $n!$ set i tabel \ref{tab_complex}. 
+I forbindelse med kompleksitet af algoritmer er funktionerne, der beskriver antal operationer, typisk af ordenen som de simple funktioner der ses i Tabel \ref{tab_complex}. 
 En algoritme siges at have lineær “worst case”-kompleksitet, hvis $f(n)$ beskriver det maksimale antal operationer,  algoritmen kan bruge, og $f(n)$ er $\Theta(n)$. 
 En algoritme siges at have polynomiel “worst case”-kompleksitet, hvis $f(n)$ er $\Theta(n^b)$, hvor at $f(n)$ er det maksimale antal operationer i algoritmen.
 
 \begin{exmp}
 Tidskompleksiteten af Algoritme \ref{find_maks} fra forrige kapitel, der finder det maksimale element i en begrænset mængde heltal, kan beskrives med store $\Theta$-notation. 
 Antallet af sammenligninger bruges som måleenhed for tidskompleksiteten af denne algoritme, i det sammenligninger er den eneste basale operation, der bruges.
+
 Det første element i listen sættes midlertidigt til $maks$, så $maks=a_1$. 
 Ved en sammenligning $i \leq n$ fastslås det, hvorvidt listen fortsætter endnu. Hvis listen fortsætter, sammenlignes det midlertidige maksimum med det næste udtryk i listen. 
 Hvis $maks<a_i$ opdateres det midlertidige maksimum, således $maks=a_2$.

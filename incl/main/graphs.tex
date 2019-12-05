@@ -1,22 +1,23 @@
 \chapter{Grafteori}
 \usetikzlibrary{arrows, automata}
 
-Dette kapitel har til formål at beskrive og redegøre for forskellige grafer og de vigtigste elementer i grafteori. 
+Dette kapitel har til formål at beskrive og redegøre for forskellige grafer og de vigtigste elementer i grafteori, og bygger på \citep{dmat} hvis ikke andet er angivet. 
 
-Grafer kan bruges i mange tilfælde, blandt andet kortlægning af veje i en by, kloaksystemer og forskellige kredsløb.
-En simpel graf defineres formelt i definition \ref{def_simpel_graf}:
+Grafer kan bruges i mange tilfælde herunder kortlægning af veje i en by, kloaksystemer og forskellige kredsløb.
+En simpel graf defineres formelt i Definition \ref{def_simpel_graf}.
 
 
 \begin{defn}
-En graf $G = (V, E)$ består af $V$, et antal knuder, og E, et antal kanter, hvor $V, E \neq \emptyset$.
-Hver kant har enten en eller to knuder den er forbundet til, og beskrives som kantens endepunkter.
-En kant siges at forbinde dens endepunkter. Denne konstruktion er en \it{simpel graf}.
+En graf $G = (V, E)$ består af en mængde af knuder, $V$, og en mængde af kanter, $E$, hvor $V \neq \emptyset$.
+Hver kant har enten en eller to knuder, den er forbundet til, og de beskrives som kantens endeknuder.
+En kant siges at forbinde dens endeknuder. Denne konstruktion kaldes en \it{simpel graf}.
 \label{def_simpel_graf}
 \end{defn}
 
 En kant repræsenteres ved en linje mellem to knuder, og knuder repræsenteres ved et punkt.
 Har grafen enten et uendeligt antal knuder, kanter eller begge dele, er der tale om en \textit{uendelig graf}.
 Ellers betegnes grafen som en \textit{endelig graf}.
+I dette projekt vil der kun blive arbejdet med endelige grafer.
 
 \begin{figure}[h]
 	\centering
@@ -24,7 +25,7 @@ Ellers betegnes grafen som en \textit{endelig graf}.
 	\caption{Et eksempel på en simpel, endelig graf} \label{simpel_graf}
 \end{figure}
 
-I Figur \ref{simpel_graf} er skitseret en simpel graf med $6$ knuder og $8$ forbindende kanter. 
+I Figur \ref{simpel_graf} er der skitseret en simpel graf med seks knuder og otte forbindende kanter. 
 
 Optræder der et uordnet knudepar $\lbrace u,v \rbrace$ i grafen, som forbindes af to eller flere kanter, kaldes grafen en \textit{multigraf}.
 Findes der en knude i grafen, der med en kant er forbundet til sig selv (en \textit{løkke}), er der tale om en \textit{pseudograf}. Et eksempel på de to grafer kan ses nedenfor i Figur \ref{Fig:Data1} og \ref{Fig:Data2}.
@@ -42,25 +43,25 @@ Findes der en knude i grafen, der med en kant er forbundet til sig selv (en \tex
    \end{minipage}
 \end{figure}
 
-Det kan imidlertid være nødvendigt at give kanterne en retning, for at indikere hvilken retning to knuder er forbundet.
-I grafer for eksempelvis trafikale netværk, kan det være nødvendigt at indikere hvilken retning trafikken kører, eller at angive ensrettede strækninger.
-Til disse formål vil en simpel graf være utilstrækkelig idet kanterne deri netop ikke er retningsbestemte.
+Det kan imidlertid være nødvendigt at give kanterne en retning for at indikere, i hvilken retning to knuder er forbundet.
+I grafer, der eksempelvis repræsenterer trafikale netværk, kan det være nødvendigt at indikere, hvilken retning trafikken kører i eller at angive ensrettede strækninger.
+Til disse formål vil en simpel graf være utilstrækkelig, idet kanterne deri netop ikke er retningsbestemte.
 
 \begin{defn}
-En orienteret graf $G = (V, E)$ består af en mængde knuder, $V$, og en mængde \textit{orienterede} kanter, $E$, hvorom der gælder, at $V, E \neq \emptyset$.
+En orienteret graf $G = (V, E)$ består af en mængde knuder, $V$, og en mængde \textit{orienterede} kanter, $E$, hvor $V, E \neq \emptyset$.
 
 En orienteret kant kan opfattes som et ordnet knudepar $(u,v)$ hvor $u,v \in  V$.
 \label{def_retn_graf}
 \end{defn} 
 
-Definition \ref{def_retn_graf} tillader muligheden for, at et knudepar kan forbindes af optil flere orienterede kanter.
-Findes dette i grafen, kaldes den en \textit{oritenteret multigraf}, og denne må også indeholde løkker.
-I det tilfælde, at alle knudepar kun forbindes af netop én ortienteret kant, og der ingen løkker er, er grafen en \textit{simpel orienteret graf}.
+Definition \ref{def_retn_graf} tillader muligheden for, at et knudepar kan forbindes af op til flere orienterede kanter.
+Findes dette i grafen, kaldes den en \textit{orienteret multigraf}, og denne må også indeholde løkker.
+I det tilfælde, at alle knudepar kun forbindes af netop én orienteret kant, og der ingen løkker er, er grafen en \textit{simpel orienteret graf}.
 
 \begin{figure}[h]
 	\centering
 	\input{fig/tikz/simple_oriented_graph}
-	\caption{Et eksempel på en retningsbestemt graf, hvor man kan se pilene definere retningen.}
+	\caption{Et eksempel på en orienteret graf, hvor pilene definerer retningen.}
 \end{figure}
 
 Eksempelvis er der i et netværk af computere brug for at kommunikation kan ske både frem og tilbage mellem enhederne.
@@ -73,19 +74,19 @@ Til dette kan der gøres brug af orienterede multigrafer.
 	\caption{Et eksempel på en orienteret multigraf, hvor der både er adskillige kanter mellem knuderne A og B, samt er der en løkke tilstede i knudepunktet C.}
 \end{figure}
 
-Nogle gange er det nødvendigt at konstruere et netværk med både orientierede og ikke-orienterede kanter. Disse grafer kaldes \textit{kombinerede grafer}.
+Nogle gange er det nødvendigt at konstruere et netværk med både orienterede og ikke-orienterede kanter. Disse grafer kaldes \textit{kombinerede grafer}.
 
 \begin{figure}[!h]
 	\centering
 	\input{fig/tikz/mixed_graph}
-	\caption{Et eksempel på en kombineret graf hvor både orienterede og ikke-orienterede kanter indgår, samt en løkke i knudepunktet C}
+	\caption{Et eksempel på en kombineret graf hvor både orienterede og ikke-orienterede kanter indgår samt en løkke i knudepunktet C.}
 \end{figure}
 
-For at kunne danne et større overblik over de forskellige grafer og deres definition og karakteristika henvises der til Figur \ref{table:graf_oversigt}.
+For at kunne danne et større overblik over de forskellige grafer, deres definition og karakteristika henvises der til Figur \ref{table:graf_oversigt}.
 
 \begin{table}[h]
 	\input{fig/tab/graphs}
-	\caption{Her kan der ses et overblik over de forskellige grafer} \label{table:graf_oversigt}
+	\caption{Et overblik over de forskellige grafertyper} \label{table:graf_oversigt}
 \end{table}
 
 \input{incl/main/graphs2}
