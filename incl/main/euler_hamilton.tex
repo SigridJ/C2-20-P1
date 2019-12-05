@@ -130,33 +130,53 @@ $$v_1, v_2,...,v_n,$$
 som går gennem alle grafens knuder. 
 Men idet $G$ ikke indeholder en Hamiltonkreds, må $v_1$ og $v_n$ \textit{ikke} være forbundet af en kant.
 Derfor opfylder de, at
-$$\textrm{deg}(v_1)+\textrm{deg}(v_n)\geq n.$$
-Heraf følger det, at der må være en knude $v_i$ forbundet med $v_1$, som opfylder, at $v_{i-1}$ er forbundet til $v_n$. 
-Dermed opstår der modstrid, idet kredsen
-$$v_1, v_2,...,v_{i-1},v_n,...,v_i,v_1$$
-er en Hamiltonkreds i $G$. 
-  
+\begin{align} \label{eq:sum_deg}
+\textrm{deg}(v_1)+\textrm{deg}(v_n)\geq n.
+\end{align}
+
+
+
+Der må være en knude $v_i$ forbundet med $v_1$, som opfylder, at $v_{i-1}$ er forbundet til $v_n$, idet følgende to mængder kan opstilles:
+\begin{align*}
+A &= \lbrace i: 2 \leq i \leq n-1, \; v_1 \; \textrm{er nabo til} \; v_i \rbrace \\
+B &= \lbrace i: 3 \leq i \leq n, \; v_n \; \textrm{er nabo til} \; v_{i-1} \rbrace.
+\end{align*}
+Om disse gælder, at
+\begin{align*}
+|A| &= \deg(v_1) \\
+|B| &= \deg(v_n),
+\end{align*}
+hvorfor $A,B \subseteq \lbrace 2,...,n \rbrace$, som indeholder mindst $n-1$ elementer. Det følger af \eqref{eq:sum_deg}, at summen af deres grader er størrer end $n$. Dueslagsprincippet giver så, at der må findes et $v_i$ og et $v_{i-1}$ som er forbundet til henholdsvis $v_1$ og $v_n$. En Hamiltonkreds kan nu dannes af følgen
+\begin{align*}
+v_1, v_2,...v_{i-1},v_n,...,v_i,v_1,
+\end{align*}
+som skitseres i Figur \ref{ore_bevis}. Dette er i modstrid med vores antagelse om, at der ikke fandtes en Hamiltonkreds i en graf med de givne betingelser.
+
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
 [scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
-  \node (n1) at (0,4) {$v_1$};
-  \node (n2) at (1.5,3) {$v_2$};
-  \node (n3) at (3,2) {};
-  \node (n4) at (4.5,1) {};
+  \node (n1) at (0,0) {$v_1$};
+  \node (n2) at (1.5,0) {$v_2$};
+  \node (n3) at (3,0) {};
+  \node (n4) at (4.5,0) {};
   \node (n5) at (6,0) {$v_{i-1}$};
-  \node (n6) at (8,0) {$v_1$};
-  \node (n7) at (9.5,1) {};
-  \node (n8) at (11.5,2) {};
-  \node (n9) at (13.5,3) {$v_{n-1}$};
-  \node (n10) at (15,4) {$v_n$};
-  \foreach \from/\to in {n1/n2,n2/n3,n3/n4,n4/n5,n5/n6,n6/n7,n7/n8,n8/n9,n9/n10,n1/n6,n10/n5}
+  \node (n6) at (8,0) {$v_i$};
+  \node (n7) at (9.5,0) {};
+  \node (n8) at (11.5,0) {};
+  \node (n9) at (13.5,0) {$v_{n-1}$};
+  \node (n10) at (15,0) {$v_n$};
+  \foreach \from/\to in {n1/n2,n2/n3,n3/n4,n4/n5,n5/n6,n6/n7,n7/n8,n8/n9,n9/n10}
     \draw (\from) -- (\to);
+  \path
+  	(n1) edge [bend left=32.5] (n6)
+  	(n10) edge [bend left=32.5] (n5);
 \end{tikzpicture}
 \caption{Ore} 
 \label{ore_bevis}
 \end{figure}
 
+Dette er i modstrid med vores antagelse om, at der ikke findes en Hamiltonkreds i en graf med de givne betingelser.
 \end{proof}
 
 En anden sætning der kan bruge til måske at bestemme om der eksiserer en Hamiltonkreds er Diracs Sætning 
