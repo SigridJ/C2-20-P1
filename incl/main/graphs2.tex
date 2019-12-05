@@ -4,7 +4,7 @@
 Der findes begreber til at beskrive kanter og knuder i ikke-orienterede grafer, som bl.a. beskriver hvordan knuder og kanter er orienterede i forhold til hinanden samt hvor mange knuder eller kanter, der er forbundet til en given knude.
 
 \begin{defn}
-To knuder $u$ og $v$ siges at være naboer i en ikke-orienteret graf $G$, hvis $u$ og $v$ er endepunkter i en kant $e$, og $e$ er incident med både $u$ og $v$.
+To knuder $u$ og $v$ siges at være naboer i en ikke-orienteret graf $G$, hvis $u$ og $v$ er endeknuder i en kant $e$. Da betegnes $e$ som værende incident med både $u$ og $v$.
 \end{defn}
 
 \begin{defn}
@@ -12,10 +12,10 @@ En mængde af alle naboer til en knude $v$ i en graf $G=(V,E)$ betegnes $N(v)$ o
 \end{defn}
 
 \begin{defn}
-Graden af en knude $v$ i en ikke-orienteret graf betegnes $deg(v)$ og er antallet af kanter incidente med den givne knude.  En løkke vil bidrage med to til graden af knuden. 
+Graden af en knude $v$ i en ikke-orienteret graf betegnes $\deg(v)$ og er antallet af kanter incidente med den givne knude.  En løkke vil bidrage med to til graden af knuden. 
 \end{defn}
 
-\noindent En knude med grad 0 betegnes som værende \textit{isoleret} og har ingen incidente kanter. En knude med grad 1 betegnes som et \textit{vedhæng} og har netop én incident kant.
+\noindent En knude af nulte grad betegnes som værende \textit{isoleret} og har ingen incidente kanter. En knude af første grad betegnes som et \textit{vedhæng} og har netop én incident kant.
 
 \begin{exmp}
 Betragt grafen i Figur \ref{eksempel_nabo}. Graden af knuderne og nabolagene for knuderne kan bestemmes. Samtidig kan isolerede knuder eller vedhæng identificeres.\\
@@ -48,7 +48,6 @@ For at beskrive summen af graderne for alle knuder i en graf anvendes \textit{Th
 \end{proof}
 
 Som følge af Sætning \ref{handshake} er summen af knudernes grader et lige tal.
-Derfor har en ikke-orienteret graf et lige antal knuder, hvor graden er et ulige tal.
 
 \begin{thm}
 	En ikke-orienteret graf har et lige antal knuder af ulige grad.
@@ -67,8 +66,9 @@ Derfor har en ikke-orienteret graf et lige antal knuder, hvor graden er et ulige
 \end{proof}
 
 \section{Repræsentation af grafer}
-Der er flere brugbare måder at repræsentere grafer på, og man ønsker i hvert tilfælde at vælge den pæneste repræsentation. 
-En overskuelig måde at repræsentere en graf på er ved matricer. To matricer, der almindeligvis bruges, er nabo-matricer, der er baseret på nabo-knuder, og incidens-matricer baseret på incidensen af knuder og kanter. 
+Der er flere brugbare måder at repræsentere grafer på, og det ønskes at vælge den pæneste repræsentation. 
+En overskuelig måde at repræsentere en graf på er ved matricer. 
+To matricer, der almindeligvis bruges, er nabo-matricer, der er baseret på nabo-knuder, og incidens-matricer baseret på incidensen af knuder og kanter. 
 Antag at $G=(V,E)$ er en simpel graf med $n$ knuder, hvor knuderne i $G$ står skrevet i vilkårlig rækkefølge som $v_1$, $v_2$, \dots , $v_n$.
 Nabo-matricen $A$  af G er en $n \times n$ matrix, med 1 som den $(i,j)$’te indgang når $v_i$ og $v_j$ er naboer, og 0 er den $(i,j)$’te indgang, når de ikke er naboer. Hvis nabo-matricen er $A=[a_{ij}]$ så er
 
@@ -84,12 +84,12 @@ Nabo-matricen for en simpel ikke-orienteret graf er symmetrisk dvs.
 $a_{ij}=a_{ji}$, da begge indgange er 1, når de relaterede knuder er naboer, og 0 hvis de ikke er.
 Da en simpel graf ikke indeholder løkker, er hver indgang $a_{ii}=0$ for alle $i=1,2,3, \dots ,n$. 
 
-Nabo-matricer kan også bruges til at repræsentere ikke-orienterede grafer med loops og flere kanter til samme knuder.
-Et loop ved en knude $v_i$ er repræsenteret ved 1 ved position $(i,i)$ i nabo-matricen.
+Nabo-matricer kan også bruges til at repræsentere ikke-orienterede grafer med løkker og flere kanter til samme knuder.
+En løkke ved en knude $v_i$ er repræsenteret ved 1 ved position $(i,i)$ i nabo-matricen.
 Når flere kanter forbinder det samme par af knuder $v_i$ og $v_j$, eller der er flere løkker ved samme knude til stede, er nabo-matricen ikke længere en nul-et matrix, idet den $(i,j)$’te indgang af matricen er lig antallet af kanter forbundet til $\lbrace v_i,v_j \rbrace$.
 Alle ikke-orienterede grafer, herunder multi- og pseudografer, har symmetriske nabo-matricer.
 
-En anden almindelig måde at repræsentere grafer på er ved incidens-matricer.
+En anden almindelig måde at repræsentere grafer på, er ved incidens-matricer.
 Lad $G=(V,E)$ være en ikke-orienteret graf med knuderne $v_1$, $v_2$, \dots , $v_n$ og kanterne $e_1$, $e_2$, \dots , $e_m$. Incidens-matricen, i forhold til ordningen af $V$ og $E$, er en $n x m$ matrix $M=[m_{ij}]$, hvor 
 
 \begin{align*}
@@ -104,7 +104,7 @@ Flere kanter mellem samme to knuder er repræsenteret i incidens-matricen ved s�
 Løkker er repræsenteret ved en søjle med præcis én indgang lig 1, der svarer til den knude, der er incident med løkken.
 
 \begin{exmp}
-	For at illustrere eksempler på at opskrive en nabo-matrice og en incidens-matrice, betragtes grafen i Figur \ref{fig:f1}. 
+	For at illustrere eksempler på at opskrive en nabo-matrice og en incidens-matrice, betragtes grafen i Figur \ref{fig:simple_graph_labels}. 
 	
 	\begin{figure}[h!]
 		\centering
@@ -112,7 +112,7 @@ Løkker er repræsenteret ved en søjle med præcis én indgang lig 1, der svare
 		\caption{Simpel ikke-orienteret graf.} \label{fig:simple_graph_labels}
 	\end{figure}
 	
-	Nabo-matricen $A$ for grafen i Figur \ref{fig:f1} er en $6$x$6$-matrice.
+	Nabo-matricen $A$ for grafen i Figur \ref{fig:simple_graph_labels} er en $6$x$6$-matrice.
 	Indgangen $a_{AA}=0$ angiver, at der ikke er er nogen løkker i $A$.
 	Indgangen $a_{AB}=1$ angiver, at en kant forbinder $A$ og $B$, så $A$ og $B$ er naboer.
 	På samme vis udfyldes resten af nabo-matricen. 
@@ -134,7 +134,7 @@ Løkker er repræsenteret ved en søjle med præcis én indgang lig 1, der svare
 	  \end{blockarray}
 	\end{equation*} 
 	
-	Incident-matricen $M$ for grafen i Figur \ref{fig:f1} er en $6$x$8$-matrice.
+	Incident-matricen $M$ for grafen i Figur \ref{fig:simple_graph_labels} er en $6$x$8$-matrice.
 	Indgangen $m_{A,e_1}=1$ angiver, at $e_1$ er incident med $A$.
 	Indgangen $m_{A,e_2}=0$ angiver, at $e_2$ ikke er incident med $A$ osv.
 	
