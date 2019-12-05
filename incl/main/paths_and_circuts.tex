@@ -1,42 +1,28 @@
 \chapter{Veje og Kredse}
 
-
 \section{Veje}
 Veje i en graf viser, hvilke ruter der er rundt i en graf. Dette er relevant for at finde ruter til en GPS, et computernetværk eller andet, hvor der er behov for at bestemme en rute gennem flere steder. 
 En vej i en graf defineres i Definition \ref{def_vej}.
 
-\begin{defn}
-\label{def_vej}
-Lad $n \in  \mathbb{Z}^{+}$ og lad $G$ være en ikke-orienteret graf. 
-En \textit{vej} af \textit{længde} $n$ fra $x_0$ til $x_n$ i $G$ er en sekvens af $n$ kanter $e_1, ..., e_n$ i $G$, for hvilke der eksisterer en sekvens $x_0,x_1,...,x_{n-1},x_n$ af punkter, så $e_i$ har endepunkterne $x_{i-1}$ og $x_i$ for $i=1,...,n$.
+\begin{defn} \label{def_vej}
+	Lad $n \in  \mathbb{Z}^{+}$ og lad $G$ være en ikke-orienteret graf. 
+	En \textit{vej} af \textit{længde} $n$ fra $x_0$ til $x_n$ i $G$ er en sekvens af $n$ kanter $e_1, ..., e_n$ i $G$, for hvilke der eksisterer en sekvens $x_0,x_1,...,x_{n-1},x_n$ af punkter, så $e_i$ har endepunkterne $x_{i-1}$ og $x_i$ for $i=1,...,n$.
 \end{defn}
 
-\noindent Når der er tale om en vej gennem en simpel graf, antages denne som sekvensen af de knuder, den går igennem $x_0, x_1,...,x_n$. 
+Når der er tale om en vej gennem en simpel graf, antages denne som sekvensen af de knuder, den går igennem $x_0, x_1,...,x_n$. 
 En vej eller kreds er \textit{simpel} hvis den ikke indeholder den samme kant mere end én gang. 
 
-\begin{exmp}
-\label{ex_vej}
-På den simple graf i Figur \ref{graf_vej} ses en simpel vej $A,B,E,F$ af længden 3, fordi vejen går gennem de tre kanter $\lbrace A,B \rbrace$, $\lbrace B,E \rbrace$ og $\lbrace E,F \rbrace$. 
-Vejen er simpel, fordi den ikke går gennem den samme kant mere end en gang. 
-Derimod er $A,B,D,E$ ikke en vej, fordi $\lbrace B,D \rbrace$ ikke er en kant. 
-Vejen $A,B,C,E,B,A$ er også en vej, men den er ikke simpel, fordi den går gennem kanten $\lbrace A,B \rbrace$ to gange. 
+\begin{exmp} \label{ex_vej}
+	På den simple graf i Figur \ref{graf_vej} ses en simpel vej $A,B,E,F$ af længden 3, fordi vejen går gennem de tre kanter $\lbrace A,B \rbrace$, $\lbrace B,E \rbrace$ og $\lbrace E,F \rbrace$. 
+	Vejen er simpel, fordi den ikke går gennem den samme kant mere end en gang. 
+	Derimod er $A,B,D,E$ ikke en vej, fordi $\lbrace B,D \rbrace$ ikke er en kant. 
+	Vejen $A,B,C,E,B,A$ er også en vej, men den er ikke simpel, fordi den går gennem kanten $\lbrace A,B \rbrace$ to gange. 
 \end{exmp}
 
 \begin{figure}[h]
-\centering
-\begin{tikzpicture}
-[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
-  \node (n6) at (3,2) {D};
-  \node (n4) at (3,6) {A};
-  \node (n5) at (6,2) {E};
-  \node (n1) at (6,6) {B};
-  \node (n2) at (9,2) {F};
-  \node (n3) at (9,6) {C};
-  \foreach \from/\to in {n6/n4,n4/n5,n5/n1,n2/n5,n2/n3,n3/n1,n1/n4,n6/n5,n5/n3}
-    \draw (\from) -- (\to);
-\end{tikzpicture}
-\caption{graf} 
-\label{graf_vej}
+	\centering
+	\input{fig/tikz/graf_vej}
+	\caption{graf} \label{graf_vej}
 \end{figure}
 
 \section{Kredse}
@@ -58,44 +44,13 @@ Denne vej er ikke en kreds, fordi den ikke starter og slutter i samme punkt.
 \begin{figure}[!htb]
    \begin{minipage}{0.48\textwidth}
      \centering
-     	\begin{tikzpicture}
-[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
-  \node (n6) at (3,2) {D};
-  \node (n4) at (3,6) {A};
-  \node (n5) at (6,2) {E};
-  \node (n1) at (6,6) {B};
-  \node (n2) at (9,2) {F};
-  \node (n3) at (9,6) {C};
-  \draw (n6) edge [red, thick] (n4);
-  \draw (n6) edge [red, thick] (n5);
-  \draw (n5) edge [red, thick] (n3);
-  \draw (n3) edge [red, thick] (n1);
-  \draw (n1) edge [red, thick] (n4);
-  \foreach \from/\to in {n5/n1,n2/n5,n2/n3,n4/n5}
-    \draw (\from) -- (\to);
-\end{tikzpicture}
+		 \input{fig/tikz/graf_kreds}
      \caption{Kreds}
      \label{graf_kreds}
    \end{minipage}\hfill
    \begin{minipage}{0.48\textwidth}
      \centering
-     \begin{tikzpicture}
-[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
-  \node (n6) at (3,2) {D};
-  \node (n4) at (3,6) {A};
-  \node (n5) at (6,2) {E};
-  \node (n1) at (6,6) {B};
-  \node (n2) at (9,2) {F};
-  \node (n3) at (9,6) {C};
-  \draw (n6) edge [red, thick] (n4);
-  \draw (n6) edge [red, thick] (n5);
-  \draw (n5) edge [red, thick] (n3);
-  \draw (n3) edge [red, thick] (n1);
-  \draw (n1) edge [red, thick] (n4);
-  \draw (n3) edge [red, thick] (n2);
-  \foreach \from/\to in {n5/n1,n2/n5,n4/n5}
-    \draw (\from) -- (\to);
-\end{tikzpicture}
+		 \input{fig/tikz/graf_ikke_kreds}
      \caption{Vej}
      \label{graf_ikke_kreds}
    \end{minipage}
@@ -129,7 +84,5 @@ Dette er i modstrid med antagelsen om, at en kortest mulig vej ikke er simpel.
 Det må derfor gælde, at en kortest mulig vej mellem ethvert knudepar er simpel. 
 \end{proof}
 
-\subsection{sammenhængsgrad}
-Kommer senere
 
 \input{incl/main/euler_hamilton}
