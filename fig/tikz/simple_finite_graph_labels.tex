@@ -1,0 +1,11 @@
+\begin{tikzpicture}[shorten >=1pt,auto,node distance=2cm,thick,main node/.style={circle,fill=blue!25}]                      
+  \node[main node] (a) {F};                                                                                                  
+  \node[main node] (b) [left of=a] {D};                                                                                      
+  \node[main node] (c) [below of=a] {E};                                                                                     
+  \node[main node] (d) [left of=b] {B};                                                                                      
+  \node[main node] (e) [below of=b] {C};                                                                                     
+  \node[main node] (f) [below of=d] {A};                                                                                     
+                                                                                                                            
+  \draw (c) -- (a) -- (b) -- (c) -- (e) -- (d) -- (b) -- (e);                                                               
+  \draw (d) -- (f);                                                                                                         
+\end{tikzpicture}

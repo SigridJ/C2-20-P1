@@ -1,0 +1,19 @@
+\begin{tikzpicture}[shorten >=1pt,auto,node distance=2.5cm,thick,main node/.style={circle,fill=blue!25}]                      
+  \node[main node] (F) {F};                
+  \node[main node] (D) [left of=F] {D};    
+  \node[main node] (E) [below of=F] {E};   
+  \node[main node] (B) [left of=D] {B};    
+  \node[main node] (C) [below of=D] {C};   
+  \node[main node] (A) [below of=B] {A};   
+              
+	\path[-, draw, thick]
+  (A) edge node {$e_1$} (B)
+	(B) edge node {$e_2$} (C)
+	(B) edge node {$e_3$} (D)
+	(C) edge node[right] {$e_4$} (D)
+	(C) edge node {$e_5$} (E)
+	(D) edge node {$e_6$} (E)
+	(D) edge node {$e_7$} (F)
+	(E) edge node[right] {$e_8$} (F)
+	;
+\end{tikzpicture}
