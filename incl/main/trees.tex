@@ -326,7 +326,13 @@ Prims algortime bestemmer det minimalt udspændende træ.
 \begin{proof}
 Lad $G$ være en sammenhængende vægtet graf. Lad $S$ være træet bestående af $e_1$, $e_2$, $\ldots$, $e_{n-1}$ valgt af Prims algoritme. Lad $T$ være et minimalt udspændende træ i $G$ bestående af kanterne $e_1$, $e_2$, $\ldots$, $e_k$, hvor $k$ er det maksimale antal kanter, så $T$ stadig er et minimalt udspændende træ. I følge Sætning \ref{set_prim} skal $S=T$. 
 
-Det antages for modstrid, at $S \neq T$, således at, $k<n-1$. Det betyder, at der er i $T$ er færre kanter end i $S$, og $T$ består derfor af $e_1$, $e_2$, $\ldots$, $e_k$ men ikke $e_{k+1}$. Lad $S_k$ være træet valgt af Prim algortime bestående af $e_1$, $e_2$, $\ldots$, $e_k$, hvor $k>n-1$. Antag nu, at der dannes en graf bestående af $T$, hvor $e_{k+1}$ tilføjes. Da der tilføjes en kant til et udspændende træ, dannes der en kreds, som må indeholde $e_{k+1}$, da $e_{k+1}$ ikke er en del af $T$. Kredsen må indeholde en kant $e \neq e_{k+1}$, som ikke er en del af $S_k$. Kanten $e_{k+1}$ kan ikke 
+Det antages for modstrid, at $S \neq T$, således at, $k<n-1$. Det betyder, at der er i $T$ er færre kanter end i $S$, og $T$ består derfor af $e_1$, $e_2$, $\ldots$, $e_k$ men ikke $e_{k+1}$. 
+Lad $S_k$ være træet valgt af Prim algortime bestående af $e_1$, $e_2$, $\ldots$, $e_k$. Antag nu, at der dannes en graf bestående af $T$, hvor $e_{k+1}$ tilføjes. 
+Da der tilføjes en kant til et udspændende træ, dannes der en kreds, som må indeholde $e_{k+1}$, da $e_{k+1}$ ikke er en del af $T$. 
+Algoritmen vil aldrig danne en kreds i $S_{k+1}$, derfor må der findes en anden kant $e$ i kredsen som ikke er del af $S_{k+1}$.
+Kanten $e$ fjernes fra T, og $e_{k+1}$ tilføjes, og der dannes et nyt træ $T'$  
+Fordi $e_{k+1}$ er valgt af Prims algoritme, mens $e$ også var tilgængelig, må $e_k{k+1}$ have mindre eller samme vægt som $e$. 
+Det betynder at $T'$ også er et minimalt udspændende træ. 
 
  
 \end{proof}
