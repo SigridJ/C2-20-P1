@@ -226,7 +226,7 @@ Betragt grafgen i Figur \ref{eksempel_udspaendende}. Grafen er simpel og sammenh
 En række problemer involverer at finde den eksempelvis korteste, billigste eller på anden vis mest favorable forbindelse, der inkluderer alle knuder i en vægtet graf. Problemet kan løses ved at bestemme et minimalt udspændende træ. I et minimalt udspændende træ er summen af kanternes vægt er mindst muligt, og træet indeholder alle knuder i grafen.
 
 \begin{defn}
-Et minimum udspændende træ i en sammenhængende vægtet graf er et udspændende træ, som har den mindst mulige sum af kanternes vægt.
+Et minimalt udspændende træ i en sammenhængende vægtet graf er et udspændende træ, som har den mindst mulige sum af kanternes vægt.
 \end{defn}
 
 \noindent Der findes forskellige algoritmer til at finde minimalt udspændende træer i algortimer, hvor et eksempel er Prims algoritme. 
@@ -320,8 +320,10 @@ Alt efter rangering af kanter med samme vægt kan rækkefølgen, algortimen væl
   \label{eks_prim}
 \end{figure}
 
+Det vil med udgangspunkt i \cite{prim} bevises, at Prims algortime bestemmer et minimalt udspændende træ.
+
 \begin{thm}
-Prims algortime bestemmer det minimalt udspændende træ. 
+Prims algortime bestemmer et minimalt udspændende træ. 
 \label{set_prim}
 \end{thm}
 
@@ -340,12 +342,16 @@ Det betynder at $T'$ også er et minimalt udspændende træ.
 \end{proof}
 
 \begin{proof}
-Det vil til en start vises, at $T$ er et undertræ. Det skal så med induktion vises, at et træ, $T$, som tilføjes en kant, $e$, er et undertræ af minimalt udspændende træ, $M$. 
+Lad $T$ være et træ. Det skal så med induktion vises, at $T$, som tilføjes en kant, $e$, er et undertræ af et minimalt udspændende træ, $M$. 
 
 \textit{Basisskridt}: Da $T$ i begyndelsen blot består af en enkelt knude uden kanter, er den et undertræ af $M$.
 
 \textit{Induktionsskridtet}: Ved en vilkårlig iteration i algortimen, er $T$ et undertræ af $M$, og Prims algortime tilføjer kanten $e$. Hvis $e$ $\in$ $M$, må $T$ stadig være et undertræ af $M$ i følge induktionsantagelsen.
 
-Antag, at $e \notin M$. Når $e$ tilføjes $M$, fordi $M$ er et udspændende træ. Idet $e$ har en endeknude i $T$ samt en endeknude, der ikke er i $T$, fordi Prims algoritme har tilføjet $e$. Der vil eksistere en anden kant $e'$ i kredsen, som også har netop en endeknude i $T$, fordi $e$ skal have endeknude i $M$, uden at kanten er del af $M$. Prims algoritme kunne have valgt $e'$, men valgte at tilføje $e$, hvorfor vægten af $e$ må være mindre end, eller lig med, vægten af $e'$. Hvis $e$ tilføjes til $M$, mens $e'$ fjernes, opstår et nyt træ $M'$.  Den samlede vægt af $M'$ er mindre end, eller lig med, den samlede vægt af $M$, og $M'$ indeholder $T\bigcup \lbrace e \rbrace$.
-
+Antag, at $e \notin M$. Når $e$ tilføjes $M$ dannes der en kreds, fordi $M$ er et udspændende træ.
+Kanten $e$ har en endeknude i $T$ samt en endeknude, der ikke er i $T$, fordi Prims algoritme har tilføjet $e$. 
+Der vil eksistere en anden kant $e'$ i kredsen, som også har netop en endeknude i $T$, fordi $e$ skal have endeknude i $M$, uden at kanten er del af $M$. 
+Prims algoritme kunne have valgt $e'$, men valgte at tilføje $e$, hvorfor $d(e) \leq d(e')$. 
+Hvis $e$ tilføjes til $M$, mens $e'$ fjernes, opstår et nyt træ $M'$, hvor 
+$d(M') \leq d(M)$, og $M'$ indeholder $T\cup \lbrace e \rbrace$, hvilket følger induktionsantagelsen. 
 \end{proof}
