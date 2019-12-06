@@ -250,6 +250,8 @@ $T:=T$ hvor $e$ er tilføjet.\\
 \textbf{retunér} $T$ $\lbrace T$ er et minimalt udspændende træ.$\rbrace$
 \end{algorithm}
 
+input{incl/main/prims_complexity}
+
 \noindent Der kan i Prims algoritme opstå at algorimten kan vælge mellem flere kanter med samme vægt, og der vil derfor kræves en form for rangering af kanterne.
 
 \begin{exmp}
@@ -335,4 +337,15 @@ Fordi $e_{k+1}$ er valgt af Prims algoritme, mens $e$ også var tilgængelig, m�
 Det betynder at $T'$ også er et minimalt udspændende træ. 
 
  
+\end{proof}
+
+\begin{proof}
+Det vil til en start vises, at $T$ er et undertræ. Det skal så med induktion vises, at et træ, $T$, som tilføjes en kant, $e$, er et undertræ af minimalt udspændende træ, $M$. 
+
+\textit{Basisskridt}: Da $T$ i begyndelsen blot består af en enkelt knude uden kanter, er den et undertræ af $M$.
+
+\textit{Induktionsskridtet}: Ved en vilkårlig iteration i algortimen, er $T$ et undertræ af $M$, og Prims algortime tilføjer kanten $e$. Hvis $e$ $\in$ $M$, må $T$ stadig være et undertræ af $M$ i følge induktionsantagelsen.
+
+Antag, at $e \notin M$. Når $e$ tilføjes $M$, fordi $M$ er et udspændende træ. Idet $e$ har en endeknude i $T$ samt en endeknude, der ikke er i $T$, fordi Prims algoritme har tilføjet $e$. Der vil eksistere en anden kant $e'$ i kredsen, som også har netop en endeknude i $T$, fordi $e$ skal have endeknude i $M$, uden at kanten er del af $M$. Prims algoritme kunne have valgt $e'$, men valgte at tilføje $e$, hvorfor vægten af $e$ må være mindre end, eller lig med, vægten af $e'$. Hvis $e$ tilføjes til $M$, mens $e'$ fjernes, opstår et nyt træ $M'$.  Den samlede vægt af $M'$ er mindre end, eller lig med, den samlede vægt af $M$, og $M'$ indeholder $T\bigcup \lbrace e \rbrace$.
+
 \end{proof}
