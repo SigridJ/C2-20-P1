@@ -1,0 +1,24 @@
+\chapter{Diskussion}
+
+Tidskompleksiteten angivet ved Store-$\Theta$ notation estimerer tiden, det tager en algoritme at løse et problem, i takt med at inputtet stiger. 
+Den faktiske computertid varierer, og nutidens hurtigste computere kan udføre en operation i en algoritme på $10^{-11}$ sekunder.
+En Brute Force algoritme til at løse Travelling Salesperson Problem har faktoriel tidskompleksitet, $\Theta(n!)$, hvor der estimeres en anvendelse af maksimalt $n!$ operationer.
+Med nutidens hurtigste computere, vil det tage algortime urealistisk lang tid løse problemet, hvis inputtet når over eksempelvis $n=20$, hvilket ses i Tabel \ref{tab_algtsp}.
+
+\begin{table}[h]
+ \centering
+  \begin{tabular}{|c|c|c|c|c|}
+   \hline
+   Algoritme & Kompleksitet & $n=10$ & $n=20$ & $n=30$\\
+   \hline
+   Brute Force & $\Theta(n!)$ & $3,6 \cdot 10^{-11}$ sek & $281,6$ dage & $8,4 \cdot 10^{13}$ år \\
+   \hline
+   Dobbelttræ & x & x & x & x \\
+   \hline
+  \end{tabular}
+ \caption{Computertiden for at udføre løsningsalgortimerne til Travelling Salesperson Problem med $10^{-11}$ sekunder per operation.} \label{tab_algtsp}
+\end{table}
+
+Grundet den urealistisk lange computertid vil det ikke være rentabelt at bruge ressourcer på at implementere en Brute Force algortime for at løse Travelling Salesperson Problem i en større graf. 
+Istedet kan der indgås et kompromis med algoritmens præcision. Ved at anvende Dobbelttræ algoritmen opnås der en approksimation på løsningen, men computertiden forbedres markant, som det ses Tabel \ref{tab_algtsp}.  
+Udover egenskaberne at være hurtig at udføre og præcis set i forhold til at finde den optimale løsning kan det overvejes, hvorvidt en algoritme skal være kunne løse problemet for alle typer input.

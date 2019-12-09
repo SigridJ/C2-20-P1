@@ -68,6 +68,31 @@ Der findes også andre algoritmer, som kan finde Eulerkredse i en graf, men diss
 	\textbf{retuner} $kreds$ ($kreds$ er en Eulerkreds)
 \end{algorithm}
 
+For at finde algoritmens kompleksitet, opskrives en funktion, der beskriver antallet af sammenligner algoritmen laver for hver kant, $e$.
+Der tages udgangspunkt i det værst mulige tilfælde. 
+Hver gang algoritmen er ved en knude, vil den undersøge, om den kan vælge en kant, hvor den ikke allerede har været. 
+Dette kræver en sammenligning per kant.
+Finder algoritmen ved sammenligning, at den ikke kan vælge en kant, som den ikke har valgt før, vil den fjerne den underkreds der er dannet. 
+Dette gør, at algoritmen må tage udgangspunkt i en ny knude, som er incident med en af kanterne i den fjernede underkreds.
+I den nye knude vil algoritmen lave en ny sammenligning, for at finde ud af, om den kan vælge en kant, hvor den ikke har været før.
+Dette vil betyde, at det værst mulige tilfælde vil være i en multigraf, hvor der hele tiden vil blive dannet underkredse bestående af to kanter. 
+Hver gang algoritmen danner en ny underkreds, vil det kræve en ekstra sammenligning, og fordi dette sker hver anden gang i værste tilfælde, vil den endelige forskrift blive $f(e)=e+ \frac{e}{2}$.
+Nu kan $O(g(e))$ findes:
+\begin{align*}
+f(e) = e+ \frac{e}{2} \\
+\frac{e}{2} \leq 2e \\
+f(e) \leq O(e).
+\end{align*}
+Derfor kan funktionen siges at være $O(e)$, med vidnerne $C=2$ og $k=1$.
+Så findes $\Omega (g(e))$:
+\begin{align*}
+f(e) = e + \frac{e}{2} \\
+\frac{e}{2} \geq e \\
+f(e) \geq \Omega (e).
+\end{align*}
+Funktionen kan altså siges at være $\Omega (e)$, med vidnerne $C=1$ og $k=1$.
+Da funtionen både er $O(e)$ og $\Omega (e)$ kan den også siges at være $\Theta (e)$.
+\\\\
 Hvis der ikke findes en Eulerkreds i en graf, kan der godt eksistere en Eulervej. 
 
 \begin{thm} \label{Eulervej_multigraf}
