@@ -1,2 +1,29 @@
+\begin{thm}
+	Prims algoritme har tidskompleksiteten $O (n^3)$.
+\end{thm}
+\begin{proof}
+	For at bestemme tidskompleksiteten, skal der findes det værst mulige antal af skridt algortimen udfører.
+	Der tages udgangspunkt i antallet af sammenligninger algrotitmes fortager.
+	for simple grafer er en komplet graf den graf der har flest mulige kanter, og vil derfor være den værst mulige graf i forhold til antallet af sammenligninger algrotitmen foretager.
 
-Hejsa
+	I starten består træet $T$ af to naboknuder, hvilket også betyder at antallet af knuder, $n$, må være større end 1.
+	Derefter vil der for hver knude i $T$, $t_j$, laves en sammenligning med hver knude i grafen, der ikke er i $T$, $t_k$, for at finde ud af om $e$, den forløbige mindste vægt for $t_j$ og en naboknude, er større end $d(t_j t_k)$.
+	Antallet af skridt hvor der er $2$ knuder i $T$ for at tilføje en ny knude til $T$ må da være $2 \cdot (n - 2)$.
+	Derefter er der $3$ knuder i $T$, og antallet af sammenligninger for at tilføje endnu en knude må nu være $3 \cdot (n - 3)$
+	Når der kun er én knude tilbage der ikke er i $T$, må der blot kun blive lavet $(n-1)$ sammenligniner.
+	Da må det samlede antal af sammenligninger, $f(n)$, være
+	\begin{align*}
+		f(n) = 2 (n-2) + 3(n-3) + \dotsb + (n-3) 3 + (n-2) 2 + (n -1).
+	\end{align*}
+	Der er $n -2$ led i denne sum. $n-2$ er større end både $n-3, n-4, ..., 1$ når $n > 1$ og da må
+	\begin{align*}
+		f(n)
+		&\leq 2 (n-2) + 3 (n-2) + \dotsb + (n-2) (n-2) + (n-1) (n-2) \\
+		&= (n-2) \left( 2 + 3 + \dotsb + (n-2) + (n-1) \right) \\
+		&= (n-2) \left( \frac{n(n-1)}{2} - 1 \right) \\
+		&= \frac{1}{2} n^3 - \frac{1}{2} n^2 - 2n + 2 \\
+		&\leq 2n^3 - n^3 - 2n^3 + 2n^3 \\
+		&= n^3,
+	\end{align*}
+	når $n > 1$. Her er vidnerne $k=1$ og $C=1$, og da må $f(n)$ være $O(n^3)$.
+\end{proof}

@@ -8,22 +8,25 @@ Et træ er en sammenhængende ikke-orienteret graf, der ikke indeholder en simpe
 \label{def_tree}
 \end{defn}
 
-\noindent Træer er en type af simple grafer. Da de ikke indeholder en simpel kreds, kan der ikke være flere kanter mellem to knuder, og der kan ikke være løkker. Alternativt og ækvivalent til Definition \ref{def_tree} kan et træ defineres som følger.
+Træer er en type af simple grafer. Da de ikke indeholder en simpel kreds, kan der ikke være flere kanter mellem to knuder, og der kan ikke være løkker. Alternativt og ækvivalent til Definition \ref{def_tree} kan et træ defineres som følger.
 
 \begin{thm}
 En ikke-orienteret graf er et træ hvis og kun hvis, der eksistrerer netop én simpel vej mellem hvert par af knuder. 
 \end{thm}
 
 \begin{proof}
-Antag at en ikke-orienteret graf $T$ er et træ, og lad $u$ og $v$ være to knuder i $T$. 
-Da $T$ er sammenhængende må det betyde, at der er en simpel vej mellem $u$ og $v$ jf. Sætning \ref{smh_satning}. 
-Den simple vej mellem $u$ og $v$ må være den eneste vej mellem $u$ og $v$, for hvis der eksisterer flere veje mellem $u$ og $v$, eksisterer en simpel kreds. 
-Hvis der mellem $u$ og $v$ er to forskellige simple veje $P_{u,v}$ og $P_{v,u}$, må der være mindst ét punkt, der er forskelligt mellem de to veje. 
-En simpel kreds opstår fra og med knuden $x$, hvor $P_{u,v}$ og $P_{v,u}$ første gang adskiller sig fra hinanden. 
-Den simple kreds slutter, når $P_{u,v}$ og $P_{v,u}$ igen har en knude $y$ til fælles og består derfor at knuderne mellem $x$ og $y$.
-Eksistensen af en simpel kreds modstrider antagelsen om, at $T$ er et træ, og derfor må der være netop én simpel vej mellem hvert knudepar i $T$.
+	Antag at en ikke-orienteret graf $T$ er et træ, og lad $u$ og $v$ være to knuder i $T$. 
+	Da $T$ er sammenhængende må det betyde, at der er en simpel vej mellem $u$ og $v$ jf. Sætning \ref{smh_satning}. 
+	Den simple vej mellem $u$ og $v$ må være den eneste vej mellem $u$ og $v$, for hvis der eksisterer flere veje mellem $u$ og $v$, eksisterer en simpel kreds. 
+	Hvis der mellem $u$ og $v$ er to forskellige simple veje $P_{u,v}$ og $P_{v,u}$, må der være mindst ét punkt, der er forskelligt mellem de to veje. 
+	En simpel kreds opstår fra og med knuden $x$, hvor $P_{u,v}$ og $P_{v,u}$ første gang adskiller sig fra hinanden. 
+	Den simple kreds slutter, når $P_{u,v}$ og $P_{v,u}$ igen har en knude $y$ til fælles og består derfor at knuderne mellem $x$ og $y$.
+	Eksistensen af en simpel kreds modstrider antagelsen om, at $T$ er et træ, og derfor må der være netop én simpel vej mellem hvert knudepar i $T$.
 
-Antag nu, at der er netop én simpel vej mellem hvert knudepar i en ikke-orienteret graf $T$. Det betyder, at $T$ er sammenhængende. Desuden må det gælde, at $T$ ingen simple kredse har, da det vil stride i mod antagelsen om, at der er netop én simpel vej mellem hvert knudepar i en $T$. Der kan ikke eksistere en simpel kreds, der kun er én simpel vej mellem to knuder $u$ og $v$, og derfor kan der ikke findes punkter, hvor to eller flere veje mellem $u$ og $v$ er forskellige fra hinanden, hvor der kan dannes en kreds. Grafen $T$ opfylder dermed kravene for at være et træ jf. Definition \ref{def_tree}.
+Antag nu, at der er netop én simpel vej mellem hvert knudepar i en ikke-orienteret graf $T$.
+	Det betyder, at $T$ er sammenhængende. Desuden må det gælde, at $T$ ingen simple kredse har, da det vil stride i mod antagelsen om, at der er netop én simpel vej mellem hvert knudepar i en $T$.
+	Der kan ikke eksistere en simpel kreds, der kun er én simpel vej mellem to knuder $u$ og $v$, og derfor kan der ikke findes punkter, hvor to eller flere veje mellem $u$ og $v$ er forskellige fra hinanden, hvor der kan dannes en kreds.
+	Grafen $T$ opfylder dermed kravene for at være et træ jf. Definition \ref{def_tree}.
 \end{proof}
 
 \begin{exmp}
@@ -47,7 +50,7 @@ For at illustrere en graf, som er et træ, og en graf, som ikke er et træ, iagt
 \label{eksempel_tree}
 \end{figure}
 
-\noindent Grafen i Figur \ref{eksempel_notree} er ikke et træ, da der eksistrer en kreds $\lbrace B, D, C \rbrace$. Grafen er heller ikke et træ med argumentet, at grafen ikke er sammenhængende.\\
+Grafen i Figur \ref{eksempel_notree} er ikke et træ, da der eksistrer en kreds $\lbrace B, D, C \rbrace$. Grafen er heller ikke et træ med argumentet, at grafen ikke er sammenhængende.\\
 
 \begin{figure}[h]
 \centering
@@ -66,13 +69,13 @@ For at illustrere en graf, som er et træ, og en graf, som ikke er et træ, iagt
 \label{eksempel_notree}
 \end{figure}
 
-\noindent Mange anvendelser af træer, kræver at en bestemt knude i en graf fungerer som udgangspunkt. En knude kan indentificeres som en rod, og dermed rodfæste grafen.
+Mange anvendelser af træer, kræver at en bestemt knude i en graf fungerer som udgangspunkt. En knude kan indentificeres som en rod, og dermed rodfæste grafen.
 
 \begin{defn}
 Et rodfæstet træ er et træ med en knude, der er udnævnt som roden. De resterende knuder er orienteret væk fra roden.
 \end{defn}
 
-\noindent Der findes terminologi, der beskriver knudernes forhold til hinanden i en rodfæstet graf. 
+Der findes terminologi, der beskriver knudernes forhold til hinanden i en rodfæstet graf. 
 Hvis $T$ er et rodfæstet træ, så er en knude $v$, som ikke er roden, $\textit{forælder}$ til en knude $u$, hvis der eksiterer en orienteret kant fra $v$ til $u$ i retningen væk fra roden.
 Samtidigt er $u$ $\textit{barn}$ af $v$, og knuder med samme forælder kaldes $\textit{søskende}$. 
 $\textit{Forfædrene}$ til $v$ er knuderne på vejen fra roden til $v$, og $\textit{efterkommerne}$ til $v$ er knuderne, der har $v$ som forfader. 
@@ -121,7 +124,6 @@ Deltræet har $b$ som rod og indeholder efterkommerne af $b$ og kanterne inciden
 \label{eksempel_rootedsubtree}
 \end{figure}
 
-
 \section{Udspændende træer}
 
 Et udspændende træ er et træ, der indeholder alle knuder i en simpel, sammenhængende graf.
@@ -130,7 +132,8 @@ Et udspændende træ er et træ, der indeholder alle knuder i en simpel, sammenh
 I en simpel graf $G$ er et udspændende træ en delgraf af $G$, der indeholder alle knuder i $G$, og som også er et træ.
 \end{defn}
 
-\noindent En simpel graf med et udspændende træ er sammenhængende, fordi der er vej mellem alle knuder i det udspændende træ. Det omvendte gælder også dvs. at hver simpel sammenhængende graf har et udspændende træ, hvilket kan formuleres i det følgende.
+En simpel graf med et udspændende træ er sammenhængende, fordi der er vej mellem alle knuder i det udspændende træ.
+Det omvendte gælder også dvs. at hver simpel sammenhængende graf har et udspændende træ, hvilket kan formuleres i det følgende.
 
 \begin{thm}
 En simpel graf er sammenhængende hvis og kun hvis, den har et udspændende træ.
@@ -174,51 +177,42 @@ Betragt grafgen i Figur \ref{eksempel_udspaendende}. Grafen er simpel og sammenh
 \label{eksempel_udspaendende}
 \end{figure}
 
-\noindent Der er mange muligheder for at finde et udspændende træ i grafen i Figur \ref{eksempel_udspaendende}. For at finde et udspændende træ, fjernes kanter i de simple kredse, indtil der opstår en sammenhængende undergraf, der indeholder alle knuderne i grafen. To eksempler på udspændende træer ses i Figur \ref{eksempel_udspaendende1} og Figur \ref{eksempel_udspaendende2}.
+Der er mange muligheder for at finde et udspændende træ i grafen i Figur \ref{eksempel_udspaendende}. For at finde et udspændende træ, fjernes kanter i de simple kredse, indtil der opstår en sammenhængende undergraf, der indeholder alle knuderne i grafen. To eksempler på udspændende træer ses i Figur \ref{eksempel_udspaendende1}.
 
 %Billede med 4 udspændende træer
 \begin{figure}[!htb]
-\begin{minipage}{1\linewidth}
-
-\centering
-\begin{tikzpicture}
-[scale=.45,auto=left,every node/.style={circle,fill=blue!25},inner sep=1pt,minimum size=2pt]
-  \node (n6) at (3,2) {A};
-  \node (n4) at (3,6) {B};
-  \node (n5) at (6,2) {C};
-  \node (n1) at (6,6) {D};
-  \node (n2) at (9,2) {E};
-  \node (n3) at (9,6) {F};
-  \node (n7) at (12,4) {G};
-  \foreach \from/\to in {n6/n4,n6/n1,n1/n5,n1/n2,n2/n3,n3/n7}
-    \draw (\from) -- (\to);
-\end{tikzpicture}
-\caption{Eksempel på udspændende træ.}
-\label{eksempel_udspaendende1}
-\end{minipage}
-
-\hfill
-
-\begin{minipage}{1\linewidth}
-\centering
-\begin{tikzpicture}
-[scale=.45,auto=left,every node/.style={circle,fill=blue!25},inner sep=1pt,minimum size=2pt]
-  \node (n6) at (3,2) {A};
-  \node (n4) at (3,6) {B};
-  \node (n5) at (6,2) {C};
-  \node (n1) at (6,6) {D};
-  \node (n2) at (9,2) {E};
-  \node (n3) at (9,6) {F};
-  \node (n7) at (12,4) {G};
-  \foreach \from/\to in {n7/n3,n1/n3,n2/n5,n2/n7}
-    \draw (\from) -- (\to);
-    \draw (n4) to[out=30,in=90] (n7);
-	\draw (n6) to[out=-30,in=-90] (n7);
-\end{tikzpicture}
- \caption{Eksempel på udspændende træ.}
-\label{eksempel_udspaendende2}
-\end{minipage}
-
+	\centering
+	\begin{minipage}[c]{0.45\linewidth}
+		\centering
+		\begin{tikzpicture}[scale=.45,auto=left,every node/.style={circle,fill=blue!25},inner sep=1pt,minimum size=2pt]
+		  \node (n6) at (3,2) {A};
+		  \node (n4) at (3,6) {B};
+		  \node (n5) at (6,2) {C};
+		  \node (n1) at (6,6) {D};
+		  \node (n2) at (9,2) {E};
+		  \node (n3) at (9,6) {F};
+		  \node (n7) at (12,4) {G};
+		  \foreach \from/\to in {n6/n4,n6/n1,n1/n5,n1/n2,n2/n3,n3/n7}
+		    \draw (\from) -- (\to);
+		\end{tikzpicture}
+	\end{minipage}
+	\begin{minipage}[c]{.45\linewidth}
+		\centering
+		\begin{tikzpicture}[scale=.45,auto=left,every node/.style={circle,fill=blue!25},inner sep=1pt,minimum size=2pt]
+		  \node (n6) at (3,2) {A};
+		  \node (n4) at (3,6) {B};
+		  \node (n5) at (6,2) {C};
+		  \node (n1) at (6,6) {D};
+		  \node (n2) at (9,2) {E};
+		  \node (n3) at (9,6) {F};
+		  \node (n7) at (12,4) {G};
+		  \foreach \from/\to in {n7/n3,n1/n3,n2/n5,n2/n7}
+		    \draw (\from) -- (\to);
+		    \draw (n4) to[out=30,in=90] (n7);
+			\draw (n6) to[out=-30,in=-90] (n7);
+		\end{tikzpicture}
+	\end{minipage}
+	\caption{To forskellige eksempler på udspændende træer på den samme graf.} \label{eksempel_udspaendende1}
 \end{figure}
 
 \section{Minimalt udspændende træer}
@@ -229,7 +223,7 @@ En række problemer involverer at finde den eksempelvis korteste, billigste elle
 Et minimum udspændende træ i en sammenhængende vægtet graf er et udspændende træ, som har den mindst mulige sum af kanternes vægt.
 \end{defn}
 
-\noindent Der findes forskellige algoritmer til at finde minimalt udspændende træer i algortimer, hvor et eksempel er Prims algoritme. 
+Der findes forskellige algoritmer til at finde minimalt udspændende træer i algortimer, hvor et eksempel er Prims algoritme. 
 Prims algortime er en grådig algortime, der tager udgangspunkt i en kant med mindst mulig vægt. 
 Ud fra kanten vælges en ny incident kant med mindst mulig vægt, så der ikke dannes en kreds ved tilføjelse af den nye kant. 
 Dvs. at der ved hvert step vælges kanten med den mindste vægt. 
@@ -250,9 +244,9 @@ $T:=T$ hvor $e$ er tilføjet.\\
 \textbf{retunér} $T$ $\lbrace T$ er et minimalt udspændende træ.$\rbrace$
 \end{algorithm}
 
-\input{incl/main/prims_complexity}
+Der kan i Prims algoritme opstå at algorimten kan vælge mellem flere kanter med samme vægt, og der vil derfor kræves en form for rangering af kanterne.
 
-\noindent Der kan i Prims algoritme opstå at algorimten kan vælge mellem flere kanter med samme vægt, og der vil derfor kræves en form for rangering af kanterne.
+\input{incl/main/prims_complexity}
 
 \begin{exmp}
 For at give et eksempel på princippet i Prims algortime laves et eksempel på at finde et minimalt udspændende træ i grafen i Figur \ref{eks_prim}. 
