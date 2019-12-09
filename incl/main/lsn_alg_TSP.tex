@@ -52,9 +52,9 @@ Idet $G$ er metrisk opfylder den trekantsuligheden, så $d(e_s) \leq d(e_i) + d(
 \label{def_genvej}
 \end{defn}
 
-Dobbelttræ-algoritmen begynder med, i en komplet, metrisk graf $G$, at finde et minimalt udspændende træ, $T$, som kan findes ved hjælp af Prims Algoritme. Når $T$ er fundet, fordobles alle kanter i $T$, som så danner en multigraf $D$. Graden af alle knuder i denne grad må være lige, hvorfor der må eksistere en Eulerkreds i $D$, jf. Sætning \ref{Eulerkreds_multigraf}. Eulerkredsen dannes ved Algoritme \ref{algoritme_euler}.  I denne Eulerkreds skydes der genvej, for at opnå en Hamiltonkreds, $H$. Denne algoritme er sammenfattet i Algoritme \ref{dt_algo}.
+Dobbelttræ-algoritmen begynder med, i en komplet, metrisk graf $G$, at finde et minimalt udspændende træ, $T$, som kan findes ved hjælp af Prims Algoritme. Når $T$ er fundet, fordobles alle kanter i $T$, som så danner en multigraf $D$. Graden af alle knuder i denne grad må være lige, hvorfor der må eksistere en Eulerkreds i $D$, jf. Sætning \ref{Eulerkreds_multigraf}. Eulerkredsen dannes ved Algoritme \ref{algoritme_euler}.  I denne Eulerkreds skydes der genvej, for at opnå en Hamiltonkreds, $H$. Denne algoritme er sammenfattet i Algoritme \ref{dt_algo}. 
 
-\begin{algorithm}
+\begin{algorithm}[h]
 \caption{Dobbelttræ-algoritme}
 \label{dt_algo}
 \textbf{procedure} En metrisk komplet graf, $G$ \\
@@ -89,10 +89,18 @@ Dobbelttræ-algoritmen har en værst mulig tidskomplesitet på $O(n^3)$.
 \end{thm}
 
 \begin{proof}
-Dobbelttræ-algoritmen gennemkører først Prims Algoritme, som er $O(n^3)$, jf. 
+Dobbelttræ-algoritmen gennemkører først Prims Algoritme, som er $O(n^3)$, jf. Sætning \ref{prim_kompl}. 
+Derefter fordobler algoritmen samtlige sider i træet, som Prims Algoritme har dannet. Denne tilfører kompleksiteten $O(n)$.
+Så gennemkører Dobbelttræ-algoritmen algoritmen for dannelsen af en Eulerkreds, som har lineær værst mulig tidskompleksitet, altså også $O(n)$.
+Slutteligt vil Dobbelttræ-algoritmen skyde genvej ved at gennemgå den dannede Hamiltonkreds, hvilket også har lineær værst mulig tidskompleksitet. 
+Derfor må den værst mulige tidskompleksitet af Dobbelttræ-algoritmen være $O(n^3)$.
 \end{proof}
 
+Dobbelttræ-algoritmen viser sig altså at være af polynomiel værst mulig tidskompleksitet, hvorfor denne noget hurtigere vil finde en kort Hamiltonkreds i grafen. Dog er det på kompromis at, at det ikke nødvendigvis er den korteste Hamiltonkreds i $G$.
 
+\begin{exmp}
+I den komplette graf, $G$, med $20$ knuder, har Dobbelttræ-algoritmen en værst mulig tidskompleksitet på $$20^3 = 8000,$$ og er derfor markant hurtigere end Brute-force Algoritmen.
+\end{exmp}
 
 
 
