@@ -1,1 +1,13 @@
 \section{TSP}
+TSP er et optimeringsproblem der finde den kortest mulige hamiltonkreds i en vægtet graf. TSP er et populært, svært problem, og er kendt for at der ikke findes nogen algortimer til at løse optimeringsproblemet i polynomisk tid. 
+
+\textit{Hvad er P? Hvad er NP?}
+
+Selvom der ikke eksisterer en algortime til at finde den optimale løsning på TSP i polynomisk tid, er det muligt med algortimer at approksimere en optimal løsning i polynomisk tid. Approksimationer kan blive mere præcise ved at restringere problemet.
+Det er typsik en af de følgende fire restriktioner der vil blive brugt. 
+\begin{itemize}
+	\item Symetrisk TSP, hvor alle vægte er symmetriske, altså at $d(v_i v_j) = d(v_i vj)$, for to knuder $v_i$ og $v_j$ i grafen.
+	\item Metrisk TSP, hvor alle tripler af kanters vægt i grafen opfylder trekantsuligheden.
+	\item Eukidisk TSP, hvor knuderne er punkter i et euklidisk rum, ${\mathbb{R}}^d$, og kanternes vægt er afstanden mellem knuderne de forbinder.
+\end{itemize}
+
