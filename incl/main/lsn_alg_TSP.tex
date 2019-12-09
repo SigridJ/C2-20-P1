@@ -1,3 +1,99 @@
 \section{Løsningsalgoritmer}
 
+Der findes indtil flere løsningsalgoritmer til at løse TSP. Det viser sig dog imidlertid, at der ikke er nogen let måde, at løse problemet på. Som tidligere nævnt, er det nødvendigt at ty til approksimationsalgoritmer for at have en chance for at finde en nogenlunde brugbar løsning.
+
+Den mest umiddelbart løsningsalgoritme til at finde en korteste Hamiltonkreds rundt i en graf, finder samtlige mulige Hamiltonkredse i grafen. Til hver af disse kredse beregnes den samlede vægt, og til sidst sammenlignes alle disse samlede vægte, for at finde den Hamiltonkreds, som har den mindste samlede vægt. Denne algoritme er i pseudokode beskrevet i Algoritme \ref{brute_force}.
+
+\begin{algorithm}
+\caption{Brute-force algoritmen}
+\label{brute_force}
+\textbf{procedure} Find korteste Hamiltonkreds i grafen $G$ med $\alpha$ Hamiltonkredse.
+
+Bestem alle Hamiltonkredse, $H_k$, i $G$, og lad $H_{ki}$ betegne den $i$'te Hamiltonkreds. \\
+\textbf{for} $i:=1$ til $\alpha$ \\
+$\-$ $\-$ $\-$ $\-$ $\-$ $\-$
+Bestem $d(H_{ki})$ \\
+$min := H_{k1}$ \\
+\textbf{for} $i:=2$ til $\alpha$ \\
+$\-$ $\-$ $\-$ $\-$ $\-$ $\-$
+\textbf{hvis} $min > H_{ki}$ \textbf{så} $min := H_{ki}$ \\
+\textbf{returnér} $min$ $\lbrace$ $min$ er den korteste Hamiltonkreds i $G$ $\rbrace$
+\end{algorithm}
+
+Denne algoritme vil altid finde den korteste Hamiltonkreds i en komplet graf $G$, men kræver meget processorkraft at gennemføre, selv for grafer med relativt få knuder.
+
+\begin{thm}
+Den værst mulige tidskompleksitet af brute-force algoritmen er $O(n!)$.
+\end{thm}
+
+\begin{proof}
+Lad $G$ være en komplet graf med $n$ knuder og $n \geq 3$. I denne graf er der så $(n-1)!$ forskellige Hamiltonkredse, idet de $n-1$ punkter kan arrangeres på $(n-1)!$ forskellige måder. Derfor har algoritmen allerede her en værst mulig tidskompleksitet på $O(n!)$ idet $(n-1)!$ er $O(n!)$. 
+
+Herfter foretager algoritmen en lineær søgning, som jf. Eksempel \ref{eks_lin_soeg} har en værst mulig tidskompleksitet på $\Theta(n)$, og spiller derfor ingen rolle i algoritmens samlede kompleksitet.
+\end{proof}
+
+Brute-force algoritmen har således en kompleksitet, der er voldsom stor selv ved relativt få knuder i $G$.
+
+\begin{exmp}
+I den komplet graf, $G$, med $20$ knuder, har brute-force algoritmen en værst mulig tidskompleksitet på $$20! = 2432902008176640000,$$ hvorfor algoritmen tydeligvis allerede ved $20$ knuder er håbløs.
+\end{exmp}
+
+Derfor er approksimationsalgoritmer nødvendige, for at løse problemet. Som tidligere beskrevet, vil disse algoritmer \textit{ikke} finde den optimale løsning, men en løsning, som ligger indenfor en vis konstant grænse. I denne rapport vil Dobbelttræ-algoritmen anvendes til at løse TSP. 
+
+\subsection{Dobbelttræ-algoritmen}
+Dobbelttræ-algoritmen forudsætter, at grafen, som Hamiltonkredsen skal findes i, er komplet metrisk. For sådanne grafer kan der imidlertid foretages en \textit{genvej}, som defineres i Definition \ref{def_genvej}.
+
+\begin{defn}
+Lad $G$ være en komplet, metrisk graf med $n$ knuder og $n \geq 3$. I $G$ findes en vej, $P = v_0, v_1,...,v_{i-1}, v_i, v_{i+1},...,x_{n-1},x_n$ hvor $1 \leq i \leq n-1$. \\
+I $P$ findes så to kanter $e_i = \lbrace x_{i-1}, x_i \rbrace$ og $e_{i+1} = \lbrace x_i, x_i+1 \rbrace$, så $e_i \cap e_{i+1} = x_i$.
+Der findes så en trekant $\Delta_i = \lbrace e_i, e_{i+1}, e_s \rbrace$ i $G$, hvor $e_s = \lbrace x_{i-1}, x_{i+1} \rbrace$.
+Da kan der dannes en genvej i $P$ via $e_s$ således en ny vej, $P'=v_0, v_1,...,x_{i-1},x_{i+1},...,x_{n+1},x_n$, dannes.
+Idet $G$ er metrisk opfylder den trekantsuligheden, så $d(e_s) \leq d(e_i) + d(e_{i+1})$ og dermed er $d(P') \leq d(P)$.
+\label{def_genvej}
+\end{defn}
+
+Dobbelttræ-algoritmen begynder med, i en komplet, metrisk graf $G$, at finde et minimalt udspændende træ, $T$, som kan findes ved hjælp af Prims Algoritme. Når $T$ er fundet, fordobles alle kanter i $T$, som så danner en multigraf $D$. Graden af alle knuder i denne grad må være lige, hvorfor der må eksistere en Eulerkreds i $D$, jf. Sætning \ref{Eulerkreds_multigraf}. Eulerkredsen dannes ved Algoritme \ref{algoritme_euler}.  I denne Eulerkreds skydes der genvej, for at opnå en Hamiltonkreds, $H$. Denne algoritme er sammenfattet i Algoritme \ref{dt_algo}.
+
+\begin{algorithm}
+\caption{Dobbelttræ-algoritme}
+\label{dt_algo}
+\textbf{procedure} En metrisk komplet graf, $G$ \\
+Find minimalt udspændende træ, $T$, i $G$ $\lbrace$ Prims Algoritme $\rbrace$. \\
+$D := T$ \\
+\textbf{for} kant \textbf{i} $D$ \\
+$\-$ $\-$ $\-$ $\-$ $\-$ $\-$
+dublér kant \\
+Find Eulerkreds, $E$, i $D$ \\
+Skyd genvej i $E$ for at opnå Hamiltonkredsen, $H$ \\
+\textbf{returnér} $H$ $\lbrace$ $H$ er Hamiltonkreds i $G$ $\rbrace$
+\end{algorithm}
+
+Dobbelttræ-algoritmen approksimerer den Hamiltonkreds, som er af lavest mulig vægt.
+
+\begin{thm}
+Dobbelttræ-algoritmen er en 2-approksimationsalgoritme.
+\end{thm}
+
+\begin{proof}
+Lad $H'$ være Hamiltonkredsen af lavest muligt vægt i grafen $G$ og $H$ være den Hamiltonkreds, som Dobbelttræ-algoritmen finder ved genvej i Eulerkredsen $E$. Da må der gælde, at $$d(H)\leq d(E).$$ 
+Idet Eulerkredsen, $E$, er dannet ved at dublere alle kanter i det minimalt udspændende træ, $T$, må der gælde, at $$d(E) = 2d(T).$$
+Idet enhver Hamiltonkreds ved fjernelse af en kant danner et udspændende træ, må der i $H'$'s tilfælde gælde, at $d(T) \leq d(H')$. Heraf følger det, at $$2d(T) \leq 2d(H').$$
+Derfor må der gælde, at $$d(H) \leq 2d(H'),$$ hvorfor Dobbelttræ-algoritmens fundne Hamiltonkreds, $H$, ikke har en vægt større end $2d(H')$. 
+\end{proof}
+
+\subsection{Kompleksitet af Dobbelttræ-algoritmen}
+Dobbelttræ-aalgoritmen er en approksimationsalgoritme, som det er bevist ovenfor. Derfor må det formodes, at den har en lavere kompleksitet end Brute-force Algoritmen havde.
+
+\begin{thm}
+Dobbelttræ-algoritmen har en værst mulig tidskomplesitet på $O(n^3)$.
+\end{thm}
+
+\begin{proof}
+Dobbelttræ-algoritmen gennemkører først Prims Algoritme, som er $O(n^3)$, jf. 
+\end{proof}
+
+
+
+
+
 

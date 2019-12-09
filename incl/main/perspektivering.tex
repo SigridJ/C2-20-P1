@@ -1,1 +1,12 @@
 \chapter{Perspektivering}
+TSP-problemet består af flere undergrupper af algoritmiske problemer, som afhænger af hvilke type svar der ledes efter. Søger man efter flere korrekte svar, kaldes problemet for et søgningsproblem. Leder man efter en optimal løsning, kaldes problemet for et optimeringsproblem. Et eksempel på dette, kan være at man leder efter den kortest mulige vej, hvilket er den version af TSP der er blevet arbejdet med i dette projekt. Optimeringsproblemer og søgeproblemer kaldes også for evalueringsproblemer eftersom evalueringsproblemer altid har enestående løsninger .
+
+En anden type problemer er beslutningsproblmer, hvor der blot søges ét af to svarmuligheder, ja eller nej. Denne version af TSP tager endnu et input, netop en samlet vægt, og der skal så tjekkes for om der eksisterer en hamiltonkreds i grafen med mindre samlet vægt end denne.
+
+Forskellige versioner af TSP kan muligvis have forskellige løsningsalgoritmer. Specielt ligger beslutningsversionen af TSP ikke i kompleksitetsklassen $NP-hard$ som optimeringsversionen gør, men i klassen $NP-complete$.
+
+
+En anden mulig perspektivering til TSP kan være CPP (Chinese postman problem), som blev fremsat i 1960'erne, af den daværende 26 årige kinesiske matematikker Mei-Ko Kwan. Problemet går ud på, at en postbud skal levere post og ønsker, at skulle gå mindst muligt, altså den korteste distance. Postbuddet skal gå langs alle veje i området da der formenligt skal afleveres post til alle husstande. Buddet starter og slutte ved posthuset,  altså i samme punkt. Modsat salgspersonen i TSP,så skal postbuddet  forbi alle veje i et vejnet for at kunne levere post, mens salgspersonen, i TSP, kun skal finde den korteste vej fra by til by, og altså ikke skal forbi alle veje. 
+Vejnetværket som postbuddet skal benytte sig af, kan omdannes til en graf. Mere præcist en vægtet graf, hvor vægtene for eksempel kan repræsenterer længden af hver vej. 
+Det er nemt at udregne længden af postmandens rute, hvis der er lige antal kanter i alle af grafens punkter, eftersom at man dermed kan skabe en Eulerkreds. Eulerkredsen betyder at man kun skal krydse samme kant præcis en gang, og dermed er det lige meget hvilken vej man vælger.   
+Indholder grafen et lige antal ulige kanter, så betyder det at der ikke længere kan være en eulerkreds, og dermed skal buddet gennem flere kanter mere end en gang. For at udregne/finde ud af hvad den korteste vej skal være, kan man gøre brug af Chinese postman algoritmen, som kan løses på polynomisk tid.
