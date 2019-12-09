@@ -68,7 +68,12 @@ Der findes også andre algoritmer, som kan finde Eulerkredse i en graf, men diss
 	\textbf{retuner} $kreds$ ($kreds$ er en Eulerkreds)
 \end{algorithm}
 
-For at finde algoritmens kompleksitet, opskrives en funktion, der beskriver antallet af sammenligner algoritmen laver for hver kant, $e$.
+\begin{thm}
+Kompleksiteten af algoritmen for at finde en eulerkreds, er af lineær orden.
+\end{thm}
+
+\begin{proof}
+For at finde algoritmens kompleksitet, opskrives en funktion, der beskriver antallet af sammenligner algoritmen laver for hver knude, $e$.
 Der tages udgangspunkt i det værst mulige tilfælde. 
 Hver gang algoritmen er ved en knude, vil den undersøge, om den kan vælge en kant, hvor den ikke allerede har været. 
 Dette kræver en sammenligning per kant.
@@ -94,6 +99,7 @@ Funktionen kan altså siges at være $\Omega (e)$, med vidnerne $C=1$ og $k=1$.
 Da funtionen både er $O(e)$ og $\Omega (e)$ kan den også siges at være $\Theta (e)$.
 \\\\
 Hvis der ikke findes en Eulerkreds i en graf, kan der godt eksistere en Eulervej. 
+\end{proof}
 
 \begin{thm} \label{Eulervej_multigraf}
 	En sammenhængende multigraf graf $G$ har en Eulervej, men ikke en Eulerkreds, hvis og kun hvis den har præcist to knuder af ulige grad.  
