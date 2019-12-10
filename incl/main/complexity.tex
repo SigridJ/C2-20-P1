@@ -106,17 +106,17 @@ Da $f(x)$ både er $O(x^4)$ og $\Omega (x^4)$, så er $f(x)$ også $\Theta (x^4)
 \section{Kompleksitet af algoritmer}
 Funktioners vækst kan beskrives ved store-$\Theta$ notation, hvor væksten af $f(n)$ estimeres af en funktion $g(n)$ med samme orden som $f(n)$. 
 Hvis funktionen $f(n)$ beskriver antal operationer, en algoritme benytter for at udregne et resultat ved $n$ input, så angiver store-$\Theta$ notation tidskompleksiteten af algoritmen, hvor $\Theta(g(n))$ er ordenen. 
-Der er forskellige typer kompleksitet, hvor “worst case”-kompleksiteten er algoritmens orden af det maksimale antal operationer en algoritme skal bruge for at udføre en opgave. 
+Der er forskellige typer kompleksitet, hvor den værst mulige kompleksiteten er algoritmens orden af det maksimale antal operationer en algoritme skal bruge for at udføre en opgave. 
 Der findes også gennemsnitlig kompleksitet, der anvender det gennemsnitlige antal operationer for at løse et problem for alle mulige inputs.
-Gennemsnitligt kompleksitet er mere kompliceret end “worst case”-kompleksitet, og derfor omtales kun “worst case”-kompleksitet i projektet.
+Gennemsnitligt kompleksitet er mere kompliceret end den værst mulige kompleksitet, og derfor omtales kun den værst mulige kompleksitet i projektet.
 
 I Tabel \ref{tab_complex} er algortimers typiske ordener og deres tilhørende kompleksitet angivet. 
 
 \input{fig/tab/tabel_kompleksitet}
 
 I forbindelse med kompleksitet af algoritmer er funktionerne, der beskriver antal operationer, typisk af ordenen som de simple funktioner der ses i Tabel \ref{tab_complex}. 
-En algoritme siges at have lineær “worst case”-kompleksitet, hvis $f(n)$ beskriver det maksimale antal operationer,  algoritmen kan bruge, og $f(n)$ er $\Theta(n)$. 
-En algoritme siges at have polynomiel “worst case”-kompleksitet, hvis $f(n)$ er $\Theta(n^b)$, hvor at $f(n)$ er det maksimale antal operationer i algoritmen.
+En algoritme siges at have lineær værst mulig kompleksitet, hvis $f(n)$ beskriver det maksimale antal operationer,  algoritmen kan bruge, og $f(n)$ er $\Theta(n)$. 
+En algoritme siges at have polynomiel værst mulig kompleksitet, hvis $f(n)$ er $\Theta(n^b)$, hvor at $f(n)$ er det maksimale antal operationer i algoritmen.
 
 \begin{exmp}
 Tidskompleksiteten af Algoritme \ref{find_maks} fra forrige kapitel, der finder det maksimale element i en begrænset mængde heltal, kan beskrives med store $\Theta$-notation. 
@@ -130,6 +130,16 @@ I alt laves der $2(n-1)+1=2n-1$ sammenligninger, når denne algoritme kører.
 Derfor vil algoritmen til at finde det maksimale element i en mængde af $n$ elementer have lineær tidskompleksitet set i forhold til antallet af sammenligninger, der laves, fordi $f(n)=2n-1$ er $\Theta (n)$ jf. Sætning \ref{thm_poly}. 
 \label{eks_lin_soeg} 
 \end{exmp}
+
+\section{Kompleksitetsklasser}
+Problemer, der kan løses af algoritmer med polynomiel værst mulig tidskompleksitet, siges at tilhøre kompleksitetsklassen $\mathcal{P}$. 
+Algoritmer med polynomiel værst mulig tidskompleksitet kan forventes at finde en løsning til et problem inden for relativt kort tid. 
+Polynomiets koefficienter og grad spiller dog en rolle, og derfor er polynomiel værst mulig tidskompleksitet ikke en garanti for, at en problem kan løses inden for en realistisk tidsramme.
+
+Problemer, som ikke kan løses af algoritmer med  polynomiel værst mulig tidskompleksitet, siges at tilhøre klassen $\mathcal{NP}$, hvis problemets løsning kan verificeres i polynomisk tid. Forkortelsen $\mathcal{NP}$ står for “nondeterministisk polynonomiel” tid. 
+
+En anden kompleksitetsklasse er $\mathcal{NP}$-fuldstændig, som indeholder problemer, hvor alle $\mathcal{NP}$-fuldstændige problemer kan løses i polynomiel tid, hvis ét af de NP-fuldstændige problemer kan løses i polynomiel tid.
+
 
 \subsection{Brute-force algoritmer}
 Brute-force algoritmer er en type af algoritmer, som slavisk går gennem alle mulige løsninger til et problem, for at finde den bedste løsning.
