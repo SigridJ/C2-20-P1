@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+[thick,scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
+  \node {a}
+  	child{node{b}
+  		child{node{d}}
+  		child{node{e}}
+  		child{node{f}}}
+  	child[missing]
+  	child[missing]
+  	child{node{c}
+  		child{node{g}}
+  		child{node{h}}
+  		child{node{i}}};
+\end{tikzpicture}

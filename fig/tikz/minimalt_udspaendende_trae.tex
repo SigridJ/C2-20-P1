@@ -1,0 +1,43 @@
+\begin{tikzpicture}
+  [shorten >=1pt,node distance=3.1cm,on grid,auto]
+    \tikzstyle{state}=[shape=circle,fill=blue!25,thick,minimum size=0.7cm]
+
+    \node[state] (G) {$G$};
+    \node[state,above of=G] (D) {$D$};
+    \node[state,right of=G] (H) {$H$};
+    \node[state,right of=D] (E) {$E$};
+    \node[state,right of=H] (I) {$I$};
+    \node[state,right of=E] (F) {$F$};
+    \node[state,above of=D] (A) {$A$};
+    \node[state,right of=A] (B) {$B$};
+    \node[state,right of=B] (C) {$C$};
+
+    \path[-,draw,thick]
+    (G) edge node {$6$} (D);
+    \path[-,draw,thick,red]
+    (D) edge node {$2$} (A)
+    (E) edge node {$3$} (H)
+    (H) edge node {$2$} (I)
+    (E) edge node {$1$} (F);
+    \path[-,draw,thick]
+    (I) edge node {$4$} (F);
+    \path[-,draw,thick,red]  
+    (G) edge node {$4$} (H);
+    \path[-,draw,thick]
+    (A) edge node {$5$} (B);
+    \path[-,draw,thick,red]
+    (B) edge node {$4$} (C);
+    \path[-,draw,thick]
+    (D) edge node {$7$} (E)  
+    (B) edge node {$5$} (E);
+    \path[-,draw,thick,red]
+    (C) edge node {$3$} (F);
+    \path[-,draw,thick]
+    (B) edge node {$6$} (F);
+    \path[-,draw,thick,red]
+    (D) edge node {$3$} (B);
+    \path[-,draw,thick]
+    (D) edge node {$8$} (H)
+    (H) edge node {$4$} (F)
+    ;
+  \end{tikzpicture}
