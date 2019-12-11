@@ -1,13 +1,39 @@
 \section{TSP}
 TSP er et optimeringsproblem der finde den kortest mulige hamiltonkreds i en vægtet graf. TSP er et populært, svært problem, og er kendt for at der ikke findes nogen algortimer til at løse optimeringsproblemet i polynomisk tid. 
 
-\textit{Hvad er P? Hvad er NP?}
+\begin{tcolorbox}
+	\textbf{Travelling Salesperson Problem (TSP)} \quad Lad grafen $G=(V,E)$ være en simpel komplet graf med vægtede kanter. Find en Hamiltonkreds i $G$ med den mindste samlede vægt.
+\end{tcolorbox}
+
+bla
+\begin{thm}
+	Der eksisterer ikke en $k$-approksimationsalgoritme for TSP når $k \in \mathbb{R}$, medmindre $P = NP$.
+\end{thm}
+\begin{proof}
+	For at vise der ikke eksisterer en $k$-approksimation for TSP, vil det blive vist at dette vil svare til at finde en algortime der løser HPP i polynomisk tid.
+	Fra Sætning \ref{HPP} fås det at HPP er $NP-fuldstændigt$, hvilket vil være en modstrid, medmindre $P=NP$.
+
+	Antag for modstrid at der eksisterer en $k$-approksimation der løser TSP.
+	Lad $G=(V,E)$ være en simpel graf, hvori det ønskes at vide om der eksisterer en Hamiltonkreds.
+	Lad nu $G'$ være en komplet graf med præcis de samme knuder som $G$, og lad de kanter $G'$ har til fææles med $G$ have vægten $1$, mens alle de resterende får vægten $kn$, hvor $n$ er antallet af knuder.
+
+	$k$-approksimationen køres nu med $G'$.
+	Hvis der eksisterer en hamiltonkreds i $G$, er den mindst mulige samlede vægt for en hamiltonkreds i $G'$ lig $n$, da alle kanternes vægt i kredsen er lig $1$.
+	Da må $k$-approksimationen finde en samlet vægt på mindre end eller lig $kn$.
+	Hvis ikke der eksisterer en Hamiltonkreds i $G$, må den mindst mulige samlede vægt for en Hamiltonkreds i $G'$ være skapt større end $kn$, da der må være mindst én kant i kredsen hvis vægt er lig $kn$.
+	Da må også $k$-approksimationen finde en vægt der er skapt større end $kn$.
+
+	Altså kan der ud fra $G$ konstrueres en ny graf, og hvis $k$-approksimationen køres med denne graf, kan værdien den returnerer altid bruges til at bestemme om der eksistere en Hamiltonkreds i $G$.
+
+	Det er nu blevet vist, at hvis der eksisterer en $k$-approksimation for TSP, kan denne bruges til at finde en løsning på HHP i polynomisk tid, hvilket er en modstrid, medmindre $P=NP$.
+\end{proof}
 
 Selvom der ikke eksisterer en algortime til at finde den optimale løsning på TSP i polynomisk tid, er det muligt med algortimer at approksimere en optimal løsning i polynomisk tid. Approksimationer kan blive mere præcise ved at restringere problemet.
-Det er typsik en af de følgende fire restriktioner der vil blive brugt. 
+Det er typsik en af de følgende tre restriktioner der vil blive brugt. 
 \begin{itemize}
 	\item Symetrisk TSP, hvor alle vægte er symmetriske, altså at $d(v_i v_j) = d(v_i vj)$, for to knuder $v_i$ og $v_j$ i grafen.
 	\item Metrisk TSP, hvor alle tripler af kanters vægt i grafen opfylder trekantsuligheden.
 	\item Eukidisk TSP, hvor knuderne er punkter i et euklidisk rum, ${\mathbb{R}}^d$, og kanternes vægt er afstanden mellem knuderne de forbinder.
 \end{itemize}
+Den metriske version af problemet 
 
