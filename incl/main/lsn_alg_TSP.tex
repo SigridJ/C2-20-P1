@@ -54,7 +54,6 @@ Idet $G$ er metrisk opfylder den trekantsuligheden, så $d(e_s) \leq d(e_i) + d(
 
 Dobbelttræ-algoritmen begynder med, i en komplet, metrisk graf $G$, at finde et minimalt udspændende træ, $T$, som kan findes ved hjælp af Prims Algoritme. Når $T$ er fundet, fordobles alle kanter i $T$, som så danner en multigraf $D$. Graden af alle knuder i denne grad må være lige, hvorfor der må eksistere en Eulerkreds i $D$, jf. Sætning \ref{Eulerkreds_multigraf}. Eulerkredsen dannes ved Algoritme \ref{algoritme_euler}.  I denne Eulerkreds skydes der genvej, for at opnå en Hamiltonkreds, $H$. Denne algoritme er sammenfattet i Algoritme \ref{dt_algo}. 
 
-\newpage
 \begin{algorithm}[h]
 \caption{Dobbelttræ-algoritme}
 \label{dt_algo}
@@ -68,6 +67,7 @@ Find Eulerkreds, $E$, i $D$ \\
 Skyd genvej i $E$ for at opnå Hamiltonkredsen, $H$ \\
 \textbf{returnér} $H$ $\lbrace$ $H$ er Hamiltonkreds i $G$ $\rbrace$
 \end{algorithm}
+
 
 \begin{exmp}
 Som eksempel på Dobbelttræs-Algoritmens fremgangsmåde, ses på en komplet, metrisk graf med $5$ knuder.
