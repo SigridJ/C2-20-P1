@@ -132,12 +132,15 @@ Derfor vil algoritmen til at finde det maksimale element i en mængde af $n$ ele
 \end{exmp}
 
 \section{Kompleksitetsklasser}
-Problemer, der kan løses af algoritmer med polynomiel værst mulig tidskompleksitet, siges at tilhøre kompleksitetsklassen $\mathcal{P}$. 
+Problemer, der kan løses af algoritmer med polynomiel værst mulig tidskompleksitet, siges at tilhøre kompleksitetsklassen $P$. 
 Algoritmer med polynomiel værst mulig tidskompleksitet kan forventes at finde en løsning til et problem inden for relativt kort tid. 
 Polynomiets koefficienter og grad spiller dog en rolle, og derfor er polynomiel værst mulig tidskompleksitet ikke en garanti for, at en problem kan løses inden for en realistisk tidsramme.
 
-Problemer, som ikke kan løses af algoritmer med  polynomiel værst mulig tidskompleksitet, siges at tilhøre klassen $\mathcal{NP}$, hvis problemets løsning kan verificeres i polynomisk tid. Forkortelsen $\mathcal{NP}$ står for “nondeterministisk polynonomiel” tid. 
+Problemer, som ikke kan løses af algoritmer med  polynomiel værst mulig tidskompleksitet, siges at tilhøre klassen $NP$, hvis problemets løsning kan verificeres i polynomisk tid. Forkortelsen $NP$ står for “nondeterministisk polynonomiel” tid. 
 
-En anden kompleksitetsklasse er $\mathcal{NP}$-fuldstændig, som indeholder problemer, hvor alle $\mathcal{NP}$-fuldstændige problemer kan løses i polynomiel tid, hvis ét af de NP-fuldstændige problemer kan løses i polynomiel tid.
-
-
+En anden kompleksitetsklasse er $NP-fuldstændig$.
+Det gælder for $NP-fuldstændige$ problemer, at alle $NP-fuldstændige$ problemer kan løses i polynomiel tid, hvis ét af de $NP-fuldstændige$ kan.
+I $NP-fuldstædning$ klassen ligger kendte problemer som Boolean Satisfiabily Problem, Knapsack problem og at løse en sudoku eller et nonogram.
+Der findes et kendt problem kaldet $P=NP$, som handler om at bevise (eller modbevise) at de to klasser er lig hinanden.
+Problemet opstår fordi der tidligere har været problemer i $NP$ der pludselig er blevet fundet en løsning til, som placerer dem i $P$.
+Det store spørgsmål er da, om dette altid er gældende.

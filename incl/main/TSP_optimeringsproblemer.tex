@@ -1,12 +1,14 @@
 \section{Approksimationsalgoritmer}
 Travelling Salesperson Problem er et optimeringsproblem, fordi løsningen består i at finde Hamiltonkredsen med mindst mulig vægt i en graf. 
 Af samme grund er problemet også et minimeringsproblem. 
-I et minimeringsproblem ønskes der at finde en løsning $S$, hvor $d(S)$ er mindst mulig, hvilket kan gøres af approksimationsalgoritmer.
+I et minimeringsproblem ønskes der at finde en løsning $S$, hvor $d(S)$ er mindst mulig.
+Nogle gange skal der gøres brug af en svær algoritme for at finde den minimale løsning.
+Da kan der gøres brug af approksimationsalgoritmer.
 
 \begin{defn}\label{def:apk}
-Lad $S'$ være den optimale løsning til et minimeringsproblem. En $k$-approksimationsalgoritme er en polynomiel algoritme, der returnerer en mulig løsning $S$, således
+Lad $S$ være den optimale løsning til et minimeringsproblem. En $k$-approksimationsalgoritme er en polynomiel algoritme, der returnerer en mulig løsning $S'$, således
 \begin{align*}
-d(S) \leq k \cdot d(S'),
+d(S') \leq k \cdot d(S),
 \end{align*}
 hvor $k$ er approksimationskonstanten, og $1 \leq k \in \mathbb{R}$.
 \end{defn}
