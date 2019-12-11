@@ -2,10 +2,13 @@
 TSP er et optimeringsproblem der finde den kortest mulige hamiltonkreds i en vægtet graf. TSP er et populært, svært problem, og er kendt for at der ikke findes nogen algortimer til at løse optimeringsproblemet i polynomisk tid. 
 
 \begin{tcolorbox}
-	\textbf{Travelling Salesperson Problem (TSP)} \quad Lad grafen $G=(V,E)$ være en simpel komplet graf med vægtede kanter. Find en Hamiltonkreds i $G$ med den mindste samlede vægt.
+	\textbf{Travelling Salesperson Problem (TSP)} \quad Lad grafen $G=(V,E)$ være en simpel komplet graf med vægtede kanter.
+
+	Find en Hamiltonkreds i $G$ med den mindste samlede vægt.
 \end{tcolorbox}
 
-bla
+Udover at TSP ikke har nogen nem algortime der kan løse problemet, har den generelle version af problemet heller ikke en $k$-approksimation.
+
 \begin{thm}
 	Der eksisterer ikke en $k$-approksimationsalgoritme for TSP når $k \in \mathbb{R}$, medmindre $P = NP$.
 \end{thm}
@@ -24,16 +27,33 @@ bla
 	Da må også $k$-approksimationen finde en vægt der er skapt større end $kn$.
 
 	Altså kan der ud fra $G$ konstrueres en ny graf, og hvis $k$-approksimationen køres med denne graf, kan værdien den returnerer altid bruges til at bestemme om der eksistere en Hamiltonkreds i $G$.
+	Siden $k$-approksimationen per Definition \ref{def:apk} er af polynomisk tid, må dette også være en løsningsalgortime til HPP af polynomisk tid.
 
 	Det er nu blevet vist, at hvis der eksisterer en $k$-approksimation for TSP, kan denne bruges til at finde en løsning på HHP i polynomisk tid, hvilket er en modstrid, medmindre $P=NP$.
 \end{proof}
 
 Selvom der ikke eksisterer en algortime til at finde den optimale løsning på TSP i polynomisk tid, er det muligt med algortimer at approksimere en optimal løsning i polynomisk tid. Approksimationer kan blive mere præcise ved at restringere problemet.
 Det er typsik en af de følgende tre restriktioner der vil blive brugt. 
-\begin{itemize}
+\begin{itemize}[noitemsep]
 	\item Symetrisk TSP, hvor alle vægte er symmetriske, altså at $d(v_i v_j) = d(v_i vj)$, for to knuder $v_i$ og $v_j$ i grafen.
 	\item Metrisk TSP, hvor alle tripler af kanters vægt i grafen opfylder trekantsuligheden.
 	\item Eukidisk TSP, hvor knuderne er punkter i et euklidisk rum, ${\mathbb{R}}^d$, og kanternes vægt er afstanden mellem knuderne de forbinder.
 \end{itemize}
-Den metriske version af problemet 
 
+Den metriske version af problemet er en rimelig restriktion af problemet.
+Typsik vil eksempelvis et vejnet opfylde trekantsuligheden for alle tripler af knuder, da den mest direkte vej mellem to byer der er forbundet næsten aldrig er længere end hvis der tages en rute gennem en tredje by.
+Dog er forskellen på metrisk TSP og euklidisk TSP at den euklidiske version ikke vil kunne passe på et vejsystem hvor vejene svinger, og da bliver længere end den direkte afstand mellem to byer.
+
+En af grundene til at restringere det gennerelle TSP er at den metriske version har en $k$-approksimationsalgortime, til trods for at TSP ikke har.
+
+\begin{tcolorbox}
+	\textbf{Metrisk TSP} \quad Lad $G=(V,E)$ være en simpel, komplet, vægtet graf. Der skal gælde trekantsuligheden
+	\begin{align*}
+		d(u,v) \leq d(v,w) + d(w,u)
+	\end{align*}
+	for alle $u,v,w \in V$.
+
+	Find en hamiltonkreds i denne graf med den mindste samlede vægt.
+\end{tcolorbox}
+
+Til denne version af TSP vil der blive undersøgt en mulig approksimeringsalgoritme.
