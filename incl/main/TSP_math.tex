@@ -18,7 +18,7 @@ Udover at TSP ikke har nogen nem algortime der kan løse problemet, har den gene
 
 	Antag for modstrid at der eksisterer en $k$-approksimation der løser TSP.
 	Lad $G=(V,E)$ være en simpel graf, hvori det ønskes at vide om der eksisterer en Hamiltonkreds.
-	Lad nu $G'$ være en komplet graf med præcis de samme knuder som $G$, og lad de kanter $G'$ har til fææles med $G$ have vægten $1$, mens alle de resterende får vægten $kn$, hvor $n$ er antallet af knuder.
+	Lad nu $G'$ være en komplet graf med præcis de samme knuder som $G$, og lad de kanter $G'$ har til fælles med $G$ have vægten $1$, mens alle de resterende får vægten $kn$, hvor $n$ er antallet af knuder.
 
 	$k$-approksimationen køres nu med $G'$.
 	Hvis der eksisterer en hamiltonkreds i $G$, er den mindst mulige samlede vægt for en hamiltonkreds i $G'$ lig $n$, da alle kanternes vægt i kredsen er lig $1$.
@@ -29,15 +29,15 @@ Udover at TSP ikke har nogen nem algortime der kan løse problemet, har den gene
 	Altså kan der ud fra $G$ konstrueres en ny graf, og hvis $k$-approksimationen køres med denne graf, kan værdien den returnerer altid bruges til at bestemme om der eksistere en Hamiltonkreds i $G$.
 	Siden $k$-approksimationen per Definition \ref{def:apk} er af polynomisk tid, må dette også være en løsningsalgortime til HPP af polynomisk tid.
 
-	Det er nu blevet vist, at hvis der eksisterer en $k$-approksimation for TSP, kan denne bruges til at finde en løsning på HHP i polynomisk tid, hvilket er en modstrid, medmindre $P=NP$.
+	Det er nu blevet vist, at hvis der eksisterer en $k$-approksimation for TSP, kan denne bruges til at finde en løsning på HPP i polynomisk tid, hvilket er en modstrid, medmindre $P=NP$.
 \end{proof}
 
 Selvom der ikke eksisterer en algortime til at finde den optimale løsning på TSP i polynomisk tid, er det muligt med algortimer at approksimere en optimal løsning i polynomisk tid. Approksimationer kan blive mere præcise ved at restringere problemet.
 Det er typsik en af de følgende tre restriktioner der vil blive brugt. 
 \begin{itemize}[noitemsep]
-	\item Symetrisk TSP, hvor alle vægte er symmetriske, altså at $d(v_i v_j) = d(v_i vj)$, for to knuder $v_i$ og $v_j$ i grafen.
+	\item Symmetrisk TSP, hvor alle vægte er symmetriske, altså at $d(v_i v_j) = d(v_i v_j)$, for to knuder $v_i$ og $v_j$ i grafen.
 	\item Metrisk TSP, hvor alle tripler af kanters vægt i grafen opfylder trekantsuligheden.
-	\item Eukidisk TSP, hvor knuderne er punkter i et euklidisk rum, ${\mathbb{R}}^d$, og kanternes vægt er afstanden mellem knuderne de forbinder.
+	\item Euklidisk TSP, hvor knuderne er punkter i et euklidisk rum, ${\mathbb{R}}^d$, og kanternes vægt er afstanden mellem knuderne de forbinder.
 \end{itemize}
 
 Den metriske version af problemet er en rimelig restriktion af problemet.
