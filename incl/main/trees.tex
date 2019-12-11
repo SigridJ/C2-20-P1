@@ -35,17 +35,7 @@ For at illustrere en graf, som er et træ, og en graf, som ikke er et træ, iagt
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}
-[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
-  \node (n6) at (3,2) {A};
-  \node (n4) at (3,6) {B};
-  \node (n5) at (6,2) {C};
-  \node (n1) at (6,6) {D};
-  \node (n2) at (9,2) {E};
-  \node (n3) at (9,6) {F};
-  \foreach \from/\to in {n6/n4,n4/n5,n5/n1,n1/n2,n2/n3}
-    \draw (\from) -- (\to);
-\end{tikzpicture}
+\input{fig/tikz/et_trae}
 \caption{Et træ.} 
 \label{eksempel_tree}
 \end{figure}
@@ -54,17 +44,7 @@ Grafen i Figur \ref{eksempel_notree} er ikke et træ, da der eksistrer en kreds 
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}
-[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
-  \node (n6) at (3,2) {A};
-  \node (n4) at (3,6) {B};
-  \node (n5) at (6,2) {C};
-  \node (n1) at (6,6) {D};
-  \node (n2) at (9,2) {E};
-  \node (n3) at (9,6) {F};
-  \foreach \from/\to in {n6/n4,n4/n5,n5/n1,n2/n3,n4/n1}
-    \draw (\from) -- (\to);
-\end{tikzpicture}
+\input{fig/tikz/ikke_et_trae }
 \caption{En graf, der ikke er et træ.} 
 \label{eksempel_notree}
 \end{figure}
@@ -93,33 +73,14 @@ Deltræet har $b$ som rod og indeholder efterkommerne af $b$ og kanterne inciden
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}
-[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
-  \node {a}
-  	child{node{b}
-  		child{node{d}}
-  		child{node{e}}
-  		child{node{f}}}
-  	child[missing]
-  	child[missing]
-  	child{node{c}
-  		child{node{g}}
-  		child{node{h}}
-  		child{node{i}}};
-\end{tikzpicture}
+\input{fig/tikz/et_rodfaestet_trae}
 \caption{Et rodfæstet træ.} 
 \label{eksempel_rootedtree}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}
-[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
-  \node {b}
-  	child{node{d}}
-  	child{node{e}}
-  	child{node{f}};
-\end{tikzpicture}
+\input{fig/tikz/et_undertrae}
 \caption{Et undertræ med $b$ som rod.} 
 \label{eksempel_rootedsubtree}
 \end{figure}
@@ -158,21 +119,7 @@ Betragt grafgen i Figur \ref{eksempel_udspaendende}. Grafen er simpel og sammenh
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}
-[scale=.7,auto=left,every node/.style={circle,fill=blue!25}]
-  \node (n6) at (3,2) {A};
-  \node (n4) at (3,6) {B};
-  \node (n5) at (6,2) {C};
-  \node (n1) at (6,6) {D};
-  \node (n2) at (9,2) {E};
-  \node (n3) at (9,6) {F};
-  \node (n7) at (12,4) {G};
-  \foreach \from/\to in {n6/n4,n5/n1,n2/n3,n4/n1,n6/n1,n1/n2,n3/n7,n7/n2,n5/n6,n5/n2,n1/n2,n1/n3}
-    \draw (\from) -- (\to);
-    \draw (n4) to[out=30,in=90] (n7);
-    \draw (n6) to[out=-10,in=-150] (n2);
-    \draw (n6) to[out=-30,in=-90] (n7);
-\end{tikzpicture}
+\input{fig/tikz/simpel_sammenhaengende_graf}
 \caption{En simpel sammenhængende graf} 
 \label{eksempel_udspaendende}
 \end{figure}
@@ -184,33 +131,11 @@ Der er mange muligheder for at finde et udspændende træ i grafen i Figur \ref{
 	\centering
 	\begin{minipage}[c]{0.45\linewidth}
 		\centering
-		\begin{tikzpicture}[scale=.45,auto=left,every node/.style={circle,fill=blue!25},inner sep=1pt,minimum size=2pt]
-		  \node (n6) at (3,2) {A};
-		  \node (n4) at (3,6) {B};
-		  \node (n5) at (6,2) {C};
-		  \node (n1) at (6,6) {D};
-		  \node (n2) at (9,2) {E};
-		  \node (n3) at (9,6) {F};
-		  \node (n7) at (12,4) {G};
-		  \foreach \from/\to in {n6/n4,n6/n1,n1/n5,n1/n2,n2/n3,n3/n7}
-		    \draw (\from) -- (\to);
-		\end{tikzpicture}
+		\input{fig/tikz/Eks_1_pae_udspaendende_traer}
 	\end{minipage}
 	\begin{minipage}[c]{.45\linewidth}
 		\centering
-		\begin{tikzpicture}[scale=.45,auto=left,every node/.style={circle,fill=blue!25},inner sep=1pt,minimum size=2pt]
-		  \node (n6) at (3,2) {A};
-		  \node (n4) at (3,6) {B};
-		  \node (n5) at (6,2) {C};
-		  \node (n1) at (6,6) {D};
-		  \node (n2) at (9,2) {E};
-		  \node (n3) at (9,6) {F};
-		  \node (n7) at (12,4) {G};
-		  \foreach \from/\to in {n7/n3,n1/n3,n2/n5,n2/n7}
-		    \draw (\from) -- (\to);
-		    \draw (n4) to[out=30,in=90] (n7);
-			\draw (n6) to[out=-30,in=-90] (n7);
-		\end{tikzpicture}
+		\input{fig/tikz/Eks_2_pae_udspaendende_traer}
 	\end{minipage}
 	\caption{To forskellige eksempler på udspændende træer på den samme graf.} \label{eksempel_udspaendende1}
 \end{figure}
@@ -267,49 +192,7 @@ Alt efter rangering af kanter med samme vægt kan rækkefølgen, algortimen væl
 
 \begin{figure}[!h]
   \centering
-  \begin{tikzpicture}
-  [shorten >=1pt,node distance=3.1cm,on grid,auto]
-    \tikzstyle{state}=[shape=circle,fill=blue!25,thick,minimum size=0.7cm]
-
-    \node[state] (G) {$G$};
-    \node[state,above of=G] (D) {$D$};
-    \node[state,right of=G] (H) {$H$};
-    \node[state,right of=D] (E) {$E$};
-    \node[state,right of=H] (I) {$I$};
-    \node[state,right of=E] (F) {$F$};
-    \node[state,above of=D] (A) {$A$};
-    \node[state,right of=A] (B) {$B$};
-    \node[state,right of=B] (C) {$C$};
-
-    \path[-,draw,thick]
-    (G) edge node {$6$} (D);
-    \path[-,draw,thick,red]
-    (D) edge node {$2$} (A)
-    (E) edge node {$3$} (H)
-    (H) edge node {$2$} (I)
-    (E) edge node {$1$} (F);
-    \path[-,draw,thick]
-    (I) edge node {$4$} (F);
-    \path[-,draw,thick,red]  
-    (G) edge node {$4$} (H);
-    \path[-,draw,thick]
-    (A) edge node {$5$} (B);
-    \path[-,draw,thick,red]
-    (B) edge node {$4$} (C);
-    \path[-,draw,thick]
-    (D) edge node {$7$} (E)  
-    (B) edge node {$5$} (E);
-    \path[-,draw,thick,red]
-    (C) edge node {$3$} (F);
-    \path[-,draw,thick]
-    (B) edge node {$6$} (F);
-    \path[-,draw,thick,red]
-    (D) edge node {$3$} (B);
-    \path[-,draw,thick]
-    (D) edge node {$8$} (H)
-    (H) edge node {$4$} (F)
-    ;
-  \end{tikzpicture}
+  \input{fig/tikz/minimalt_udspaendende_trae}
   \caption{Eksempel på et minimalt udspændende træ.}
   \label{eks_prim}
 \end{figure}
@@ -350,32 +233,9 @@ Prims algoritme kunne have valgt $e'$, men valgte at tilføje $e$, hvorfor $d(e)
 Hvis $e$ tilføjes til $M$, mens $e'$ fjernes, opstår et nyt træ $M'$, hvor 
 $d(M') \leq d(M)$, og $M'$ indeholder $T\cup \lbrace e \rbrace$, hvilket følger induktionsantagelsen. 
 \end{proof}
-
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}
-[scale=.8,auto=left,every node/.style={circle,fill=blue!25}]
-  \node (n6) at (4,4) {A};
-  \node (n4) at (2,3) {B};
-  \node (n5) at (0,3) {C};
-  \node (n1) at (4,6) {D};
-  \node (n2) at (2,7) {E};
-  \node (n3) at (6,6) {F};
-  \node (n7) at (8,6) {G};
-  \node (n8) at (0,7) {H};
-  \foreach \from/\to in {n5/n4,n2/n8}
-    \draw (\from) -- (\to);
-    
-  \path[-,draw,thick,red]
-  	(n4) edge (n6)
-  	(n6) edge (n1)
-  	(n1) edge (n2)
-  	(n1) edge (n3);
-  \path[-,draw,black]
-  	(n3) edge node[draw=none,fill=none] {$e$} (n7);
-  \path[-,draw,very thick,blue,bend right]
-  	(n6) edge node[draw=none,fill=none,color=black] {$e'$} (n7);
-\end{tikzpicture}
+\input{fig/tikz/bevis_Prims_algoritme}
 \caption{Graf til beviset for Prims algoritme.} 
 \label{graf_prim_bevis}
 \end{figure}

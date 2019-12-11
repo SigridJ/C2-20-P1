@@ -144,7 +144,7 @@ En Hamiltonkreds er en kreds som går gennem hver knude i grafen én gang. På s
 \end{exmp}
 
 Der kendes ikke en simpel måde til at bestemme om der findes en Hamiltonkreds i en graf, ligesom der gør for en Eulerkreds. 
-Der findes dog flere sætningerne der kan give en ide om eksistensen af en Hamiltonkreds. Med udgangspunkt i \cite{wilson_graph} bevises følgende to sætninger.
+Der findes dog flere sætningerne der kan give en ide om eksistensen af en Hamiltonkreds. Med udgangspunkt i \citep{wilson_graph} og \citep{orebevis} bevises følgende to sætninger.
 
 \begin{thm} \label{ores_thm}
 	\textbf{Ores Sætning:} 
@@ -218,20 +218,20 @@ Disse to sætninger beskriver, hvornår der med sikkerhed eksisterer en Hamilton
 	\begin{figure}[h]
 	\centering
 		\input{fig/tikz/pentagon}
-	\begin{tikzpicture}[every node/.style={draw,shape=circle,fill=blue}]
-	\path (0,0) node (p0) {}
-	(-1.5,-1) node (p1) {}
-	(-1,-2.5) node (p2) {}
-	(1,-2.5) node (p3) {}
-	(1.5,-1) node (p4) {};
-	\draw (p0) -- (p1)
-	(p0) -- (p1)
-	(p0) -- (p4)
-	(p1) -- (p2)
-	(p2) -- (p3)
-	(p3) -- (p4);
-	\end{tikzpicture}
 	\caption{Hamiltonkreds i en graf med 5 knuder}
 	\label{pentagon}
 	\end{figure}
 \end{exmp}
+%Et kendt probelm hedder...
+%Der er blevet formuleret et problem, som kaldes Hamiltonvej Problemet eller Hamiltonkreds problemet. 
+%Dette problem går ud på, at det ønskes at finde ud af om der eksisterer en hamiltonkreds eller -vej i en given graf. 
+
+Problemet Hamiltonian Path Problem er et kendt, svært problem inden for grafteori. 
+Dette problem går netop ud på at finde ud af, om der eksisterer en hamiltonvej eller -kreds i en given graf.
+
+\begin{thm} \label{path_problem}
+	Hamiltonian Path Problem er NP-fuldstændigt. \citep{computers}
+\end{thm}
+
+Der vil blive gjort brug af denne sætning i løbet af projektet, men denne vil ikke blive bevist. 
+Der henvises til \citep{computers} for beviset.
