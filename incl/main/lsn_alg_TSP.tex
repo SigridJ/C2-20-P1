@@ -1,35 +1,52 @@
 \section{Løsningsalgoritmer}
 
-Der findes indtil flere løsningsalgoritmer til at løse TSP. Det viser sig dog imidlertid, at der ikke er nogen let måde, at løse problemet på. Som tidligere nævnt, er det nødvendigt at ty til approksimationsalgoritmer for at have en chance for at finde en nogenlunde brugbar løsning.
+For at finde en $k$-appriksimation der løser et tilfælde af TSP, viser det sig at problemet da nødvendigvis skal restringeres til eksempelvis den metriske version.
+Selvom der ikke findes nogen nem løsning til TSP, er det dog stadig muligt at finde på en løsningsalgortime.
 
 Den mest umiddelbart løsningsalgoritme til at finde en korteste Hamiltonkreds rundt i en graf, finder samtlige mulige Hamiltonkredse i grafen. Til hver af disse kredse beregnes den samlede vægt, og til sidst sammenlignes alle disse samlede vægte, for at finde den Hamiltonkreds, som har den mindste samlede vægt. Denne algoritme er i pseudokode beskrevet i Algoritme \ref{brute_force}.
 
 \begin{algorithm}
 \caption{Brute-force algoritmen}
 \label{brute_force}
-\textbf{procedure} Find korteste Hamiltonkreds i grafen $G$ med $\alpha$ Hamiltonkredse.
+\textbf{procedure} Find korteste Hamiltonkreds i grafen $G$.
 
 Bestem alle Hamiltonkredse, $H_k$, i $G$, og lad $H_{ki}$ betegne den $i$'te Hamiltonkreds. \\
-\textbf{for} $i:=1$ til $\alpha$ \\
-$\-$ $\-$ $\-$ $\-$ $\-$ $\-$
-Bestem $d(H_{ki})$ \\
-$min := H_{k1}$ \\
+	$min := d(H_{k1})$ \\
+	$\alpha :=$ antallet af hamiltonkrede \\
 \textbf{for} $i:=2$ til $\alpha$ \\
 $\-$ $\-$ $\-$ $\-$ $\-$ $\-$
-\textbf{hvis} $min > H_{ki}$ \textbf{så} $min := H_{ki}$ \\
+	\textbf{hvis} $min > d(H_{ki})$ \textbf{så} $min := d(H_{ki})$ \\
 \textbf{returnér} $min$ $\lbrace$ $min$ er den korteste Hamiltonkreds i $G$ $\rbrace$
 \end{algorithm}
 
-Denne algoritme vil altid finde den korteste Hamiltonkreds i en komplet graf $G$, men kræver meget processorkraft at gennemføre, selv for grafer med relativt få knuder \citep{dmat}.
+Denne algoritme vil altid finde den korteste Hamiltonkreds i en komplet graf $G$, men kræver meget tid for gennemføre, selv for grafer med relativt få knuder \citep{dmat}.
 
 \begin{thm}
-Den værst mulige tidskompleksitet af Brute-force Algoritmen er $O(n!)$.
+	Den værst mulige tidskompleksitet af Brute-force Algoritmen er $\Theta((n-1)!)$.
 \end{thm}
 
 \begin{proof}
-Lad $G$ være en komplet graf med $n$ knuder og $n \geq 3$. I denne graf er der så $(n-1)!$ forskellige Hamiltonkredse, idet de $n-1$ punkter kan arrangeres på $(n-1)!$ forskellige måder. Derfor har algoritmen allerede her en værst mulig tidskompleksitet på $O(n!)$ idet $(n-1)!$ er $O(n!)$. 
+	Lad $G$ være en komplet graf med $n$ knuder og $n \geq 3$.
+	I denne graf er der så $(n-1)!$ forskellige Hamiltonkredse, idet de $n-1$ punkter kan arrangeres på $(n-1)!$ forskellige måder.
+	Antallet af sammenligninger i Algortime \ref{brute_force} er det samme som antallet af gentagelser i for-løkken.
+	Dette er det samme om antallet af hamiltonkredse minus 1, og da må antallet af sammenligninger være $(n-1)! -1$.  	
 
-Herfter foretager algoritmen en lineær søgning, som jf. Eksempel \ref{eks_lin_soeg} har en værst mulig tidskompleksitet på $\Theta(n)$, og spiller derfor ingen rolle i algoritmens samlede kompleksitet.
+	Det vil nu vises at $(n-1)! -1$ er $\Theta((n-1)!)$.
+
+	Lad antallet af sammenligninger $f(n) = (n-1)! -1$, og lad $n > 2$.
+	Da må $f(n)$ være $O((n-1)!)$, siden
+	\begin{align*}
+		(n-1)! -1 \leq (n-1)!
+	\end{align*}
+	når $n>2$. Da er vidnerne $k=2$ og $C=1$.
+	
+	Funktionen $f(n)$ må også være $\Omega((n-1)!)$, da
+	\begin{align*}
+		(n-1)! -1 \geq (n-1)! - \frac{(n-1)!}{2} = \frac{(n-1)!}{2}
+	\end{align*}
+	når $n>2$. Da er vidnerne $k=2$ og $C=\frac{1}{2}$.
+
+	Siden $f(n)$ både er $O((n-1)!)$ og $\Omega((n-1)!)$ må $f(n)$ også være $\Theta((n-1)!)$. Da er tidskompleksiteten af Brute-force algortimen $\Theta((n-1)!)$.
 \end{proof}
 
 Brute-force algoritmen har således en kompleksitet, der er voldsom stor selv ved relativt få knuder i $G$.
