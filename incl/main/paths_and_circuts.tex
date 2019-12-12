@@ -9,8 +9,8 @@ En vej i en graf defineres i Definition \ref{def_vej}.
 	En \textit{vej} af \textit{længde} $n$ fra $v_0$ til $v_n$ i $G$ er en sekvens af $n$ kanter $e_1, ..., e_n$ i $G$, for hvilke der eksisterer en sekvens $v_0,v_1,...,v_{n-1},v_n$ af knuder, så $e_i$ har endeknuderne $v_{i-1}$ og $v_i$ for $i=1,...,n$.
 \end{defn}
 
-Når der er tale om en vej gennem en simpel graf, antages denne som sekvensen af de knuder, den går igennem $v_0, v_1,...,v_n$. 
-En vej eller kreds er \textit{simpel} hvis den ikke indeholder den samme kant mere end én gang. 
+Når der er tale om en vej gennem en simpel graf, angives denne som sekvensen af de knuder, den går igennem $v_0, v_1,...,v_n$. 
+En vej er \textit{simpel} hvis den ikke indeholder den samme kant mere end én gang. 
 
 \begin{exmp} \label{ex_vej}
 	På den simple graf i Figur \ref{graf_vej} ses en simpel vej $A,B,E,F$ af længden 3, fordi vejen går gennem de tre kanter $\lbrace A,B \rbrace$, $\lbrace B,E \rbrace$ og $\lbrace E,F \rbrace$. 
@@ -31,8 +31,8 @@ En kreds er en vej, der starter og slutter det samme sted, hvilket defineres i D
 
 \begin{defn}
 \label{def_kredse}
-En vej kaldes en \textit{kreds}, hvis den begynder og ender i samme knude, $u=v$ og $n>0$.
-Kredsen siges at gå gennem knuderne $v_1,v_2,...,v_{n-1}$ eller passere gennem kanterne $e_1, e_2,..., e_n$.
+En vej kaldes en \textit{kreds}, hvis den begynder og ender i samme knude $v_0=v_n$, og $n>0$.
+Kredsen siges at gå gennem knuderne $v_0,v_1,...,v_{n-1}$ eller passere gennem kanterne $e_1, e_2,..., e_n$.
 \end{defn}
 
 \begin{exmp}
@@ -72,14 +72,14 @@ Der er en simpel vej mellem ethvert knudepar i en sammenhængende graf.
 \end{thm}
 
 \begin{proof}
-Knuderne $u$ og $v$ er to knuder i den sammenhængende graf $G=(V,E)$.
+Lad knuderne $u$ og $v$ være to knuder i den sammenhængende graf $G=(V,E)$.
 Per Definition \ref{def_iosmh} er der en vej mellem $u$ og $v$.
 Lad en kortest mulig vej mellem $u$ og $v$ være $v_0,v_1,...,v_n$, hvor $v_0=u$ og $v_n=v$.
 
 For modstrid antages det, at denne vej ikke er simpel. 
 Så er $v_i=v_j$ for $0 \leq i < j$, fordi vejen går gennem kanten $v_i,v_{i+1}$ to gange, specielt besøges $v_i$ to gange.
 Det betyder, at der er en kortere vej fra $u$ til $v$, med knudesekvens $v_0,v_1,...,v_{i-1},v_j,...,v_n$, som opnåes ved at fjerne kanterne i sekvensen $v_i,...,v_{j-1}$.
-Dette er i modstrid med antagelsen om, at en kortest mulig vej ikke er simpel.
+Dette er i modstrid med antagelsen om, at vejen var kortest mulig.
 Det må derfor gælde, at der er en simpel vej mellem alle knudepar i en sammenhængende graf. 
 \end{proof}
 
