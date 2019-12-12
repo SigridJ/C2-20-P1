@@ -10,7 +10,7 @@ Både tidskompleksiteten og pladskompleksiteten er en måde at beskrive det anta
 Der bør tages stilling til begge forhold, når algoritmer implementeres.
 
 Tiden den samme algoritme bruger på én computer er ikke nødvendigvis den samme på en andencomputer, da tiden også afhænger af en given computers computerkræft.
-Derfor er en algoritmes tidskompleksitet udtrykt ved antallet af operationer der bliver udførert, i stedet for den faktiske computertid.
+Derfor er en algoritmes tidskompleksitet udtrykt ved antallet af operationer der bliver udført, i stedet for den faktiske computertid.
 Antal operationer, algoritmen anvender, kan estimeres som en funktion af størrelsen på inputtet. 
 Til at vurdere, hvorvidt algoritmer er effektive til at løse problemer i takt med at inputtet stiger, kan store-$O$ notationen benyttes.
 
@@ -78,7 +78,7 @@ så længe $x>k$.
 \end{defn}
 
 \begin{exmp}\label{exmp_theta}
-Funktionen $f(x)=x^4+9x^3+4x+7$ fra Eksempel \ref{exmp_bigO} som også er $\Omega(x^4)$. 
+Funktionen $f(x)=x^4+9x^3+4x+7$ fra Eksempel \ref{exmp_bigO} er også $\Omega(x^4)$. 
 Det ses nemlig, at $f(x)=x^4+9x^3+4x+7 \geq x^4 $ når $x>1$, og derfor er $f(x)$ $\Omega(x^4)$ med vidnerne $C=1$ og $k=1$.
 \end{exmp}
 
@@ -87,7 +87,7 @@ Store-$\Theta$ notation bruges, når der ønskes både en øvre og en nedre græ
 
 \begin{defn}\label{eq_theta}
 	Lad $f$ og $g$ være funktioner fra $\Z \to \R$ eller $\R \to \R$. 
-Funktionen $f(x)$ siges at være $\Theta (g(x))$, hvis $f(x)$ både er $O(g(x))$ og $\Omega g(x))$. 
+Funktionen $f(x)$ siges at være $\Theta (g(x))$, hvis $f(x)$ både er $O(g(x))$ og $\Omega (g(x))$. 
 	Er $f(x)$ $\Theta (g(x))$ siges $f(x)$ at have samme orden som $g(x)$. 
 \end{defn}
 
@@ -99,7 +99,7 @@ Ud fra Definition \ref{eq_theta} følger det, at $f(x)$ er $\Theta (g(x))$, hvis
 
 når $x>k$. \\
 \begin{exmp}
-Betragt igen funktionen $f(x)=x^4+9x^3+4x+7$ fra Eksempel \ref{exmp_bigO} og \ref{exmp_theta} også er $\Theta(x^4)$.
+Betragt igen funktionen $f(x)=x^4+9x^3+4x+7$ fra Eksempel \ref{exmp_bigO} og \ref{exmp_theta}. Denne er også  $\Theta(x^4)$.
 Da $f(x)$ både er $O(x^4)$ og $\Omega (x^4)$, så er $f(x)$ også $\Theta (x^4)$.
 \end{exmp}
 
