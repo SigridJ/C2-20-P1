@@ -10,7 +10,7 @@ En simpel graf defineres formelt i Definition \ref{def_simpel_graf}.
 \begin{defn}
 En graf $G = (V, E)$ består af en mængde af knuder, $V$, og en mængde af kanter, $E$, hvor $V \neq \emptyset$.
 Hver kant har enten en eller to knuder, den er forbundet til, og de beskrives som kantens endeknuder.
-En kant siges at forbinde dens endeknuder. Denne konstruktion kaldes en \it{simpel graf}.
+%En kant siges at forbinde dens endeknuder. Denne %konstruktion kaldes en \it{simpel graf}.
 \label{def_simpel_graf}
 \end{defn}
 
@@ -19,16 +19,18 @@ Har grafen enten et uendeligt antal knuder, kanter eller begge dele, er der tale
 Ellers betegnes grafen som en \textit{endelig graf}.
 I dette projekt vil der kun blive arbejdet med endelige grafer.
 
+\begin{defn}
+En graf kaldes \textit{simpel}, så længe der i grafen ikke findes to kanter, som forbinder samme knudepar, og enhver kant forbinder to forskellige knuder. 
+Findes der i grafen to kanter, der forbinder samme knudepar kaldes er der tale om en \textit{multigraf}, og forefindes der en eller flere kanter, der forbinder en knude til sig selv (en \textit{løkke}), er grafen en \textit{pseudograf}.
+\end{defn}
+
 \begin{figure}[h]
 	\centering
 	\input{fig/tikz/simple_finite_graph}
 	\caption{Et eksempel på en simpel, endelig graf} \label{simpel_graf}
 \end{figure}
 
-I Figur \ref{simpel_graf} er der skitseret en simpel graf med seks knuder og otte forbindende kanter. 
-
-Optræder der et uordnet knudepar $\lbrace u,v \rbrace$ i grafen, som forbindes af to eller flere kanter, kaldes grafen en \textit{multigraf}.
-Findes der en knude i grafen, der med en kant er forbundet til sig selv (en \textit{løkke}), er der tale om en \textit{pseudograf}. Et eksempel på de to grafer kan ses nedenfor i Figur \ref{Fig:Data1} og \ref{Fig:Data2}.
+I Figur \ref{simpel_graf} er der skitseret en simpel graf med seks knuder og otte forbindende kanter. Et eksempel på de multi- og pseudografer kan ses nedenfor i Figur \ref{Fig:Data1} og \ref{Fig:Data2}.
 
 \begin{figure}[!htb]
    \begin{minipage}{0.48\textwidth}

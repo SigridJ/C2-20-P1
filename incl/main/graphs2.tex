@@ -1,7 +1,7 @@
 \usetikzlibrary{arrows, positioning}
 \section{Grafterminologi}
 
-Der findes begreber til at beskrive kanter og knuder i ikke-orienterede grafer, som bl.a. beskriver hvordan knuder og kanter er placeret i forhold til hinanden,, samt hvor mange knuder eller kanter, der er forbundet til en given knude.
+Der findes begreber til at beskrive kanter og knuder i ikke-orienterede grafer, som bl.a. beskriver hvordan knuder og kanter er placeret i forhold til hinanden, samt hvor mange knuder eller kanter, der er forbundet til en given knude.
 
 \begin{defn}
 To knuder, $u$ og $v$, siges at være naboer i en ikke-orienteret graf $G$, hvis $u$ og $v$ er endeknuder i en kant, $e$. Da betegnes $e$ som værende incident med både $u$ og $v$.
@@ -76,30 +76,30 @@ Lad $G=(V,E)$ være en simpel graf med $n$ knuder, hvor knuderne i $G$ står skr
 Nabomatricen $A$ af $G$ er en $n \times n$ matrix, med 1 som den $(i,j)$’te indgang når $v_i$ og $v_j$ er naboer, og 0 er den $(i,j)$’te indgang, når de ikke er naboer. Hvis nabomatricen er $A=[a_{ij}]$, så er
 
 \begin{align*}
-	a_{ij}= \left\{\begin{array}{cc}
-	1 & \textrm{hvis} \  \lbrace v_i, v_j \rbrace \  \in E \\
-	0 & \textrm{ellers} .\\
+	a_{ij}= \left\{\begin{array}{ll}
+	1 & \textrm{hvis} \ \lbrace v_i, v_j \rbrace \ \in E; \\
+	0 & \textrm{ellers}.\\
 	\end{array}\right.
 \end{align*}
 \end{defn}
 
-En nabomatrice af en graf er baseret på den valgte ordning af knuderne, hvorfor der kan være $n!$ forskellige nabomatricer for en graf med $n$ knuder, idet der er $n!$ forskellige måder at ordne de $n$ knuder på.
+En nabomatrix af en graf er baseret på den valgte ordning af knuderne, hvorfor der kan være $n!$ forskellige nabomatricer for en graf med $n$ knuder, idet der er $n!$ forskellige måder at ordne de $n$ knuder på.
 Nabomatricen for en simpel ikke-orienteret graf er symmetrisk, hvilket betyder $a_{ij}=a_{ji}$, da begge indgange er 1, når de relaterede knuder er naboer, og 0 hvis de ikke er.
 Da en simpel graf ikke indeholder løkker, er hver indgang $a_{ii}=0$ for alle $i=1,2,3, \dots ,n$. 
 
 Nabomatricer kan også bruges til at repræsentere ikke-orienterede grafer med løkker og flere kanter til samme knude.
 En løkke ved en knude $v_i$ er repræsenteret ved 1 ved position $(i,i)$ i nabomatricen.
-Når flere kanter forbinder det samme par af knuder $v_i$ og $v_j$, eller der er flere løkker ved samme knude til stede, er nabomatricen ikke længere en nul-et matrice, idet den $(i,j)$’te indgang af matricen er lig antallet af kanter forbundet til $\lbrace v_i,v_j \rbrace$.
+Når flere kanter forbinder det samme par af knuder $v_i$ og $v_j$, eller der er flere løkker ved samme knude til stede, er nabomatricen ikke længere en nul-et matrix, idet den $(i,j)$’te indgang af matricen er lig antallet af kanter der forbinder $v_i$ og $v_j$.
 Alle ikke-orienterede grafer, herunder multi- og pseudografer, har symmetriske nabomatricer.
 
-En anden almindelig måde at repræsentere grafer på, er ved incidensmatricer.
+En anden almindelig måde at repræsentere grafer på er ved incidensmatricer.
 
 \begin{defn}
-Lad $G=(V,E)$ være en ikke-orienteret graf med knuderne $v_1$, $v_2$, \dots , $v_n$ og kanterne $e_1$, $e_2$, \dots , $e_m$. Incidensmatricen, i forhold til ordningen af $V$ og $E$, er en $n \times m$ matrice, $M=[m_{ij}]$, hvor 
+Lad $G=(V,E)$ være en ikke-orienteret graf med knuderne $v_1$, $v_2$, \dots , $v_n$ og kanterne $e_1$, $e_2$, \dots , $e_m$. Incidensmatricen, i forhold til ordningen af $V$ og $E$, er en $n \times m$ matrix, $M=[m_{ij}]$, hvor 
 
 \begin{align*}
-	m_{ij}= \left\{\begin{array}{cc}
-	1 & \textrm{hvis} \  {e_j} \  \textrm{er} \  \textrm{incident} \ \textrm{med} \ v_i \\
+	m_{ij}= \left\{\begin{array}{ll}
+	1 & \textrm{hvis} \  {e_j} \  \textrm{er} \  \textrm{incident} \ \textrm{med} \ v_i \ ;\\
 	0 & \textrm{ellers}. \\
 	\end{array}\right.
 \end{align*}
@@ -110,7 +110,7 @@ Flere kanter mellem samme to knuder er repræsenteret i incidensmatricen ved sø
 Løkker er repræsenteret ved en søjle med præcis én indgang lig 1, der svarer til den knude, der er incident med løkken.
 
 \begin{exmp}
-	For at illustrere eksempler på at opskrive en nabomatrice og en incidensmatrice, betragtes grafen i Figur \ref{fig:simple_graph_labels}. 
+	For at illustrere eksempler på at opskrive en nabomatrix og en incidensmatrix, betragtes grafen i Figur \ref{fig:simple_graph_labels}. 
 	
 	\begin{figure}[h!]
 		\centering
@@ -118,7 +118,7 @@ Løkker er repræsenteret ved en søjle med præcis én indgang lig 1, der svare
 		\caption{En simpel ikke-orienteret graf.} \label{fig:simple_graph_labels}
 	\end{figure}
 	
-	Nabomatricen, $\mathbf{N}$, for grafen i Figur \ref{fig:simple_graph_labels} er en $6 \times 6$-matrice.
+	Nabomatricen, $\mathbf{N}$, for grafen i Figur \ref{fig:simple_graph_labels} er en $6 \times 6$-matrix.
 	Indgangen $n_{AA}=0$ angiver, at der ikke er er nogen løkker i $A$.
 	Indgangen $n_{AB}=1$ angiver, at en kant forbinder $A$ og $B$, så $A$ og $B$ er naboer.
 	På samme vis udfyldes resten af nabomatricen. 
@@ -140,7 +140,7 @@ Løkker er repræsenteret ved en søjle med præcis én indgang lig 1, der svare
 	  \end{blockarray}
 	\end{equation*} 
 	
-	Incidentmatricen, $\mathbf{M}$, for grafen i Figur \ref{fig:simple_graph_labels} er en $6 \times 8$-matrice.
+	Incidensmatricen, $\mathbf{M}$, for grafen i Figur \ref{fig:simple_graph_labels} er en $6 \times 8$-matrix.
 	Indgangen $m_{A,e_1}=1$ angiver, at $e_1$ er incident med $A$.
 	Indgangen $m_{A,e_2}=0$ angiver, at $e_2$ ikke er incident med $A$ og så videre.
 	
