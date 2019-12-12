@@ -18,7 +18,7 @@ I dette kapitel vil tre algoritmer blive beskrevet for at give en ide om, hvad e
 Skal den største værdi i en liste findes, kan det gøres med en algoritme. 
 Selvom det kan virke meget simpelt at læse en liste igennem og finde det største tal, kan det blive problematisk og tidskrævende, hvis der er tale om en længere liste. 
 Derfor kan en algoritme være smart, da nogle algoritmer hurtigt kan gennemgå lange lister. 
-Desuden kan en algoritme løses af en computer, hvilket også gør det nemmere. 
+Desuden kan en algoritme udføres af en computer, hvilket også gør det nemmere. 
 
 En sådan algoritme kan udføres ved at sætte det første element lig med en variabel $maks$. 
 Dernæst sammenlignes denne værdi med det næste element, som  $maks$ overtager, hvis det er større end den nuværende værdi af $maks$. 
@@ -109,14 +109,14 @@ Beløbet i 10-, 5-, 2- og 1-kroner kan ikke overstige 19 kroner.
 
 \begin{proof}
 \label{19_kr_bevis}
-Det antages for modstrid, at Lemma \ref{19_kr} ikke gælder.
+Det antages for modstrid, at det minimale antal mønter bruger flere af en mønt end givet i Lemma \ref{19_kr}.
 Hvis antallet af en mønt er større end angivet, kan de erstattes af færre mønter, som opfylder den samme værdi. 
 Hvis der eksempelvis er to 10'ere, kan de erstattes af en 20'er. 
 Hvis der er to 5'ere, kan de erstattes af en 10'er. 
 Er der tre 2'ere, kan de erstattes af en 5'er og en 1'er. 
 Hvis der på samme måde er to 1'ere, kan de erstattes af en 2'er.
 Desuden må der ikke være to 2'ere og en 1'er samtidig, da disse 3 mønter kan erstattes af en 5'er. 
-Dette er i modstrid med antagelsen om, at Lemma \ref{19_kr} ikke gælder, derfor må denne være sand. 
+Dette er i modstrid med antagelsen om, at det minimale antal mønter blev brugt, derfor må Lemma \ref{19_kr} være sand. 
 
 Fordi det maksimale antal mønter er en 10'er, en 5'er, to 2'ere og en 1'er, men der ikke kan være to 2'ere og en 1'er på samme tid, bliver det maksimale beløb der kan opfyldes med mønterne 19 kroner. 
 \end{proof}
@@ -132,8 +132,7 @@ Det antages for modstrid, at der findes et beløb $n$, som kan opfyldes ved hjæ
 Det bemærkes, at det optimale antal af 20'ere, der bruges for at opfylde $n$, $t'$, må være det samme som antallet af 20'ere den grådige algoritme vil bruge, $t$. 
 Dette følger af Lemma \ref{19_kr}, fordi der med mønter under 20'ere maksimalt vil kunne findes 19 kroner, hvis det stadig skal være optimalt. 
 Det betyder, at $t'$ og $t$ bliver nødt til at være det samme, da $t'$ ellers vil bruge mere end det optimale antal mønter. 
-Der er altså det samme antal 20'ere i begge tilfælde, hvilket også gælder for de resterende mønter. 
-Den grådige algoritme vil bruge flest mulige 10'ere, hvilket vil være det samme antal som det optimale, da det optimale antal er 1. 
+Der er altså det samme antal 20'ere i begge tilfælde.
 På samme måde vil antallet af 10'ere være det samme, fordi summen af 5'ere, 2'ere og 1'ere maksimalt kan give 9.
 Det samme gælder for 5-, 2- og 1-kroner.
 
