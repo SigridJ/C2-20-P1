@@ -7,7 +7,7 @@ Det kan være i forbindelse med ruteplanlægning, overførsel af data i et netv�
 I grafer over eksempelvis vejnet er det meget relevant at bruge vægtede grafer, da det er nyttigt at kunne se hvor lang en strækning mellem to steder er.
 Dette kan så bruges til at finde den korteste rute eller bare undersøge længden af en bestemt rute. 
 
-Der er mange problemer der omhandler veje og kredse i vægtede grafer, et af disse er Travelling Salesperson Problem, også kaldet TSP.
+Der er mange problemer der omhandler veje og kredse i vægtede grafer, et af disse er TSP.
 Problemet går ud på, at en handelsrejsende vil finde den korteste rute gennem alle steder vedkommende vil besøge, og til sidst ender tilbage hvor rejsen startede.
 Det vil specielt sige, at det ønskes at finde en simpel kreds i en vægtet graf, der går gennem alle punkter en gang. 
 Den kreds der skal findes er derfor en Hamiltonkreds, fordi den skal gå gennem hver knude netop én gang. Kapitlet tager udgangspunkt i \citep{metrictsp} medmindre andet er angivet.
@@ -15,7 +15,7 @@ Den kreds der skal findes er derfor en Hamiltonkreds, fordi den skal gå gennem 
 TSP er et populært, svært problem, og er kendt for at der ikke findes nogen algortimer til at løse optimeringsproblemet i polynomisk tid. 
 
 \begin{tcolorbox}
-	\textbf{Travelling Salesperson Problem (TSP)} \quad Lad grafen $G=(V,E)$ være en simpel komplet graf med vægtede kanter.
+	\textbf{Travelling Salesperson Problem} \quad Lad grafen $G=(V,E)$ være en simpel komplet graf med vægtede kanter.
 
 	Find en Hamiltonkreds i $G$ med den mindste samlede vægt.
 \end{tcolorbox}

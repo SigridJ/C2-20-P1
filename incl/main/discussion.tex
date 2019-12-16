@@ -2,7 +2,7 @@
 
 Tidskompleksiteten angivet ved Store-$\Theta$ notation estimerer tiden, det tager en algoritme at løse et problem, i takt med at inputtet stiger. 
 Den faktiske computertid varierer, og nutidens hurtigste computere kan udføre en operation i en algoritme på $10^{-11}$ sekunder. \cite{dmat}.
-En Brute Force algoritme til at løse Travelling Salesperson Problem har faktoriel tidskompleksitet, $\Theta(n!)$, hvor der estimeres en anvendelse af maksimalt $n!$ operationer.
+En Brute Force algoritme til at løse TSP har faktoriel tidskompleksitet, $\Theta(n!)$, hvor der estimeres en anvendelse af maksimalt $n!$ operationer.
 Med nutidens hurtigste computere, vil det tage algortime urimelig lang tid løse problemet, hvis inputtet når over eksempelvis $n=20$, hvilket ses i Tabel \ref{tab_algtsp}. Det ses samtidigt, at Dobbelttræ algoritmen har en væsentlig lavere gennemløbstid, og selv i større grafer vil algoritmen køres på under et millisekund. 
 
 \begin{table}[h]
@@ -19,12 +19,12 @@ Med nutidens hurtigste computere, vil det tage algortime urimelig lang tid løse
  \caption{Gennemløbstiden afhængig af inputstørrelsen for løsningsalgortimerne, hvor det er antaget, at der udføres én operation per $10^{-11}$ sekunder.} \label{tab_algtsp}
 \end{table}
 
-Grundet den lange gennemløbstid vil det være urentabelt at bruge ressourcer på at implementere en Brute Force algortime for at løse Travelling Salesperson Problem i en større graf, selvom Brute Force algortimen med sikkerhed kan finde Hamilton kredsen med mindst vægt. 
+Grundet den lange gennemløbstid vil det være urentabelt at bruge ressourcer på at implementere en Brute Force algortime for at løse TSP i en større graf, selvom Brute Force algortimen med sikkerhed kan finde Hamilton kredsen med mindst vægt. 
 I stedet kan der indgås et kompromis med algoritmens præcision. 
 
 Ved at anvende Dobbelttræ algoritmen findes der en approksimation på løsningen i stedet for den optimale løsning, men tilgengælg forbedres gennemløbstiden markant, som det ses Tabel \ref{tab_algtsp}. 
-Den forbedrede hastighed for at køre algoritmen gør det muligt at approksimere løsninger af Travelling Salesperson Problem, selv når mange byer skal besøges. 
+Den forbedrede hastighed for at køre algoritmen gør det muligt at approksimere løsninger af TSP, selv når mange byer skal besøges. 
 Medfører approksimationen ikke en uacceptabel stor fejl, kan det være en  fordel at løse problemet ved at gå på kompromis med algoritmens præcision.
 
 Udover egenskaberne at være hurtig at udføre og præcis set i forhold til at finde den optimale løsning kan det overvejes, hvorvidt en algoritme skal kunne løse et givent problem i alle tilfælde. 
-Der laves et kompromis, da Travelling Salesperson Problem afgrænses til det metriske tilfælde, for at der kan findes en løsningsalgoritme. For at løse andre typer af Travelling Salesperson Problem, anvendes andre løsningsalgoritmer. 
+Der laves et kompromis, da TSP afgrænses til det metriske tilfælde, for at der kan findes en løsningsalgoritme. For at løse andre typer af TSP, anvendes andre løsningsalgoritmer. 
