@@ -9,11 +9,25 @@ En bestemt type af kredse gennemgår alle kanter i en graf og kaldes Eulerkredse
 
 \begin{exmp}
 	Et eksempel på en Eulerkreds og en Eulervej kan ses i Figur \ref{euler_kreds} og \ref{euler_vej}: 
+
+\begin{figure}[h]
+\centering
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+			\scalebox{0.9}{\input{fig/tikz/euler_kreds}}
+		\caption{Eulerkreds} 
+		\label{euler_kreds}
+	\end{subfigure}%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+			\scalebox{0.9}{\input{fig/tikz/euler_vej}}
+		\caption{Eulervej} 
+		\label{euler_vej}
+	\end{subfigure}
+\caption{}
+\end{figure}
 \end{exmp}
 
-\input{fig/tikz/euler_kreds}
-
-\input{fig/tikz/euler_vej}
 
 Et eksempel på en Eulerkreds i Figur \ref{euler_kreds} kan være: $A,B,E,C,F,E,D,A$, og
 et eksempel på en Eulervej i Figur \ref{euler_vej} kan være: $A,B,E,D,A,E,F,C$.
@@ -72,11 +86,11 @@ Der findes også andre algoritmer, som kan finde Eulerkredse i en graf, men diss
 \end{algorithm}
 
 \begin{thm} \label{thm:O_euler}
-	Kompleksiteten af Algoritme \ref{algoritme_euler} er af lineær orden.
+	Kompleksiteten af Algoritme \ref{algoritme_euler} er \space $\Theta (|E|)$.
 \end{thm}
 
 \begin{proof}
-	For at finde algoritmens kompleksitet, opskrives en funktion, der beskriver antallet af sammenligner algoritmen laver for hver kant, $e$.
+	For at finde algoritmens kompleksitet, opskrives en funktion, der beskriver antallet af sammenligninger algoritmen laver for et antal kanter, $|E|$.
 	Der tages udgangspunkt i det værst mulige tilfælde. 
 
 	Hver gang algoritmen er ved en knude, vil den undersøge, om den kan vælge en kant, hvor den ikke allerede har været. 
@@ -85,21 +99,21 @@ Der findes også andre algoritmer, som kan finde Eulerkredse i en graf, men diss
 	Dette gør, at algoritmen må tage udgangspunkt i en ny knude, som er incident med en af kanterne i den fjernede underkreds.
 	I den nye knude vil algoritmen lave en ny sammenligning, for at finde ud af, om den kan vælge en kant, hvor den ikke har været før.
 	Dette vil betyde, at det værst mulige tilfælde vil være i en multigraf, hvor der hele tiden vil blive dannet underkredse bestående af to kanter. 
-	Hver gang algoritmen danner en ny underkreds, vil det kræve en ekstra sammenligning, og fordi dette sker hver anden gang i værste tilfælde, vil den endelige forskrift for antallet af sammenligninger blive $f(e)=e+ \frac{e}{2}$.
+	Hver gang algoritmen danner en ny underkreds, vil det kræve en ekstra sammenligning, og fordi dette sker hver anden gang i værste tilfælde, vil den endelige forskrift for antallet af sammenligninger blive højst $f(|E|)=|E|+ \frac{|E|}{2}$.
 
-	Funktionen $f(e)$ er $O(e)$ da
+	Funktionen $f(|E|)$ er $O(|E|)$ da
 	\begin{align*}
-	e+ \frac{e}{2} \leq e + e = 2e
+	|E|+ \frac{|E|}{2} \leq |E| + |E| = 2|E|
 	\end{align*}
-	når $e>1$. Da er vidnerne $C=2$ og $k=1$.
+	når $|E|>1$. Da er vidnerne $C=2$ og $k=1$.
 
-	Funktionen $f(n)$ er også $\Omega(e)$ da
+	Funktionen $f(|E|)$ er også $\Omega(|E|)$ da
 	\begin{align*}
-	e + \frac{e}{2} \geq e
+	|E| + \frac{|E|}{2} \geq |E|
 	\end{align*}
-	når $e>1$. Da er vidnerne $C=1$ og $k=1$.
+	når $|E|>1$. Da er vidnerne $C=1$ og $k=1$.
 
-	Da funtionen både er $O(e)$ og $\Omega (e)$ kan den også siges at være $\Theta (e)$.
+	Da funtionen både er $O(|E|)$ og $\Omega (|E|)$ kan den også siges at være $\Theta (|E|)$.
 \end{proof}
 
 Hvis der ikke findes en Eulerkreds i en graf, kan der godt eksistere en Eulervej. 
@@ -147,7 +161,10 @@ En Hamiltonkreds er en kreds som går gennem hver knude i grafen én gang. På s
 \end{exmp}
 
 Der kendes ikke en simpel måde til at bestemme om der findes en Hamiltonkreds i en graf, ligesom der gør for en Eulerkreds. 
-Der findes dog flere sætningerne der kan give en ide om eksistensen af en Hamiltonkreds. Med udgangspunkt i \citep{wilson_graph} og \citep{orebevis} bevises følgende to sætninger.
+Problemet Hamiltonian Path Problem (HPP) er et kendt, svært problem inden for grafteori, som netop går ud på at finde ud af, om der eksisterer en Hamiltonvej eller -kreds i en given graf.
+Der findes dog flere sætninger, der kan give en idé om eksistensen af en Hamiltonkreds. Med udgangspunkt i \citep{wilson_graph} og \citep{orebevis} bevises følgende to sætninger.
+
+
 
 \begin{thm} \label{ores_thm}
 	\textbf{Ores Sætning:} 
@@ -210,11 +227,11 @@ En anden sætning der kan bruges til at undersøge om der eksiserer en Hamiltonk
 	hvorfor grafen må have en Hamiltonkreds.
 \end{proof}
 
-Derudover gælder det også, at der ikke kan eksistere en hamiltonkreds i en graf med en knude, der har graden 1. 
+Derudover gælder det også, at der ikke kan eksistere en Hamiltonkreds i en graf med en knude, der har graden 1. 
 Disse to sætninger beskriver, hvornår der med sikkerhed eksisterer en Hamiltonkreds, men en Hamiltonkreds kan godt eksistere uden at opfylde sætningerne. 
 
 \begin{exmp}
-	I Figur \ref{pentagon} ses en graf der indeholder en hamiltonkreds.
+	I Figur \ref{pentagon} ses en graf der indeholder en Hamiltonkreds.
 	Grafen overholder ikke betingelserne i Ores' Sætning, da summen af to knuders grader aldrig kan give et resultat større end $4$, hvilket er mindre end $n$.
 	Grafen overholder heller ikke betingelserne i Diracs Sætning, fordi $n=5$, mens graden af hver kant i grafen er $2$, hvilket er mindre end $n/2$.
 	
@@ -228,9 +245,6 @@ Disse to sætninger beskriver, hvornår der med sikkerhed eksisterer en Hamilton
 %Et kendt probelm hedder...
 %Der er blevet formuleret et problem, som kaldes Hamiltonvej Problemet eller Hamiltonkreds problemet. 
 %Dette problem går ud på, at det ønskes at finde ud af om der eksisterer en hamiltonkreds eller -vej i en given graf. 
-
-Problemet Hamiltonian Path Problem (HPP) er et kendt, svært problem inden for grafteori. 
-Dette problem går netop ud på at finde ud af, om der eksisterer en hamiltonvej eller -kreds i en given graf.
 
 \begin{thm} \label{HPP}
 	Hamiltonian Path Problem er NP-fuldstændigt. \citep{computers}

@@ -10,7 +10,7 @@ Et træ er en sammenhængende ikke-orienteret graf, der ikke indeholder en simpe
 
 Træer er en type af simple grafer. Da de ikke indeholder en simpel kreds, kan der ikke være flere kanter mellem to knuder, og der kan ikke være løkker. Alternativt og ækvivalent til Definition \ref{def_tree} kan et træ defineres som følger.
 
-\begin{thm}
+\begin{thm}\label{thm:vej_tree}
 En ikke-orienteret graf er et træ hvis og kun hvis, der eksisterer netop én simpel vej mellem hvert par af knuder. 
 \end{thm}
 
@@ -35,19 +35,22 @@ For at illustrere en graf, som er et træ, og en graf, som ikke er et træ, iagt
 
 \begin{figure}[h]
 \centering
-\input{fig/tikz/et_trae}
-\caption{Et træ.} 
-\label{eksempel_tree}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+			\scalebox{0.9}{\input{fig/tikz/et_trae}}
+		\caption{Et træ.} 
+		\label{eksempel_tree}
+	\end{subfigure}%
+	\begin{subfigure}{0.5\textwidth}
+		\centering		
+			\scalebox{0.9}{\input{fig/tikz/ikke_et_trae}}
+		\caption{En graf, der ikke er et træ.} 
+		\label{eksempel_notree}
+	\end{subfigure}
+\caption{}
 \end{figure}
 
 Grafen i Figur \ref{eksempel_notree} er ikke et træ, da der eksistrer en kreds $\lbrace B, D, C \rbrace$. Grafen er heller ikke et træ med argumentet, at grafen ikke er sammenhængende.\\
-
-\begin{figure}[h]
-\centering
-\input{fig/tikz/ikke_et_trae}
-\caption{En graf, der ikke er et træ.} 
-\label{eksempel_notree}
-\end{figure}
 
 Mange anvendelser af træer kræver at en bestemt knude i en graf fungerer som udgangspunkt. En knude kan indentificeres som en rod, og dermed rodfæste grafen.
 
@@ -173,6 +176,13 @@ Der kan i Prims algoritme opstå at algoritmen kan vælge mellem flere kanter me
 
 \input{incl/main/prims_complexity}
 
+\begin{figure}[!h]
+  \centering
+  \scalebox{0.8}{\input{fig/tikz/minimalt_udspaendende_trae}}
+  \caption{Eksempel på et minimalt udspændende træ.}
+  \label{eks_prim}
+\end{figure}
+
 \begin{exmp}
 For at give et eksempel på princippet i Prims algortime laves et eksempel på at finde et minimalt udspændende træ i grafen i Figur \ref{eks_prim}. 
 Prims algortime vil i første skridt vælge en kant med mindst mulig vægt. 
@@ -189,13 +199,6 @@ Der vælges nu $\lbrace B,D \rbrace$ efterfulgt af $\lbrace A,D \rbrace$.
 Det er nu ikke muligt at vælge flere kanter uden at danne en simpel kreds, og der er dermed dannet et minimalt udspændende træ med kanterne $\lbrace E,F \rbrace$, $\lbrace C,F \rbrace$, $\lbrace E,H \rbrace$, $\lbrace H,I \rbrace$, $\lbrace G,H \rbrace$, $\lbrace B,C \rbrace$, $\lbrace B,D \rbrace$, $\lbrace A,D \rbrace$. 
 Alt efter rangering af kanter med samme vægt kan rækkefølgen, algoritmen vælger kanter, variere, men der opnås i dette eksempel samme minimale udspændende træ.
 \end{exmp} 
-
-\begin{figure}[!h]
-  \centering
-  \input{fig/tikz/minimalt_udspaendende_trae}
-  \caption{Eksempel på et minimalt udspændende træ.}
-  \label{eks_prim}
-\end{figure}
 
 Det vil med udgangspunkt i \citep{prim} bevises, at Prims algortime bestemmer et minimalt udspændende træ.
 
@@ -226,12 +229,12 @@ Lad $T_{k}$ være et træ. Det skal så med induktion vises, at $T_{k}$, som til
 
 \textit{Induktionsskridtet}: Ved $k$'te skridt i algortimen, er $T_k$ et undertræ af $M$, og Prims algortime tilføjer kanten $e$. Hvis $e$ $\in$ $M$, må $T_k$ stadig være et undertræ af $M$ i følge induktionsantagelsen.
 
-Antag, at $e \notin M$. Når $e$ tilføjes $M$, dannes der en kreds, fordi $M$ er et udspændende træ og derfor har en simpel vej mellem alle knuder jf. Sætning \ref{smh_satning}.
+Antag, at $e \notin M$. Når $e$ tilføjes $M$, dannes der netop én kreds, fordi $M$ er et udspændende træ og derfor har én simpel vej mellem alle knuder jf. Sætning \ref{thm:vej_tree}.
 Kanten $e$ har en endeknude i $T_k$ samt en endeknude, der ikke er i $T_k$, fordi Prims algoritme har tilføjet $e$. 
 Der vil eksistere en anden kant $e'$ i kredsen, som også har netop en endeknude i $T_k$, fordi $e$ skal have endeknude i $M$, uden at $e$ er del af $M$. 
 Kanterne $e$ og $e'$ er illustreret i Figur \ref{graf_prim_bevis}, hvor det kan ses, at de er en del af en kreds. 
 Prims algoritme kunne have valgt $e'$, men valgte at tilføje $e$, hvorfor $d(e) \leq d(e')$. 
-Hvis $e$ tilføjes til $M$, mens $e'$ fjernes, opstår et nyt træ $M'$, hvor 
+Hvis $e$ tilføjes til $M$, mens $e'$ fjernes fra samme kreds, opstår et nyt træ $M'$, hvor 
 $d(M') \leq d(M)$, hvilket er i modstrid med, at $M$ er et minimalt udspændende træ. Det nye træ $M'$ indeholder $T\cup \lbrace e \rbrace$, hvilket følger induktionsantagelsen. 
 \end{proof}
 
