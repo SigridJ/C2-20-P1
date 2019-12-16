@@ -1,7 +1,7 @@
 \section{Vægtede grafer}
 
 Flere problemstillinger kan modelleres ved brug af grafer med vægte tildelt kanterne. 
-Det kan f.eks. være distance, den samlede rejsetid eller billetprisen for at rejse mellem to byer. 
+Det kan eksempelvis være distance, den samlede rejsetid eller billetprisen for at rejse mellem to byer. 
 Grafer, der har vægte tildelt kanterne, kaldes vægtede grafer. 
 
 Der opstår jævnligt forskellige typer af problemer, der involverer vægtede grafer, hvor en kortest mulig rute, mellem to knuder i et netværk, skal bestemmes. 
@@ -9,9 +9,8 @@ Længden af en vej i en graf uden vægte er tidligere betegnet ved antallet af k
 I en vægtet graf er længden af vejen summen af alle kanternes vægte, der indgår i vejen.
 
 \begin{defn}
-	Lad $G = (V,E)$ være en vægtet graf. Da betegnes $d(v_i, v_j)$ som \textit{vægten} af kanten mellem to knuder $v_i, v_j \in V$.
-	Så samme vis betegnes $d(e)$ som vægten af en kant $e \in E$, og $d(S)$ den summen af alle vægte i en graf $S \subseteq G$.
-	Desuden er $d(e) \in \mathbb{R}_{\geq 0}$, for alle $e \in E$.
+	Lad $G = (V,E)$ være en vægtet graf. Lad funktionen $d : E \to \mathbb{R}_{\geq 0}$ være vægten af en kant $e \in E$. En kant kan også beskrives ved to naboknuder, $v_i, v_j \in V$, og vægten betegnes da som $d(v_i, v_j)$.
+	På samme vis betegner $d(S)$ summen af vægten af alle kanter i en graf $S \subseteq G$.
 \end{defn}
 
 \begin{exmp}
@@ -24,11 +23,9 @@ I Figur \ref{fig:weighted_graph} ses et eksempel på en vægtet graf. Den kortes
 	\caption{Eksempel på en vægtet graf.} \label{fig:weighted_graph}
 \end{figure}
 
-I et interessant problem, som involverer vægtede grafer, søges en kreds af kortest mulig totallængde, der besøger hver knude i en komplet graf præcis én gang.
-
+TSP er et problem, som netop involverer vægtede grafer. Her søges en kreds af kortest mulig totallængde, der besøger hver knude i en komplet graf præcis én gang.
 I Figur \ref{fig:weighted_graph} vil en kreds af kortest mulig længde være $\lbrace A,C \rbrace$, $\lbrace C,E \rbrace$, $\lbrace E,F \rbrace$, $\lbrace F,D \rbrace$, $\lbrace D,B \rbrace$, $\lbrace B,A \rbrace$.
 Denne kreds har en længde på $5+5+5+5+15+20=55$.
 
-Der er her tale om et eksempel på \emph{Traveling Salesperson Problem}, som søger dén rækkefølge, knuderne skal besøges i, som resulterer i en kreds af kortest mulig længde. 
 Dette problem vil projektet undersøge nærmere i Kapitel \ref{chap:TSP}.
 

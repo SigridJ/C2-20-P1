@@ -86,11 +86,11 @@ Der findes også andre algoritmer, som kan finde Eulerkredse i en graf, men diss
 \end{algorithm}
 
 \begin{thm} \label{thm:O_euler}
-	Kompleksiteten af Algoritme \ref{algoritme_euler} er \space $\Theta (|E|)$.
+	Kompleksiteten af Algoritme \ref{algoritme_euler} er \space $\Theta (m)$, hvor $m$ er antallet af kanter.
 \end{thm}
 
 \begin{proof}
-	For at finde algoritmens kompleksitet, opskrives en funktion, der beskriver antallet af sammenligninger algoritmen laver for et antal kanter, $|E|$.
+	For at finde algoritmens kompleksitet, opskrives en funktion, der beskriver antallet af sammenligninger algoritmen laver for et antal kanter, $m$.
 	Der tages udgangspunkt i det værst mulige tilfælde. 
 
 	Hver gang algoritmen er ved en knude, vil den undersøge, om den kan vælge en kant, hvor den ikke allerede har været. 
@@ -99,21 +99,21 @@ Der findes også andre algoritmer, som kan finde Eulerkredse i en graf, men diss
 	Dette gør, at algoritmen må tage udgangspunkt i en ny knude, som er incident med en af kanterne i den fjernede underkreds.
 	I den nye knude vil algoritmen lave en ny sammenligning, for at finde ud af, om den kan vælge en kant, hvor den ikke har været før.
 	Dette vil betyde, at det værst mulige tilfælde vil være i en multigraf, hvor der hele tiden vil blive dannet underkredse bestående af to kanter. 
-	Hver gang algoritmen danner en ny underkreds, vil det kræve en ekstra sammenligning, og fordi dette sker hver anden gang i værste tilfælde, vil den endelige forskrift for antallet af sammenligninger blive højst $f(|E|)=|E|+ \frac{|E|}{2}$.
+	Hver gang algoritmen danner en ny underkreds, vil det kræve en ekstra sammenligning, og fordi dette sker hver anden gang i værste tilfælde, vil den endelige forskrift for antallet af sammenligninger blive højst $f(m)=m+ \frac{m}{2}$.
 
-	Funktionen $f(|E|)$ er $O(|E|)$ da
+	Funktionen $f(m)$ er $O(m)$ da
 	\begin{align*}
-	|E|+ \frac{|E|}{2} \leq |E| + |E| = 2|E|
+	m+ \frac{m}{2} \leq m + m = 2m
 	\end{align*}
-	når $|E|>1$. Da er vidnerne $C=2$ og $k=1$.
+	når $m>1$. Da er vidnerne $C=2$ og $k=1$.
 
-	Funktionen $f(|E|)$ er også $\Omega(|E|)$ da
+	Funktionen $f(m)$ er også $\Omega(m)$ da
 	\begin{align*}
-	|E| + \frac{|E|}{2} \geq |E|
+	m + \frac{m}{2} \geq m
 	\end{align*}
-	når $|E|>1$. Da er vidnerne $C=1$ og $k=1$.
+	når $m>1$. Da er vidnerne $C=1$ og $k=1$.
 
-	Da funtionen både er $O(|E|)$ og $\Omega (|E|)$ kan den også siges at være $\Theta (|E|)$.
+	Da funtionen både er $O(m)$ og $\Omega (m)$ kan den også siges at være $\Theta (m)$.
 \end{proof}
 
 Hvis der ikke findes en Eulerkreds i en graf, kan der godt eksistere en Eulervej. 
@@ -153,6 +153,8 @@ En Hamiltonkreds er en kreds som går gennem hver knude i grafen én gang. På s
 
 \begin{exmp}
 	Eksempler på en Hamiltonkreds og en Hamiltonvej kan ses i Figur \ref{hamiltion_vej_kreds}.
+	Et eksempel på en Hamiltonkreds i grafen er: $A,B,F,C,E,D,A$, og
+	et eksempel på en Hamiltonvej er: $A,D,B,C,F,E$.
 	
 	\begin{figure}[h]
 		\centering
@@ -160,15 +162,12 @@ En Hamiltonkreds er en kreds som går gennem hver knude i grafen én gang. På s
 		\caption{Et eksempel på en simpel graf hvor der eksistere en Hamiltonvej og Hamiltonkreds.} \label{hamiltion_vej_kreds}
 	\end{figure}
 	
-	Et eksempel på en Hamiltonkreds i grafen er: $A,B,F,C,E,D,A$, og
-	et eksempel på en Hamiltonvej er: $A,D,B,C,F,E$.
 \end{exmp}
 
-Der kendes ikke en simpel måde til at bestemme om der findes en Hamiltonkreds i en graf, ligesom der gør for en Eulerkreds. 
+Der kendes ikke en simpel måde til at bestemme, om der findes en Hamiltonkreds i en graf, ligesom der gør for en Eulerkreds. 
 Problemet Hamiltonian Path Problem (HPP) er et kendt, svært problem inden for grafteori, som netop går ud på at finde ud af, om der eksisterer en Hamiltonvej eller -kreds i en given graf.
+
 Der findes dog flere sætninger, der kan give en idé om eksistensen af en Hamiltonkreds. Med udgangspunkt i \citep{wilson_graph} og \citep{orebevis} bevises følgende to sætninger.
-
-
 
 \begin{thm} \label{ores_thm}
 	\textbf{Ores Sætning:} 
@@ -208,7 +207,7 @@ Der findes dog flere sætninger, der kan give en idé om eksistensen af en Hamil
 
 	\begin{figure}[h!]
 		\centering
-		\input{fig/tikz/ore_bevis}
+		\scalebox{0.8}{\input{fig/tikz/ore_bevis}}
 		\caption{En illustration der viser Hamiltonkredsen i $G$.} \label{ore_bevis}
 	\end{figure}
 	
@@ -234,9 +233,9 @@ En anden sætning der kan bruges til at undersøge om der eksiserer en Hamiltonk
 Derudover gælder det også, at der ikke kan eksistere en Hamiltonkreds i en graf med en knude, der har graden 1. 
 Disse to sætninger beskriver, hvornår der med sikkerhed eksisterer en Hamiltonkreds, men en Hamiltonkreds kan godt eksistere uden at opfylde sætningerne. 
 	
-	\begin{figure}[h]
+	\begin{figure}[htbp]
 	\centering
-		\input{fig/tikz/pentagon}
+		\scalebox{0.7}{\input{fig/tikz/pentagon}}
 	\caption{Hamiltonkreds i en graf med 5 knuder}
 	\label{pentagon}
 	\end{figure}
@@ -254,5 +253,5 @@ Disse to sætninger beskriver, hvornår der med sikkerhed eksisterer en Hamilton
 	Hamiltonian Path Problem er NP-fuldstændigt. \citep{computers}
 \end{thm}
 
-Der vil blive gjort brug af denne sætning i løbet af projektet, men denne vil ikke blive bevist. 
+Der vil blive gjort brug af denne sætning i løbet af projektet, men den vil ikke blive bevist. 
 Der henvises til \citep{computers} for beviset.
