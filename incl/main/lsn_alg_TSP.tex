@@ -100,43 +100,47 @@ Skyd genvej i $E$ for at opnå Hamiltonkredsen, $H$ \\
 \textbf{returnér} $H$ $\lbrace$ $H$ er Hamiltonkreds i $G$ $\rbrace$
 \end{algorithm}
 
-\begin{exmp}
-	Som eksempel på Dobbelttræ-Algoritmens fremgangsmåde, ses på en komplet, metrisk graf med $5$ knuder.
-På Figur \ref{dtex1} ses grafen, som der nu skal findes en Hamiltonkreds i.
-	Algoritmen finder så et minimalt udspændende træ ved Prims algoritme som i Figur \ref{dtex2}.
-	Herefter ses bort fra de resterende kanter, som ikke er en del af træet, og samtlige kanter i det minimalt udspændende træ fordobles, som det er gjort i Figur \ref{dtex3}.
-	Slutteligt skydes der flere genveje, som på Figur \ref{dtex4} ses som den røde kant, som indsættes til fordel for de stiplede kanter. Dermed er der fundet en Hamiltonkreds.
-
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
-	\begin{subfigure}{0.5\textwidth}
+	\begin{minipage}[t]{0.5\textwidth}
 		\centering
 			\scalebox{0.7}{\input{incl/main/double_tree_ex}}
 		\label{dtex1}
-		\caption{Komplet vægtet metrisk graf med $5$ knuder.}
-	\end{subfigure}%
-	\begin{subfigure}{0.5\textwidth}
+		\subcaption[first caption.]{Komplet vægtet metrisk graf med 5 knuder.}\label{fig:1a}
+	\end{minipage}%
+	\begin{minipage}[t]{0.5\textwidth}
 		\centering
 			\scalebox{0.7}{\input{incl/main/double_tree_ex2}}
 		\label{dtex2}
-		\caption{Minimalt undspændende træ findes i grafen.}
-	\end{subfigure}
-	\newline
-	\begin{subfigure}{0.5\textwidth}
+		\subcaption[second caption.]{Minimalt undspændende træ findes i grafen.}\label{fig:1b}
+	\end{minipage}
+
+	\vspace{10mm}
+
+	\begin{minipage}[t]{0.5\textwidth}
 		\centering		
 			\scalebox{0.7}{\input{incl/main/double_tree_ex3}}
 		\label{dtex3}
-		\caption{Alle kanter i træet fordobles.}
-	\end{subfigure}%
-	\begin{subfigure}{0.5\textwidth}
+		\subcaption[third caption.]{Alle kanter i træet fordobles.}\label{fig:1c}
+	\end{minipage}%
+	\begin{minipage}[t]{0.5\textwidth}
 		\centering
 			\scalebox{0.7}{\input{incl/main/double_tree_ex4}}
 		\label{dtex4}
-		\caption{Der skydes genvej i Eulerkredsen\\ for at
-		danne en Hamiltonkreds.}
-	\end{subfigure}
-	\caption{}
+		\subcaption[fourth caption.]{Der skydes genvej i Eulerkredsen for at danne en Hamiltonkreds.}\label{fig:1d}
+	\end{minipage}
+
+	\vspace{5mm}
+
+	\caption{} \label{fig:1}
 \end{figure}
+
+\begin{exmp}
+	Som eksempel på Dobbelttræ-Algoritmens fremgangsmåde, ses på en komplet, metrisk graf med $5$ knuder.
+På Figur \ref{fig:1a} ses grafen, som der nu skal findes en Hamiltonkreds i.
+	Algoritmen finder så et minimalt udspændende træ ved Prims algoritme som i Figur \ref{fig:1b}.
+	Herefter ses bort fra de resterende kanter, som ikke er en del af træet, og samtlige kanter i det minimalt udspændende træ fordobles, som det er gjort i Figur \ref{fig:1c}.
+	Slutteligt skydes der flere genveje, som på Figur \ref{fig:1d} ses som den røde kant, som indsættes til fordel for de stiplede kanter. Dermed er der fundet en Hamiltonkreds.
 \end{exmp}
 
 \subsection{Kompleksitet af Dobbelttræ-algoritmen}
