@@ -1,14 +1,16 @@
 \section{Versioner og approksimationer af TSP}
 Udover at TSP ikke har nogen polynomiel algoritme, der kan løse problemet, har den generelle version af problemet heller ikke en $k$-approksimation.
+For at vise dette resultat, er det nødvendigt at vise en sådan $k$-approksimation giver anledning til en løsning til Hamiltonian Path Problem (HPP).
+HPP er et kendt problem som blev beskrevet i Kapitel \ref{chap:paths_and_circuts}, og dette problem er $NP$-fuldstændigt, jf. Sætning \ref{HPP}.
 
-\begin{thm}
-	Der eksisterer ikke en $k$-approksimationsalgoritme for TSP når $k \geq 1$, medmindre $P = NP$.
+\begin{thm} \label{thm:TSP_HPP}
+	Hvis der eksisterer en $k$-approksimation for TSP, følger det at der eksisterer en polynomiel algoritme til at løse HPP. 
 \end{thm}
-\begin{proof}
-	For at vise der ikke eksisterer en $k$-approksimation for TSP, vil det blive vist at dette vil give anledning til en algoritme der løser HPP i polynomiel tid.
-	Fra Sætning \ref{HPP} fås det at HPP er $NP$-fuldstændigt, hvilket vil være en modstrid, medmindre $P=NP$.
 
-	Antag for modstrid at der eksisterer en $k$-approksimation der løser TSP.
+\begin{proof}
+	Det vil blive vist at hvis der eksisterer en $k$-approksimation for TSP, vil dette vil give anledning til en algoritme der løser HPP i polynomiel tid.
+
+	Antag at der eksisterer en $k$-approksimation der løser TSP.
 	Lad $G=(V,E)$ være en simpel graf, hvori det ønskes at vide om der eksisterer en Hamiltonkreds.
 	Lad nu $G'$ være en komplet graf med præcis de samme knuder som $G$, og lad de kanter $G'$ har til fælles med $G$ have vægten $1$, mens alle de resterende får vægten $kn$, hvor $n$ er antallet af knuder.
 
@@ -20,8 +22,17 @@ Udover at TSP ikke har nogen polynomiel algoritme, der kan løse problemet, har 
 
 	Altså kan der ud fra $G$ konstrueres en ny graf, og hvis $k$-approksimationen køres med denne graf, kan værdien den returnerer altid bruges til at bestemme om der eksistere en Hamiltonkreds i $G$.
 	Siden $k$-approksimationen per Definition \ref{def:apk} er af polynomiel tid, må dette også være en løsningsalgoritme til HPP af polynomiel tid.
+\end{proof}
 
-	Det er nu blevet vist, at hvis der eksisterer en $k$-approksimation for TSP, kan denne bruges til at finde en løsning på HPP i polynomiel tid, hvilket er en modstrid, medmindre $P=NP$.
+\begin{tcolorbox}
+	\begin{cor}
+		Der eksisterer ikke en $k$-approksimationsalgoritme for TSP når $k \geq 1$, medmindre $P = NP$.
+	\end{cor}
+\end{tcolorbox}
+\begin{proof}
+	Antag for modstrid at der eksisterer en $k$-approksimation for TSP.
+	Jf. Sætning \ref{thm:TSP_HPP} må der da eksistere en polynomiel algoritme der løser HPP. 
+	Fra Sætning \ref{HPP} fås det at HPP er $NP$-fuldstændigt, hvilket vil være en modstrid, medmindre $P=NP$.
 \end{proof}
 
 Selvom der ikke eksisterer en algoritme til at finde den optimale løsning på TSP i polynomiel tid, er det muligt med algoritmer at approksimere en optimal løsning i polynomiel tid. Approksimationer kan blive mere præcise ved at restringere problemet.
