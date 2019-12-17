@@ -8,29 +8,32 @@ Et træ er en sammenhængende ikke-orienteret graf, der ikke indeholder en simpe
 \label{def_tree}
 \end{defn}
 
-Træer er en type af simple grafer. Da de ikke indeholder en simpel kreds, kan der ikke være flere kanter mellem to knuder, og der kan ikke være løkker. Alternativt og ækvivalent til Definition \ref{def_tree} kan et træ defineres som følger.
+Træer er en type af simple grafer. Da de ikke indeholder en simpel kreds, kan der ikke være flere kanter mellem to knuder, og der kan ikke være løkker. Alternativt og ækvivalent til Definition \ref{def_tree} gælder følgende om et træ.
 
 \begin{thm}\label{thm:vej_tree}
 En ikke-orienteret graf er et træ hvis og kun hvis, der eksisterer netop én simpel vej mellem hvert par af knuder. 
 \end{thm}
 
 \begin{proof}
-	Antag at en ikke-orienteret graf $T$ er et træ, og lad $u$ og $v$ være to knuder i $T$. 
+	Antag at en ikke-orienteret graf, $T$, er et træ, og lad $u$ og $v$ være to knuder i $T$. 
 	Da $T$ er sammenhængende må det betyde, at der er en simpel vej mellem $u$ og $v$ jf. Sætning \ref{smh_satning}. 
 	Den simple vej mellem $u$ og $v$ må være den eneste vej mellem $u$ og $v$, for hvis der eksisterer flere veje mellem $u$ og $v$, eksisterer en simpel kreds. 
-	Hvis der mellem $u$ og $v$ er to forskellige simple veje $P_{u,v}$ og $P_{v,u}$, må der være mindst ét punkt, der er forskelligt mellem de to veje. 
+	Antag for modstrid, at der mellem $u$ og $v$ er to forskellige simple veje $P_{u,v}$ og $P_{v,u}$. Da må der være mindst ét punkt, der er forskelligt mellem de to veje. 
 	En simpel kreds opstår fra og med knuden $x$, hvor $P_{u,v}$ og $P_{v,u}$ første gang adskiller sig fra hinanden. 
-	Den simple kreds slutter, når $P_{u,v}$ og $P_{v,u}$ igen har en knude $y$ til fælles og består derfor af knuderne mellem $x$ og $y$.
+	Den simple kreds slutter, når $P_{u,v}$ og $P_{v,u}$ igen har en knude $y$ til fælles og består derfor af knuderne mellem $x$ og $y$ i begge veje.
 	Eksistensen af en simpel kreds modstrider antagelsen om, at $T$ er et træ, og derfor må der være netop én simpel vej mellem hvert knudepar i $T$.
 
 Antag nu, at der er netop én simpel vej mellem hvert knudepar i en ikke-orienteret graf $T$.
-	Det betyder, at $T$ er sammenhængende. Desuden må det gælde, at $T$ ingen simple kredse har, da det vil stride i mod antagelsen om, at der er netop én simpel vej mellem hvert knudepar i en $T$.
+	Det betyder, at $T$ er sammenhængende. Desuden må det gælde, at $T$ ingen simple kredse har, da det vil stride i mod antagelsen om, at der er netop én simpel vej mellem hvert knudepar i $T$.
 	Der kan ikke eksistere en simpel kreds, da der kun er én simpel vej mellem to knuder $u$ og $v$. Derfor kan der ikke findes knuder, hvor to eller flere veje mellem $u$ og $v$ adskiller fra hinanden, hvor der kan dannes en kreds.
 	Grafen $T$ opfylder dermed kravene for at være et træ jf. Definition \ref{def_tree}.
 \end{proof}
 
 \begin{exmp}
 For at illustrere en graf, som er et træ, og en graf, som ikke er et træ, iagttages hhv. Figur \ref{eksempel_tree} og Figur \ref{eksempel_notree}. Grafen i Figur \ref{eksempel_tree} er et træ, da det er en ikke-orienteret sammenhængende graf uden simple kredse.
+
+Grafen i Figur \ref{eksempel_notree} er ikke et træ, da der eksistrer en kreds $\lbrace B, D, C, B \rbrace$. 
+Et andet argument for, at grafen ikke er et træ, er, at grafen ikke er sammenhængende.
 \end{exmp}
 
 \begin{figure}[h]
@@ -50,53 +53,15 @@ For at illustrere en graf, som er et træ, og en graf, som ikke er et træ, iagt
 \caption{}
 \end{figure}
 
-Grafen i Figur \ref{eksempel_notree} er ikke et træ, da der eksistrer en kreds $\lbrace B, D, C \rbrace$. Grafen er heller ikke et træ med argumentet, at grafen ikke er sammenhængende.\\
-
-Mange anvendelser af træer kræver at en bestemt knude i en graf fungerer som udgangspunkt. En knude kan indentificeres som en rod, og dermed rodfæste grafen.
-
-\begin{defn}
-Et rodfæstet træ er et træ med en knude, der er udnævnt som roden. De resterende knuder er orienteret væk fra roden.
-\end{defn}
-
-Der findes terminologi, der beskriver knudernes forhold til hinanden i en rodfæstet graf. 
-Hvis $T$ er et rodfæstet træ, så er en knude $v$, som ikke er roden, $\textit{forælder}$ til en knude $u$, hvis der eksiterer en orienteret kant fra $v$ til $u$ i retningen væk fra roden.
-Samtidigt er $u$ $\textit{barn}$ af $v$, og knuder med samme forælder kaldes $\textit{søskende}$. 
-$\textit{Forfædrene}$ til $v$ er knuderne på vejen fra roden til $v$, og $\textit{efterkommerne}$ til $v$ er knuderne, der har $v$ som forfader. 
-Knuder, der har børn kaldes $\textit{indre knuder}$, og knuder, der ikke har børn kaldes $\textit{blade}$.
-Hvis $w$ er en knude i et træ, så er et deltræ med $w$ som rod, træet, det består af $w$ og alle dets efterkommere og alle kanter incidente til efterkommerne.
-
-\begin{exmp}
-Betragt træet i Figur \ref{eksempel_rootedtree}. 
-For at eksemplificere terminologien, så er roden af træet $a$, og $a$ er forælder til $b$ og $c$, hvilket vil sige, at $b$ og $c$ er børn til $a$, og $b$ og $c$ er hinandens søskende. 
-Knuden $b$ er efterkommer af $a$, og den er forfader til $\lbrace d, e, f \rbrace$. 
-I grafen er $a$, $b$ og $c$ grafens indre knuder, og mængden af blade er $\lbrace d, e, f, g, h, i \rbrace$. 
-Et eksempel på en deltræ af træet i Figur \ref{eksempel_rootedtree} er træet i Figur \ref{eksempel_rootedsubtree}.
-Deltræet har $b$ som rod og indeholder efterkommerne af $b$ og kanterne incidente med dem. 
-\end{exmp}
-
-\begin{figure}[h]
-\centering
-\input{fig/tikz/et_rodfaestet_trae}
-\caption{Et rodfæstet træ.} 
-\label{eksempel_rootedtree}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\input{fig/tikz/et_undertrae}
-\caption{Et undertræ med $b$ som rod.} 
-\label{eksempel_rootedsubtree}
-\end{figure}
-
 \section{Udspændende træer}
 
 Et udspændende træ er et træ, der indeholder alle knuder i en simpel, sammenhængende graf.
 
 \begin{defn}
-I en simpel graf $G$ er et udspændende træ en delgraf af $G$, der indeholder alle knuder i $G$, og som også er et træ.
+I en simpel graf, $G$, er et udspændende træ en delgraf af $G$, der indeholder alle knuder i $G$, og som opfylder betingelserne for at være et træ.
 \end{defn}
 
-En simpel graf med et udspændende træ er sammenhængende, fordi der er vej mellem alle knuder i det udspændende træ.
+En simpel graf med et udspændende træ er sammenhængende, fordi der er en vej mellem alle knuder i det udspændende træ.
 Det omvendte gælder også dvs. at hver simpel sammenhængende graf har et udspændende træ, hvilket kan formuleres i det følgende.
 
 \begin{thm}
@@ -104,11 +69,11 @@ En simpel graf er sammenhængende hvis og kun hvis, den har et udspændende træ
 \end{thm}
 
 \begin{proof}
-Først antages det, at en simpel graf $G$ har et udspændende træ. 
-Træet $T$ vil indeholde alle knuder i $G$ og have en simpel vej mellem alle knudepar, fordi $T$ er et træ. 
+Først antages det, at en simpel graf, $G$, har et udspændende træ. 
+Træet $T$ indeholder alle knuder i $G$ og har en simpel vej mellem alle knudepar, fordi $T$ er et træ. 
 Fordi $T$ er en delgraf af $G$, så er der en vej mellem alle knuder i $G$, og derfor er $G$ sammenhængende.
 
-Det antages nu, at $G$ er sammenhængende. Hvis $G$ ikke er et træ, så indeholder den en simpel kreds. 
+Det antages nu, at $G$ er sammenhængende. Hvis $G$ ikke er et træ, så indeholder den mindst en simpel kreds. 
 Der fjernes nu en kant i en af de simple kredse. 
 Resultatet er en delgraf af $G$, der har en kant mindre end $G$, og som stadig indeholder alle knuder i $G$ og stadig er sammenhængende. 
 Grafen er stadig sammenhængende, fordi knuderne, der var forbunde af den fjernede kant, stadig er forbundne af en vej, der ikke indeholder den fjernede kant, fordi den fjernede kant var en del af en simpel kreds. 
@@ -118,7 +83,6 @@ Resultatet er et træ, fordi $G$ forbliver sammenhængende, i takt med kanter fj
 
 \begin{exmp}
 Betragt grafen i Figur \ref{eksempel_udspaendende}. Grafen er simpel og sammenhængende, og derfor kan der findes et udspændende træ. 
-\end{exmp}
 
 \begin{figure}[h]
 \centering
@@ -143,21 +107,18 @@ Der er mange muligheder for at finde et udspændende træ i grafen i Figur \ref{
 	\caption{To forskellige eksempler på udspændende træer på den samme graf.} \label{eksempel_udspaendende1}
 \end{figure}
 
+\end{exmp}
+
 \section{Minimale udspændende træer}
 
-En række problemer involverer at finde den eksempelvis korteste, billigste eller på anden vis mest favorable forbindelse, der inkluderer alle knuder i en vægtet graf. Problemet kan løses ved at bestemme et minimalt udspændende træ. I et minimalt udspændende træ er summen af kanternes vægt mindst muligt, og træet indeholder alle knuder i grafen.
+En række problemer involverer at finde den eksempelvis korteste, billigste eller på anden vis mest favorable forbindelse, der inkluderer alle knuder i en vægtet graf. Problemet kan løses ved at bestemme et minimalt udspændende træ. I et minimalt udspændende træ er summen af kanternes vægt mindst mulig, og træet indeholder alle knuder i grafen.
 
 \begin{defn}
 Et minimalt udspændende træ i en sammenhængende vægtet graf er et udspændende træ, som har den mindst mulige sum af kanternes vægt.
 \end{defn}
 
-Der findes forskellige algoritmer til at finde minimale udspændende træer i vægtede grafer, hvor et eksempel er Prims algoritme. 
-Prims algortime er en grådig algortime, der tager udgangspunkt i en kant med mindst mulig vægt. 
-Ud fra kanten vælges en ny incident kant med mindst mulig vægt, så der ikke dannes en kreds ved tilføjelse af den nye kant. 
-Dvs. at der ved hvert trin vælges kanten med den mindste vægt. 
-Sammenlagt vil algoritmen finde den optimale løsning og dermed finde et minimalt udspændende træ.
-Algoritmen kan beskrives med pseuokode i det følgende.
- 
+Der findes forskellige algoritmer til at finde minimale udspændende træer i vægtede grafer, hvor et eksempel er Prims algoritme, som ses i Algoritme \ref{find_mintrae}. 
+
 \begin{algorithm}
 \caption{Prims algoritme}
 \label{find_mintrae}
@@ -172,7 +133,13 @@ $T:=T$ hvor $e$ er tilføjet.\\
 \textbf{retunér} $T$ $\lbrace T$ er et minimalt udspændende træ.$\rbrace$
 \end{algorithm}
 
-Der kan i Prims algoritme opstå at algoritmen kan vælge mellem flere kanter med samme vægt, og der vil derfor kræves en form for rangering af kanterne.
+Prims algoritme er en grådig algoritme, der tager udgangspunkt i en kant med mindst mulig vægt. 
+Ud fra kanten vælges en ny incident kant med mindst mulig vægt, så der ikke dannes en kreds ved tilføjelse af den nye kant. 
+Dvs. at der ved hvert trin vælges kanten med den mindste vægt. 
+Sammenlagt vil algoritmen finde den optimale løsning og dermed finde et minimalt udspændende træ. 
+Der kan i Prims algoritme opstå, at algoritmen kan vælge mellem flere kanter med samme vægt, og der vil derfor kræves en form for rangering af kanterne. 
+
+Desuden er Prims algoritme anvendelig, idet den er af polynomiel kompleksitet.
 
 \input{incl/main/prims_complexity}
 
@@ -184,8 +151,8 @@ Der kan i Prims algoritme opstå at algoritmen kan vælge mellem flere kanter me
 \end{figure}
 
 \begin{exmp}
-For at give et eksempel på princippet i Prims algortime laves et eksempel på at finde et minimalt udspændende træ i grafen i Figur \ref{eks_prim}. 
-Prims algortime vil i første skridt vælge en kant med mindst mulig vægt. 
+For at give et eksempel på princippet i Prims algoritme laves et eksempel på at finde et minimalt udspændende træ i grafen i Figur \ref{eks_prim}. 
+Prims algoritme vil i første skridt vælge en kant med mindst mulig vægt. 
 I grafen vil det være $\lbrace E,F \rbrace$ med vægt $1$. 
 Næste skridt vil være at vælge en kant incident med $E$ eller $F$ med mindst mulig vægt. 
 Der kan vælges $\lbrace C,F \rbrace$ eller $\lbrace E,H \rbrace$ alt efter hviken rangering af kanter med samme vægt, der vælges. 
@@ -196,11 +163,11 @@ Der kan nu vælges enten $\lbrace B,C \rbrace$  eller $\lbrace G,H \rbrace$ med 
 Der vælges $\lbrace G,H \rbrace$ efterfulgt af $\lbrace B,C \rbrace$. 
 Der vælges nu $\lbrace B,D \rbrace$ efterfulgt af $\lbrace A,D \rbrace$.
 
-Det er nu ikke muligt at vælge flere kanter uden at danne en simpel kreds, og der er dermed dannet et minimalt udspændende træ med kanterne $\lbrace E,F \rbrace$, $\lbrace C,F \rbrace$, $\lbrace E,H \rbrace$, $\lbrace H,I \rbrace$, $\lbrace G,H \rbrace$, $\lbrace B,C \rbrace$, $\lbrace B,D \rbrace$, $\lbrace A,D \rbrace$. 
+Alle knuder er nu besøgt, og der er dermed dannet et minimalt udspændende træ med kanterne $\lbrace E,F \rbrace$, $\lbrace C,F \rbrace$, $\lbrace E,H \rbrace$, $\lbrace H,I \rbrace$, $\lbrace G,H \rbrace$, $\lbrace B,C \rbrace$, $\lbrace B,D \rbrace$, $\lbrace A,D \rbrace$. 
 Alt efter rangering af kanter med samme vægt kan rækkefølgen, algoritmen vælger kanter, variere, men der opnås i dette eksempel samme minimale udspændende træ.
 \end{exmp} 
 
-Det vil med udgangspunkt i \citep{prim} bevises, at Prims algortime bestemmer et minimalt udspændende træ.
+Det vil med udgangspunkt i \citep{prim} bevises, at Prims algoritme bestemmer et minimalt udspændende træ.
 
 \begin{thm}
 Prims algoritme bestemmer et minimalt udspændende træ. 
@@ -225,17 +192,17 @@ Prims algoritme bestemmer et minimalt udspændende træ.
 \begin{proof}
 Lad $T_{k}$ være et træ. Det skal så med induktion vises, at $T_{k}$, som tilføjes en kant, $e$, er et undertræ af et minimalt udspændende træ, $M$. 
 
-\textit{Basisskridt}: Da $T_0$ i begyndelsen blot består af en enkelt knude uden kanter, er den et undertræ af $M$.
+\textit{Basisskridt}: Da $T_0$ i begyndelsen blot består af en enkelt knude uden kanter, må den være et undertræ af $M$.
 
-\textit{Induktionsskridtet}: Ved $k$'te skridt i algortimen, er $T_k$ et undertræ af $M$, og Prims algortime tilføjer kanten $e$. Hvis $e$ $\in$ $M$, må $T_k$ stadig være et undertræ af $M$ i følge induktionsantagelsen.
+\textit{Induktionsskridtet}: Ved $k$'te skridt i algoritmen, er $T_k$ et undertræ af $M$, og Prims algoritme tilføjer kanten $e$. Hvis $e$ $\in$ $M$, må $T_k$ stadig være et undertræ af $M$ i følge induktionsantagelsen.
 
-Antag, at $e \notin M$. Når $e$ tilføjes $M$, dannes der netop én kreds, fordi $M$ er et udspændende træ og derfor har én simpel vej mellem alle knuder jf. Sætning \ref{thm:vej_tree}.
+Antag for modstrid, at $e \notin M$. Når $e$ tilføjes $M$, dannes der netop én kreds, fordi $M$ er et udspændende træ og derfor har én simpel vej mellem alle knuder jf. Sætning \ref{thm:vej_tree}.
 Kanten $e$ har en endeknude i $T_k$ samt en endeknude, der ikke er i $T_k$, fordi Prims algoritme har tilføjet $e$. 
 Der vil eksistere en anden kant $e'$ i kredsen, som også har netop en endeknude i $T_k$, fordi $e$ skal have endeknude i $M$, uden at $e$ er del af $M$. 
 Kanterne $e$ og $e'$ er illustreret i Figur \ref{graf_prim_bevis}, hvor det kan ses, at de er en del af en kreds. 
 Prims algoritme kunne have valgt $e'$, men valgte at tilføje $e$, hvorfor $d(e) \leq d(e')$. 
 Hvis $e$ tilføjes til $M$, mens $e'$ fjernes fra samme kreds, opstår et nyt træ $M'$, hvor 
-$d(M') \leq d(M)$, hvilket er i modstrid med, at $M$ er et minimalt udspændende træ. Det nye træ $M'$ indeholder $T\cup \lbrace e \rbrace$, hvilket følger induktionsantagelsen. 
+$d(M') \leq d(M)$, hvilket er i modstrid med, at $M$ er et minimalt udspændende træ. Det nye træ $M'$ indeholder $T_k\cup \lbrace e \rbrace$, hvilket følger induktionsantagelsen. 
 \end{proof}
 
 \begin{figure}[h]

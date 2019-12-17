@@ -1,22 +1,29 @@
 \chapter{Konklusion}
 
 
-I løbet af dette projekt, er det blevet undersøgt hvad algoritmer, kompleksitet, induktionsbeviser og grafer er. 
+I løbet af dette projekt er det blevet undersøgt, hvad algoritmer, kompleksitet, induktionsbeviser og grafer er.
+ 
 Algoritmer er en nødvendig sekvens af skridt, som kræves for at løse et matematisk problem. 
-Der findes mange forskellige former for algoritmer, blandt andet brute-force algortimer, der er en type af algoritmer der slavisk går gennem en masse skridt. 
-For algortimer er det relevandt at se på, hvor tids- og ressourcekrævende de er, til dette anvendes kompleksitet. 
-I dette projekt er store-O, store-$\Omega$ og store-$\Theta$ notation blevet undersøgt. 
-Disse notationer kan bruges til at undersøge en algoritmes tidskompleksitet. 
-I projektet er induktionsbeviser også blevet undersøgt, fordi de er nyttige til at bevise sætninger indenfor diskret matematik, herunder grafteori. 
-Om induktionsbeviser er det blevet fundet, at de indeholder to skridt, basisskridtet og induktionsskridtet.
-Disse bruges til at undersøge, om en induktionsantagelse gælder for alle værdier der kan indsættes. 
-Indenfor grafteori, er det blevet undersøgt, hvad en graf er, samt hvilke anvendelser der er deraf. 
-I denne sammehæng er der blevet set på flere forskellige grafer og deres egenskaber, herunder  simple, sammenhængende grafer, multigrafer, vægtede grafer og træer. 
-Grafer kan somme tider indeholde veje og kredse, som går gennem kanter og knuder. 
-De eksempler der her er blevet undersøgt er euler- og hamiltonkredse, da disse ligger tæt op ad TSP. 
-Hamiltonkredse er specielt vigtige, da det er en simpel kreds, der besøger hver knude netop en gang og ikke bruger den samme kant flere gange.
-På den måde kan den korteste hamiltonkreds siges at være løsningen til TSP. 
-I projektet er løsningsalgoritmer til TSP blevet undersøgt. 
-Den første algoritme der undersøges er bruteforce algortime, der har en meget høj tidskompleksitet, hvis grafen har mange knuder. Denne type ender dog med at finder den optimale løsning i sidste ende. Dette gør den ved at sammenligne alle mulige løsninger og dermed vælger den kortest mulige vej.  
-Den anden algortime er dobbelttræalgoritmen, som er en approksimationsalgoritme som ikke finder den optimale løsning til TSP, men altså en approksimation som nogle lunde er brugbar. 
-Hver af disse algoritmer har deres fordele og ulemper, og valget mellem dem går på, om gennemløbstid eller præcision vægtes højest. 
+Der findes mange forskellige former for algoritmer, blandt andet brute-force algoritmer og grådige algoritmer. 
+For algoritmer er det relevant at se på, hvor tids- og ressourcekrævende de er, hvilket beskrives ved kompleksitet. 
+I projektet er Store-$O$, Store-$\Omega$ og Store-$\Theta$ notation blevet undersøgt. 
+Notationerne kan bruges til at undersøge en algoritmes tidskompleksitet.
+ 
+I projektet er induktionsbeviser også blevet belyst, idet de er nyttige til at bevise sætninger indenfor diskret matematik, herunder grafteori. 
+Induktionsbeviser indeholder to skridt: basisskridtet og induktionsskridtet.
+Skridtene bruges til at undersøge, om et åbent udsagn gælder for alle værdier, der kan indsættes. 
+
+Indenfor grafteori er det blevet beskrevet, hvad grafer er, samt hvilke anvendelser de har. 
+I den sammenhæng er der blevet defineret flere forskellige grafer, herunder  simple grafer, sammenhængende grafer, multigrafer, vægtede grafer og træer. 
+Grafer kan indeholde veje og kredse, som gennemløber kanter og knuder. 
+De eksempler, der er i fokus, er Euler- og Hamiltonkredse, da de er relevante for TSP. 
+Hamiltonkredse er specielt vigtige, da det er simple kredse, der besøger hver knude netop én gang, og da er den kortest mulige Hamiltonkreds løsningen til TSP. 
+
+Det er blevet vist, at den generelle version af TSP ikke kan approksimeres i polynomiel tid. Derfor er det nødvendigt at restringere TSP til eksempelvis den metriske version.
+
+I projektet er to løsningsalgoritmer til TSP blevet undersøgt. 
+Den første algoritme der beskrives er brute-force algoritmen, der har en meget høj tidskompleksitet, men som altid finder den optimale løsning. 
+Løsningen findes ved at sammenligne alle mulige Hamiltonkredse og dermed vælge den kortest mulige kreds.  
+Den anden algoritme er Dobbelttræ-algoritmen, som er en approksimationsalgoritme til den metriske version af TSP. 
+Den finder ikke nødvendigvis den optimale løsning til TSP, men en $2$-approksimation. 
+Begge algoritmer har deres fordele og ulemper, og valget mellem dem går på, om gennemløbstid eller præcision vægtes højst. 
